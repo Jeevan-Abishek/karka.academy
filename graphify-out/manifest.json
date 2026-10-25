@@ -1,0 +1,292 @@
+{
+  "app.js": {
+    "mtime": 1792952325.1896448,
+    "ast_hash": "f48e1e22f74250398bdda48ad002b126",
+    "semantic_hash": ""
+  },
+  "index.html": {
+    "mtime": 1792948939.6686778,
+    "ast_hash": "9a5a79999f0a2e4d137641035066f25c",
+    "semantic_hash": ""
+  },
+  "assets/images/karka-hero.jpg": {
+    "mtime": 1792684000.9404004,
+    "ast_hash": "66b0b70f8869f76db5a8d2b4892bfd70",
+    "semantic_hash": ""
+  },
+  "assets/images/karka-robot-mascot.jpg": {
+    "mtime": 1792688079.842877,
+    "ast_hash": "4af4da26733b16a25e8eb834ff5ea5d8",
+    "semantic_hash": ""
+  },
+  "assets/images/karka-studio.jpg": {
+    "mtime": 1792684027.5173419,
+    "ast_hash": "ae6bc95f2152706c158e7c339c29f4fb",
+    "semantic_hash": ""
+  },
+  "professionals.html": {
+    "mtime": 1792948956.5113628,
+    "ast_hash": "55d7a78d365a993bdd19ef5c64b48a49",
+    "semantic_hash": ""
+  },
+  "assets/images/professional-hero.jpg": {
+    "mtime": 1792849367.1083353,
+    "ast_hash": "a9cbdf965db7d4e104f5905be64f1f4a",
+    "semantic_hash": ""
+  },
+  "assets/images/pro-male-hero.jpg": {
+    "mtime": 1792854057.0331316,
+    "ast_hash": "1da417b46e4493b044a82f33315fee25",
+    "semantic_hash": ""
+  },
+  "college-students.html": {
+    "mtime": 1792949012.7534566,
+    "ast_hash": "0bbcd65ff38d107b7a15b8a750cc2df1",
+    "semantic_hash": ""
+  },
+  "graduates.html": {
+    "mtime": 1792948974.6893125,
+    "ast_hash": "d23dfcaf0086cd04fc00cc96aa2a5ee5",
+    "semantic_hash": ""
+  },
+  "school-students.html": {
+    "mtime": 1792948993.173236,
+    "ast_hash": "a050f1cc5b2dffc4fd16e38b21fc416e",
+    "semantic_hash": ""
+  },
+  "assets/images/college-student-hero.jpg": {
+    "mtime": 1792855318.2619464,
+    "ast_hash": "5675127480d980520588025de5dfe61c",
+    "semantic_hash": ""
+  },
+  "assets/images/graduate-hero.jpg": {
+    "mtime": 1792855332.8538833,
+    "ast_hash": "592749db605b502d314280c718163473",
+    "semantic_hash": ""
+  },
+  "assets/images/school-student-hero.jpg": {
+    "mtime": 1792855303.23056,
+    "ast_hash": "f15970e7e6fb158ebec761dfe0d93956",
+    "semantic_hash": ""
+  },
+  "scratch_check.py": {
+    "mtime": 1792916517.494634,
+    "ast_hash": "b5684c672e9672eb2f7999a109463de2",
+    "semantic_hash": ""
+  },
+  "assets/images/datascience-internship.jpg": {
+    "mtime": 1792942168.1658254,
+    "ast_hash": "501e32a3e45d1c77406c44d5993621ed",
+    "semantic_hash": ""
+  },
+  "assets/images/fullstack-internship.jpg": {
+    "mtime": 1792941598.8925345,
+    "ast_hash": "fe032e2529b8396495a8985afd28ed53",
+    "semantic_hash": ""
+  },
+  "assets/images/java-backend.jpg": {
+    "mtime": 1792941598.9141495,
+    "ast_hash": "d9785fa02675acd611e1dd58dd0ead99",
+    "semantic_hash": ""
+  },
+  "assets/images/python-automation.jpg": {
+    "mtime": 1792941598.9279606,
+    "ast_hash": "5ab5cc179a6404747b7fd6afbd6a7dad",
+    "semantic_hash": ""
+  },
+  "assets/images/react-architecture.jpg": {
+    "mtime": 1792919796.9938002,
+    "ast_hash": "042faa13b080cc170c1d3b62a91de2fd",
+    "semantic_hash": ""
+  },
+  "assets/images/sql-mastery.jpg": {
+    "mtime": 1792919822.8975613,
+    "ast_hash": "6841628c8894fffc98cdbe022e262f3b",
+    "semantic_hash": ""
+  },
+  "assets/images/uiux-internship.jpg": {
+    "mtime": 1792942168.1976824,
+    "ast_hash": "d52026eef95a3377b0808b28848fc033",
+    "semantic_hash": ""
+  },
+  "test_polish.py": {
+    "mtime": 1792917541.413282,
+    "ast_hash": "b3e33403f3e7045a7616a6be522f7577",
+    "semantic_hash": ""
+  },
+  "assets/images/school-html-css.jpg": {
+    "mtime": 1792919131.2605486,
+    "ast_hash": "9a998d3c2ff497c19dae993632d8ad5c",
+    "semantic_hash": ""
+  },
+  "assets/images/school-java.jpg": {
+    "mtime": 1792919131.2510693,
+    "ast_hash": "7927627a6d8d1dc335353ef79c162cf0",
+    "semantic_hash": ""
+  },
+  "assets/images/school-javascript.jpg": {
+    "mtime": 1792919131.2751658,
+    "ast_hash": "e0f8cf4cfba390fc400e51ff4a6aed3e",
+    "semantic_hash": ""
+  },
+  "assets/images/school-python.jpg": {
+    "mtime": 1792919131.221738,
+    "ast_hash": "a50cd95b4884080b7c9173859c6d41a8",
+    "semantic_hash": ""
+  },
+  "assets/images/business-analyst.jpg": {
+    "mtime": 1792944088.9870338,
+    "ast_hash": "b9e92aef076f56f373df2a43c55e3ce2",
+    "semantic_hash": ""
+  },
+  "assets/images/devops-cloud.jpg": {
+    "mtime": 1792943571.8737729,
+    "ast_hash": "59b4769073971fd0d60f866a981b01b0",
+    "semantic_hash": ""
+  },
+  "assets/images/digital-marketing.jpg": {
+    "mtime": 1792943571.836851,
+    "ast_hash": "8e96906cca8a021df0d3c463a8152b03",
+    "semantic_hash": ""
+  },
+  "assets/images/genai-foundations.jpg": {
+    "mtime": 1792941598.9371727,
+    "ast_hash": "68a8b02ff92d20032e7a92dd9d148bc7",
+    "semantic_hash": ""
+  },
+  "assets/images/school-js.jpg": {
+    "mtime": 1792919131.2751658,
+    "ast_hash": "e0f8cf4cfba390fc400e51ff4a6aed3e",
+    "semantic_hash": ""
+  },
+  "assets/images/school-web.jpg": {
+    "mtime": 1792919131.2605486,
+    "ast_hash": "9a998d3c2ff497c19dae993632d8ad5c",
+    "semantic_hash": ""
+  },
+  "assets/images/sql-database.jpg": {
+    "mtime": 1792942168.1877656,
+    "ast_hash": "7e84148b9c37c39307901d241cd8d968",
+    "semantic_hash": ""
+  },
+  "assets/images/video-editing.jpg": {
+    "mtime": 1792942811.9868164,
+    "ast_hash": "9439acbe57e6a8c9d0eeaea06f4bc28e",
+    "semantic_hash": ""
+  },
+  "assets/images/genai-thumb.jpg": {
+    "mtime": 1792942168.1492991,
+    "ast_hash": "482c1ef38bd5a9f3d5ff8fc7519851b3",
+    "semantic_hash": ""
+  },
+  "assets/images/genai-mastery.jpg": {
+    "mtime": 1792941598.9459786,
+    "ast_hash": "43765301c4a26fb330f1e5b955cb7da9",
+    "semantic_hash": ""
+  },
+  "assets/images/ai-datascience.jpg": {
+    "mtime": 1792942168.1658254,
+    "ast_hash": "501e32a3e45d1c77406c44d5993621ed",
+    "semantic_hash": ""
+  },
+  "assets/images/data-analytics.jpg": {
+    "mtime": 1792942168.1779947,
+    "ast_hash": "6a83681ad9439220bef3579d71d8ecbc",
+    "semantic_hash": ""
+  },
+  "assets/images/data-engineering.jpg": {
+    "mtime": 1792942168.1877656,
+    "ast_hash": "7e84148b9c37c39307901d241cd8d968",
+    "semantic_hash": ""
+  },
+  "assets/images/genai-llm-developer.jpg": {
+    "mtime": 1792942168.1492991,
+    "ast_hash": "482c1ef38bd5a9f3d5ff8fc7519851b3",
+    "semantic_hash": ""
+  },
+  "assets/images/uiux-design.jpg": {
+    "mtime": 1792942168.1976824,
+    "ast_hash": "d52026eef95a3377b0808b28848fc033",
+    "semantic_hash": ""
+  },
+  "assets/images/graphic-designing.jpg": {
+    "mtime": 1792942811.9738958,
+    "ast_hash": "f8722c95eb13b90d048154bfd5d263a2",
+    "semantic_hash": ""
+  },
+  "assets/images/multimedia-animation.jpg": {
+    "mtime": 1792942812.0118847,
+    "ast_hash": "eccc5cddbbc1abb456dea6d64d81c801",
+    "semantic_hash": ""
+  },
+  "assets/images/social-media-design.jpg": {
+    "mtime": 1792942811.998655,
+    "ast_hash": "c04c1c1958f4432a2e236cb865848c93",
+    "semantic_hash": ""
+  },
+  "assets/images/web-designing.jpg": {
+    "mtime": 1792942811.956138,
+    "ast_hash": "f0a724b1c62e11a32ed053042d70f244",
+    "semantic_hash": ""
+  },
+  "assets/images/cloud-devops.jpg": {
+    "mtime": 1792943571.8737729,
+    "ast_hash": "59b4769073971fd0d60f866a981b01b0",
+    "semantic_hash": ""
+  },
+  "assets/images/qa-automation.jpg": {
+    "mtime": 1792943571.889051,
+    "ast_hash": "185ac5e6c0394cdbbc9e9b35a48f8bc5",
+    "semantic_hash": ""
+  },
+  "assets/images/seo-analyst.jpg": {
+    "mtime": 1792943571.8494418,
+    "ast_hash": "59128caf21efd0b572cd3394402a34f6",
+    "semantic_hash": ""
+  },
+  "assets/images/storytelling-writing.jpg": {
+    "mtime": 1792943571.8621454,
+    "ast_hash": "5307e89073ee3754012f563a41352fb7",
+    "semantic_hash": ""
+  },
+  "assets/images/hr-finance.jpg": {
+    "mtime": 1792944088.9544005,
+    "ast_hash": "d35e5f7802ffafcc27fba5d727019f6d",
+    "semantic_hash": ""
+  },
+  "assets/images/mobile-app-dev.jpg": {
+    "mtime": 1792944088.9430573,
+    "ast_hash": "042e9d18cf8ebe7c9e854a915ca77d0d",
+    "semantic_hash": ""
+  },
+  "assets/images/tally-prime.jpg": {
+    "mtime": 1792944088.9711006,
+    "ast_hash": "9fc68b0f411e2b3b33500129e2e2cd1c",
+    "semantic_hash": ""
+  },
+  "script.js": {
+    "mtime": 1792948041.349242,
+    "ast_hash": "234d33e23544238979cf896375996819",
+    "semantic_hash": ""
+  },
+  "backend/package.json": {
+    "mtime": 1792952673.8530743,
+    "ast_hash": "76544341fe23509ef1849d866cb30951",
+    "semantic_hash": ""
+  },
+  "backend/server.js": {
+    "mtime": 1792953892.4397907,
+    "ast_hash": "0f5ff414549cbd4b33b45eb8cbef0935",
+    "semantic_hash": ""
+  },
+  "backend/models/ContactLead.js": {
+    "mtime": 1792952685.6420004,
+    "ast_hash": "85508705120f710a0c7d6660f4e5cea6",
+    "semantic_hash": ""
+  },
+  "backend/models/EnrollmentLead.js": {
+    "mtime": 1792952692.2217455,
+    "ast_hash": "ca9a62f0c202f34915b8b702ff6dd779",
+    "semantic_hash": ""
+  }
+}

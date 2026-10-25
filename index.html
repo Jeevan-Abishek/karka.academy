@@ -1,0 +1,2232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Karka AI & Tech Academy | AI-Driven Software Developer & Learning Center in Nagercoil</title>
+  <meta name="description"
+    content="The one and only exclusive AI Learning Center in Nagercoil. AI-Driven Software Developer programs with Pay After Placement, live internships, and guaranteed career acceleration.">
+
+  <!-- Google Fonts: Plus Jakarta Sans, Outfit, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- Font Awesome Icons & Canvas Confetti -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Background Ambient Glow & Canvas -->
+  <canvas id="ambient-canvas"></canvas>
+  <div class="ambient-glow-mesh"></div>
+
+  <div class="content-wrapper">
+
+    <!-- 1. TOP ENTERPRISE STRIP -->
+    <div class="infosys-top-strip">
+      <div class="container top-strip-inner">
+        <div class="top-strip-left">
+          <div class="top-strip-marquee">
+            <span class="strip-item">
+              <span class="strip-badge">ADMISSIONS OPEN</span>
+              <span class="strip-batch-text">Upcoming Batch: <strong>Nov 2026 Cohort</strong> (₹0 Upfront
+                Tuition)</span>
+            </span>
+            <span class="strip-divider" style="color: var(--text-muted);">|</span>
+            <span class="strip-item top-strip-location">
+              <i class="fa-solid fa-location-dot" style="color: var(--infosys-cyan);"></i> Exclusive AI Learning Center
+              in Nagercoil, Tamil Nadu
+            </span>
+          </div>
+        </div>
+        <div class="top-strip-right">
+          <!-- Theme Switcher Button -->
+          <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle Theme">
+            <i class="fa-solid fa-moon"></i>
+            <span id="themeToggleText">Dark</span>
+          </button>
+          <a href="https://www.instagram.com/karka.ai" target="_blank" rel="noopener" class="top-strip-social"
+            title="Follow us on Instagram">
+            <i class="fa-brands fa-instagram"></i> <span>@karka.ai</span>
+          </a>
+          <a href="tel:+919487530243" class="top-strip-phone" title="Call Us Directly">
+            <i class="fa-solid fa-phone"></i> <span>+91 9487530243</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1. NAVIGATION & HEADER -->
+    <header class="navbar-infosys" id="navbar">
+      <div class="container nav-main-layout">
+
+        <!-- Brand Logo Linking to Home: கற்க AI & TECH Academy -->
+        <a href="index.html" class="pro-logo-group" aria-label="Karka AI & Tech Academy Home">
+          <span class="pro-logo-tamil">கற்க</span>
+          <span class="pro-logo-sep"></span>
+          <span class="pro-logo-sub"><span>AI &amp; TECH</span> Academy</span>
+        </a>
+
+        <!-- Desktop Navigation Wrapper -->
+        <nav class="desktop-nav" aria-label="Desktop Navigation">
+          <ul class="nav-menu-links">
+            <li class="nav-item"><a href="school-students.html" class="nav-link">School Students</a></li>
+            <li class="nav-item"><a href="college-students.html" class="nav-link">College Students</a></li>
+            <li class="nav-item"><a href="graduates.html" class="nav-link">Graduates</a></li>
+            <li class="nav-item"><a href="professionals.html" class="nav-link">Professionals</a></li>
+          </ul>
+        </nav>
+
+        <!-- Nav Right CTA -->
+        <div class="nav-actions">
+          <!-- Separate 'Courses ⌵' pill button on mobile -->
+          <button class="mobile-courses-btn" id="mobileCoursesBtn" aria-label="Open Courses Drawer"
+            aria-expanded="false">
+            <span>Courses</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <button type="button" class="btn-pro-enroll-solid open-apply-modal" onclick="openModal('applyModal')">
+            ENROLL NOW
+          </button>
+          <button class="mobile-menu-btn hamburger-btn mobile-toggle" id="mobileMenuToggleBtn"
+            aria-label="Open Mobile Menu" aria-controls="megaDrawer" aria-expanded="false">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <!-- MOBILE COURSES DRAWER (Categorized Program List) -->
+    <div class="enterprise-drawer courses-drawer" id="coursesDrawer" aria-hidden="true" role="dialog" aria-modal="true"
+      aria-label="Categorized Courses">
+      <div class="drawer-backdrop" id="coursesDrawerBackdrop"></div>
+      <div class="drawer-content-pane">
+        <div class="drawer-header">
+          <span class="drawer-brand">
+            KARKA <span class="accent-ai">COURSES</span>
+          </span>
+          <button class="drawer-close-btn" id="coursesDrawerCloseBtn" aria-label="Close courses menu">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <div class="courses-drawer-scrollable">
+          <div class="courses-drawer-category-heading">
+            <i class="fa-solid fa-layer-group" style="color: var(--infosys-electric-blue);"></i>
+            <span>Categorized Programs</span>
+          </div>
+
+          <ul class="courses-drawer-tracks-list">
+            <li><a href="#bootcamps" class="courses-drawer-card"><span>Fullstack Courses</span><i
+                  class="fa-solid fa-chevron-right"></i></a></li>
+            <li><a href="#bootcamps" class="courses-drawer-card"><span>Gen AI Courses</span><i
+                  class="fa-solid fa-chevron-right"></i></a></li>
+            <li><a href="#bootcamps" class="courses-drawer-card"><span>Data & ML Courses</span><i
+                  class="fa-solid fa-chevron-right"></i></a></li>
+            <li><a href="#bootcamps" class="courses-drawer-card"><span>Design Courses</span><i
+                  class="fa-solid fa-chevron-right"></i></a></li>
+            <li><a href="#bootcamps" class="courses-drawer-card"><span>Digital Media Courses</span><i
+                  class="fa-solid fa-chevron-right"></i></a></li>
+            <li><a href="#bootcamps" class="courses-drawer-card"><span>Content & Marketing</span><i
+                  class="fa-solid fa-chevron-right"></i></a></li>
+            <li><a href="#bootcamps" class="courses-drawer-card"><span>Other Tech Courses</span><i
+                  class="fa-solid fa-chevron-right"></i></a></li>
+            <li><a href="#bootcamps" class="courses-drawer-card"><span>Non Tech Courses</span><i
+                  class="fa-solid fa-chevron-right"></i></a></li>
+          </ul>
+        </div>
+
+        <div class="courses-drawer-footer">
+          <a href="#bootcamps" class="btn-view-all-programs" id="btnViewAllPrograms">VIEW ALL PROGRAMS &gt;</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- MOBILE MENU DRAWER (Hamburger exclusively) -->
+    <div class="enterprise-drawer" id="megaDrawer" aria-hidden="true" role="dialog" aria-modal="true"
+      aria-label="Mobile Navigation">
+      <div class="drawer-backdrop" id="drawerBackdrop"></div>
+      <div class="drawer-content-pane">
+        <div class="drawer-header">
+          <span class="drawer-brand">
+            KARKA <span class="accent-ai">AI</span>
+          </span>
+          <button class="drawer-close-btn" id="drawerCloseBtn" aria-label="Close navigation">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <ul class="drawer-nav-list">
+          <li><a href="school-students.html" class="drawer-link">School Students <i class="fa-solid fa-chevron-right"></i></a></li>
+          <li><a href="college-students.html" class="drawer-link">College Students <i class="fa-solid fa-chevron-right"></i></a></li>
+          <li><a href="graduates.html" class="drawer-link">Graduates <i class="fa-solid fa-chevron-right"></i></a></li>
+          <li><a href="professionals.html" class="drawer-link">Professionals <i class="fa-solid fa-chevron-right"></i></a></li>
+        </ul>
+        <div class="drawer-footer">
+          <button class="btn-enterprise-primary open-apply-modal"
+            style="width: 100%; justify-content: center; padding: 0.85rem; font-size: 0.95rem;">
+            ENROLL NOW
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. HERO SECTION -->
+    <section class="hero-exclusive-section" id="hero">
+      <div class="container hero-grid">
+
+        <!-- Left Hero Copy -->
+        <div class="hero-left-content">
+          <div class="hero-exclusive-tag">
+            <i class="fa-solid fa-sparkles"></i>
+            <span>The one and only exclusive AI Learning Center in Nagercoil</span>
+          </div>
+
+          <h1 class="hero-headline">
+            AI-Driven <br>
+            <span class="gradient-blue-text">Software Developer</span>
+          </h1>
+
+          <p class="hero-subtitle">
+            Build the future with AI — before someone else does.
+          </p>
+
+          <p class="hero-subhead">
+            Master the skills you need to thrive. Join Karka AI Academy in Nagercoil and transform your career today.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#pap" class="btn-hero-primary open-apply-modal">
+              <span>START YOUR TRANSFORMATION</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <a href="#bootcamps" class="btn-secondary">
+              <i class="fa-solid fa-book-open"></i>
+              <span>Explore Bootcamps</span>
+            </a>
+          </div>
+
+          <!-- Ask Karka AI Widget -->
+          <div class="hero-ai-search">
+            <form id="aiPromptForm" class="ai-search-card">
+              <div class="ai-mic-halo" id="micBtn" title="Voice Search Demo">
+                <i class="fa-solid fa-microphone"></i>
+              </div>
+              <input type="text" id="aiQueryInput" class="ai-input-field"
+                placeholder="Ask Karka AI: 'What is Pay After Placement?' or 'Non-CS eligibility'..."
+                autocomplete="off">
+              <button type="submit" class="ai-submit-btn" aria-label="Search">
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </form>
+
+            <div class="ai-prompt-suggestions">
+              <span style="font-size: 0.76rem; color: var(--text-muted); font-weight: 600;">Popular:</span>
+              <button type="button" class="prompt-pill"
+                onclick="askAiQuestion('Tell me how Pay After Placement works')">₹0 Upfront PAP</button>
+              <button type="button" class="prompt-pill"
+                onclick="askAiQuestion('Can non-CS students get software jobs?')">Non-CS Eligibility</button>
+              <button type="button" class="prompt-pill"
+                onclick="askAiQuestion('What is the average placement salary?')">Placement Stats</button>
+              <button type="button" class="prompt-pill"
+                onclick="askAiQuestion('Tell me about AgileTribers internship')">Live Lab Internship</button>
+            </div>
+
+            <!-- Instant AI Answer Popover -->
+            <div class="ai-response-box" id="aiResponseBox">
+              <div class="ai-response-header">
+                <span><i class="fa-solid fa-robot"></i> Karka AI Career Advisory</span>
+                <button type="button" onclick="closeAiResponse()"
+                  style="background:none; border:none; cursor:pointer; color:var(--text-muted); font-size:1.1rem;">&times;</button>
+              </div>
+              <div class="ai-response-text" id="aiResponseContent"></div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Hero Visual: 3D Robot Mascot & Badges -->
+        <div class="hero-visual-wrapper">
+          <div class="mascot-image-card">
+            <img src="assets/images/karka-robot-mascot.jpg" alt="Karka AI Mascot - AI-Driven Software Developer">
+          </div>
+
+          <!-- Trust Badge 1: AI POWERED -->
+          <div class="trust-badge-float trust-badge-left">
+            <div class="badge-icon-box blue">
+              <i class="fa-solid fa-microchip"></i>
+            </div>
+            <div>
+              <div class="badge-text-primary">AI POWERED</div>
+              <div class="badge-text-secondary">GenAI & Agent Workflows</div>
+            </div>
+          </div>
+
+          <!-- Trust Badge 2: 100% PLACEMENT -->
+          <div class="trust-badge-float trust-badge-right">
+            <div class="badge-icon-box green">
+              <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <div>
+              <div class="badge-text-primary">100% PLACEMENT</div>
+              <div class="badge-text-secondary">Pay After You Get Hired</div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 3. MARQUEE TICKER: WHERE OUR LEARNERS ARE MAKING AN IMPACT -->
+    <div class="hiring-partners-strip">
+      <div class="container">
+        <div class="hiring-strip-label">Where Our Learners are Making an Impact</div>
+      </div>
+      <div class="ticker-scroller">
+        <div class="ticker-track">
+          <div class="partner-logo-pill"><i class="fa-brands fa-amazon"></i> Amazon</div>
+          <div class="partner-logo-pill"><i class="fa-solid fa-building"></i> TCS</div>
+          <div class="partner-logo-pill"><i class="fa-solid fa-microchip"></i> HCL Technologies</div>
+          <div class="partner-logo-pill"><i class="fa-solid fa-ring"></i> Matrimony.com</div>
+          <div class="partner-logo-pill"><i class="fa-solid fa-shield-halved"></i> Novac Technology</div>
+          <div class="partner-logo-pill"><i class="fa-solid fa-laptop-code"></i> Capecom Solutions</div>
+          <div class="partner-logo-pill"><i class="fa-solid fa-water"></i> Flow Networks</div>
+          <div class="partner-logo-pill"><i class="fa-solid fa-network-wired"></i> Sodisys Tech</div>
+          <!-- Repeat for infinite loop -->
+          <div class="partner-logo-pill"><i class="fa-brands fa-amazon"></i> Amazon</div>
+          <div class="partner-logo-pill"><i class="fa-solid fa-building"></i> TCS</div>
+          <div class="partner-logo-pill"><i class="fa-solid fa-microchip"></i> HCL Technologies</div>
+          <div class="partner-logo-pill"><i class="fa-solid fa-ring"></i> Matrimony.com</div>
+          <div class="partner-logo-pill"><i class="fa-solid fa-shield-halved"></i> Novac Technology</div>
+          <div class="partner-logo-pill"><i class="fa-solid fa-laptop-code"></i> Capecom Solutions</div>
+          <div class="partner-logo-pill"><i class="fa-solid fa-water"></i> Flow Networks</div>
+          <div class="partner-logo-pill"><i class="fa-solid fa-network-wired"></i> Sodisys Tech</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. BEYOND THE CLASSROOM (#platforms) -->
+    <section class="section-padding bg-subtle-section" id="platforms">
+      <div class="container">
+        <div class="section-head-centered">
+          <div class="section-eyebrow">Beyond The Classroom</div>
+          <h2 class="section-heading-corporate">Next-Gen Platforms Powering Student Success</h2>
+          <p class="section-subtext-corporate">
+            From premier regional tech battles with massive prize pools to 24/7 AI-guided mentorship assistants.
+          </p>
+        </div>
+
+        <div class="platforms-grid">
+
+          <!-- Card 1: Karka Infini AI -->
+          <div class="platform-card infini-theme">
+            <div class="platform-head">
+              <div>
+                <h3 class="platform-title">Karka Infini AI</h3>
+                <span class="badge-pill badge-amber">
+                  <i class="fa-solid fa-trophy"></i> ₹1,00,000 TOTAL PRIZE POOL
+                </span>
+              </div>
+            </div>
+
+            <p class="platform-tagline">
+              <strong>"Showcase Your Skills. Compete. Get Recognized. Win Big!"</strong><br>
+              The premier inter-college tech tournament for future engineers and innovators.
+            </p>
+
+            <div class="infini-categories-grid">
+              <div class="infini-cat-item">
+                <i class="fa-solid fa-file-powerpoint"></i>
+                <div class="infini-cat-info">
+                  <strong>PaperPulse</strong>
+                  <span>Idea Presentation</span>
+                </div>
+              </div>
+              <div class="infini-cat-item">
+                <i class="fa-solid fa-bolt"></i>
+                <div class="infini-cat-info">
+                  <strong>TechRush</strong>
+                  <span>Technical Quiz</span>
+                </div>
+              </div>
+              <div class="infini-cat-item">
+                <i class="fa-solid fa-bug"></i>
+                <div class="infini-cat-info">
+                  <strong>Bug Hunt</strong>
+                  <span>Code Debugging</span>
+                </div>
+              </div>
+              <div class="infini-cat-item">
+                <i class="fa-solid fa-code"></i>
+                <div class="infini-cat-info">
+                  <strong>SiteSprint</strong>
+                  <span>Website Building</span>
+                </div>
+              </div>
+              <div class="infini-cat-item">
+                <i class="fa-solid fa-palette"></i>
+                <div class="infini-cat-info">
+                  <strong>Graphix</strong>
+                  <span>Poster Design</span>
+                </div>
+              </div>
+              <div class="infini-cat-item">
+                <i class="fa-solid fa-video"></i>
+                <div class="infini-cat-info">
+                  <strong>VibeCut</strong>
+                  <span>Video Creation</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="infini-rounds-strip">
+              <p><strong>Round 1:</strong> Campus arena at your college &nbsp;|&nbsp; <strong>Round 2:</strong>
+                District-level grand finale for top 3 teams.</p>
+              <p style="margin-top: 0.3rem;"><i class="fa-solid fa-award"></i> Rewards: Cash prizes, Karka Rolling
+                Trophy & official certificates.</p>
+            </div>
+
+            <div class="platform-footer-row">
+              <span class="platform-note">Free entry · Join multiple contests · Teams of 1–4</span>
+              <button class="btn-enterprise-primary open-infini-modal" id="btnRegisterInfini"
+                onclick="openInfiniModal()">
+                <span>Register for Infini</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 2: Spike AI -->
+          <div class="platform-card spike-theme">
+            <div class="platform-head">
+              <div>
+                <h3 class="platform-title">Spike AI</h3>
+                <span class="badge-pill badge-blue">
+                  <i class="fa-solid fa-robot"></i> 24/7 AI-POWERED PLATFORM
+                </span>
+              </div>
+            </div>
+
+            <p class="platform-tagline">
+              <strong>"Ask Spike anything you're learning…"</strong><br>
+              Your intelligent personalized mentor for instant code feedback, bug explanation, and learning roadmaps.
+            </p>
+
+            <div class="spike-features-grid">
+              <div class="spike-feature-box">
+                <i class="fa-solid fa-compass"></i>
+                <div>
+                  <strong>AI-Guided</strong>
+                  <span>Personalized concept roadmaps</span>
+                </div>
+              </div>
+              <div class="spike-feature-box">
+                <i class="fa-solid fa-keyboard"></i>
+                <div>
+                  <strong>Hands-On</strong>
+                  <span>In-browser live sandbox code check</span>
+                </div>
+              </div>
+              <div class="spike-feature-box">
+                <i class="fa-solid fa-chart-line"></i>
+                <div>
+                  <strong>Progress Tracking</strong>
+                  <span>Mastery milestones & badges</span>
+                </div>
+              </div>
+              <div class="spike-feature-box">
+                <i class="fa-solid fa-user-tie"></i>
+                <div>
+                  <strong>Mentor-Backed</strong>
+                  <span>Escalation to human staff when stuck</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="spike-mockup-chat">
+              <div class="spike-chat-prompt"><i class="fa-solid fa-terminal"></i> Student: "Explain how React useEffect
+                cleanup function prevents memory leaks."</div>
+              <div class="spike-chat-reply"><i class="fa-solid fa-bolt"></i> Spike AI: "When an effect creates a
+                subscription or timer, returning a cleanup function ensures unmounted components don't leave dangling
+                listeners in memory..."</div>
+            </div>
+
+            <div class="platform-footer-row">
+              <span class="platform-note">Included free for all enrolled Karka academy students</span>
+              <button class="btn-enterprise-primary" onclick="openSpikeDemo()">
+                <span>Open Spike</span>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 5. WHY KARKA? (#whyChooseUs) -->
+    <section class="section-padding" id="whyChooseUs">
+      <div class="container">
+        <div class="section-head-centered">
+          <div class="section-eyebrow">6 Core Value Propositions</div>
+          <h2 class="section-heading-corporate">Why Serious Learners Choose Karka</h2>
+          <p class="section-subtext-corporate">
+            Engineered from ground up to eliminate tuition risk, bridge industry gaps, and guarantee career outcomes.
+          </p>
+        </div>
+
+        <div class="why-us-grid">
+          <!-- Card 1 -->
+          <div class="why-us-card">
+            <div class="why-us-icon"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+            <h3>1. Pay After You Get Hired</h3>
+            <p>₹0 upfront tuition fees. Learn first, get placed with a minimum ₹4.5+ LPA package, and pay only after receiving your monthly salary.</p>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="why-us-card">
+            <div class="why-us-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+            <h3>2. AI-First Curriculum</h3>
+            <p>Generative AI, Prompt Engineering, LLM agents, and modern tools (Cursor, Copilot) integrated directly into daily coding drills.</p>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="why-us-card">
+            <div class="why-us-icon"><i class="fa-solid fa-briefcase"></i></div>
+            <h3>3. Live Internships</h3>
+            <p>AgileTribers studio production PRs, live client tickets, and verified GitHub repositories instead of toy tutorial certificates.</p>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="why-us-card">
+            <div class="why-us-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
+            <h3>4. On-Site Mentorship</h3>
+            <p>Continuous on-site guidance at our dedicated physical tech lab in Nagercoil. Get unblocked immediately by experienced architects.</p>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="why-us-card">
+            <div class="why-us-icon"><i class="fa-solid fa-network-wired"></i></div>
+            <h3>5. Direct Pipelines</h3>
+            <p>Direct hiring tie-ups with 40+ corporate partners and startups across Chennai, Bangalore, and Nagercoil for verified placements.</p>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="why-us-card">
+            <div class="why-us-icon"><i class="fa-solid fa-layer-group"></i></div>
+            <h3>6. 4-Pillar System</h3>
+            <p>A proven, structured pedagogy combining Business English, scalable fullstack architecture, AI velocity, and intensive mock interviews.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 6. VOICES OF OUR LEARNERS (#stories) -->
+    <section class="section-padding bg-subtle-section" id="stories">
+      <div class="container">
+        <div class="section-head-centered">
+          <div class="section-eyebrow">Real Transformations</div>
+          <h2 class="section-heading-corporate">Voices of Our Learners</h2>
+          <p class="section-subtext-corporate">
+            Hear directly from our graduates about how Karka transformed their careers and helped them land their dream
+            jobs in tech.
+          </p>
+        </div>
+
+        <div class="video-stories-layout">
+
+          <!-- Learner Tabs List -->
+          <div class="story-tabs-list" id="storyTabsList">
+            <button class="story-tab-btn active" data-story="gabriel">
+              <div class="tab-student-info">
+                <h4>Gabriel Samraj - FRONTEND DEVELOPER</h4>
+                <p>Mechanical Engg ➔ Frontend Developer</p>
+              </div>
+              <span class="tab-company-badge">Zoho Corp (₹8.5 LPA)</span>
+            </button>
+
+            <button class="story-tab-btn" data-story="prabin">
+              <div class="tab-student-info">
+                <h4>Prabin Kumar</h4>
+                <p>B.Sc Physics ➔ Fullstack Engineer</p>
+              </div>
+              <span class="tab-company-badge">Capecom (₹6.8 LPA)</span>
+            </button>
+
+            <button class="story-tab-btn" data-story="shiju">
+              <div class="tab-student-info">
+                <h4>Shiju Nair</h4>
+                <p>Civil Engg ➔ AI & Data Engineer</p>
+              </div>
+              <span class="tab-company-badge">Matrimony (₹7.2 LPA)</span>
+            </button>
+
+            <button class="story-tab-btn" data-story="kishore">
+              <div class="tab-student-info">
+                <h4>Kishore Kannan</h4>
+                <p>B.Com ➔ UI/UX Product Designer</p>
+              </div>
+              <span class="tab-company-badge">Freshworks (₹9.0 LPA)</span>
+            </button>
+
+            <button class="story-tab-btn" data-story="sridevi">
+              <div class="tab-student-info">
+                <h4>Sridevi Ananth</h4>
+                <p>Career Break (3 Years) ➔ MERN Dev</p>
+              </div>
+              <span class="tab-company-badge">HCL Tech (₹7.5 LPA)</span>
+            </button>
+          </div>
+
+          <!-- Feature Video Card with Playback Controls -->
+          <div class="video-feature-card" id="featuredVideoCard">
+            <!-- NOW PLAYING BADGE -->
+            <div class="now-playing-badge">
+              <span class="live-pulse-dot"></span>
+              <span>NOW PLAYING - KARKA LEARNER SUCCESS STORY</span>
+            </div>
+
+            <div class="video-screen-container">
+              <img src="assets/images/karka-hero.jpg" alt="Featured student story" id="featStoryImg">
+              <div class="video-play-overlay" onclick="toggleReelPlayback()">
+                <div class="play-circle-btn" id="playBtnIcon"><i class="fa-solid fa-play"></i></div>
+              </div>
+              <div class="video-controls-bar">
+                <i class="fa-solid fa-pause" id="ctrlPauseBtn" style="cursor:pointer;"
+                  onclick="toggleReelPlayback()"></i>
+                <div class="video-progress-bar">
+                  <div class="video-progress-fill" id="videoProgressFill"></div>
+                </div>
+                <span>02:14 / 03:40</span>
+                <i class="fa-solid fa-volume-high"></i>
+              </div>
+            </div>
+
+            <div class="video-meta-body">
+              <p class="video-quote" id="featStoryQuote">
+                "Karka's UI/UX design course was a game-changer for me. The instructors are passionate and the
+                curriculum is up-to-date with the latest design trends. I now feel confident in my ability to create
+                stunning visuals that stand out."
+              </p>
+              <div class="video-author-row">
+                <div>
+                  <h4 style="font-size: 1.15rem; font-weight: 800;" id="featStoryName">Gabriel Samraj - FRONTEND
+                    DEVELOPER</h4>
+                  <p style="font-size: 0.85rem; color: var(--text-muted);" id="featStoryRole">Zoho Corp (₹8.5 LPA)</p>
+                </div>
+                <button class="btn-enterprise-primary open-apply-modal"
+                  style="padding: 0.5rem 1.1rem; font-size: 0.85rem;">
+                  Enroll with PAP
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 7. EXPLORE OUR PROGRAMS (#bootcamps) -->
+    <section class="section-padding" id="bootcamps">
+      <div class="container">
+        <div class="section-head-centered">
+          <div class="section-eyebrow">Industry-Aligned Accelerators</div>
+          <h2 class="section-heading-corporate">Explore Our Programs</h2>
+          <p class="section-subtext-corporate">
+            Rigorous hands-on programs taught by working engineering architects. Zero prerequisite required.
+          </p>
+        </div>
+
+        <div class="bootcamps-grid" id="bootcampsGrid">
+
+          <!-- Card 1: MERN Fullstack -->
+          <div class="bootcamp-card" data-program-index="1">
+            <div class="bootcamp-top-row">
+              <span class="badge-pill badge-blue">Fullstack Engineering</span>
+              <span class="badge-pill badge-green">PAP Eligible</span>
+            </div>
+            <h3 class="bootcamp-title">MERN Fullstack</h3>
+            <div class="bootcamp-rating-row">
+              <span class="star-rating"><i class="fa-solid fa-star"></i> 4.8</span>
+              <span class="enrollment-count">(200+ reviews)</span>
+              <span>•</span>
+              <span style="font-weight: 600; color: var(--infosys-electric-blue);"><i class="fa-solid fa-users"></i> 800+ Enrolled</span>
+            </div>
+            <p class="bootcamp-desc">
+              Master React, Node.js, Express, MongoDB, TypeScript, RESTful architecture, and AI-accelerated code generation.
+            </p>
+            <div class="bootcamp-footer-actions">
+              <button type="button" class="btn-secondary btn-bootcamp-explore" onclick="openSyllabus('mern')">EXPLORE MERN FULLSTACK</button>
+              <button type="button" class="btn-enterprise-primary btn-bootcamp-enroll open-apply-modal" data-track="MERN Fullstack Development">ENROLL IN MERN FULLSTACK</button>
+            </div>
+          </div>
+
+          <!-- Card 2: AI & Data Science -->
+          <div class="bootcamp-card" data-program-index="2">
+            <div class="bootcamp-top-row">
+              <span class="badge-pill badge-blue">Data Science & AI</span>
+              <span class="badge-pill badge-green">PAP Eligible</span>
+            </div>
+            <h3 class="bootcamp-title">AI & Data Science</h3>
+            <div class="bootcamp-rating-row">
+              <span class="star-rating"><i class="fa-solid fa-star"></i> 4.9</span>
+              <span class="enrollment-count">(180+ reviews)</span>
+              <span>•</span>
+              <span style="font-weight: 600; color: var(--infosys-electric-blue);"><i class="fa-solid fa-users"></i> 650+ Enrolled</span>
+            </div>
+            <p class="bootcamp-desc">
+              Python for Data Science, Pandas, NumPy, statistical modeling, machine learning algorithms, Scikit-Learn, and Power BI dashboards.
+            </p>
+            <div class="bootcamp-footer-actions">
+              <button type="button" class="btn-secondary btn-bootcamp-explore" onclick="openSyllabus('aiml')">EXPLORE AI & DATA SCIENCE</button>
+              <button type="button" class="btn-enterprise-primary btn-bootcamp-enroll open-apply-modal" data-track="AI & Data Science">ENROLL IN AI & DATA SCIENCE</button>
+            </div>
+          </div>
+
+          <!-- Card 3: UI/UX Design -->
+          <div class="bootcamp-card" data-program-index="3">
+            <div class="bootcamp-top-row">
+              <span class="badge-pill badge-blue">Product Design</span>
+              <span class="badge-pill badge-green">PAP Eligible</span>
+            </div>
+            <h3 class="bootcamp-title">UI/UX Design</h3>
+            <div class="bootcamp-rating-row">
+              <span class="star-rating"><i class="fa-solid fa-star"></i> 4.8</span>
+              <span class="enrollment-count">(150+ reviews)</span>
+              <span>•</span>
+              <span style="font-weight: 600; color: var(--infosys-electric-blue);"><i class="fa-solid fa-users"></i> 520+ Enrolled</span>
+            </div>
+            <p class="bootcamp-desc">
+              Figma mastery, design systems, UX research, wireframing, high-fidelity micro-interactions, usability testing, and client prototypes.
+            </p>
+            <div class="bootcamp-footer-actions">
+              <button type="button" class="btn-secondary btn-bootcamp-explore" onclick="openSyllabus('uiux')">EXPLORE UI/UX DESIGN</button>
+              <button type="button" class="btn-enterprise-primary btn-bootcamp-enroll open-apply-modal" data-track="UI/UX Design">ENROLL IN UI/UX DESIGN</button>
+            </div>
+          </div>
+
+          <!-- Card 4: Python for Kids -->
+          <div class="bootcamp-card" data-program-index="4">
+            <div class="bootcamp-top-row">
+              <span class="badge-pill badge-amber">KIDS CODING</span>
+              <span class="badge-pill badge-blue">Age 10-17</span>
+            </div>
+            <h3 class="bootcamp-title">Python for Kids</h3>
+            <div class="bootcamp-rating-row">
+              <span class="star-rating"><i class="fa-solid fa-star"></i> 4.8</span>
+              <span class="enrollment-count">(200+ reviews)</span>
+              <span>•</span>
+              <span style="font-weight: 600; color: var(--infosys-electric-blue);"><i class="fa-solid fa-users"></i> 200+ Enrolled</span>
+            </div>
+            <p class="bootcamp-desc">
+              Interactive introduction to programming logic using Python. Build 2D arcade games and animations while learning core computational concepts.
+            </p>
+            <div class="bootcamp-footer-actions">
+              <button type="button" class="btn-secondary btn-bootcamp-explore" onclick="openSyllabus('python')">EXPLORE PYTHON FOR KIDS</button>
+              <button type="button" class="btn-enterprise-primary btn-bootcamp-enroll open-apply-modal" data-track="Python for Kids">ENROLL IN PYTHON FOR KIDS</button>
+            </div>
+          </div>
+
+          <!-- Card 5: Full Stack Developer Internship -->
+          <div class="bootcamp-card" data-program-index="5">
+            <div class="bootcamp-top-row">
+              <span class="badge-pill badge-blue">LIVE STUDIO</span>
+              <span class="badge-pill badge-green">Industry Credential</span>
+            </div>
+            <h3 class="bootcamp-title">Full Stack Developer Internship</h3>
+            <div class="bootcamp-rating-row">
+              <span class="star-rating"><i class="fa-solid fa-star"></i> 4.8</span>
+              <span class="enrollment-count">(200+ reviews)</span>
+              <span>•</span>
+              <span style="font-weight: 600; color: var(--infosys-electric-blue);"><i class="fa-solid fa-users"></i> 800+ Enrolled</span>
+            </div>
+            <p class="bootcamp-desc">
+              Rigorous MERN stack studio training at AgileTribers. Master DevOps, System Design, PR reviews, and production best practices.
+            </p>
+            <div class="bootcamp-footer-actions">
+              <button type="button" class="btn-secondary btn-bootcamp-explore" onclick="openSyllabus('internship')">EXPLORE INTERNSHIP TRACK</button>
+              <button type="button" class="btn-enterprise-primary btn-bootcamp-enroll open-apply-modal" data-track="Full Stack Developer Internship">ENROLL IN INTERNSHIP</button>
+            </div>
+          </div>
+
+          <!-- Card 6: Generative AI Foundations -->
+          <div class="bootcamp-card" data-program-index="6">
+            <div class="bootcamp-top-row">
+              <span class="badge-pill badge-blue">AI TRACK</span>
+              <span class="badge-pill badge-green">Agentic AI</span>
+            </div>
+            <h3 class="bootcamp-title">Generative AI Foundations</h3>
+            <div class="bootcamp-rating-row">
+              <span class="star-rating"><i class="fa-solid fa-star"></i> 4.8</span>
+              <span class="enrollment-count">(200+ reviews)</span>
+              <span>•</span>
+              <span style="font-weight: 600; color: var(--infosys-electric-blue);"><i class="fa-solid fa-users"></i> 900+ Enrolled</span>
+            </div>
+            <p class="bootcamp-desc">
+              Master Generative AI, advanced prompt engineering, LLM endpoint integration, LangChain, vector databases, and multi-agent systems.
+            </p>
+            <div class="bootcamp-footer-actions">
+              <button type="button" class="btn-secondary btn-bootcamp-explore" onclick="openSyllabus('genai')">EXPLORE GENERATIVE AI</button>
+              <button type="button" class="btn-enterprise-primary btn-bootcamp-enroll open-apply-modal" data-track="Generative AI Foundations">ENROLL IN GENERATIVE AI</button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Pagination buttons [1], [2], [3], [4], [5], [6] and link "View All Courses" -->
+        <div class="bootcamp-pagination-row">
+          <button type="button" class="bootcamp-page-btn active" data-page="1" onclick="switchBootcampPage(1)">1</button>
+          <button type="button" class="bootcamp-page-btn" data-page="2" onclick="switchBootcampPage(2)">2</button>
+          <button type="button" class="bootcamp-page-btn" data-page="3" onclick="switchBootcampPage(3)">3</button>
+          <button type="button" class="bootcamp-page-btn" data-page="4" onclick="switchBootcampPage(4)">4</button>
+          <button type="button" class="bootcamp-page-btn" data-page="5" onclick="switchBootcampPage(5)">5</button>
+          <button type="button" class="bootcamp-page-btn" data-page="6" onclick="switchBootcampPage(6)">6</button>
+          <a href="#tracks" class="link-view-all-courses">View All Courses <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 8. 4 PILLARS OF A JOB-READY TECH CAREER (#pillars) -->
+    <section class="section-padding bg-subtle-section" id="pillars">
+      <div class="container">
+        <div class="section-head-centered">
+          <div class="section-eyebrow">Proven Engineering Pedagogy</div>
+          <h2 class="section-heading-corporate">4 Pillars of a Job-Ready Tech Career</h2>
+          <p class="section-subtext-corporate">
+            A structured, 4-phase transformation roadmap designed to take aspiring builders from fundamental concepts to enterprise-grade employment.
+          </p>
+        </div>
+
+        <div class="pillars-timeline-grid">
+
+          <!-- Pillar 1 -->
+          <div class="pillar-step-card">
+            <span class="pillar-badge-num">PILLAR 01</span>
+            <h3>01 Master the Language of Business</h3>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 1rem;">
+              Articulate complex technical architecture, lead daily agile standups, and write pristine technical specifications.
+            </p>
+            <ul class="pillar-items-list">
+              <li><i class="fa-solid fa-circle-check"></i> Daily Standups in English</li>
+              <li><i class="fa-solid fa-circle-check"></i> Client Requirement Reviews</li>
+              <li><i class="fa-solid fa-circle-check"></i> Technical Documentation</li>
+            </ul>
+          </div>
+
+          <!-- Pillar 2 (CORE PILLAR) -->
+          <div class="pillar-step-card" style="border-color: var(--infosys-electric-blue); box-shadow: var(--shadow-card);">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+              <span class="pillar-badge-num">PILLAR 02</span>
+              <span class="badge-pill badge-blue" style="font-size:0.7rem;">CORE PILLAR</span>
+            </div>
+            <h3>02 Build Scalable Modern Apps</h3>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 1rem;">
+              Ship production-grade fullstack web applications, microservices, databases, and Docker containers following enterprise standards.
+            </p>
+            <ul class="pillar-items-list">
+              <li><i class="fa-solid fa-circle-check"></i> React 19, TypeScript, Next.js</li>
+              <li><i class="fa-solid fa-circle-check"></i> Node.js, Express, PostgreSQL</li>
+              <li><i class="fa-solid fa-circle-check"></i> Docker, CI/CD, AWS Deployment</li>
+            </ul>
+          </div>
+
+          <!-- Pillar 3 -->
+          <div class="pillar-step-card">
+            <span class="pillar-badge-num">PILLAR 03</span>
+            <h3>03 AI Skills</h3>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 1rem;">
+              Write complex code 5x faster, generate automated unit tests, refactor legacy codebases, and integrate native LLM capabilities.
+            </p>
+            <ul class="pillar-items-list">
+              <li><i class="fa-solid fa-circle-check"></i> Prompt Engineering & Context</li>
+              <li><i class="fa-solid fa-circle-check"></i> Cursor, Copilot & Spike AI</li>
+              <li><i class="fa-solid fa-circle-check"></i> LangChain & RAG Vector Stores</li>
+            </ul>
+          </div>
+
+          <!-- Pillar 4 -->
+          <div class="pillar-step-card">
+            <span class="pillar-badge-num">PILLAR 04</span>
+            <h3>04 Interview Skills</h3>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 1rem;">
+              Whiteboard algorithms, simulated mock interviews with practicing senior engineering leads, and salary offer negotiation.
+            </p>
+            <ul class="pillar-items-list">
+              <li><i class="fa-solid fa-circle-check"></i> 1:1 Tech Lead Mock Rounds</li>
+              <li><i class="fa-solid fa-circle-check"></i> System Design & Data Structures</li>
+              <li><i class="fa-solid fa-circle-check"></i> 40+ Hiring Partner Drives</li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 9. PAY AFTER YOU GET HIRED (#pap) -->
+    <section class="section-padding" id="pap">
+      <div class="container pap-section-grid">
+
+        <!-- Left Steps & Checklist -->
+        <div>
+          <div class="section-eyebrow">Zero Financial Risk</div>
+          <h2 class="section-heading-corporate">Pay After You Get Hired</h2>
+          <p class="section-subtext-corporate" style="margin-bottom: 1.8rem;">
+            We bet on your future. If you don't land a qualifying software placement paying ₹4.5 LPA or higher, you owe
+            us nothing.
+          </p>
+
+          <!-- 3-Step Process -->
+          <div class="pap-steps-flow">
+            <div class="pap-flow-card">
+              <div class="pap-step-num">1</div>
+              <div>
+                <h4 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.25rem;">Enroll & Learn</h4>
+                <p style="font-size: 0.88rem; color: var(--text-secondary);">6 months of physical mentorship in
+                  Nagercoil, hands-on projects, real live client software studio.</p>
+              </div>
+            </div>
+
+            <div class="pap-flow-card">
+              <div class="pap-step-num">2</div>
+              <div>
+                <h4 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.25rem;">Get Job Ready</h4>
+                <p style="font-size: 0.88rem; color: var(--text-secondary);">ATS resume building, polished GitHub
+                  portfolio, daily algorithm solving, and mock interviews.</p>
+              </div>
+            </div>
+
+            <div class="pap-flow-card">
+              <div class="pap-step-num">3</div>
+              <div>
+                <h4 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.25rem;">Get Paid, Not Billed</h4>
+                <p style="font-size: 0.88rem; color: var(--text-secondary);">Pay only after receiving your first monthly
+                  salary from your verified placed company.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stats Banner -->
+          <div class="pap-stats-banner">
+            <div class="pap-stats-item">
+              <strong>190+</strong>
+              <span>PAP Enrollments</span>
+            </div>
+            <div class="pap-stats-item">
+              <strong>4.8 ★</strong>
+              <span>Verified Rating</span>
+            </div>
+            <div class="pap-stats-item">
+              <strong>₹5.8 LPA</strong>
+              <span>Average Starting CTC</span>
+            </div>
+          </div>
+
+          <!-- Checklist -->
+          <div class="pap-checklist-grid">
+            <div class="pap-check-item"><i class="fa-solid fa-circle-check"></i> 1:1 Mentorship</div>
+            <div class="pap-check-item"><i class="fa-solid fa-circle-check"></i> Placement Training</div>
+            <div class="pap-check-item"><i class="fa-solid fa-circle-check"></i> Resume & LinkedIn Prep</div>
+            <div class="pap-check-item"><i class="fa-solid fa-circle-check"></i> Mock Interviews</div>
+            <div class="pap-check-item"><i class="fa-solid fa-circle-check"></i> Referral Support</div>
+            <div class="pap-check-item"><i class="fa-solid fa-circle-check"></i> 0 Upfront Security Deposit</div>
+          </div>
+
+          <button class="btn-hero-primary open-apply-modal" id="btnVerifyPap">
+            <span>Enroll Now</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+
+        <!-- Right: Interactive Financial ROI Calculator -->
+        <div class="enterprise-calc-card">
+          <div class="calc-title-bar">
+            <h3>PAP Financial Calculator</h3>
+            <p>Estimate your post-placement net in-hand salary</p>
+          </div>
+
+          <div class="slider-container-infosys">
+            <div class="slider-readout">
+              <span class="label">Expected Offer Package (CTC)</span>
+              <span class="value" id="calc-ctc-display">₹6.0 LPA</span>
+            </div>
+            <input type="range" min="4.5" max="15.0" step="0.5" value="6.0" class="infosys-range-slider" id="ctcSlider"
+              aria-label="Salary Slider">
+          </div>
+
+          <div class="calc-grid-results">
+            <div class="result-metric-item">
+              <span class="sub">Estimated In-Hand</span>
+              <span class="num" id="calc-inhand">₹43,000/mo</span>
+            </div>
+            <div class="result-metric-item">
+              <span class="sub">PAP Contribution</span>
+              <span class="num blue" id="calc-pap-monthly">₹6,450/mo</span>
+            </div>
+            <div class="result-metric-item"
+              style="grid-column: span 2; border-top: 1px solid var(--border-hairline); padding-top: 0.8rem;">
+              <span class="sub">Net Retained By You</span>
+              <span class="num green" id="calc-net-keep" style="font-size: 1.4rem;">₹36,550/mo</span>
+            </div>
+          </div>
+
+          <div style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 1.4rem;">
+            * Capped at fixed installments. Zero payment if you earn below ₹4.5 LPA. No interest loans, pure outcome
+            alignment.
+          </div>
+
+          <button class="btn-enterprise-primary open-apply-modal" style="width: 100%; justify-content: center;">
+            Apply for ₹0 Upfront Batch
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 10. INTERNSHIP (#internship) -->
+    <section class="section-padding bg-subtle-section" id="internship">
+      <div class="container internship-banner-grid">
+
+        <div>
+          <div class="section-eyebrow">AgileTribers Living Lab</div>
+          <h2 class="section-heading-corporate">INTERNSHIP - Experience Before You Graduate.</h2>
+          <p class="section-subtext-corporate">
+            Stop worrying about '0 experience' on your resume. At Karka, every student works on real-time internship
+            projects guided by industry mentors. Gain the kind of hands-on experience that employers crave - and build a
+            powerhouse portfolio before you even finish.
+          </p>
+
+          <ul class="internship-bullets-list">
+            <li class="internship-bullet-item">
+              <div class="bullet-icon"><i class="fa-solid fa-code-commit"></i></div>
+              <div>
+                <strong style="color: var(--text-primary); display:block; font-size:1.05rem;">Work on real client
+                  projects</strong>
+                <span>Handle real client issue tickets, integrate payment gateways, build secure authentication APIs,
+                  and deploy cloud databases.</span>
+              </div>
+            </li>
+            <li class="internship-bullet-item">
+              <div class="bullet-icon"><i class="fa-solid fa-folder-open"></i></div>
+              <div>
+                <strong style="color: var(--text-primary); display:block; font-size:1.05rem;">Build your project
+                  portfolio</strong>
+                <span>Live production URLs and GitHub commit streaks that prove your technical ability to recruiters
+                  without dispute.</span>
+              </div>
+            </li>
+            <li class="internship-bullet-item">
+              <div class="bullet-icon"><i class="fa-solid fa-users"></i></div>
+              <div>
+                <strong style="color: var(--text-primary); display:block; font-size:1.05rem;">Learn
+                  Collaboration</strong>
+                <span>Daily standups, sprint planning, PR reviews, merge conflict resolutions, and CI/CD pipelines just
+                  like FAANG tech teams.</span>
+              </div>
+            </li>
+            <li class="internship-bullet-item">
+              <div class="bullet-icon"><i class="fa-solid fa-certificate"></i></div>
+              <div>
+                <strong style="color: var(--text-primary); display:block; font-size:1.05rem;">Receive Internship
+                  Certificate</strong>
+                <span>Recognized by top corporate recruitment partners as legitimate software development work
+                  experience.</span>
+              </div>
+            </li>
+          </ul>
+
+          <button class="btn-enterprise-primary open-apply-modal">
+            <span>Apply for Studio Internship</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+
+        <div class="internship-graphic-frame">
+          <img src="assets/images/karka-studio.jpg" alt="Students collaborating at Karka AgileTribers Lab in Nagercoil">
+          <div class="internship-overlay-stats">
+            <div class="overlay-stat-col">
+              <strong>100+</strong>
+              <span>Production PRs</span>
+            </div>
+            <div class="overlay-stat-col">
+              <strong>12 Weeks</strong>
+              <span>Studio Immersion</span>
+            </div>
+            <div class="overlay-stat-col">
+              <strong>100%</strong>
+              <span>Live Deployment</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 11. WHAT LEARNERS IN NAGERCOIL SAY (#reviews) -->
+    <section class="section-padding" id="reviews">
+      <div class="container">
+        <div class="section-head-centered">
+          <div class="section-eyebrow">Student Voice & Feedback</div>
+          <h2 class="section-heading-corporate">What Learners in Nagercoil Say</h2>
+          <p class="section-subtext-corporate">
+            Real feedback from graduates across engineering, arts, and science degrees who unlocked tech jobs with
+            Karka.
+          </p>
+        </div>
+
+        <!-- Alumni Success Stories Category Filter Pills -->
+        <div class="reviews-filter-bar" role="tablist" aria-label="Alumni Success Stories Filter">
+          <button type="button" class="review-filter-pill tab-active" data-review-filter="all" role="tab" aria-selected="true">
+            <i class="fa-solid fa-users"></i>
+            <span>All Stories (9)</span>
+          </button>
+          <button type="button" class="review-filter-pill" data-review-filter="non-cs" role="tab" aria-selected="false">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <span>Non-CS to Tech (4)</span>
+          </button>
+          <button type="button" class="review-filter-pill" data-review-filter="mech-civil" role="tab" aria-selected="false">
+            <i class="fa-solid fa-compass-drafting"></i>
+            <span>Mechanical & Civil Switch (3)</span>
+          </button>
+          <button type="button" class="review-filter-pill" data-review-filter="career-break" role="tab" aria-selected="false">
+            <i class="fa-solid fa-rotate-left"></i>
+            <span>Career Break (2)</span>
+          </button>
+        </div>
+
+        <div class="reviews-carousel-wrapper">
+          <div class="reviews-carousel-track" id="reviewsTrack">
+
+            <!-- Arun 5★: Non-CS -->
+            <div class="review-card" data-category="non-cs">
+              <div class="review-card-top">
+                <span class="review-switch-tag tag-noncs"><i class="fa-solid fa-shuffle"></i> Arts & Science → Tech</span>
+                <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+              </div>
+              <p class="review-text">"I loved the ReactJS training! The live projects were challenging but very
+                rewarding. A huge shoutout to the placement team for guiding an Arts graduate like me."</p>
+              <div class="reviewer-profile">
+                <div class="reviewer-avatar">A</div>
+                <div>
+                  <div class="reviewer-name">Arun Kumar</div>
+                  <div class="reviewer-role">Fullstack Dev @ Capecom (5★)</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Vikram 5★: Mech & Civil -->
+            <div class="review-card" data-category="mech-civil">
+              <div class="review-card-top">
+                <span class="review-switch-tag tag-mech"><i class="fa-solid fa-gears"></i> B.E. Mechanical → Software</span>
+                <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+              </div>
+              <p class="review-text">"Hands down the best decision I made for my career. Coming from mechanical engineering, the project-based learning
+                really helped me build confidence."</p>
+              <div class="reviewer-profile">
+                <div class="reviewer-avatar">V</div>
+                <div>
+                  <div class="reviewer-name">Vikram S.</div>
+                  <div class="reviewer-role">Software Engineer @ Novac (5★)</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Priya 5★: Career Break -->
+            <div class="review-card" data-category="career-break">
+              <div class="review-card-top">
+                <span class="review-switch-tag tag-break"><i class="fa-solid fa-rotate-left"></i> 2-Year Gap → Tech Comeback</span>
+                <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+              </div>
+              <p class="review-text">"Karka's Nagercoil lab made all the difference after my 2-year career break. Sitting next to mentors who
+                debugged my React code saved me months of trial and error."</p>
+              <div class="reviewer-profile">
+                <div class="reviewer-avatar">P</div>
+                <div>
+                  <div class="reviewer-name">Priya M.</div>
+                  <div class="reviewer-role">Frontend Engineer @ Zoho (5★)</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Rahul 5★: Mech & Civil -->
+            <div class="review-card" data-category="mech-civil">
+              <div class="review-card-top">
+                <span class="review-switch-tag tag-mech"><i class="fa-solid fa-compass-drafting"></i> Civil Engg → Backend</span>
+                <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+              </div>
+              <p class="review-text">"Spike AI and the living lab gave me real production exposure. Switched from Civil to Backend development with full confidence during technical rounds."</p>
+              <div class="reviewer-profile">
+                <div class="reviewer-avatar">R</div>
+                <div>
+                  <div class="reviewer-name">Rahul Nair</div>
+                  <div class="reviewer-role">Backend Engineer @ Sodisys (5★)</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Karthik 5★: Non-CS -->
+            <div class="review-card" data-category="non-cs">
+              <div class="review-card-top">
+                <span class="review-switch-tag tag-noncs"><i class="fa-solid fa-square-root-variable"></i> B.Sc Maths → AI Engineer</span>
+                <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+              </div>
+              <p class="review-text">"The mentorship here is world class. Every mentor is currently building software or
+                has shipped client apps. No outdated theory, just high-velocity development."</p>
+              <div class="reviewer-profile">
+                <div class="reviewer-avatar">K</div>
+                <div>
+                  <div class="reviewer-name">Karthik Raja</div>
+                  <div class="reviewer-role">AI Developer @ AgileTribers (5★)</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Divya 5★: Career Break -->
+            <div class="review-card" data-category="career-break">
+              <div class="review-card-top">
+                <span class="review-switch-tag tag-break"><i class="fa-solid fa-rotate-left"></i> Maternity Break → Product Designer</span>
+                <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+              </div>
+              <p class="review-text">"The UI/UX track took me from zero Figma knowledge to designing complete mobile and
+                enterprise dashboards with micro-interactions after my motherhood break."</p>
+              <div class="reviewer-profile">
+                <div class="reviewer-avatar">D</div>
+                <div>
+                  <div class="reviewer-name">Divya B.</div>
+                  <div class="reviewer-role">Product Designer @ Freshworks (5★)</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sneha 4★: Non-CS -->
+            <div class="review-card" data-category="non-cs">
+              <div class="review-card-top">
+                <span class="review-switch-tag tag-noncs"><i class="fa-solid fa-calculator"></i> B.Com → Python Developer</span>
+                <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></div>
+              </div>
+              <p class="review-text">"Intense curriculum with lots of daily code pushes. If you are ready to work hard
+                for 6 months, Karka will transform your career even without any CS background."</p>
+              <div class="reviewer-profile">
+                <div class="reviewer-avatar">S</div>
+                <div>
+                  <div class="reviewer-name">Sneha Paul</div>
+                  <div class="reviewer-role">Python Developer @ HCL (4★)</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Anitha 4★: Non-CS -->
+            <div class="review-card" data-category="non-cs">
+              <div class="review-card-top">
+                <span class="review-switch-tag tag-noncs"><i class="fa-solid fa-chart-pie"></i> B.Com CA → Data Analyst</span>
+                <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></div>
+              </div>
+              <p class="review-text">"Coming from B.Com, I was terrified of coding. The step-by-step logic drills in
+                month 1 made Python and SQL remarkably easy to grasp and land my analyst role."</p>
+              <div class="reviewer-profile">
+                <div class="reviewer-avatar">A</div>
+                <div>
+                  <div class="reviewer-name">Anitha R.</div>
+                  <div class="reviewer-role">Data Analyst @ Matrimony (4★)</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sandeep 4★: Mech & Civil -->
+            <div class="review-card" data-category="mech-civil">
+              <div class="review-card-top">
+                <span class="review-switch-tag tag-mech"><i class="fa-solid fa-screwdriver-wrench"></i> Diploma Mech → QA Automation</span>
+                <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></div>
+              </div>
+              <p class="review-text">"Great community, hackathons, and mock interview drills. The mentorship and mock
+                rounds gave me immense confidence to clear technical QA rounds."</p>
+              <div class="reviewer-profile">
+                <div class="reviewer-avatar">S</div>
+                <div>
+                  <div class="reviewer-name">Sandeep V.</div>
+                  <div class="reviewer-role">QA Automation @ Flow (4★)</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Carousel Navigation Controls -->
+        <div class="carousel-nav-buttons">
+          <button class="carousel-btn" id="carouselPrevBtn" aria-label="Previous Reviews"><i
+              class="fa-solid fa-chevron-left"></i></button>
+          <button class="carousel-btn" id="carouselNextBtn" aria-label="Next Reviews"><i
+              class="fa-solid fa-chevron-right"></i></button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 12. CHOOSE YOUR CAREER TRACK (#tracks) -->
+    <section class="section-padding bg-subtle-section" id="tracks">
+      <div class="container">
+        <div class="section-head-centered">
+          <div class="section-eyebrow">Comprehensive Learning Directory</div>
+          <h2 class="section-heading-corporate">Choose Your Career Track</h2>
+          <p class="section-subtext-corporate">
+            From deep technical programming and AI specialization to design, marketing, and enterprise management.
+          </p>
+        </div>
+
+        <!-- Career Track Quick Filters -->
+        <div class="tracks-filter-bar" role="tablist" aria-label="Career Track Categories">
+          <button class="track-filter-btn tab-active" data-track-filter="all" role="tab" aria-selected="true">
+            <i class="fa-solid fa-list-check"></i>
+            <span>All 8 Tracks</span>
+          </button>
+          <button class="track-filter-btn" data-track-filter="engineering" role="tab" aria-selected="false">
+            <i class="fa-solid fa-laptop-code"></i>
+            <span>Engineering & AI</span>
+          </button>
+          <button class="track-filter-btn" data-track-filter="creative" role="tab" aria-selected="false">
+            <i class="fa-solid fa-palette"></i>
+            <span>Design & Media</span>
+          </button>
+          <button class="track-filter-btn" data-track-filter="business" role="tab" aria-selected="false">
+            <i class="fa-solid fa-briefcase"></i>
+            <span>Business & Ops</span>
+          </button>
+        </div>
+
+        <!-- 2-Column Accordion Directory Grid -->
+        <div class="career-directory-accordion-grid" id="careerAccordionGrid">
+
+          <!-- Track 1: Fullstack Courses (Engineering) -->
+          <div class="directory-accordion-item is-open" data-track-cat="engineering">
+            <button type="button" class="directory-accordion-header" aria-expanded="true">
+              <div class="dir-header-title-box">
+                <div class="dir-icon-badge blue"><i class="fa-solid fa-code"></i></div>
+                <div>
+                  <h3 class="dir-title">Fullstack Courses</h3>
+                  <span class="dir-subtitle">3 Specialized Framework Tracks</span>
+                </div>
+              </div>
+              <div class="dir-header-meta">
+                <span class="badge-pill badge-green">PAP Eligible</span>
+                <i class="fa-solid fa-chevron-down dir-chevron"></i>
+              </div>
+            </button>
+            <div class="directory-accordion-body">
+              <ul class="directory-course-list">
+                <li class="directory-course-item">
+                  <span><i class="fa-brands fa-react" style="color:var(--infosys-electric-blue);"></i> MERN Stack (MongoDB, React, Node)</span>
+                  <span class="badge-pill badge-green">PAP</span>
+                </li>
+                <li class="directory-course-item">
+                  <span><i class="fa-brands fa-java" style="color:#f59e0b;"></i> React + Java Spring Boot</span>
+                  <span class="badge-pill badge-green">PAP</span>
+                </li>
+                <li class="directory-course-item">
+                  <span><i class="fa-brands fa-python" style="color:var(--infosys-electric-blue);"></i> React + Python Django/FastAPI</span>
+                  <span class="badge-pill badge-green">PAP</span>
+                </li>
+              </ul>
+              <div class="directory-actions-row">
+                <button type="button" class="btn-secondary" onclick="openSyllabus('mern')">
+                  <i class="fa-solid fa-book-open"></i>
+                  <span>View Syllabus</span>
+                </button>
+                <button type="button" class="btn-enterprise-primary open-apply-modal" data-track="Fullstack Courses">
+                  <span>Enroll in Track</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Track 2: Gen AI Courses (Engineering) -->
+          <div class="directory-accordion-item is-open" data-track-cat="engineering">
+            <button type="button" class="directory-accordion-header" aria-expanded="true">
+              <div class="dir-header-title-box">
+                <div class="dir-icon-badge purple"><i class="fa-solid fa-brain"></i></div>
+                <div>
+                  <h3 class="dir-title">Gen AI Courses</h3>
+                  <span class="dir-subtitle">LLMs, Prompting & Agent Workflows</span>
+                </div>
+              </div>
+              <div class="dir-header-meta">
+                <span class="badge-pill badge-blue">Trending</span>
+                <i class="fa-solid fa-chevron-down dir-chevron"></i>
+              </div>
+            </button>
+            <div class="directory-accordion-body">
+              <ul class="directory-course-list">
+                <li class="directory-course-item">
+                  <span><i class="fa-solid fa-wand-magic-sparkles" style="color:var(--infosys-purple);"></i> GenAI Foundations & Prompting</span>
+                  <span class="badge-pill badge-blue">Hot</span>
+                </li>
+                <li class="directory-course-item">
+                  <span><i class="fa-solid fa-microchip" style="color:var(--infosys-electric-blue);"></i> GenAI Engineering Mastery</span>
+                  <span class="badge-pill badge-green">PAP</span>
+                </li>
+                <li class="directory-course-item">
+                  <span><i class="fa-solid fa-robot" style="color:var(--accent-green);"></i> LLM Developer & Agentic AI</span>
+                  <span class="badge-pill badge-green">PAP</span>
+                </li>
+              </ul>
+              <div class="directory-actions-row">
+                <button type="button" class="btn-secondary" onclick="openSyllabus('genai')">
+                  <i class="fa-solid fa-book-open"></i>
+                  <span>View Syllabus</span>
+                </button>
+                <button type="button" class="btn-enterprise-primary open-apply-modal" data-track="Gen AI Courses">
+                  <span>Enroll in Track</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Track 3: Data & ML Courses (Engineering) -->
+          <div class="directory-accordion-item" data-track-cat="engineering">
+            <button type="button" class="directory-accordion-header" aria-expanded="false">
+              <div class="dir-header-title-box">
+                <div class="dir-icon-badge blue"><i class="fa-solid fa-chart-pie"></i></div>
+                <div>
+                  <h3 class="dir-title">Data & ML Courses</h3>
+                  <span class="dir-subtitle">Data Science, Analytics & Big Data ETL</span>
+                </div>
+              </div>
+              <div class="dir-header-meta">
+                <span class="badge-pill badge-green">PAP Eligible</span>
+                <i class="fa-solid fa-chevron-down dir-chevron"></i>
+              </div>
+            </button>
+            <div class="directory-accordion-body">
+              <ul class="directory-course-list">
+                <li class="directory-course-item">
+                  <span><i class="fa-solid fa-database" style="color:var(--infosys-electric-blue);"></i> AI & Data Science Professional</span>
+                  <span class="badge-pill badge-green">PAP</span>
+                </li>
+                <li class="directory-course-item">
+                  <span><i class="fa-solid fa-chart-simple" style="color:var(--infosys-amber);"></i> Data Analytics with AI</span>
+                  <span class="badge-pill badge-green">PAP</span>
+                </li>
+                <li class="directory-course-item">
+                  <span><i class="fa-solid fa-network-wired" style="color:var(--infosys-cyan);"></i> Data Engineering & Cloud ETL</span>
+                  <span class="badge-pill badge-blue">New</span>
+                </li>
+              </ul>
+              <div class="directory-actions-row">
+                <button type="button" class="btn-secondary" onclick="openSyllabus('aiml')">
+                  <i class="fa-solid fa-book-open"></i>
+                  <span>View Syllabus</span>
+                </button>
+                <button type="button" class="btn-enterprise-primary open-apply-modal" data-track="Data & ML Courses">
+                  <span>Enroll in Track</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Track 4: Design Courses (Creative) -->
+          <div class="directory-accordion-item" data-track-cat="creative">
+            <button type="button" class="directory-accordion-header" aria-expanded="false">
+              <div class="dir-header-title-box">
+                <div class="dir-icon-badge amber"><i class="fa-solid fa-palette"></i></div>
+                <div>
+                  <h3 class="dir-title">Design Courses</h3>
+                  <span class="dir-subtitle">UI/UX Systems, Figma & Brand Identity</span>
+                </div>
+              </div>
+              <div class="dir-header-meta">
+                <span class="badge-pill badge-green">PAP Eligible</span>
+                <i class="fa-solid fa-chevron-down dir-chevron"></i>
+              </div>
+            </button>
+            <div class="directory-accordion-body">
+              <ul class="directory-course-list">
+                <li class="directory-course-item">
+                  <span><i class="fa-solid fa-vector-square" style="color:var(--infosys-electric-blue);"></i> UI/UX & Product Design</span>
+                  <span class="badge-pill badge-green">PAP</span>
+                </li>
+                <li class="directory-course-item">
+                  <span><i class="fa-solid fa-desktop" style="color:var(--infosys-cyan);"></i> Modern Responsive Web Design</span>
+                  <span class="badge-pill badge-blue">Popular</span>
+                </li>
+                <li class="directory-course-item">
+                  <span><i class="fa-solid fa-brush" style="color:var(--infosys-purple);"></i> Graphic Design & Brand Identity</span>
+                  <span class="badge-pill badge-blue">Creative</span>
+                </li>
+              </ul>
+              <div class="directory-actions-row">
+                <button type="button" class="btn-secondary" onclick="openSyllabus('uiux')">
+                  <i class="fa-solid fa-book-open"></i>
+                  <span>View Syllabus</span>
+                </button>
+                <button type="button" class="btn-enterprise-primary open-apply-modal" data-track="Design Courses">
+                  <span>Enroll in Track</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Track 5: Digital Media Courses (Creative) -->
+          <div class="directory-accordion-item" data-track-cat="creative">
+            <button type="button" class="directory-accordion-header" aria-expanded="false">
+              <div class="dir-header-title-box">
+                <div class="dir-icon-badge amber"><i class="fa-solid fa-photo-film"></i></div>
+                <div>
+                  <h3 class="dir-title">Digital Media Courses</h3>
+                  <span class="dir-subtitle">Video Production, Motion FX & Audio</span>
+                </div>
+              </div>
+              <div class="dir-header-meta">
+                <span class="badge-pill badge-blue">Creative Track</span>
+                <i class="fa-solid fa-chevron-down dir-chevron"></i>
+              </div>
+            </button>
+            <div class="directory-accordion-body">
+              <ul class="directory-course-list">
+                <li class="directory-course-item">
+                  <span><i class="fa-solid fa-film" style="color:var(--infosys-electric-blue);"></i> Premiere & After Effects Video Editing</span>
+                  <span class="badge-pill badge-blue">Media</span>
+                </li>
+                <li class="directory-course-item">
+                  <span><i class="fa-solid fa-bezier-curve" style="color:var(--infosys-amber);"></i> 2D & Motion Graphics Animation</span>
+                  <span class="badge-pill badge-blue">Media</span>
+                </li>
+                <li class="directory-course-item">
+                  <span><i class="fa-solid fa-headphones" style="color:var(--accent-green);"></i> AI Video & Audio Production</span>
+                  <span class="badge-pill badge-blue">Trending</span>
+                </li>
+              </ul>
+              <div class="directory-actions-row">
+                <button type="button" class="btn-secondary open-apply-modal" data-track="Digital Media Courses">
+                  <i class="fa-solid fa-calendar-check"></i>
+                  <span>Request Roadmap</span>
+                </button>
+                <button type="button" class="btn-enterprise-primary open-apply-modal" data-track="Digital Media Courses">
+                  <span>Enroll in Track</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Track 6: Content & Marketing (Business) -->
+          <div class="directory-accordion-item" data-track-cat="business">
+            <button type="button" class="directory-accordion-header" aria-expanded="false">
+              <div class="dir-header-title-box">
+                <div class="dir-icon-badge blue"><i class="fa-solid fa-bullhorn"></i></div>
+                <div>
+                  <h3 class="dir-title">Content & Marketing</h3>
+                  <span class="dir-subtitle">Performance Ads, Growth SEO & AI Copy</span>
+                </div>
+              </div>
+              <div class="dir-header-meta">
+                <span class="badge-pill badge-blue">Growth Track</span>
+                <i class="fa-solid fa-chevron-down dir-chevron"></i>
+              </div>
+            </button>
+            <div class="directory-accordion-body">
+              <ul class="directory-course-list">
+                <li class="directory-course-item">
+                  <span><i class="fa-solid fa-magnifying-glass-chart" style="color:var(--infosys-electric-blue);"></i> Performance Digital Marketing</span>
+                  <span class="badge-pill badge-blue">Growth</span>
+                </li>
+                <li class="directory-course-item">
+                  <span><i class="fa-solid fa-arrow-trend-up" style="color:var(--accent-green);"></i> Technical SEO & Analytics</span>
+                  <span class="badge-pill badge-blue">Growth</span>
+                </li>
+                <li class="directory-course-item">
+                  <span><i class="fa-solid fa-pen-nib" style="color:var(--infosys-purple);"></i> AI Content & Copywriting</span>
+                  <span class="badge-pill badge-blue">Copy</span>
+                </li>
+              </ul>
+              <div class="directory-actions-row">
+                <button type="button" class="btn-secondary open-apply-modal" data-track="Content & Marketing">
+                  <i class="fa-solid fa-calendar-check"></i>
+                  <span>Request Roadmap</span>
+                </button>
+                <button type="button" class="btn-enterprise-primary open-apply-modal" data-track="Content & Marketing">
+                  <span>Enroll in Track</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Track 7: Other Tech Courses (Engineering) -->
+          <div class="directory-accordion-item" data-track-cat="engineering">
+            <button type="button" class="directory-accordion-header" aria-expanded="false">
+              <div class="dir-header-title-box">
+                <div class="dir-icon-badge blue"><i class="fa-solid fa-cloud"></i></div>
+                <div>
+                  <h3 class="dir-title">Other Tech Courses</h3>
+                  <span class="dir-subtitle">Cloud DevOps, QA Automation & Security</span>
+                </div>
+              </div>
+              <div class="dir-header-meta">
+                <span class="badge-pill badge-green">PAP Eligible</span>
+                <i class="fa-solid fa-chevron-down dir-chevron"></i>
+              </div>
+            </button>
+            <div class="directory-accordion-body">
+              <ul class="directory-course-list">
+                <li class="directory-course-item">
+                  <span><i class="fa-solid fa-server" style="color:var(--infosys-electric-blue);"></i> Cloud DevOps & Kubernetes</span>
+                  <span class="badge-pill badge-green">PAP</span>
+                </li>
+                <li class="directory-course-item">
+                  <span><i class="fa-solid fa-vial-circle-check" style="color:var(--accent-green);"></i> QA & Automated Selenium Testing</span>
+                  <span class="badge-pill badge-green">PAP</span>
+                </li>
+                <li class="directory-course-item">
+                  <span><i class="fa-solid fa-shield-halved" style="color:#ef4444;"></i> Cybersecurity & Server Defense</span>
+                  <span class="badge-pill badge-blue">Security</span>
+                </li>
+              </ul>
+              <div class="directory-actions-row">
+                <button type="button" class="btn-secondary open-apply-modal" data-track="Other Tech Courses">
+                  <i class="fa-solid fa-calendar-check"></i>
+                  <span>Request Roadmap</span>
+                </button>
+                <button type="button" class="btn-enterprise-primary open-apply-modal" data-track="Other Tech Courses">
+                  <span>Enroll in Track</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Track 8: Non-Tech Courses (Business) -->
+          <div class="directory-accordion-item" data-track-cat="business">
+            <button type="button" class="directory-accordion-header" aria-expanded="false">
+              <div class="dir-header-title-box">
+                <div class="dir-icon-badge amber"><i class="fa-solid fa-briefcase"></i></div>
+                <div>
+                  <h3 class="dir-title">Non-Tech Courses</h3>
+                  <span class="dir-subtitle">Corporate HR, Finance & Business Analysis</span>
+                </div>
+              </div>
+              <div class="dir-header-meta">
+                <span class="badge-pill badge-green">PAP Eligible</span>
+                <i class="fa-solid fa-chevron-down dir-chevron"></i>
+              </div>
+            </button>
+            <div class="directory-accordion-body">
+              <ul class="directory-course-list">
+                <li class="directory-course-item">
+                  <span><i class="fa-solid fa-user-tie" style="color:var(--infosys-electric-blue);"></i> HR Operations & Tech Recruiting</span>
+                  <span class="badge-pill badge-blue">Biz</span>
+                </li>
+                <li class="directory-course-item">
+                  <span><i class="fa-solid fa-calculator" style="color:var(--accent-green);"></i> Tally Prime & Corporate Finance</span>
+                  <span class="badge-pill badge-blue">Finance</span>
+                </li>
+                <li class="directory-course-item">
+                  <span><i class="fa-solid fa-diagram-project" style="color:var(--infosys-purple);"></i> Technical Business Analyst (BA)</span>
+                  <span class="badge-pill badge-green">PAP</span>
+                </li>
+              </ul>
+              <div class="directory-actions-row">
+                <button type="button" class="btn-secondary" onclick="openSyllabus('business')">
+                  <i class="fa-solid fa-book-open"></i>
+                  <span>View Syllabus</span>
+                </button>
+                <button type="button" class="btn-enterprise-primary open-apply-modal" data-track="Non-Tech Courses">
+                  <span>Enroll in Track</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 13. FREQUENTLY ASKED QUESTIONS (#faq) -->
+    <section class="faq-section" id="faq">
+      <div class="container">
+        <span class="badge">CLEAR ANSWERS</span>
+        <h2>Frequently Asked Questions</h2>
+        <p class="subtitle">Still have questions? We've answered the most common ones below.</p>
+
+        <div class="faq-accordion">
+          <!-- Question 1 -->
+          <div class="faq-item active">
+            <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="true">
+              <span>What is Pay After Placement?</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer" style="display: block;">
+              <p>We want you to focus entirely on your learning without worrying about upfront costs. You only share
+                your success (and the fees) after you land a tech job with a guaranteed minimum salary. It's our way of
+                saying we're in this together.</p>
+            </div>
+          </div>
+
+          <!-- Question 2 -->
+          <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+              <span>Is placement guaranteed?</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              <p>While no one can strictly guarantee a job, our Pay After Placement model means we are as invested in
+                your career as you are. We don't succeed unless you do, which is why we go the extra mile to ensure you
+                are job-ready with continuous mock interviews and referral support.</p>
+            </div>
+          </div>
+
+          <!-- Question 3 -->
+          <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+              <span>Who are the mentors at Karka?</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              <p>Our mentors are industry veterans from top tech companies. They bring real-world experience, ensuring
+                the curriculum is relevant and up-to-date with current industry standards.</p>
+            </div>
+          </div>
+
+          <!-- Question 4 -->
+          <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+              <span>Do I need a background in coding or CSE?</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              <p>Absolutely not! We've designed our curriculum to take you from a curious beginner to a confident
+                professional. Whether you're from arts, science, or are a complete career-switcher, we've got you
+                covered.</p>
+            </div>
+          </div>
+
+          <!-- Question 5 -->
+          <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+              <span>How long does the course take?</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              <p>The duration varies by course but typically ranges from 6 to 8 months. This includes intensive
+                training, project work, and internship periods to ensure you are job-ready.</p>
+            </div>
+          </div>
+
+          <!-- Question 6 -->
+          <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+              <span>Will I get internship or project experience?</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              <p>Yes! A significant part of our curriculum involves working on live projects and simulations. You will
+                gain hands-on experience handling real client tickets that mimic a real corporate environment.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom FAQ Box -->
+        <div class="faq-bottom-card">
+          <div class="faq-bottom-info">
+            <div class="faq-bottom-icon">
+              <i class="fa-solid fa-circle-question"></i>
+            </div>
+            <div class="faq-bottom-text">
+              <h3 class="faq-bottom-title">Still have doubts?</h3>
+              <p class="faq-bottom-desc">Speak with our academic mentors or verify your ₹0 upfront eligibility in 60
+                seconds.</p>
+            </div>
+          </div>
+          <div class="faq-bottom-actions">
+            <a href="tel:+919487530243" class="btn-faq-talk">
+              <i class="fa-solid fa-phone"></i>
+              <span>Talk to Our Team</span>
+            </a>
+            <a href="#pap" class="btn-faq-apply open-apply-modal">
+              <span>Apply Now for Free →</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 14. GET IN TOUCH WITH US (#contactForm) -->
+    <section class="section-padding bg-subtle-section" id="contactForm">
+      <div class="container contact-section-grid">
+
+        <!-- Left: Statement & Motivational Quote -->
+        <div>
+          <div class="section-eyebrow">Personalized Career Counseling</div>
+          <h2 class="section-heading-corporate">Get in touch with us</h2>
+          <p class="section-subtext-corporate">
+            Have questions about whether tech is right for you? Speak with an engineering counselor for a free 1:1
+            roadmap consultation and campus tour in Nagercoil.
+          </p>
+
+          <div class="quote-motivation-box">
+            <blockquote>
+              "Future belongs to those who never stop learning."
+            </blockquote>
+            <div style="margin-top: 0.8rem; font-size: 0.82rem; font-weight: 700; color: var(--infosys-electric-blue);">
+              — Karka Motivation
+            </div>
+          </div>
+
+          <div
+            style="margin-top: 2rem; display: flex; flex-direction: column; gap: 0.8rem; font-size: 0.92rem; color: var(--text-secondary);">
+            <div>
+              <a href="https://www.google.com/maps/search/?api=1&query=Karka+AI+%26+Tech+Academy+SRV+Towers+Nagercoil" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none; display: flex; align-items: flex-start; gap: 8px;">
+                <i class="fa-solid fa-location-dot" style="color:var(--infosys-electric-blue); width:20px; margin-top: 3px;"></i>
+                <span>Ground floor, SRV Towers, Muthamizh St, near Girias Veppamoodu, Nagercoil, Tamil Nadu 629001, India</span>
+              </a>
+            </div>
+            <div>
+              <a href="tel:+919487530243" style="color: inherit; text-decoration: none; display: flex; align-items: center; gap: 8px;">
+                <i class="fa-solid fa-phone" style="color:var(--infosys-electric-blue); width:20px;"></i>
+                <span>+91 94875 30243</span>
+              </a>
+            </div>
+            <div>
+              <a href="mailto:admissions@karka.academy" style="color: inherit; text-decoration: none; display: flex; align-items: center; gap: 8px;">
+                <i class="fa-solid fa-envelope" style="color:var(--infosys-electric-blue); width:20px;"></i>
+                <span>admissions@karka.academy</span>
+              </a>
+            </div>
+            <div style="margin-top: 0.4rem;">
+              <a href="https://www.google.com/maps/search/?api=1&query=Karka+AI+%26+Tech+Academy+SRV+Towers+Nagercoil" target="_blank" rel="noopener noreferrer" style="color: var(--infosys-electric-blue); font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
+                <i class="fa-solid fa-diamond-turn-right"></i> Get Directions
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Lead Capture Form Card -->
+        <div class="contact-card-pane">
+          <form id="leadCaptureForm">
+            <div class="form-group">
+              <label class="form-label" for="leadName">Full Name *</label>
+              <input type="text" id="leadName" class="form-input" placeholder="e.g. Anandha Krishnan" required>
+            </div>
+
+            <div class="form-row-2col">
+              <div class="form-group">
+                <label class="form-label" for="leadEmail">Email Address *</label>
+                <input type="email" id="leadEmail" class="form-input" placeholder="anand@gmail.com" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="leadPhone">Phone Number *</label>
+                <input type="tel" id="leadPhone" class="form-input" placeholder="+91 94875 30243" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="leadProgram">Preferred Program *</label>
+              <select id="leadProgram" class="form-select" required>
+                <option value="">Select your preferred track</option>
+                <option value="fullstack">Full Stack Development (MERN)</option>
+                <option value="datascience">Data Science & AI</option>
+                <option value="uiux">UI/UX Product Design</option>
+                <option value="genai">Generative AI Foundations</option>
+                <option value="pythonkids">Python for Kids & Teens</option>
+                <option value="clouddevops">Cloud DevOps & Infrastructure</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="leadMessage">Message or Questions (Optional)</label>
+              <textarea id="leadMessage" class="form-textarea"
+                placeholder="Tell us about your background or questions regarding Pay After Placement..."></textarea>
+            </div>
+
+            <button type="submit" class="btn-enterprise-primary"
+              style="width: 100%; justify-content: center; padding: 0.85rem; font-size: 1rem;">
+              <span>Book My Free Career Call</span>
+              <i class="fa-solid fa-calendar-check"></i>
+            </button>
+            <div id="leadSuccessMsg"
+              style="display:none; margin-top:1rem; padding:0.8rem; background:rgba(5,150,105,0.1); border:1px solid rgba(5,150,105,0.3); border-radius:6px; color:var(--accent-green); font-size:0.9rem; text-align:center;">
+              ✅ Thank you! Our career advisory team will call you within 24 hours.
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 15. PRE-FOOTER BANNER & CORPORATE FOOTER -->
+    <section class="prefooter-banner-section">
+      <div class="container">
+        <div class="prefooter-card">
+          <div class="prefooter-content">
+            <span class="prefooter-badge">
+              <i class="fa-solid fa-sparkles"></i> NEXT-GEN CAREERS
+            </span>
+            <h2 class="prefooter-title">Ready to Future-Proof Your Career?</h2>
+            <p class="prefooter-desc">Join the AI revolution with Karka Academy today and start your journey with
+              industry mentors.</p>
+          </div>
+          <div class="prefooter-btn-group">
+            <a href="#pap" class="btn-prefooter-primary open-apply-modal">
+              <span>Apply for Admission</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <a href="#bootcamps" class="btn-prefooter-secondary">
+              <i class="fa-solid fa-book-open"></i>
+              <span>Explore Courses</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CORPORATE FOOTER -->
+    <footer class="footer-corporate">
+      <div class="container">
+
+        <div class="footer-top-grid">
+
+          <!-- Brand Summary with GenAI focus -->
+          <div>
+            <div class="footer-brand-title">KARKA <span style="color:var(--infosys-electric-blue);">AI</span></div>
+            <p class="footer-brand-desc">
+              The one and only exclusive AI Learning Center in Nagercoil. Empowering engineers with native generative AI
+              fluency, physical lab mentorship, and risk-free Pay After Placement career models.
+            </p>
+            <div class="footer-social-links">
+              <a href="https://facebook.com" target="_blank" rel="noopener" class="social-circle-link"
+                aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+              <a href="https://www.instagram.com/karka.ai" target="_blank" rel="noopener" class="social-circle-link"
+                aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener" class="social-circle-link"
+                aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+              <a href="https://youtube.com" target="_blank" rel="noopener" class="social-circle-link"
+                aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+          </div>
+
+          <!-- Quick Links: Our Programs -->
+          <div>
+            <div class="footer-col-title">Our Programs</div>
+            <ul class="footer-links-list">
+              <li><a href="#">Home</a></li>
+              <li><a href="#bootcamps">All Courses</a></li>
+              <li><a href="#pap">Placement Model</a></li>
+              <li><a href="#platforms">Free Roadmap</a></li>
+            </ul>
+          </div>
+
+          <!-- Quick Links: About Academy -->
+          <div>
+            <div class="footer-col-title">About Academy</div>
+            <ul class="footer-links-list">
+              <li><a href="#whyChooseUs">About Us</a></li>
+              <li><a href="#internship">Mentors & Living Lab</a></li>
+              <li><a href="#stories">Success Stories</a></li>
+              <li><a href="#platforms">Infini Tournament</a></li>
+              <li><a href="#contactForm">Hire From Us</a></li>
+              <li><a href="#contactForm">Contact</a></li>
+            </ul>
+          </div>
+
+          <!-- Newsletter & Contact Info -->
+          <div>
+            <div class="footer-col-title">Stay Updated</div>
+            <p style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 0.8rem;">
+              Subscribe for weekly tech roadmaps, cohort dates, and AI workshop announcements.
+            </p>
+            <form id="newsletterForm" class="newsletter-form">
+              <input type="email" placeholder="Your email address" class="newsletter-input" required>
+              <button type="submit" class="newsletter-btn">Join</button>
+            </form>
+            <div class="footer-contact-info">
+              <p>
+                <a href="https://www.google.com/maps/search/?api=1&query=Karka+AI+%26+Tech+Academy+SRV+Towers+Nagercoil" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none; display: flex; align-items: flex-start; gap: 8px;">
+                  <i class="fa-solid fa-location-dot" style="color:var(--infosys-electric-blue); margin-top: 3px;"></i>
+                  <span>Ground floor, SRV Towers, Muthamizh St, near Girias Veppamoodu, Nagercoil, Tamil Nadu 629001</span>
+                </a>
+              </p>
+              <p>
+                <a href="tel:+919487530243" style="color: inherit; text-decoration: none; display: flex; align-items: center; gap: 8px;">
+                  <i class="fa-solid fa-phone" style="color:var(--infosys-electric-blue);"></i>
+                  <span>+91 94875 30243</span>
+                </a>
+              </p>
+            </div>
+            <div class="footer-map-frame"
+              style="margin-top: 1rem; border-radius: 8px; overflow: hidden; border: 1px solid rgba(255,255,255,0.15); max-width: 320px;">
+              <a href="https://www.google.com/maps/search/?api=1&query=Karka+AI+%26+Tech+Academy+SRV+Towers+Nagercoil" target="_blank" rel="noopener noreferrer" title="View on Google Maps">
+                <iframe
+                  src="https://maps.google.com/maps?q=Ground%20floor%2C%20SRV%20Towers%2C%20Muthamizh%20St%2C%20near%20Girias%20Veppamoodu%2C%20Nagercoil%2C%20Tamil%20Nadu%20629001&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                  width="100%" height="160" style="border:0; display:block; pointer-events: none;" allowfullscreen="" loading="lazy">
+                </iframe>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="footer-bottom-bar">
+          <div>
+            Copyright © 2026 Karka AI & Tech Academy. All rights reserved.
+          </div>
+          <div style="display: flex; gap: 1.5rem;">
+            <a href="#" style="color: #64748b; text-decoration: none;">Privacy Policy</a>
+            <a href="#" style="color: #64748b; text-decoration: none;">Terms of Service</a>
+          </div>
+          <div style="font-weight: 700; color: #38bdf8; letter-spacing: 0.05em;">
+            BUILT WITH PASSION BY KARKA
+          </div>
+        </div>
+
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- MULTI-STEP PAP APPLICATION MODAL -->
+  <div class="modal-backdrop" id="applyModal">
+    <div class="modal-dialog">
+      <button class="modal-close-btn" id="closeModalBtn">&times;</button>
+
+      <div class="modal-header">
+        <span class="badge-pill badge-blue" style="margin-bottom: 0.6rem;">Fast-Track Admission 2026</span>
+        <h3 style="font-size: 1.45rem; font-weight: 800;">Verify Your ₹0 PAP Eligibility</h3>
+        <p style="color: var(--text-secondary); font-size: 0.88rem;">60-second assessment for upcoming Nagercoil batch.
+        </p>
+
+        <div class="modal-progress" style="display: flex; gap: 0.5rem; margin-top: 1.2rem;">
+          <div class="progress-step active" id="prog-1"></div>
+          <div class="progress-step" id="prog-2"></div>
+          <div class="progress-step" id="prog-3"></div>
+          <div class="progress-step" id="prog-4"></div>
+        </div>
+      </div>
+
+      <div class="modal-body">
+        <form id="papApplicationForm">
+
+          <!-- STEP 1: Basic Information -->
+          <div class="form-step active" id="step-1">
+            <div class="form-group">
+              <label class="form-label" for="appName">Full Name *</label>
+              <input type="text" id="appName" class="form-input" placeholder="e.g. Anandha Krishnan" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="appEmail">Email Address *</label>
+              <input type="email" id="appEmail" class="form-input" placeholder="anand@gmail.com" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="appPhone">WhatsApp Mobile *</label>
+              <input type="tel" id="appPhone" class="form-input" placeholder="+91 94875 30243" required>
+            </div>
+            <div class="form-btn-row" style="display:flex; justify-content:flex-end;">
+              <button type="button" class="btn-enterprise-primary" onclick="goToStep(2)">
+                <span>Next: Academic Background</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 2: Background & Track -->
+          <div class="form-step" id="step-2">
+            <div class="form-group">
+              <label class="form-label" for="appEdu">Academic / Professional Background *</label>
+              <select id="appEdu" class="form-select" required>
+                <option value="">Select your background</option>
+                <option value="cs-it">B.E / B.Tech (CS / IT / AI / DS)</option>
+                <option value="non-cs">B.E / B.Tech (Mechanical, Civil, EEE, ECE)</option>
+                <option value="bca-mca">BCA / MCA / B.Sc Computer Science</option>
+                <option value="arts-science">B.Com / BBA / B.Sc Physics / Chemistry / Arts</option>
+                <option value="working-switch">Working Professional looking for Career Switch</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="appTrack">Preferred Practice Track *</label>
+              <select id="appTrack" class="form-select" required>
+                <option value="mern">Fullstack Web & AI Engineering</option>
+                <option value="ai-ml">AI & Data Science Professional</option>
+                <option value="genai">Generative AI Foundations & LLMs</option>
+                <option value="uiux">UI/UX & Digital Product Design</option>
+                <option value="devops">Cloud DevOps & Infrastructure</option>
+                <option value="kids">Python for Kids & Teens</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="appCampus">Preferred Format *</label>
+              <select id="appCampus" class="form-select" required>
+                <option value="nagercoil">Nagercoil Exclusive AI Center (Physical On-Site Lab)</option>
+                <option value="hybrid">Interactive Live Hybrid / Weekend</option>
+              </select>
+            </div>
+            <div class="form-btn-row" style="display:flex; justify-content:space-between;">
+              <button type="button" class="btn-secondary" onclick="goToStep(1)">Back</button>
+              <button type="button" class="btn-enterprise-primary" onclick="goToStep(3)">
+                <span>Next: Logic Check</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 3: Quick Logic Check -->
+          <div class="form-step" id="step-3">
+            <div class="form-group">
+              <label class="form-label">Logic Evaluation: If an engineer using AI assistants accelerates a task by 10x,
+                and a legacy sprint took 40 hours, how many hours does it take now?</label>
+              <label class="quiz-option"
+                style="display:flex; align-items:center; gap:0.6rem; background:var(--bg-subtle); padding:0.75rem 1rem; border-radius:6px; margin-bottom:0.5rem; cursor:pointer;">
+                <input type="radio" name="logicQ1" value="4" checked> 4 hours (10x faster)
+              </label>
+              <label class="quiz-option"
+                style="display:flex; align-items:center; gap:0.6rem; background:var(--bg-subtle); padding:0.75rem 1rem; border-radius:6px; margin-bottom:0.5rem; cursor:pointer;">
+                <input type="radio" name="logicQ1" value="20"> 20 hours
+              </label>
+              <label class="quiz-option"
+                style="display:flex; align-items:center; gap:0.6rem; background:var(--bg-subtle); padding:0.75rem 1rem; border-radius:6px; margin-bottom:0.5rem; cursor:pointer;">
+                <input type="radio" name="logicQ1" value="30"> 30 hours
+              </label>
+            </div>
+            <div class="form-btn-row" style="display:flex; justify-content:space-between;">
+              <button type="button" class="btn-secondary" onclick="goToStep(2)">Back</button>
+              <button type="submit" class="btn-enterprise-primary">
+                <span>Submit & Verify Approval</span>
+                <i class="fa-solid fa-check"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 4: Instant Provisional Result -->
+          <div class="form-step" id="step-4">
+            <div class="success-screen" style="text-align:center; padding:1rem 0;">
+              <div class="success-icon"
+                style="width:60px; height:60px; border-radius:50%; border:2px solid var(--accent-green); color:var(--accent-green); display:flex; align-items:center; justify-content:center; font-size:1.8rem; margin:0 auto 1.2rem;">
+                <i class="fa-solid fa-check"></i>
+              </div>
+              <h4 style="font-size: 1.5rem; font-weight: 800; color: var(--text-primary); margin-bottom: 0.5rem;">
+                Provisional PAP Approved! 🚀</h4>
+              <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                Congratulations, <span id="resUserName"
+                  style="color:var(--infosys-electric-blue); font-weight:700;">Learner</span>! You qualify for
+                <strong>₹0 Upfront Tuition</strong> under the Pay After Placement model.
+              </p>
+
+              <div
+                style="background: var(--bg-subtle); border: 1px solid var(--border-hairline); border-radius: 8px; padding: 1.2rem; text-align: left; margin-bottom: 1.5rem;">
+                <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.2rem;">Practice Track:</div>
+                <div style="font-weight: 700; color: var(--text-primary); margin-bottom: 0.8rem;" id="resUserTrack">MERN
+                  Fullstack Development</div>
+                <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.2rem;">Admission Reference
+                  ID:</div>
+                <div style="font-family: var(--font-mono); color: var(--infosys-electric-blue); font-weight: 700;"
+                  id="resUserToken">KARKA-NAG-2026-891</div>
+              </div>
+
+              <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                <a href="https://wa.me/919487530243?text=Hi%20Karka%20Academy,%20I%20just%20verified%20my%20PAP%20eligibility%20on%20the%20website%20and%20got%20approved!%20Please%20schedule%20my%20on-site%20orientation%20in%20Nagercoil."
+                  target="_blank" class="btn-enterprise-primary" style="justify-content: center; background: #16a34a;">
+                  <i class="fa-brands fa-whatsapp"></i>
+                  <span>Confirm Admission on WhatsApp</span>
+                </a>
+                <button type="button" class="btn-secondary" onclick="closeModal()" style="justify-content: center;">
+                  Back to Website
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- SYLLABUS PREVIEW MODAL -->
+  <div class="modal-backdrop" id="syllabusModal">
+    <div class="modal-dialog">
+      <button class="modal-close-btn" onclick="closeSyllabusModal()">&times;</button>
+      <div class="modal-header">
+        <h3 id="syllabusModalTitle" style="font-size: 1.45rem; font-weight: 800;">Practice Curriculum</h3>
+        <p id="syllabusModalSubtitle" style="color: var(--text-secondary); font-size: 0.85rem;">Detailed syllabus
+          modules & deliverables</p>
+      </div>
+      <div class="modal-body" id="syllabusModalContent"></div>
+    </div>
+  </div>
+
+  <!-- INFINI REGISTER MODAL -->
+  <div class="modal-backdrop" id="infiniModal">
+    <div class="modal-dialog">
+      <button class="modal-close-btn" onclick="closeInfiniModal()">&times;</button>
+      <div class="modal-header">
+        <span class="badge-pill badge-amber" style="margin-bottom: 0.5rem;"><i class="fa-solid fa-trophy"></i> ₹1,00,000
+          PRIZE POOL</span>
+        <h3 style="font-size: 1.45rem; font-weight: 800;">Register for Karka Infini AI</h3>
+        <p style="color: var(--text-secondary); font-size: 0.85rem;">Inter-college student competition. Free entry for
+          teams of 1 to 4.</p>
+      </div>
+      <div class="modal-body">
+        <form id="infiniForm">
+          <div class="form-group">
+            <label class="form-label">Team Leader Name *</label>
+            <input type="text" class="form-input" placeholder="e.g. Anand" required>
+          </div>
+          <div class="form-row-2col">
+            <div class="form-group">
+              <label class="form-label">College Name *</label>
+              <input type="text" class="form-input" placeholder="College / University" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Mobile Number *</label>
+              <input type="tel" class="form-input" placeholder="+91 9487530243" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Select Contests (Choose all that apply) *</label>
+            <select class="form-select" required>
+              <option value="paper">PaperPulse (Idea Presentation)</option>
+              <option value="techrush">TechRush (Technical Quiz)</option>
+              <option value="bughunt">Bug Hunt (Code Debugging)</option>
+              <option value="sitesprint">SiteSprint (Website Building)</option>
+              <option value="graphix">Graphix (Poster Design)</option>
+              <option value="vibecut">VibeCut (Video Creation)</option>
+            </select>
+          </div>
+          <button type="submit" class="btn-enterprise-primary"
+            style="width: 100%; justify-content: center; margin-top: 1rem;">
+            Submit Team Registration
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>

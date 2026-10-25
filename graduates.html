@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job-Ready Tech Bootcamps for Graduates | Karka AI Academy</title>
+  <meta name="description" content="Kickstart your career with job-ready skills. 100% placement support, hands-on capstone projects, and 1:1 industry mentorship at Karka AI Academy.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <!-- Font Awesome Icons & Canvas Confetti -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="pro-page-root">
+
+  <!-- 1. TOP NAVBAR (Clean Minimal White Header) -->
+  <header class="pro-header-clean">
+    <div class="pro-header-inner">
+
+      <!-- Tamil Wordmark Logo: கற்க AI & TECH Academy -->
+      <a href="index.html" class="pro-logo-group" aria-label="Karka AI & Tech Academy Home">
+        <span class="pro-logo-tamil">கற்க</span>
+        <span class="pro-logo-sep"></span>
+        <span class="pro-logo-sub"><span>AI &amp; TECH</span> Academy</span>
+      </a>
+
+      <!-- Desktop Nav Items -->
+      <nav aria-label="Main Navigation">
+        <ul class="pro-nav-links">
+          <li class="pro-nav-item"><a href="school-students.html" class="pro-nav-a">School Students</a></li>
+          <li class="pro-nav-item"><a href="college-students.html" class="pro-nav-a">College Students</a></li>
+          <li class="pro-nav-item"><a href="graduates.html" class="pro-nav-a active-link" aria-current="page">Graduates</a></li>
+          <li class="pro-nav-item"><a href="professionals.html" class="pro-nav-a">Professionals</a></li>
+        </ul>
+      </nav>
+
+      <!-- Right CTA: Brand Electric Blue Pill Button -->
+      <button type="button" class="btn-pro-enroll-solid open-apply-modal" onclick="openModal('applyModal')">
+        ENROLL NOW
+      </button>
+
+      <!-- Mobile Hamburger Toggle -->
+      <button class="pro-mobile-toggle" onclick="toggleProDrawer()" aria-label="Open Menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+    </div>
+  </header>
+
+  <!-- 2. HERO SECTION (For Graduates) -->
+  <section class="pro-hero-container">
+    <div class="pro-hero-card-clean">
+
+      <!-- Left Content -->
+      <div class="pro-hero-left-content">
+        <!-- Top Badge -->
+        <span class="pro-pill-badge">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <span>For Graduates</span>
+        </span>
+
+        <!-- Main Headline -->
+        <h1 class="pro-hero-h1-clean">
+          Kickstart your career with <span class="accent-blue">job-ready skills</span>
+        </h1>
+
+        <!-- 3 Feature Badges in a single horizontal row -->
+        <div class="pro-feature-pills-row">
+          <div class="pro-badge-pill-item">
+            <i class="fa-regular fa-clock"></i>
+            <span>Flexible Weekend Batches</span>
+          </div>
+          <div class="pro-badge-pill-item">
+            <i class="fa-solid fa-arrow-trend-up"></i>
+            <span>Advanced Tech Stack</span>
+          </div>
+          <div class="pro-badge-pill-item">
+            <i class="fa-solid fa-users"></i>
+            <span>Professional Networking</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Visual: Graduate in Tech Graphic -->
+      <div class="pro-hero-img-wrap">
+        <img src="assets/images/graduate-hero.jpg" alt="Successful Tech Graduate" loading="eager" width="460" height="520">
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 3. ALL 8 CATEGORIZED SECTIONS & COURSE CARDS -->
+  <main class="pro-main-sections-wrap">
+
+    <!-- 1. Coding & Development -->
+    <section class="pro-category-block" id="sec-coding">
+      <div class="pro-cat-header-row">
+        <h2 class="pro-cat-title-h2">Coding &amp; Development</h2>
+        <a href="#sec-coding" class="pro-cat-viewall-link">
+          <span>View All Coding &amp; Development</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <div class="pro-cards-grid-3col">
+        <!-- MERN Fullstack -->
+        <div class="pro-clean-card course-card">
+          <div class="course-card-thumb thumb-cat-code">
+            <img src="assets/images/fullstack-internship.jpg" alt="MERN Fullstack Development" class="course-thumb-img">
+            <span class="badge-pill thumb-badge badge-code"><i class="fa-solid fa-code"></i> CODING &amp; DEV</span>
+          </div>
+          <div class="pro-card-body-content">
+            <h3 class="pro-card-title-text">MERN Fullstack Development</h3>
+            <div class="pro-card-specs-row">
+              <div class="pro-spec-item"><i class="fa-regular fa-clock" style="color: var(--text-muted); margin-right: 4px;"></i> 6 Months</div>
+              <div class="pro-spec-item"><i class="fa-solid fa-globe" style="color: var(--text-muted); margin-right: 4px;"></i> Online</div>
+            </div>
+            <div class="pro-card-batch-status">
+              <span>Batch Starts on <span class="badge-pill badge-green" style="font-size: 0.74rem;"><i class="fa-solid fa-circle-dot" style="font-size: 0.55rem;"></i> Starts Soon</span></span>
+            </div>
+            <button type="button" class="btn-enterprise-primary" onclick="openSyllabus('mern')" style="width: 100%; justify-content: center; gap: 0.5rem;">
+              <span>Explore MERN Fullstack Development</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- React + Java Fullstack -->
+        <div class="pro-clean-card course-card">
+          <div class="course-card-thumb thumb-cat-code">
+            <img src="assets/images/java-backend.jpg" alt="React + Java Full Stack Development" class="course-thumb-img">
+            <span class="badge-pill thumb-badge badge-code"><i class="fa-solid fa-code"></i> CODING &amp; DEV</span>
+          </div>
+          <div class="pro-card-body-content">
+            <h3 class="pro-card-title-text">React + Java Full Stack Development</h3>
+            <div class="pro-card-specs-row">
+              <div class="pro-spec-item"><i class="fa-regular fa-clock" style="color: var(--text-muted); margin-right: 4px;"></i> 6 Months</div>
+              <div class="pro-spec-item"><i class="fa-solid fa-globe" style="color: var(--text-muted); margin-right: 4px;"></i> Online</div>
+            </div>
+            <div class="pro-card-batch-status">
+              <span>Batch Starts on <span class="badge-pill badge-green" style="font-size: 0.74rem;"><i class="fa-solid fa-circle-dot" style="font-size: 0.55rem;"></i> Starts Soon</span></span>
+            </div>
+            <button type="button" class="btn-enterprise-primary" onclick="openSyllabus('fullstack')" style="width: 100%; justify-content: center; gap: 0.5rem;">
+              <span>Explore React + Java Full Stack</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- React + Python Fullstack -->
+        <div class="pro-clean-card course-card">
+          <div class="course-card-thumb thumb-cat-code">
+            <img src="assets/images/python-automation.jpg" alt="React + Python Full Stack Development" class="course-thumb-img">
+            <span class="badge-pill thumb-badge badge-code"><i class="fa-solid fa-code"></i> CODING &amp; DEV</span>
+          </div>
+          <div class="pro-card-body-content">
+            <h3 class="pro-card-title-text">React + Python Full Stack Development</h3>
+            <div class="pro-card-specs-row">
+              <div class="pro-spec-item"><i class="fa-regular fa-clock" style="color: var(--text-muted); margin-right: 4px;"></i> 6 Months</div>
+              <div class="pro-spec-item"><i class="fa-solid fa-globe" style="color: var(--text-muted); margin-right: 4px;"></i> Online</div>
+            </div>
+            <div class="pro-card-batch-status">
+              <span>Batch Starts on <span class="badge-pill badge-green" style="font-size: 0.74rem;"><i class="fa-solid fa-circle-dot" style="font-size: 0.55rem;"></i> Starts Soon</span></span>
+            </div>
+            <button type="button" class="btn-enterprise-primary" onclick="openSyllabus('python')" style="width: 100%; justify-content: center; gap: 0.5rem;">
+              <span>Explore React + Python Full Stack</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Generative AI (Gen AI) -->
+    <section class="pro-category-block" id="sec-genai">
+      <div class="pro-cat-header-row">
+        <h2 class="pro-cat-title-h2">Generative AI (Gen AI)</h2>
+        <a href="#sec-genai" class="pro-cat-viewall-link">
+          <span>View All Generative AI (Gen AI)</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <div class="pro-cards-grid-3col">
+        <!-- Gen AI Foundations -->
+        <div class="pro-clean-card course-card">
+          <div class="course-card-thumb thumb-cat-genai">
+            <img src="assets/images/genai-foundations.jpg" alt="Generative AI Foundations" class="course-thumb-img">
+            <span class="badge-pill thumb-badge badge-genai"><i class="fa-solid fa-wand-magic-sparkles"></i> GEN AI &amp; LLM</span>
+          </div>
+          <div class="pro-card-body-content">
+            <h3 class="pro-card-title-text">Generative AI Foundations</h3>
+            <div class="pro-card-specs-row">
+              <div class="pro-spec-item"><i class="fa-regular fa-clock" style="color: var(--text-muted); margin-right: 4px;"></i> 3 Months</div>
+              <div class="pro-spec-item"><i class="fa-solid fa-globe" style="color: var(--text-muted); margin-right: 4px;"></i> Online</div>
+            </div>
+            <div class="pro-card-batch-status">
+              <span>Batch Starts on <span class="badge-pill badge-green" style="font-size: 0.74rem;"><i class="fa-solid fa-circle-dot" style="font-size: 0.55rem;"></i> Starts Soon</span></span>
+            </div>
+            <button type="button" class="btn-enterprise-primary" onclick="openSyllabus('genai')" style="width: 100%; justify-content: center; gap: 0.5rem;">
+              <span>Explore Generative AI Foundations</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Gen AI Mastery -->
+        <div class="pro-clean-card course-card">
+          <div class="course-card-thumb thumb-cat-genai">
+            <img src="assets/images/genai-mastery.jpg" alt="Generative AI Mastery" class="course-thumb-img">
+            <span class="badge-pill thumb-badge badge-genai"><i class="fa-solid fa-wand-magic-sparkles"></i> GEN AI &amp; LLM</span>
+          </div>
+          <div class="pro-card-body-content">
+            <h3 class="pro-card-title-text">Generative AI Mastery</h3>
+            <div class="pro-card-specs-row">
+              <div class="pro-spec-item"><i class="fa-regular fa-clock" style="color: var(--text-muted); margin-right: 4px;"></i> 6 Months</div>
+              <div class="pro-spec-item"><i class="fa-solid fa-globe" style="color: var(--text-muted); margin-right: 4px;"></i> Online</div>
+            </div>
+            <div class="pro-card-batch-status">
+              <span>Batch Starts on <span class="badge-pill badge-green" style="font-size: 0.74rem;"><i class="fa-solid fa-circle-dot" style="font-size: 0.55rem;"></i> Starts Soon</span></span>
+            </div>
+            <button type="button" class="btn-enterprise-primary" onclick="openSyllabus('genai')" style="width: 100%; justify-content: center; gap: 0.5rem;">
+              <span>Explore Generative AI Mastery</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Gen AI & LLM Developer -->
+        <div class="pro-clean-card course-card">
+          <div class="course-card-thumb thumb-cat-genai">
+            <img src="assets/images/genai-llm-developer.jpg" alt="Gen AI &amp; LLM Developer" class="course-thumb-img">
+            <span class="badge-pill thumb-badge badge-genai"><i class="fa-solid fa-wand-magic-sparkles"></i> GEN AI &amp; LLM</span>
+          </div>
+          <div class="pro-card-body-content">
+            <h3 class="pro-card-title-text">Gen AI &amp; LLM Developer</h3>
+            <div class="pro-card-specs-row">
+              <div class="pro-spec-item"><i class="fa-regular fa-clock" style="color: var(--text-muted); margin-right: 4px;"></i> 6 Months</div>
+              <div class="pro-spec-item"><i class="fa-solid fa-globe" style="color: var(--text-muted); margin-right: 4px;"></i> Online</div>
+            </div>
+            <div class="pro-card-batch-status">
+              <span>Batch Starts on <span class="badge-pill badge-green" style="font-size: 0.74rem;"><i class="fa-solid fa-circle-dot" style="font-size: 0.55rem;"></i> Starts Soon</span></span>
+            </div>
+            <button type="button" class="btn-enterprise-primary" onclick="openSyllabus('genai')" style="width: 100%; justify-content: center; gap: 0.5rem;">
+              <span>Explore Gen AI &amp; LLM Developer</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Data Science & AI -->
+    <section class="pro-category-block" id="sec-data">
+      <div class="pro-cat-header-row">
+        <h2 class="pro-cat-title-h2">Data Science &amp; AI</h2>
+        <a href="#sec-data" class="pro-cat-viewall-link">
+          <span>View All Data Science &amp; AI</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <div class="pro-cards-grid-3col">
+        <!-- AI & Data Science -->
+        <div class="pro-clean-card course-card">
+          <div class="course-card-thumb thumb-cat-data">
+            <img src="assets/images/ai-datascience.jpg" alt="AI &amp; Data Science" class="course-thumb-img">
+            <span class="badge-pill thumb-badge badge-data"><i class="fa-solid fa-chart-pie"></i> DATA &amp; AI LAB</span>
+          </div>
+          <div class="pro-card-body-content">
+            <h3 class="pro-card-title-text">AI &amp; Data Science</h3>
+            <div class="pro-card-specs-row">
+              <div class="pro-spec-item"><i class="fa-regular fa-clock" style="color: var(--text-muted); margin-right: 4px;"></i> 6 Months</div>
+              <div class="pro-spec-item"><i class="fa-solid fa-globe" style="color: var(--text-muted); margin-right: 4px;"></i> Online</div>
+            </div>
+            <div class="pro-card-batch-status">
+              <span>Batch Starts on <span class="badge-pill badge-green" style="font-size: 0.74rem;"><i class="fa-solid fa-circle-dot" style="font-size: 0.55rem;"></i> Starts Soon</span></span>
+            </div>
+            <button type="button" class="btn-enterprise-primary" onclick="openSyllabus('aiml')" style="width: 100%; justify-content: center; gap: 0.5rem;">
+              <span>Explore AI &amp; Data Science</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Data Analytics with AI -->
+        <div class="pro-clean-card course-card">
+          <div class="course-card-thumb thumb-cat-data">
+            <img src="assets/images/data-analytics.jpg" alt="Data Analytics with AI" class="course-thumb-img">
+            <span class="badge-pill thumb-badge badge-data"><i class="fa-solid fa-chart-pie"></i> DATA &amp; AI LAB</span>
+          </div>
+          <div class="pro-card-body-content">
+            <h3 class="pro-card-title-text">Data Analytics with AI</h3>
+            <div class="pro-card-specs-row">
+              <div class="pro-spec-item"><i class="fa-regular fa-clock" style="color: var(--text-muted); margin-right: 4px;"></i> 5 Months</div>
+              <div class="pro-spec-item"><i class="fa-solid fa-globe" style="color: var(--text-muted); margin-right: 4px;"></i> Online</div>
+            </div>
+            <div class="pro-card-batch-status">
+              <span>Batch Starts on <span class="badge-pill badge-green" style="font-size: 0.74rem;"><i class="fa-solid fa-circle-dot" style="font-size: 0.55rem;"></i> Starts Soon</span></span>
+            </div>
+            <button type="button" class="btn-enterprise-primary" onclick="openSyllabus('aiml')" style="width: 100%; justify-content: center; gap: 0.5rem;">
+              <span>Explore Data Analytics with AI</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Data Engineering -->
+        <div class="pro-clean-card course-card">
+          <div class="course-card-thumb thumb-cat-data">
+            <img src="assets/images/data-engineering.jpg" alt="Data Engineering &amp; Big Data Pipelines" class="course-thumb-img">
+            <span class="badge-pill thumb-badge badge-data"><i class="fa-solid fa-chart-pie"></i> DATA &amp; AI LAB</span>
+          </div>
+          <div class="pro-card-body-content">
+            <h3 class="pro-card-title-text">Data Engineering &amp; Big Data Pipelines</h3>
+            <div class="pro-card-specs-row">
+              <div class="pro-spec-item"><i class="fa-regular fa-clock" style="color: var(--text-muted); margin-right: 4px;"></i> 6 Months</div>
+              <div class="pro-spec-item"><i class="fa-solid fa-globe" style="color: var(--text-muted); margin-right: 4px;"></i> Online</div>
+            </div>
+            <div class="pro-card-batch-status">
+              <span>Batch Starts on <span class="badge-pill badge-green" style="font-size: 0.74rem;"><i class="fa-solid fa-circle-dot" style="font-size: 0.55rem;"></i> Starts Soon</span></span>
+            </div>
+            <button type="button" class="btn-enterprise-primary" onclick="openSyllabus('aiml')" style="width: 100%; justify-content: center; gap: 0.5rem;">
+              <span>Explore Data Engineering</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. UI/UX & Design -->
+    <section class="pro-category-block" id="sec-design">
+      <div class="pro-cat-header-row">
+        <h2 class="pro-cat-title-h2">UI/UX &amp; Design</h2>
+        <a href="#sec-design" class="pro-cat-viewall-link">
+          <span>View All UI/UX &amp; Design</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <div class="pro-cards-grid-3col">
+        <!-- UI/UX Design -->
+        <div class="pro-clean-card course-card">
+          <div class="course-card-thumb thumb-cat-design">
+            <img src="assets/images/uiux-design.jpg" alt="UI/UX Design" class="course-thumb-img">
+            <span class="badge-pill thumb-badge badge-design"><i class="fa-solid fa-palette"></i> DESIGN STUDIO</span>
+          </div>
+          <div class="pro-card-body-content">
+            <h3 class="pro-card-title-text">UI/UX Design</h3>
+            <div class="pro-card-specs-row">
+              <div class="pro-spec-item"><i class="fa-regular fa-clock" style="color: var(--text-muted); margin-right: 4px;"></i> 4 Months</div>
+              <div class="pro-spec-item"><i class="fa-solid fa-globe" style="color: var(--text-muted); margin-right: 4px;"></i> Online</div>
+            </div>
+            <div class="pro-card-batch-status">
+              <span>Batch Starts on <span class="badge-pill badge-green" style="font-size: 0.74rem;"><i class="fa-solid fa-circle-dot" style="font-size: 0.55rem;"></i> Starts Soon</span></span>
+            </div>
+            <button type="button" class="btn-enterprise-primary" onclick="openSyllabus('uiux')" style="width: 100%; justify-content: center; gap: 0.5rem;">
+              <span>Explore UI/UX Design</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Web Designing -->
+        <div class="pro-clean-card course-card">
+          <div class="course-card-thumb thumb-cat-design">
+            <img src="assets/images/web-designing.jpg" alt="Web Designing" class="course-thumb-img">
+            <span class="badge-pill thumb-badge badge-design"><i class="fa-solid fa-palette"></i> DESIGN STUDIO</span>
+          </div>
+          <div class="pro-card-body-content">
+            <h3 class="pro-card-title-text">Web Designing</h3>
+            <div class="pro-card-specs-row">
+              <div class="pro-spec-item"><i class="fa-regular fa-clock" style="color: var(--text-muted); margin-right: 4px;"></i> 3 Months</div>
+              <div class="pro-spec-item"><i class="fa-solid fa-globe" style="color: var(--text-muted); margin-right: 4px;"></i> Online</div>
+            </div>
+            <div class="pro-card-batch-status">
+              <span>Batch Starts on <span class="badge-pill badge-green" style="font-size: 0.74rem;"><i class="fa-solid fa-circle-dot" style="font-size: 0.55rem;"></i> Starts Soon</span></span>
+            </div>
+            <button type="button" class="btn-enterprise-primary" onclick="openSyllabus('uiux')" style="width: 100%; justify-content: center; gap: 0.5rem;">
+              <span>Explore Web Designing</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Graphic Designing & Branding -->
+        <div class="pro-clean-card course-card">
+          <div class="course-card-thumb thumb-cat-design">
+            <img src="assets/images/graphic-designing.jpg" alt="Graphic Designing &amp; Branding" class="course-thumb-img">
+            <span class="badge-pill thumb-badge badge-design"><i class="fa-solid fa-palette"></i> DESIGN STUDIO</span>
+          </div>
+          <div class="pro-card-body-content">
+            <h3 class="pro-card-title-text">Graphic Designing &amp; Branding</h3>
+            <div class="pro-card-specs-row">
+              <div class="pro-spec-item"><i class="fa-regular fa-clock" style="color: var(--text-muted); margin-right: 4px;"></i> 3 Months</div>
+              <div class="pro-spec-item"><i class="fa-solid fa-globe" style="color: var(--text-muted); margin-right: 4px;"></i> Online</div>
+            </div>
+            <div class="pro-card-batch-status">
+              <span>Batch Starts on <span class="badge-pill badge-green" style="font-size: 0.74rem;"><i class="fa-solid fa-circle-dot" style="font-size: 0.55rem;"></i> Starts Soon</span></span>
+            </div>
+            <button type="button" class="btn-enterprise-primary" onclick="openSyllabus('uiux')" style="width: 100%; justify-content: center; gap: 0.5rem;">
+              <span>Explore Graphic Designing</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Digital Media & Animation -->
+    <section class="pro-category-block" id="sec-media">
+      <div class="pro-cat-header-row">
+        <h2 class="pro-cat-title-h2">Digital Media &amp; Animation</h2>
+        <a href="#sec-media" class="pro-cat-viewall-link">
+          <span>View All Digital Media &amp; Animation</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <div class="pro-cards-grid-3col">
+        <!-- Video Editing -->
+        <div class="pro-clean-card course-card">
+          <div class="course-card-thumb thumb-cat-media">
+            <img src="assets/images/video-editing.jpg" alt="Video Editing" class="course-thumb-img">
+            <span class="badge-pill thumb-badge badge-media"><i class="fa-solid fa-film"></i> MEDIA &amp; ANIMATION</span>
+          </div>
+          <div class="pro-card-body-content">
+            <h3 class="pro-card-title-text">Video Editing</h3>
+            <div class="pro-card-specs-row">
+              <div class="pro-spec-item"><i class="fa-regular fa-clock" style="color: var(--text-muted); margin-right: 4px;"></i> 4 Months</div>
+              <div class="pro-spec-item"><i class="fa-solid fa-globe" style="color: var(--text-muted); margin-right: 4px;"></i> Online</div>
+            </div>
+            <div class="pro-card-batch-status">
+              <span>Batch Starts on <span class="badge-pill badge-green" style="font-size: 0.74rem;"><i class="fa-solid fa-circle-dot" style="font-size: 0.55rem;"></i> Starts Soon</span></span>
+            </div>
+            <button type="button" class="btn-enterprise-primary" onclick="openSyllabus('marketing')" style="width: 100%; justify-content: center; gap: 0.5rem;">
+              <span>Explore Video Editing</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Social Media Design -->
+        <div class="pro-clean-card course-card">
+          <div class="course-card-thumb thumb-cat-media">
+            <img src="assets/images/social-media-design.jpg" alt="Social Media Graphic Design" class="course-thumb-img">
+            <span class="badge-pill thumb-badge badge-media"><i class="fa-solid fa-film"></i> MEDIA &amp; ANIMATION</span>
+          </div>
+          <div class="pro-card-body-content">
+            <h3 class="pro-card-title-text">Social Media Graphic Design</h3>
+            <div class="pro-card-specs-row">
+              <div class="pro-spec-item"><i class="fa-regular fa-clock" style="color: var(--text-muted); margin-right: 4px;"></i> 3 Months</div>
+              <div class="pro-spec-item"><i class="fa-solid fa-globe" style="color: var(--text-muted); margin-right: 4px;"></i> Online</div>
+            </div>
+            <div class="pro-card-batch-status">
+              <span>Batch Starts on <span class="badge-pill badge-green" style="font-size: 0.74rem;"><i class="fa-solid fa-circle-dot" style="font-size: 0.55rem;"></i> Starts Soon</span></span>
+            </div>
+            <button type="button" class="btn-enterprise-primary" onclick="openSyllabus('marketing')" style="width: 100%; justify-content: center; gap: 0.5rem;">
+              <span>Explore Social Graphic Design</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Multimedia & Animation -->
+        <div class="pro-clean-card course-card">
+          <div class="course-card-thumb thumb-cat-media">
+            <img src="assets/images/multimedia-animation.jpg" alt="Multimedia &amp; Animation" class="course-thumb-img">
+            <span class="badge-pill thumb-badge badge-media"><i class="fa-solid fa-film"></i> MEDIA &amp; ANIMATION</span>
+          </div>
+          <div class="pro-card-body-content">
+            <h3 class="pro-card-title-text">Multimedia &amp; Animation</h3>
+            <div class="pro-card-specs-row">
+              <div class="pro-spec-item"><i class="fa-regular fa-clock" style="color: var(--text-muted); margin-right: 4px;"></i> 6 Months</div>
+              <div class="pro-spec-item"><i class="fa-solid fa-globe" style="color: var(--text-muted); margin-right: 4px;"></i> Online</div>
+            </div>
+            <div class="pro-card-batch-status">
+              <span>Batch Starts on <span class="badge-pill badge-green" style="font-size: 0.74rem;"><i class="fa-solid fa-circle-dot" style="font-size: 0.55rem;"></i> Starts Soon</span></span>
+            </div>
+            <button type="button" class="btn-enterprise-primary" onclick="openSyllabus('marketing')" style="width: 100%; justify-content: center; gap: 0.5rem;">
+              <span>Explore Multimedia &amp; Animation</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Content & Digital Marketing -->
+    <section class="pro-category-block" id="sec-marketing">
+      <div class="pro-cat-header-row">
+        <h2 class="pro-cat-title-h2">Content &amp; Digital Marketing</h2>
+        <a href="#sec-marketing" class="pro-cat-viewall-link">
+          <span>View All Content &amp; Digital Marketing</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <div class="pro-cards-grid-3col">
+        <!-- Digital Marketing -->
+        <div class="pro-clean-card course-card">
+          <div class="course-card-thumb thumb-cat-marketing">
+            <img src="assets/images/digital-marketing.jpg" alt="Digital Marketing" class="course-thumb-img">
+            <span class="badge-pill thumb-badge badge-marketing"><i class="fa-solid fa-bullhorn"></i> MARKETING LAB</span>
+          </div>
+          <div class="pro-card-body-content">
+            <h3 class="pro-card-title-text">Digital Marketing</h3>
+            <div class="pro-card-specs-row">
+              <div class="pro-spec-item"><i class="fa-regular fa-clock" style="color: var(--text-muted); margin-right: 4px;"></i> 4 Months</div>
+              <div class="pro-spec-item"><i class="fa-solid fa-globe" style="color: var(--text-muted); margin-right: 4px;"></i> Online</div>
+            </div>
+            <div class="pro-card-batch-status">
+              <span>Batch Starts on <span class="badge-pill badge-green" style="font-size: 0.74rem;"><i class="fa-solid fa-circle-dot" style="font-size: 0.55rem;"></i> Starts Soon</span></span>
+            </div>
+            <button type="button" class="btn-enterprise-primary" onclick="openSyllabus('marketing')" style="width: 100%; justify-content: center; gap: 0.5rem;">
+              <span>Explore Digital Marketing</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- SEO Analyst -->
+        <div class="pro-clean-card course-card">
+          <div class="course-card-thumb thumb-cat-marketing">
+            <img src="assets/images/seo-analyst.jpg" alt="SEO Analyst" class="course-thumb-img">
+            <span class="badge-pill thumb-badge badge-marketing"><i class="fa-solid fa-bullhorn"></i> MARKETING LAB</span>
+          </div>
+          <div class="pro-card-body-content">
+            <h3 class="pro-card-title-text">SEO Analyst</h3>
+            <div class="pro-card-specs-row">
+              <div class="pro-spec-item"><i class="fa-regular fa-clock" style="color: var(--text-muted); margin-right: 4px;"></i> 3 Months</div>
+              <div class="pro-spec-item"><i class="fa-solid fa-globe" style="color: var(--text-muted); margin-right: 4px;"></i> Online</div>
+            </div>
+            <div class="pro-card-batch-status">
+              <span>Batch Starts on <span class="badge-pill badge-green" style="font-size: 0.74rem;"><i class="fa-solid fa-circle-dot" style="font-size: 0.55rem;"></i> Starts Soon</span></span>
+            </div>
+            <button type="button" class="btn-enterprise-primary" onclick="openSyllabus('marketing')" style="width: 100%; justify-content: center; gap: 0.5rem;">
+              <span>Explore SEO Analyst</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Storytelling & Content Writing -->
+        <div class="pro-clean-card course-card">
+          <div class="course-card-thumb thumb-cat-marketing">
+            <img src="assets/images/storytelling-writing.jpg" alt="Storytelling &amp; Content Writing" class="course-thumb-img">
+            <span class="badge-pill thumb-badge badge-marketing"><i class="fa-solid fa-bullhorn"></i> MARKETING LAB</span>
+          </div>
+          <div class="pro-card-body-content">
+            <h3 class="pro-card-title-text">Storytelling &amp; Content Writing</h3>
+            <div class="pro-card-specs-row">
+              <div class="pro-spec-item"><i class="fa-regular fa-clock" style="color: var(--text-muted); margin-right: 4px;"></i> 3 Months</div>
+              <div class="pro-spec-item"><i class="fa-solid fa-globe" style="color: var(--text-muted); margin-right: 4px;"></i> Online</div>
+            </div>
+            <div class="pro-card-batch-status">
+              <span>Batch Starts on <span class="badge-pill badge-green" style="font-size: 0.74rem;"><i class="fa-solid fa-circle-dot" style="font-size: 0.55rem;"></i> Starts Soon</span></span>
+            </div>
+            <button type="button" class="btn-enterprise-primary" onclick="openSyllabus('marketing')" style="width: 100%; justify-content: center; gap: 0.5rem;">
+              <span>Explore Content Writing</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Advanced Tech & DevOps -->
+    <section class="pro-category-block" id="sec-devops">
+      <div class="pro-cat-header-row">
+        <h2 class="pro-cat-title-h2">Advanced Tech &amp; DevOps</h2>
+        <a href="#sec-devops" class="pro-cat-viewall-link">
+          <span>View All Advanced Tech &amp; DevOps</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <div class="pro-cards-grid-3col">
+        <!-- Cloud & DevOps Engineering -->
+        <div class="pro-clean-card course-card">
+          <div class="course-card-thumb thumb-cat-devops">
+            <img src="assets/images/devops-cloud.jpg" alt="Cloud &amp; DevOps Engineering" class="course-thumb-img">
+            <span class="badge-pill thumb-badge badge-devops"><i class="fa-solid fa-cloud"></i> DEVOPS &amp; CLOUD</span>
+          </div>
+          <div class="pro-card-body-content">
+            <h3 class="pro-card-title-text">Cloud &amp; DevOps Engineering</h3>
+            <div class="pro-card-specs-row">
+              <div class="pro-spec-item"><i class="fa-regular fa-clock" style="color: var(--text-muted); margin-right: 4px;"></i> 6 Months</div>
+              <div class="pro-spec-item"><i class="fa-solid fa-globe" style="color: var(--text-muted); margin-right: 4px;"></i> Online</div>
+            </div>
+            <div class="pro-card-batch-status">
+              <span>Batch Starts on <span class="badge-pill badge-green" style="font-size: 0.74rem;"><i class="fa-solid fa-circle-dot" style="font-size: 0.55rem;"></i> Starts Soon</span></span>
+            </div>
+            <button type="button" class="btn-enterprise-primary" onclick="openSyllabus('devops')" style="width: 100%; justify-content: center; gap: 0.5rem;">
+              <span>Explore Cloud &amp; DevOps</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- QA Automation Testing -->
+        <div class="pro-clean-card course-card">
+          <div class="course-card-thumb thumb-cat-devops">
+            <img src="assets/images/qa-automation.jpg" alt="QA Automation Testing" class="course-thumb-img">
+            <span class="badge-pill thumb-badge badge-devops"><i class="fa-solid fa-cloud"></i> DEVOPS &amp; CLOUD</span>
+          </div>
+          <div class="pro-card-body-content">
+            <h3 class="pro-card-title-text">QA Automation Testing</h3>
+            <div class="pro-card-specs-row">
+              <div class="pro-spec-item"><i class="fa-regular fa-clock" style="color: var(--text-muted); margin-right: 4px;"></i> 4 Months</div>
+              <div class="pro-spec-item"><i class="fa-solid fa-globe" style="color: var(--text-muted); margin-right: 4px;"></i> Online</div>
+            </div>
+            <div class="pro-card-batch-status">
+              <span>Batch Starts on <span class="badge-pill badge-green" style="font-size: 0.74rem;"><i class="fa-solid fa-circle-dot" style="font-size: 0.55rem;"></i> Starts Soon</span></span>
+            </div>
+            <button type="button" class="btn-enterprise-primary" onclick="openSyllabus('devops')" style="width: 100%; justify-content: center; gap: 0.5rem;">
+              <span>Explore QA Automation</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Mobile App Development -->
+        <div class="pro-clean-card course-card">
+          <div class="course-card-thumb thumb-cat-devops">
+            <img src="assets/images/mobile-app-dev.jpg" alt="Mobile App Development" class="course-thumb-img">
+            <span class="badge-pill thumb-badge badge-devops"><i class="fa-solid fa-cloud"></i> DEVOPS &amp; CLOUD</span>
+          </div>
+          <div class="pro-card-body-content">
+            <h3 class="pro-card-title-text">Mobile App Development</h3>
+            <div class="pro-card-specs-row">
+              <div class="pro-spec-item"><i class="fa-regular fa-clock" style="color: var(--text-muted); margin-right: 4px;"></i> 5 Months</div>
+              <div class="pro-spec-item"><i class="fa-solid fa-globe" style="color: var(--text-muted); margin-right: 4px;"></i> Online</div>
+            </div>
+            <div class="pro-card-batch-status">
+              <span>Batch Starts on <span class="badge-pill badge-green" style="font-size: 0.74rem;"><i class="fa-solid fa-circle-dot" style="font-size: 0.55rem;"></i> Starts Soon</span></span>
+            </div>
+            <button type="button" class="btn-enterprise-primary" onclick="openSyllabus('fullstack')" style="width: 100%; justify-content: center; gap: 0.5rem;">
+              <span>Explore Mobile App Development</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. Business & Management -->
+    <section class="pro-category-block" id="sec-business">
+      <div class="pro-cat-header-row">
+        <h2 class="pro-cat-title-h2">Business &amp; Management</h2>
+        <a href="#sec-business" class="pro-cat-viewall-link">
+          <span>View All Business &amp; Management</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <div class="pro-cards-grid-3col">
+        <!-- HR & Finance Management -->
+        <div class="pro-clean-card course-card">
+          <div class="course-card-thumb thumb-cat-business">
+            <img src="assets/images/hr-finance.jpg" alt="HR &amp; Finance Management" class="course-thumb-img">
+            <span class="badge-pill thumb-badge badge-business"><i class="fa-solid fa-briefcase"></i> BUSINESS &amp; MGMT</span>
+          </div>
+          <div class="pro-card-body-content">
+            <h3 class="pro-card-title-text">HR &amp; Finance Management</h3>
+            <div class="pro-card-specs-row">
+              <div class="pro-spec-item"><i class="fa-regular fa-clock" style="color: var(--text-muted); margin-right: 4px;"></i> 4 Months</div>
+              <div class="pro-spec-item"><i class="fa-solid fa-globe" style="color: var(--text-muted); margin-right: 4px;"></i> Online</div>
+            </div>
+            <div class="pro-card-batch-status">
+              <span>Batch Starts on <span class="badge-pill badge-green" style="font-size: 0.74rem;"><i class="fa-solid fa-circle-dot" style="font-size: 0.55rem;"></i> Starts Soon</span></span>
+            </div>
+            <button type="button" class="btn-enterprise-primary" onclick="openSyllabus('marketing')" style="width: 100%; justify-content: center; gap: 0.5rem;">
+              <span>Explore HR &amp; Finance</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Tally Prime & Accounting -->
+        <div class="pro-clean-card course-card">
+          <div class="course-card-thumb thumb-cat-business">
+            <img src="assets/images/tally-prime.jpg" alt="Tally Prime &amp; Accounting" class="course-thumb-img">
+            <span class="badge-pill thumb-badge badge-business"><i class="fa-solid fa-briefcase"></i> BUSINESS &amp; MGMT</span>
+          </div>
+          <div class="pro-card-body-content">
+            <h3 class="pro-card-title-text">Tally Prime &amp; Accounting</h3>
+            <div class="pro-card-specs-row">
+              <div class="pro-spec-item"><i class="fa-regular fa-clock" style="color: var(--text-muted); margin-right: 4px;"></i> 2 Months</div>
+              <div class="pro-spec-item"><i class="fa-solid fa-globe" style="color: var(--text-muted); margin-right: 4px;"></i> Online</div>
+            </div>
+            <div class="pro-card-batch-status">
+              <span>Batch Starts on <span class="badge-pill badge-green" style="font-size: 0.74rem;"><i class="fa-solid fa-circle-dot" style="font-size: 0.55rem;"></i> Starts Soon</span></span>
+            </div>
+            <button type="button" class="btn-enterprise-primary" onclick="openSyllabus('marketing')" style="width: 100%; justify-content: center; gap: 0.5rem;">
+              <span>Explore Tally Prime</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Business Analyst -->
+        <div class="pro-clean-card course-card">
+          <div class="course-card-thumb thumb-cat-business">
+            <img src="assets/images/business-analyst.jpg" alt="Business Analyst" class="course-thumb-img">
+            <span class="badge-pill thumb-badge badge-business"><i class="fa-solid fa-briefcase"></i> BUSINESS &amp; MGMT</span>
+          </div>
+          <div class="pro-card-body-content">
+            <h3 class="pro-card-title-text">Business Analyst</h3>
+            <div class="pro-card-specs-row">
+              <div class="pro-spec-item"><i class="fa-regular fa-clock" style="color: var(--text-muted); margin-right: 4px;"></i> 5 Months</div>
+              <div class="pro-spec-item"><i class="fa-solid fa-globe" style="color: var(--text-muted); margin-right: 4px;"></i> Online</div>
+            </div>
+            <div class="pro-card-batch-status">
+              <span>Batch Starts on <span class="badge-pill badge-green" style="font-size: 0.74rem;"><i class="fa-solid fa-circle-dot" style="font-size: 0.55rem;"></i> Starts Soon</span></span>
+            </div>
+            <button type="button" class="btn-enterprise-primary" onclick="openSyllabus('aiml')" style="width: 100%; justify-content: center; gap: 0.5rem;">
+              <span>Explore Business Analyst</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 4. PRE-FOOTER BANNER -->
+  <!-- 5. PRE-FOOTER BANNER -->
+  <section class="pro-prefooter-wrapper">
+    <div class="pro-prefooter-banner-box">
+      <div class="pro-prefooter-text-col">
+        <h2>Ready to Future-Proof Your Career?</h2>
+        <p>Join the AI revolution with Karka Academy today and start your journey with industry mentors.</p>
+      </div>
+      <div class="pro-prefooter-btn-col">
+        <button type="button" class="btn-pro-prefooter-apply open-apply-modal" onclick="openModal('applyModal')">
+          Apply for Admission
+        </button>
+        <a href="professionals.html" class="btn-pro-prefooter-explore">
+          Explore Courses
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. SHARED FOOTER -->
+  <footer class="pro-footer-clean">
+    <div class="pro-footer-container">
+      <div class="pro-footer-grid">
+
+        <!-- Column 1: Brand Info -->
+        <div>
+          <div class="pro-footer-brand-title">
+            கற்க <span>AI &amp; TECH</span>
+          </div>
+          <p class="pro-footer-desc">
+            Empowering the next generation of developers with GenAI Infused education and placement-focused mentorship.
+          </p>
+          <div class="pro-footer-socials">
+            <a href="https://facebook.com" class="pro-social-pill" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://instagram.com" class="pro-social-pill" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://linkedin.com" class="pro-social-pill" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+        </div>
+
+        <!-- Column 2: OUR PROGRAMS -->
+        <div>
+          <div class="pro-footer-heading">OUR PROGRAMS</div>
+          <ul class="pro-footer-links-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="professionals.html">All Courses</a></li>
+            <li><a href="graduates.html">Placement &amp; PAP</a></li>
+            <li><a href="index.html#curriculum">Free Roadmap</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: KARKA ACADEMY -->
+        <div>
+          <div class="pro-footer-heading">KARKA ACADEMY</div>
+          <ul class="pro-footer-links-list">
+            <li><a href="index.html#whyChooseUs">About Us</a></li>
+            <li><a href="index.html#internship">Our Mentors</a></li>
+            <li><a href="index.html#stories">Success Stories</a></li>
+            <li><a href="index.html#platforms">Blog</a></li>
+            <li><a href="index.html#contactForm">Hire From Us</a></li>
+            <li><a href="index.html#contactForm">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: STAY UPDATED -->
+        <div>
+          <div class="pro-footer-heading">STAY UPDATED</div>
+          <form class="pro-footer-newsletter" onsubmit="event.preventDefault(); alert('Subscribed to Karka Academy updates!'); this.reset();">
+            <input type="email" placeholder="Your email address" class="pro-footer-input" required>
+            <button type="submit" class="pro-footer-btn">Join</button>
+          </form>
+          <div class="pro-footer-contact-items">
+            <div>
+              <a href="https://www.google.com/maps/search/?api=1&query=Karka+AI+%26+Tech+Academy+SRV+Towers+Nagercoil" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none; display: flex; align-items: flex-start; gap: 6px;">
+                <i class="fa-solid fa-location-dot" style="margin-top: 3px;"></i>
+                <span>Ground floor, SRV Towers, Muthamizh St, near Girias Veppamoodu, Nagercoil, Tamil Nadu 629001</span>
+              </a>
+            </div>
+            <div>
+              <a href="tel:+919487530243" style="color: inherit; text-decoration: none; display: flex; align-items: center; gap: 6px;">
+                <i class="fa-solid fa-phone"></i>
+                <span>+91 94875 30243</span>
+              </a>
+            </div>
+          </div>
+          <div class="pro-footer-map-embed">
+            <a href="https://www.google.com/maps/search/?api=1&query=Karka+AI+%26+Tech+Academy+SRV+Towers+Nagercoil" target="_blank" rel="noopener noreferrer" title="Open Google Maps Location">
+              <iframe
+                src="https://maps.google.com/maps?q=Ground%20floor%2C%20SRV%20Towers%2C%20Muthamizh%20St%2C%20near%20Girias%20Veppamoodu%2C%20Nagercoil%2C%20Tamil%20Nadu%20629001&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                title="Karka Academy HQ Nagercoil" style="border:0; pointer-events: none;"></iframe>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Copyright Bottom Bar -->
+      <div class="pro-footer-bottom-line">
+        <div>
+          © 2026 Karka Academy. All rights reserved.
+        </div>
+        <div class="passion-tag">
+          BUILT WITH PASSION BY KARKA
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- MULTI-STEP ADMISSION MODAL -->
+  <div class="modal-backdrop" id="applyModal">
+    <div class="modal-dialog">
+      <button class="modal-close-btn" onclick="closeModal('applyModal')">&times;</button>
+      <div class="modal-header">
+        <span class="badge-pill badge-green" style="margin-bottom: 0.6rem;">₹0 Upfront PAP Admission 2026</span>
+        <h3 style="font-size: 1.45rem; font-weight: 800;">Verify Your ₹0 PAP Eligibility</h3>
+        <p style="color: var(--text-secondary); font-size: 0.88rem;">60-second assessment for upcoming full-time &amp; studio lab batch.</p>
+        <div class="modal-progress" style="display: flex; gap: 0.5rem; margin-top: 1.2rem;">
+          <div class="progress-step active" id="prog-1"></div>
+          <div class="progress-step" id="prog-2"></div>
+          <div class="progress-step" id="prog-3"></div>
+          <div class="progress-step" id="prog-4"></div>
+        </div>
+      </div>
+
+      <div class="modal-body">
+        <form id="papApplicationForm">
+          <!-- STEP 1: Basic Information -->
+          <div class="form-step active" id="step-1">
+            <div class="form-group">
+              <label class="form-label" for="appName">Full Name *</label>
+              <input type="text" id="appName" class="form-input" placeholder="e.g. Vignesh Kumar" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="appEmail">Email Address *</label>
+              <input type="email" id="appEmail" class="form-input" placeholder="vignesh@gmail.com" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="appPhone">WhatsApp Mobile *</label>
+              <input type="tel" id="appPhone" class="form-input" placeholder="+91 94875 30243" required>
+            </div>
+            <div class="form-btn-row" style="display:flex; justify-content:flex-end;">
+              <button type="button" class="btn-enterprise-primary" onclick="goToStep(2)">
+                <span>Next: Graduation Details</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 2: Degree & PAP Track -->
+          <div class="form-step" id="step-2">
+            <div class="form-group">
+              <label class="form-label" for="appEdu">Degree &amp; Graduation Year *</label>
+              <select id="appEdu" class="form-select" required>
+                <option value="be-btech-2025" selected>B.E / B.Tech (2024 / 2025 / 2026 Batch)</option>
+                <option value="bca-mca">BCA / MCA / BSc / MSc Computer Science</option>
+                <option value="non-cs-grad">Non-CS Graduate (Mechanical, Civil, Arts &amp; Science)</option>
+                <option value="career-gap">Career Gap / Looking for fresh tech start</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="appTrack">Target PAP Career Track *</label>
+              <select id="appTrack" class="form-select" required>
+                <option value="mern-fullstack" selected>MERN Fullstack Engineering (₹0 Upfront)</option>
+                <option value="ai-datascience">AI &amp; Data Science Specialist (₹0 Upfront)</option>
+                <option value="cloud-devops">Cloud &amp; DevOps Engineering (₹0 Upfront)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="appCampus">Learning Location *</label>
+              <select id="appCampus" class="form-select" required>
+                <option value="nagercoil" selected>Nagercoil Living Lab &amp; Studio (Recommended)</option>
+                <option value="online">Online Interactive Virtual Classroom</option>
+              </select>
+            </div>
+            <div class="form-btn-row" style="display:flex; justify-content:space-between;">
+              <button type="button" class="btn-secondary" onclick="goToStep(1)">Back</button>
+              <button type="button" class="btn-enterprise-primary" onclick="goToStep(3)">
+                <span>Next: Commitment Check</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 3: Commitment -->
+          <div class="form-step" id="step-3">
+            <div class="form-group">
+              <label class="form-label" for="appBatch">Can you dedicate 8 hours daily for 6 months? *</label>
+              <select id="appBatch" class="form-select" required>
+                <option value="full-time-yes" selected>Yes, 100% full-time dedicated commitment</option>
+                <option value="flexible">Flexible schedule required</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="appGoal">Why do you want to switch to tech? *</label>
+              <input type="text" id="appGoal" class="form-input" placeholder="e.g. Passion for software engineering, financial freedom" required>
+            </div>
+            <div class="form-btn-row" style="display:flex; justify-content:space-between;">
+              <button type="button" class="btn-secondary" onclick="goToStep(2)">Back</button>
+              <button type="submit" class="btn-enterprise-primary">
+                <span>Submit PAP Application</span>
+                <i class="fa-solid fa-check"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 4: Success Confirmation -->
+          <div class="form-step" id="step-4" style="text-align: center; padding: 1.5rem 0;">
+            <div style="width: 70px; height: 70px; border-radius: 50%; background: #dcfce7; color: #16a34a; font-size: 2rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.2rem;">
+              <i class="fa-solid fa-check"></i>
+            </div>
+            <h4 style="font-size: 1.35rem; font-weight: 800; color: #0f172a; margin-bottom: 0.5rem;">Congratulations, <span id="resUserName">Applicant</span>!</h4>
+            <p style="color: #64748b; font-size: 0.92rem; line-height: 1.6; max-width: 420px; margin: 0 auto 1.5rem;">
+              Your ₹0 Upfront PAP Application for <strong id="resUserTrack" style="color: #059669;">MERN Fullstack Engineering</strong> has been submitted. Our admission counselor will schedule your technical aptitude evaluation.
+            </p>
+            <div style="background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 12px; padding: 1rem; margin-bottom: 1.5rem; display: inline-block;">
+              <span style="font-size: 0.8rem; color: #64748b; text-transform: uppercase; font-weight: 700;">PAP Application Token</span>
+              <div id="resUserToken" style="font-family: monospace; font-size: 1.2rem; font-weight: 900; color: #0f172a;">KARKA-PAP-2026</div>
+            </div>
+            <div>
+              <button type="button" class="btn-enterprise-primary" onclick="closeModal('applyModal')" style="width: 100%;">
+                Done &amp; Return to Page
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- SYLLABUS PREVIEW MODAL -->
+  <div class="modal-backdrop" id="syllabusModal">
+    <div class="modal-dialog">
+      <button class="modal-close-btn" onclick="closeSyllabusModal()">&times;</button>
+      <div class="modal-header">
+        <h3 id="syllabusModalTitle" style="font-size: 1.45rem; font-weight: 800;">Curriculum &amp; Placement Milestones</h3>
+        <p id="syllabusModalSubtitle" style="color: var(--text-secondary); font-size: 0.85rem;">Detailed syllabus modules &amp; studio lab deliverables</p>
+      </div>
+      <div class="modal-body" id="syllabusModalContent"></div>
+    </div>
+  </div>
+
+  <!-- UNIVERSAL MOBILE DRAWER -->
+  <div class="pro-drawer-overlay" id="proDrawerOverlay" onclick="closeProDrawer()"></div>
+  <aside class="pro-mobile-drawer" id="proDrawer" aria-label="Mobile Navigation">
+    <button class="pro-drawer-close-btn" onclick="closeProDrawer()" aria-label="Close Menu">&times;</button>
+    <a href="index.html" class="pro-logo-group" style="margin-bottom: 1rem;">
+      <span class="pro-logo-tamil">கற்க</span>
+      <span class="pro-logo-sep"></span>
+      <span class="pro-logo-sub"><span>AI &amp; TECH</span> Academy</span>
+    </a>
+    <ul class="pro-drawer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="school-students.html">School Students</a></li>
+      <li><a href="college-students.html">College Students</a></li>
+      <li><a href="graduates.html" class="active-link">Graduates</a></li>
+      <li><a href="professionals.html">Professionals</a></li>
+    </ul>
+    <div style="margin-top: auto; padding-top: 1.5rem;">
+      <button type="button" class="btn-pro-enroll-solid open-apply-modal" onclick="closeProDrawer(); openModal('applyModal');" style="width: 100%;">
+        ENROLL NOW
+      </button>
+    </div>
+  </aside>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
