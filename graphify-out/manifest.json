@@ -69,11 +69,6 @@
     "ast_hash": "f15970e7e6fb158ebec761dfe0d93956",
     "semantic_hash": ""
   },
-  "scratch_check.py": {
-    "mtime": 1792916517.494634,
-    "ast_hash": "b5684c672e9672eb2f7999a109463de2",
-    "semantic_hash": ""
-  },
   "assets/images/datascience-internship.jpg": {
     "mtime": 1792942168.1658254,
     "ast_hash": "501e32a3e45d1c77406c44d5993621ed",
@@ -107,11 +102,6 @@
   "assets/images/uiux-internship.jpg": {
     "mtime": 1792942168.1976824,
     "ast_hash": "d52026eef95a3377b0808b28848fc033",
-    "semantic_hash": ""
-  },
-  "test_polish.py": {
-    "mtime": 1792917541.413282,
-    "ast_hash": "b3e33403f3e7045a7616a6be522f7577",
     "semantic_hash": ""
   },
   "assets/images/school-html-css.jpg": {

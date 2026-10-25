@@ -724,16 +724,6 @@
       "norm_label": "app"
     },
     {
-      "label": "scratch_check.py",
-      "file_type": "code",
-      "source_file": "scratch_check.py",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "scratch_check",
-      "community": 3,
-      "norm_label": "scratch_check.py"
-    },
-    {
       "label": "script.js",
       "file_type": "code",
       "source_file": "script.js",
@@ -742,16 +732,6 @@
       "id": "script",
       "community": 6,
       "norm_label": "script.js"
-    },
-    {
-      "label": "test_polish.py",
-      "file_type": "code",
-      "source_file": "test_polish.py",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "test_polish",
-      "community": 5,
-      "norm_label": "test_polish.py"
     }
   ],
   "links": [
@@ -1512,9 +1492,9 @@
       "source_file": "backend/server.js",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_server",
-      "target": "backend_server_dns",
-      "confidence_score": 1.0
+      "target": "backend_server_dns"
     },
     {
       "relation": "contains",
@@ -1548,5 +1528,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "fa8bcea398383655d941a16f65fd8f85144ebc60"
+  "built_at_commit": "ab3ccb8afd5bddfc0d785b1874fea3ecc29ebc5d"
 }

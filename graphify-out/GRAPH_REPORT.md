@@ -1,16 +1,16 @@
 # Graph Report - karka-academy  (2026-10-26)
 
 ## Corpus Check
-- 8 files · ~563,718 words
+- 6 files · ~563,271 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 75 nodes · 78 edges · 10 communities
+- 73 nodes · 78 edges · 8 communities
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `fa8bcea3`
+- Built from commit: `ab3ccb8a`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -41,7 +41,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (10 total, 0 thin omitted)
+## Communities (8 total, 0 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.07
@@ -79,7 +79,7 @@ Nodes (11): app, ContactLead, cors, dns, EnrollmentLead, express, mongoose, Cont
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `dependencies` connect `Community 8` to `Community 7`?**
-  _High betweenness centrality (0.026) - this node is a cross-community bridge._
+  _High betweenness centrality (0.027) - this node is a cross-community bridge._
 - **Why does `openModal()` connect `Community 2` to `Community 0`?**
   _High betweenness centrality (0.001) - this node is a cross-community bridge._
 - **What connects `aiKnowledgeBase`, `storiesData`, `syllabusData` to the rest of the system?**
