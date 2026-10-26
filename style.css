@@ -6620,17 +6620,21 @@ button.faq-question,
 
 @media (max-width: 640px) {
   .pro-hero-card-clean {
-    padding: 2.2rem 1.4rem 0;
+    padding: 1.8rem 1.25rem 1.5rem;
     border-radius: 20px;
   }
 
   .pro-feature-pills-row {
-    flex-direction: column;
-    align-items: stretch;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
   }
 
   .pro-badge-pill-item {
-    width: 100%;
+    width: auto;
+    display: inline-flex;
     justify-content: center;
   }
 
@@ -7642,6 +7646,62 @@ input[type=range], .infosys-range-slider {
     padding: 12px 24px !important;
     transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
   }
+
+  .pro-hero-cta-wrap, .hero-btn-group {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 1rem !important;
+    margin: 1.25rem 0 1rem 0 !important;
+  }
+
+  .pro-hero-cta-wrap .btn-primary,
+  .hero-btn-group .btn-primary {
+    background: #0070f3 !important;
+    color: #ffffff !important;
+    border: none !important;
+    padding: 12px 26px !important;
+    font-size: 0.95rem !important;
+    font-weight: 700 !important;
+    border-radius: 9999px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    cursor: pointer !important;
+    box-shadow: 0 4px 14px rgba(0, 112, 243, 0.3) !important;
+    transition: all 0.25s ease !important;
+    text-decoration: none !important;
+  }
+
+  .pro-hero-cta-wrap .btn-primary:hover,
+  .hero-btn-group .btn-primary:hover {
+    background: #0056b3 !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(0, 112, 243, 0.4) !important;
+  }
+
+  .pro-hero-cta-wrap .btn-secondary,
+  .hero-btn-group .btn-secondary {
+    background: var(--bg-subtle) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid var(--border-hairline) !important;
+    padding: 12px 24px !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+    border-radius: 9999px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    text-decoration: none !important;
+    transition: all 0.25s ease !important;
+  }
+
+  .pro-hero-cta-wrap .btn-secondary:hover,
+  .hero-btn-group .btn-secondary:hover {
+    background: var(--bg-surface) !important;
+    border-color: #0070f3 !important;
+    color: #0070f3 !important;
+    transform: translateY(-2px) !important;
+  }
 }
 
 /* ==========================================================================
@@ -7668,13 +7728,13 @@ input[type=range], .infosys-range-slider {
     height: auto !important;
   }
 
-  /* Top Bar: Compact height (padding: 6px 12px), single row, hide social icons/phone text, show admissions pill badge cleanly */
+  /* Top Bar: Compact height (padding: 6px 12px), single row, hide phone/social text, show admissions pill badge cleanly */
   .top-bar, .announcement-bar, .top-ticker-banner, .infosys-top-strip {
     display: flex !important;
     justify-content: space-between !important;
     align-items: center !important;
     padding: 6px 12px !important;
-    font-size: 0.72rem !important;
+    font-size: 0.75rem !important;
     overflow: hidden !important;
     width: 100% !important;
     height: auto !important;
@@ -7700,21 +7760,32 @@ input[type=range], .infosys-range-slider {
   .strip-batch-pill, .chip-upcoming {
     display: inline-flex !important;
     font-size: 0.72rem !important;
+    font-weight: 700 !important;
     padding: 3px 8px !important;
+    border-radius: 9999px !important;
   }
 
-  /* Header & Hamburger Drawer:
-     - Header displays brand logo on the left (max-width: 150px) and hamburger icon (☰) on the right.
-     - Hide desktop nav links and desktop enroll button from header row. */
+  .top-strip-right {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    margin-left: auto !important;
+  }
+
+  /* Header & Navigation:
+     - Brand logo on left (max-width: 150px)
+     - Hamburger icon (☰) on right
+     - Hide desktop nav links, desktop enroll CTA, and separate mobile courses pill from header row */
   header, .header, .main-header, .navbar, .pro-header-clean, .navbar-infosys {
     display: flex !important;
     justify-content: space-between !important;
     align-items: center !important;
-    padding: 8px 14px !important;
+    padding: 10px 16px !important;
     width: 100% !important;
     height: auto !important;
     min-height: 60px !important;
     box-sizing: border-box !important;
+    background: var(--bg-surface) !important;
   }
 
   .pro-header-inner, .nav-main-layout {
@@ -7730,6 +7801,8 @@ input[type=range], .infosys-range-slider {
   .logo, .logo-wrapper, .logo img, .pro-logo-group {
     max-width: 150px !important;
     height: auto !important;
+    display: inline-flex !important;
+    align-items: center !important;
   }
 
   .pro-logo-tamil {
@@ -7740,13 +7813,14 @@ input[type=range], .infosys-range-slider {
     font-size: 0.72rem !important;
   }
 
-  /* Hide desktop nav links and desktop enroll button from header row */
+  /* Hide desktop nav links, separate courses pill, and header enroll button */
   .nav-links, 
   .pro-nav-links, 
   .nav-menu-links, 
   .desktop-nav, 
   .dropdown, 
   .courses-dropdown,
+  .mobile-courses-btn,
   header .btn-enroll,
   .header .btn-enroll,
   .header .btn-pro-enroll-solid,
@@ -7767,14 +7841,19 @@ input[type=range], .infosys-range-slider {
     justify-content: center !important;
     font-size: 1.6rem !important;
     cursor: pointer !important;
-    color: #0b57d0 !important;
+    color: #0070f3 !important;
     background: transparent !important;
     border: none !important;
-    padding: 4px !important;
+    padding: 6px !important;
     margin-left: auto !important;
   }
 
-  /* Mobile Drawer & Full-width "ENROLL NOW" Button */
+  /* Mobile Slide Drawers */
+  .pro-mobile-drawer, .enterprise-drawer {
+    width: 82% !important;
+    max-width: 320px !important;
+  }
+
   .pro-mobile-drawer .btn-pro-enroll-solid,
   .enterprise-drawer .btn-enterprise-primary,
   .pro-mobile-drawer .open-apply-modal,
@@ -7786,20 +7865,17 @@ input[type=range], .infosys-range-slider {
     align-items: center !important;
     font-size: 1rem !important;
     font-weight: 800 !important;
+    border-radius: 12px !important;
   }
 
-  /* Hero Section:
-     - Strict vertical stacking: flex-direction: column !important; text-align: center !important.
-     - Headline: font-size: clamp(1.6rem, 5vw, 2rem) !important; line-height: 1.25 !important;
-     - Paragraphs & Subtitles: font-size: 0.95rem !important; line-height: 1.5 !important; max-width: 92% !important; margin: 0 auto 1.5rem auto !important;
-     - Hero Image: width: 100% !important; max-width: 290px !important; height: auto !important; margin: 0 auto !important; display: block !important;
-     - CTA Button: width: 92% !important; max-width: 340px !important; margin: 0 auto !important; padding: 14px 20px !important; font-size: 1rem !important; min-height: 48px !important; */
+  /* HERO SECTION: Clean, balanced mobile app layout */
   .hero-exclusive-section, .hero, .professionals-hero, .pro-hero-container {
     display: flex !important;
     flex-direction: column !important;
-    padding: 1.5rem 1rem !important;
+    padding: 1rem !important;
+    margin: 0 auto !important;
     text-align: center !important;
-    gap: 1.5rem !important;
+    gap: 1rem !important;
     width: 100% !important;
     max-width: 100% !important;
     box-sizing: border-box !important;
@@ -7810,161 +7886,382 @@ input[type=range], .infosys-range-slider {
     flex-direction: column !important;
     align-items: center !important;
     text-align: center !important;
-    padding: 1.5rem 1rem !important;
-    gap: 1.5rem !important;
+    padding: 1.75rem 1.25rem 1.5rem !important;
+    gap: 1.25rem !important;
     width: 100% !important;
     max-width: 100% !important;
+    border-radius: 20px !important;
+    background: var(--bg-surface) !important;
+    border: 1px solid var(--border-hairline) !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05) !important;
     box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+
+  .pro-hero-card-clean::before {
+    display: none !important;
   }
 
   .hero-content, .hero-text, .hero-left-content, .pro-hero-left-content {
     max-width: 100% !important;
     width: 100% !important;
+    padding: 0 !important;
     text-align: center !important;
     box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 0.85rem !important;
   }
 
-  .hero h1, .hero-title, .pro-hero-card-clean h1, .pro-hero-h1-clean, .hero-headline {
-    font-size: clamp(1.6rem, 5vw, 2rem) !important;
-    line-height: 1.25 !important;
-    word-break: break-word !important;
-  }
-
-  .hero p, .hero-subtitle, .pro-hero-card-clean p, .hero-subhead {
-    font-size: 0.95rem !important;
-    line-height: 1.5 !important;
-    max-width: 92% !important;
-    margin: 0 auto 1.5rem auto !important;
-  }
-
+  /* Top Category Badges */
   .hero-pill-badge, .exclusive-badge, .hero-badge,
-  .hero-exclusive-tag, .pro-pill-badge, .hero-badges,
-  .features-row, .meta-tags, .pro-feature-pills-row {
-    font-size: 0.78rem !important;
-    padding: 6px 12px !important;
+  .hero-exclusive-tag, .pro-pill-badge {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.45rem !important;
+    font-size: 0.8rem !important;
+    font-weight: 700 !important;
+    padding: 6px 14px !important;
+    border-radius: 9999px !important;
+    background: var(--bg-subtle) !important;
+    color: var(--infosys-electric-blue) !important;
+    border: 1px solid var(--border-hairline) !important;
+    margin: 0 auto !important;
+    width: fit-content !important;
     max-width: 95% !important;
-    margin: 0 auto 1rem auto !important;
-    white-space: normal !important;
     line-height: 1.3 !important;
     box-sizing: border-box !important;
-    display: flex !important;
-    flex-wrap: wrap !important;
-    justify-content: center !important;
-    gap: 0.5rem !important;
   }
 
+  /* Headlines */
+  .hero h1, .hero-title, .pro-hero-card-clean h1, .pro-hero-h1-clean, .hero-headline {
+    font-size: clamp(1.65rem, 5.5vw, 2.15rem) !important;
+    line-height: 1.25 !important;
+    font-weight: 800 !important;
+    word-break: break-word !important;
+    margin: 0 auto !important;
+    text-align: center !important;
+  }
+
+  /* Paragraphs & Subtitles */
+  .hero p, .hero-subtitle, .pro-hero-card-clean p, .hero-subhead, .pro-hero-subtitle {
+    font-size: 0.95rem !important;
+    line-height: 1.55 !important;
+    color: var(--text-secondary) !important;
+    max-width: 95% !important;
+    margin: 0 auto !important;
+    text-align: center !important;
+  }
+
+  /* Hero CTA Buttons */
+  .hero-cta-group, .hero-btn-group, .pro-hero-cta-wrap {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+    max-width: 320px !important;
+    margin: 0.5rem auto !important;
+    padding: 0 !important;
+    gap: 0.75rem !important;
+  }
+
+  .btn-hero-primary, .hero .btn-primary, .professionals-hero .btn-primary,
+  .pro-hero-container .btn-primary, .btn-hero-cta, .hero .open-apply-modal,
+  .pro-hero-cta-wrap .btn-primary {
+    width: 100% !important;
+    min-height: 48px !important;
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+    border-radius: 12px !important;
+    padding: 12px 20px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.5rem !important;
+    background: #0070f3 !important;
+    color: #ffffff !important;
+    border: none !important;
+    box-shadow: 0 4px 14px rgba(0, 112, 243, 0.25) !important;
+    box-sizing: border-box !important;
+    text-decoration: none !important;
+  }
+
+  .btn-secondary, .pro-hero-cta-wrap .btn-secondary, .hero-cta-group .btn-secondary {
+    width: 100% !important;
+    min-height: 44px !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+    border-radius: 12px !important;
+    padding: 10px 18px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.5rem !important;
+    background: var(--bg-subtle) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid var(--border-hairline) !important;
+    box-sizing: border-box !important;
+    text-decoration: none !important;
+  }
+
+  /* Compact Feature Badges Row */
+  .pro-feature-pills-row {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 8px !important;
+    padding: 0 !important;
+    margin: 0.5rem auto 1rem auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .pro-badge-pill-item {
+    display: inline-flex !important;
+    flex: 0 1 auto !important;
+    width: auto !important;
+    max-width: fit-content !important;
+    align-items: center !important;
+    gap: 6px !important;
+    padding: 6px 12px !important;
+    font-size: 0.78rem !important;
+    font-weight: 600 !important;
+    border-radius: 9999px !important;
+    background: var(--bg-surface) !important;
+    border: 1px solid var(--border-hairline) !important;
+    color: var(--text-secondary) !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+    white-space: nowrap !important;
+  }
+
+  /* Hero Image/Visual: Neatly framed, rounded, subtle shadow */
   .hero-image, .hero-img-wrapper, .pro-hero-image-wrap,
   .pro-hero-img-wrap, .hero-visual-wrapper, .mascot-image-card {
     width: 100% !important;
-    max-width: 290px !important;
+    max-width: 280px !important;
     height: auto !important;
-    margin: 0 auto !important;
-    display: block !important;
+    margin: 0.5rem auto 0 auto !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
   }
 
   .hero-image img, .hero-img-wrapper img, .pro-hero-image-wrap img,
   .pro-hero-img-wrap img, .hero-visual-wrapper img, .mascot-image-card img {
     width: 100% !important;
-    max-width: 290px !important;
+    max-width: 280px !important;
     height: auto !important;
-    margin: 0 auto !important;
+    max-height: 300px !important;
+    object-fit: cover !important;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 24px -4px rgba(0, 112, 243, 0.16) !important;
     display: block !important;
-  }
-
-  .hero-cta-group, .hero-btn-group {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    width: 100% !important;
-    gap: 0.75rem !important;
-  }
-
-  .btn-hero-primary, .hero .btn-primary, .professionals-hero .btn-primary,
-  .pro-hero-container .btn-primary, .btn-hero-cta, .hero .open-apply-modal {
-    width: 92% !important;
-    max-width: 340px !important;
     margin: 0 auto !important;
-    padding: 14px 20px !important;
-    font-size: 1rem !important;
-    min-height: 48px !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    box-sizing: border-box !important;
   }
 
-  /* Course Cards & Grids:
-     - Convert all grids (.courses-grid, .pro-cards-grid-3col, .pro-cards-grid-2col, .grid-3, .grid-4, .bootcamps-grid) to 1 column: grid-template-columns: 1fr !important; width: 100% !important;.
-     - Course card images: width: 100% !important; height: 180px !important; object-fit: cover !important; border-radius: 12px 12px 0 0 !important;.
-     - Card body content: padding: 16px !important;.
-     - Course CTA buttons inside cards: width: 100% !important; min-height: 44px !important; justify-content: center !important;. */
+  /* Ask Karka AI Widget on Mobile */
+  .hero-ai-search {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 1rem auto 0 !important;
+  }
+
+  .ai-search-card {
+    width: 100% !important;
+    padding: 4px 8px !important;
+    border-radius: 9999px !important;
+  }
+
+  .hero-ai-chips {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    margin-top: 0.75rem !important;
+  }
+
+  .hero-chip-btn {
+    font-size: 0.75rem !important;
+    padding: 4px 10px !important;
+  }
+
+  /* COURSE CARDS & GRIDS ON MOBILE: Clean 1-column layout */
   .courses-grid, .cards-grid, .pro-cards-grid-3col, .pro-cards-grid-2col, .pro-cards-grid-4col, .grid-3, .grid-4,
   .bootcamps-grid, .career-directory-grid, .career-directory-accordion-grid {
     grid-template-columns: 1fr !important;
     width: 100% !important;
     display: grid !important;
     gap: 1.5rem !important;
-    padding: 0 1rem !important;
+    padding: 0 !important;
     box-sizing: border-box !important;
+  }
+
+  .pro-main-sections-wrap, .pro-category-block {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .pro-cat-header-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.5rem !important;
+    margin-bottom: 1.25rem !important;
   }
 
   .course-card, .pro-clean-card, .bootcamp-card, .career-directory-card {
     width: 100% !important;
     min-width: 0 !important;
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    background: var(--bg-surface) !important;
+    border: 1px solid var(--border-hairline) !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05) !important;
     box-sizing: border-box !important;
   }
 
   .course-thumb-img, .course-card-thumb img, .course-card img, .pro-clean-card img, .card-image img {
     width: 100% !important;
-    height: 180px !important;
+    height: 185px !important;
     object-fit: cover !important;
-    border-radius: 12px 12px 0 0 !important;
+    border-radius: 16px 16px 0 0 !important;
+    display: block !important;
   }
 
-  .course-card-thumb {
+  .course-card-thumb, .thumb-cat-code {
     width: 100% !important;
-    height: 180px !important;
+    height: 185px !important;
+    position: relative !important;
     overflow: hidden !important;
-    border-radius: 12px 12px 0 0 !important;
+    border-radius: 16px 16px 0 0 !important;
   }
 
   .pro-card-body-content, .course-card-body, .card-body {
     padding: 16px !important;
     box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+
+  .pro-card-title-text, .course-card-title {
+    font-size: 1.15rem !important;
+    font-weight: 800 !important;
+    line-height: 1.35 !important;
+    color: var(--text-primary) !important;
+  }
+
+  .pro-card-specs-row {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 12px !important;
+    font-size: 0.85rem !important;
+    color: var(--text-muted) !important;
   }
 
   .course-card button, .course-card .btn, .course-card a.btn,
   .pro-clean-card button, .pro-clean-card a.btn, .pro-clean-card .btn-enterprise-primary,
   .bootcamp-card button, .bootcamp-footer-actions button {
     width: 100% !important;
-    min-height: 44px !important;
+    min-height: 46px !important;
+    font-size: 0.95rem !important;
+    font-weight: 700 !important;
+    border-radius: 10px !important;
+    padding: 10px 16px !important;
     justify-content: center !important;
     display: inline-flex !important;
     align-items: center !important;
+    gap: 0.5rem !important;
+    text-align: center !important;
     box-sizing: border-box !important;
   }
 
-  /* Footer & Google Map:
-     - Footer stacks in a clean single column (gap: 24px).
-     - Google Map iframe: width: 100% !important; height: 260px !important; border-radius: 12px !important;. */
-  .footer-container, .footer-grid, .pro-footer-grid,
-  .footer-top-grid, .footer-content-grid, .footer-main-grid,
-  .footer-map-container, .footer-map-box, .pro-footer-map-embed, .pro-footer-container {
+  /* FOOTERS & MAP EMBEDS ON MOBILE */
+  footer, .pro-footer-section, .footer-section {
+    padding: 2.5rem 1rem 1.5rem !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .pro-footer-container, .footer-container {
+    padding: 0 !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .footer-grid, .pro-footer-grid,
+  .footer-top-grid, .footer-content-grid, .footer-main-grid {
     display: flex !important;
     flex-direction: column !important;
     gap: 24px !important;
-    padding: 2rem 1rem !important;
+    padding: 0 !important;
     width: 100% !important;
     box-sizing: border-box !important;
+  }
+
+  .footer-map-container, .footer-map-box, .pro-footer-map-embed {
+    padding: 0 !important;
+    margin: 0.75rem 0 0 0 !important;
+    width: 100% !important;
+    display: block !important;
+  }
+
+  .pro-footer-newsletter {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    width: 100% !important;
+    margin: 0.75rem 0 1rem 0 !important;
+  }
+
+  .pro-footer-input {
+    width: 100% !important;
+    min-height: 44px !important;
+    padding: 10px 14px !important;
+    font-size: 0.95rem !important;
+    border-radius: 8px !important;
+    box-sizing: border-box !important;
+  }
+
+  .pro-footer-btn {
+    width: 100% !important;
+    min-height: 44px !important;
+    font-size: 0.95rem !important;
+    font-weight: 700 !important;
+    border-radius: 8px !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
 
   iframe, .footer-map-frame iframe, .pro-footer-map-embed iframe {
     width: 100% !important;
-    height: 260px !important;
+    height: 240px !important;
     border-radius: 12px !important;
     max-width: 100% !important;
     border: 0 !important;
     box-sizing: border-box !important;
+    display: block !important;
+  }
+
+  .pro-footer-bottom-line {
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 0.5rem !important;
+    padding-top: 1.5rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .strip-batch-text {
+    display: none !important;
   }
 }
 
