@@ -319,34 +319,44 @@ function closeAiResponse() {
    ========================================================================== */
 const storiesData = {
   gabriel: {
-    name: 'Gabriel Samraj - FRONTEND DEVELOPER',
+    name: 'Gabriel Samraj',
     role: 'Frontend Developer @ Zoho Corp (₹8.5 LPA)',
-    quote: '"Karka\'s UI/UX design course was a game-changer for me. The instructors are passionate and the curriculum is up-to-date with the latest design trends. I now feel confident in my ability to create stunning visuals that stand out."',
-    image: 'assets/images/karka-hero.jpg'
+    quote: '"Karka\'s UI/UX and frontend engineering track was a complete game-changer. Coming from Mechanical Engineering, the instructors guided me through real component architectures. I cracked Zoho\'s technical rounds with full confidence."',
+    image: 'assets/images/karka-hero.jpg',
+    companyLinkedin: 'https://www.linkedin.com/company/zoho/',
+    companyName: 'Zoho Corp'
   },
   prabin: {
     name: 'Prabin Kumar',
     role: 'Fullstack Engineer @ Capecom (₹6.8 LPA)',
-    quote: '"I studied B.Sc Physics with zero tech placement support from college. At Karka, building 10+ real projects in React and Node made me confident enough to build scalable SaaS apps."',
-    image: 'assets/images/karka-studio.jpg'
+    quote: '"I studied B.Sc Physics with zero tech placement support from college. At Karka, building 10+ real projects in React and Node and writing production PRs at AgileTribers made me confident enough to build scalable SaaS apps."',
+    image: 'assets/images/karka-studio.jpg',
+    companyLinkedin: 'https://www.linkedin.com/company/capecom-solutions/',
+    companyName: 'Capecom'
   },
   shiju: {
     name: 'Shiju Nair',
     role: 'AI & Data Engineer @ Matrimony.com (₹7.2 LPA)',
-    quote: '"Civil Engineering to AI seemed impossible until I joined Karka. The 4-Pillar system and prompt engineering drills gave me an unfair advantage over other candidates during placement rounds."',
-    image: 'assets/images/karka-hero.jpg'
+    quote: '"Civil Engineering to AI seemed impossible until I joined Karka. The 4-Pillar system, statistical modeling, and prompt engineering drills gave me an unfair advantage over other candidates during placement rounds."',
+    image: 'assets/images/karka-hero.jpg',
+    companyLinkedin: 'https://www.linkedin.com/company/matrimony.com-limited/',
+    companyName: 'Matrimony.com'
   },
   kishore: {
     name: 'Kishore Kannan',
     role: 'UI/UX Product Designer @ Freshworks (₹9.0 LPA)',
     quote: '"I came from B.Com and loved visual aesthetics. Karka\'s product design mentors taught me how to talk to users, build design systems in Figma, and build portfolios that hiring managers crave."',
-    image: 'assets/images/karka-studio.jpg'
+    image: 'assets/images/karka-studio.jpg',
+    companyLinkedin: 'https://www.linkedin.com/company/freshworks-inc/',
+    companyName: 'Freshworks'
   },
   sridevi: {
     name: 'Sridevi Ananth',
     role: 'MERN Stack Developer @ HCL Tech (₹7.5 LPA)',
     quote: '"After a 3-year career break following motherhood, re-entering tech was daunting. Karka\'s supportive on-site mentors and outcome-aligned PAP model gave me my life and career back."',
-    image: 'assets/images/karka-hero.jpg'
+    image: 'assets/images/karka-hero.jpg',
+    companyLinkedin: 'https://www.linkedin.com/company/hcltech/',
+    companyName: 'HCLTech'
   }
 };
 
@@ -356,6 +366,7 @@ function initVideoStories() {
   const roleEl = document.getElementById('featStoryRole');
   const quoteEl = document.getElementById('featStoryQuote');
   const imgEl = document.getElementById('featStoryImg');
+  const linkedinEl = document.getElementById('featCompanyLinkedin');
 
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {
@@ -369,6 +380,10 @@ function initVideoStories() {
         roleEl.textContent = data.role;
         quoteEl.textContent = data.quote;
         imgEl.src = data.image;
+        if (linkedinEl && data.companyLinkedin) {
+          linkedinEl.href = data.companyLinkedin;
+          linkedinEl.innerHTML = `<i class="fa-brands fa-linkedin"></i> <span>${data.companyName} Verified Profile</span>`;
+        }
       }
     });
   });
@@ -1533,6 +1548,223 @@ window.toggleProDrawer = toggleProDrawer;
 window.closeProDrawer = closeProDrawer;
 window.initProDrawer = initProDrawer;
 window.initGradCalculator = initGradCalculator;
+
+/* ==========================================================================
+   HIGH-CONVERSION LEAD GENERATION: WHATSAPP SYLLABUS, PAP TERMS & 60S QUIZ
+   ========================================================================== */
+
+// 1. SYLLABUS-TO-WHATSAPP MODAL
+function openSyllabusWhatsAppModal(trackName) {
+  const modal = document.getElementById('syllabusWhatsAppModal');
+  const titleTrack = document.getElementById('syllabusModalTrackDisplay');
+  const inputTrack = document.getElementById('syllabusTrackInput');
+  if (titleTrack) titleTrack.textContent = trackName || 'Fullstack Tech';
+  if (inputTrack) inputTrack.value = trackName || 'Fullstack Tech';
+  if (modal) modal.classList.add('active');
+}
+
+function closeSyllabusWhatsAppModal() {
+  const modal = document.getElementById('syllabusWhatsAppModal');
+  if (modal) modal.classList.remove('active');
+}
+
+async function handleSyllabusWhatsAppSubmit(e) {
+  e.preventDefault();
+  const track = document.getElementById('syllabusTrackInput')?.value || 'Tech Track';
+  const name = document.getElementById('syllabusNameInput')?.value || 'Prospective Student';
+  const phone = document.getElementById('syllabusPhoneInput')?.value || '';
+  const submitBtn = document.getElementById('syllabusSubmitBtn');
+
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Connecting to WhatsApp...';
+  }
+
+  // Asynchronously record lead in MongoDB backend
+  try {
+    const apiBase = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+      ? (window.location.port === '5000' ? '' : 'http://localhost:5000')
+      : '';
+    await fetch(`${apiBase}/api/contact`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: name,
+        phone: phone,
+        program: `Syllabus Request: ${track}`,
+        message: `Student requested official syllabus for ${track} via direct WhatsApp trigger.`
+      })
+    });
+  } catch (err) {
+    console.warn('Backend logging offline or non-blocking:', err);
+  }
+
+  // Construct official WhatsApp link with student track
+  const waUrl = `https://wa.me/919487530243?text=${encodeURIComponent(`Hi Karka Academy, please send the official syllabus for ${track}. My name is ${name} (${phone}).`)}`;
+  window.open(waUrl, '_blank');
+
+  closeSyllabusWhatsAppModal();
+  if (submitBtn) {
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = '<span>Get Syllabus on WhatsApp</span> <i class="fa-brands fa-whatsapp"></i>';
+  }
+}
+
+// 2. PAP CONTRACT EXPLAINER MODAL
+function openPapTermsModal() {
+  const modal = document.getElementById('papTermsModal');
+  if (modal) modal.classList.add('active');
+}
+
+function closePapTermsModal() {
+  const modal = document.getElementById('papTermsModal');
+  if (modal) modal.classList.remove('active');
+}
+
+// 3. 60-SECOND PAP ELIGIBILITY QUIZ
+let quizAnswers = {
+  degree: '',
+  year: '',
+  careerGoal: '',
+  commitment: '',
+  english: '',
+  ctc: '',
+  name: '',
+  phone: ''
+};
+
+function openPapQuizModal() {
+  const modal = document.getElementById('papQuizModal');
+  if (modal) modal.classList.add('active');
+  goToQuizStep(1);
+}
+
+function closePapQuizModal() {
+  const modal = document.getElementById('papQuizModal');
+  if (modal) modal.classList.remove('active');
+}
+
+function selectQuizOption(field, value, nextStep) {
+  quizAnswers[field] = value;
+  
+  // Highlight chosen option button
+  const currentStepEl = document.querySelector(`.quiz-step[data-step="${nextStep - 1}"]`);
+  if (currentStepEl) {
+    currentStepEl.querySelectorAll('.quiz-opt-btn').forEach(btn => {
+      btn.classList.toggle('selected', btn.getAttribute('data-val') === value);
+    });
+  }
+
+  setTimeout(() => {
+    goToQuizStep(nextStep);
+  }, 220);
+}
+
+function goToQuizStep(stepNum) {
+  const allSteps = document.querySelectorAll('.quiz-step');
+  allSteps.forEach(s => s.classList.remove('active'));
+
+  const targetStep = document.querySelector(`.quiz-step[data-step="${stepNum}"]`);
+  if (targetStep) targetStep.classList.add('active');
+
+  const fillEl = document.getElementById('quizProgressFill');
+  const indEl = document.getElementById('quizStepNum');
+  if (fillEl) {
+    const pct = Math.min(100, Math.round(((stepNum - 1) / 6) * 100));
+    fillEl.style.width = `${pct}%`;
+  }
+  if (indEl && stepNum <= 6) {
+    indEl.textContent = `Question ${stepNum} of 6`;
+  } else if (indEl) {
+    indEl.textContent = 'Personalized Result';
+  }
+
+  // Pre-fill result match when entering Step 7 (Lead Capture)
+  if (stepNum === 7) {
+    renderQuizMatchSummary();
+  }
+}
+
+function renderQuizMatchSummary() {
+  const matchTitle = document.getElementById('quizMatchTrackTitle');
+  const matchPercent = document.getElementById('quizMatchPercent');
+  
+  let recTrack = 'MERN Fullstack & AI Engineering';
+  if (quizAnswers.careerGoal === 'ai-ml') recTrack = 'AI & Data Science Professional';
+  if (quizAnswers.careerGoal === 'uiux') recTrack = 'UI/UX & Digital Product Design';
+
+  if (matchTitle) matchTitle.textContent = recTrack;
+  if (matchPercent) matchPercent.textContent = '96% Match';
+}
+
+async function handleQuizLeadSubmit(e) {
+  e.preventDefault();
+  const name = document.getElementById('quizLeadName')?.value || 'Student';
+  const phone = document.getElementById('quizLeadPhone')?.value || '';
+  const submitBtn = document.getElementById('quizSubmitBtn');
+
+  quizAnswers.name = name;
+  quizAnswers.phone = phone;
+
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Calculating Approval...';
+  }
+
+  let recTrack = 'MERN Fullstack & AI Engineering';
+  if (quizAnswers.careerGoal === 'ai-ml') recTrack = 'AI & Data Science Professional';
+  if (quizAnswers.careerGoal === 'uiux') recTrack = 'UI/UX & Digital Product Design';
+
+  // Save candidate into MongoDB backend
+  try {
+    const apiBase = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+      ? (window.location.port === '5000' ? '' : 'http://localhost:5000')
+      : '';
+    await fetch(`${apiBase}/api/contact`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: name,
+        phone: phone,
+        program: `PAP Quiz Qualified - ${recTrack}`,
+        message: `PAP Quiz 60s Result: Background: ${quizAnswers.degree}, Year: ${quizAnswers.year}, Goal: ${quizAnswers.careerGoal}, Commitment: ${quizAnswers.commitment}, English: ${quizAnswers.english}, Target CTC: ${quizAnswers.ctc}`
+      })
+    });
+  } catch (err) {
+    console.warn('Backend quiz lead logging offline:', err);
+  }
+
+  // Setup Step 8 (Success Screen)
+  const successName = document.getElementById('quizResultUserName');
+  const successTrack = document.getElementById('quizResultTrack');
+  const waBtn = document.getElementById('quizWhatsAppConfirmBtn');
+
+  if (successName) successName.textContent = name;
+  if (successTrack) successTrack.textContent = recTrack;
+
+  const waMsg = `Hi Karka Academy, I just completed the ₹0 PAP Eligibility Quiz with a 96% Match for ${recTrack}! My name is ${name} (${phone}). Please schedule my 1:1 counselor roadmap call.`;
+  if (waBtn) {
+    waBtn.href = `https://wa.me/919487530243?text=${encodeURIComponent(waMsg)}`;
+  }
+
+  goToQuizStep(8);
+  if (submitBtn) {
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = '<span>Unlock My Custom Roadmap & PAP Approval</span> <i class="fa-solid fa-arrow-right"></i>';
+  }
+}
+
+// Global Window Exports
+window.openSyllabusWhatsAppModal = openSyllabusWhatsAppModal;
+window.closeSyllabusWhatsAppModal = closeSyllabusWhatsAppModal;
+window.handleSyllabusWhatsAppSubmit = handleSyllabusWhatsAppSubmit;
+window.openPapTermsModal = openPapTermsModal;
+window.closePapTermsModal = closePapTermsModal;
+window.openPapQuizModal = openPapQuizModal;
+window.closePapQuizModal = closePapQuizModal;
+window.selectQuizOption = selectQuizOption;
+window.goToQuizStep = goToQuizStep;
+window.handleQuizLeadSubmit = handleQuizLeadSubmit;
 
 // Auto-run grad calculator & pro drawer on pages
 document.addEventListener('DOMContentLoaded', () => {

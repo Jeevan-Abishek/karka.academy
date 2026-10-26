@@ -8325,6 +8325,447 @@ input[type=range], .infosys-range-slider {
 }
 
 /* ==========================================================================
+   AUTHENTIC PLACEMENT PROOFS & REAL SOCIAL ASSETS
+   ========================================================================== */
+.tab-verified-row {
+  margin-top: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.verified-offer-badge {
+  background: rgba(16, 185, 129, 0.12);
+  color: #059669;
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  font-size: 0.72rem;
+  font-weight: 800;
+  border-radius: 9999px;
+  padding: 2px 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  letter-spacing: 0.02em;
+}
+
+.verified-social-links-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 1.1rem;
+  align-items: center;
+}
+
+.btn-proof-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btn-proof-link.btn-yt {
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1px solid rgba(220, 38, 38, 0.2);
+}
+
+.btn-proof-link.btn-yt:hover {
+  background: #dc2626;
+  color: #ffffff !important;
+  transform: translateY(-1px);
+}
+
+.btn-proof-link.btn-ig {
+  background: #fdf2f8;
+  color: #db2777;
+  border: 1px solid rgba(219, 39, 119, 0.25);
+}
+
+.btn-proof-link.btn-ig:hover {
+  background: #db2777;
+  color: #ffffff !important;
+  transform: translateY(-1px);
+}
+
+.btn-proof-link.btn-li {
+  background: #eff6ff;
+  color: #0284c7;
+  border: 1px solid rgba(2, 132, 199, 0.25);
+}
+
+.btn-proof-link.btn-li:hover {
+  background: #0284c7;
+  color: #ffffff !important;
+  transform: translateY(-1px);
+}
+
+/* Living Lab Asset Callout */
+.living-lab-social-strip {
+  margin-top: 1.5rem;
+  padding: 1rem 1.25rem;
+  background: #ffffff;
+  border: 1px solid var(--border-hairline);
+  border-radius: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.living-lab-social-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.living-lab-social-left i {
+  font-size: 1.4rem;
+  color: var(--infosys-electric-blue);
+}
+
+.living-lab-social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* ==========================================================================
+   SYLLABUS-TO-WHATSAPP INSTANT TRIGGER
+   ========================================================================== */
+.btn-whatsapp-syllabus {
+  background: #25d366 !important;
+  color: #ffffff !important;
+  border: none !important;
+  padding: 9px 14px !important;
+  border-radius: 8px !important;
+  font-size: 0.82rem !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  width: 100% !important;
+  margin-top: 8px !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 2px 8px rgba(37, 211, 102, 0.25) !important;
+  text-decoration: none !important;
+  box-sizing: border-box !important;
+}
+
+.btn-whatsapp-syllabus:hover {
+  background: #1eb956 !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.35) !important;
+}
+
+/* ==========================================================================
+   PAP TERMS TRANSPARENT EXPLAINER
+   ========================================================================== */
+.btn-pap-terms {
+  background: #ffffff !important;
+  color: var(--infosys-electric-blue, #0070f3) !important;
+  border: 1.5px solid var(--infosys-electric-blue, #0070f3) !important;
+  padding: 10px 16px !important;
+  border-radius: 10px !important;
+  font-size: 0.86rem !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  margin-top: 10px !important;
+  width: 100% !important;
+  transition: all 0.2s ease !important;
+  box-sizing: border-box !important;
+}
+
+.btn-pap-terms:hover {
+  background: #eff6ff !important;
+  transform: translateY(-1px) !important;
+}
+
+.pap-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  margin: 1.5rem 0;
+}
+
+.pap-timeline-item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.pap-timeline-node {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #eff6ff;
+  color: #0070f3;
+  font-weight: 800;
+  font-size: 0.88rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 2px solid #0070f3;
+  margin-top: 2px;
+}
+
+.pap-timeline-content {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 12px 16px;
+  flex: 1;
+}
+
+.pap-timeline-content h4 {
+  font-size: 0.98rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 3px;
+}
+
+.pap-timeline-content p {
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+  margin: 0;
+}
+
+.pap-pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 1.5rem;
+}
+
+.pap-pillar-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 14px;
+  text-align: center;
+}
+
+.pap-pillar-card i {
+  font-size: 1.4rem;
+  color: #10b981;
+  margin-bottom: 6px;
+}
+
+.pap-pillar-card strong {
+  display: block;
+  font-size: 0.88rem;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.pap-pillar-card span {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* ==========================================================================
+   6-QUESTION PAP ELIGIBILITY QUIZ
+   ========================================================================== */
+.quiz-step {
+  display: none;
+}
+
+.quiz-step.active {
+  display: block;
+  animation: fadeInStep 0.25s ease;
+}
+
+@keyframes fadeInStep {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.quiz-step-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--infosys-electric-blue);
+}
+
+.quiz-progress-bar-wrap {
+  width: 100%;
+  height: 6px;
+  background: #e2e8f0;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.quiz-progress-bar-fill {
+  height: 100%;
+  background: #0070f3;
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.quiz-question-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 0.4rem;
+}
+
+.quiz-question-sub {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
+}
+
+.quiz-options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 1.5rem;
+}
+
+.quiz-opt-btn {
+  background: #f8fafc;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 13px 16px;
+  text-align: left;
+  cursor: pointer;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.2s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.quiz-opt-btn:hover {
+  border-color: #0070f3;
+  background: #eff6ff;
+  color: #0070f3;
+  transform: translateY(-1px);
+}
+
+.quiz-opt-btn.selected {
+  border-color: #0070f3;
+  background: #eff6ff;
+  color: #0070f3;
+  box-shadow: 0 0 0 2px rgba(0, 112, 243, 0.2);
+}
+
+.quiz-opt-btn i {
+  color: #94a3b8;
+  font-size: 0.9rem;
+}
+
+.quiz-opt-btn.selected i {
+  color: #0070f3;
+}
+
+.quiz-score-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #ecfdf5;
+  border: 1.5px solid rgba(16, 185, 129, 0.4);
+  color: #047857;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  font-size: 0.95rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+/* ==========================================================================
+   STICKY MOBILE CONVERSION BAR (@media max-width: 768px)
+   ========================================================================== */
+.sticky-mobile-conversion-bar {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding-bottom: 72px !important;
+  }
+
+  .sticky-mobile-conversion-bar {
+    display: flex !important;
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    background: rgba(255, 255, 255, 0.96) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border-top: 1px solid #e2e8f0 !important;
+    padding: 10px 14px calc(10px + env(safe-area-inset-bottom, 0px)) !important;
+    z-index: 998 !important;
+    gap: 10px !important;
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.08) !important;
+    box-sizing: border-box !important;
+  }
+
+  .sticky-btn-wa {
+    flex: 1 !important;
+    background: #25d366 !important;
+    color: #ffffff !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    padding: 11px 12px !important;
+    border-radius: 10px !important;
+    font-size: 0.85rem !important;
+    font-weight: 700 !important;
+    text-decoration: none !important;
+    box-shadow: 0 2px 6px rgba(37, 211, 102, 0.25) !important;
+    box-sizing: border-box !important;
+  }
+
+  .sticky-btn-quiz {
+    flex: 1 !important;
+    background: #0070f3 !important;
+    color: #ffffff !important;
+    border: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    padding: 11px 12px !important;
+    border-radius: 10px !important;
+    font-size: 0.85rem !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    box-shadow: 0 2px 6px rgba(0, 112, 243, 0.25) !important;
+    box-sizing: border-box !important;
+  }
+
+  .pap-pillars-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ==========================================================================
    FORCE ZERO HORIZONTAL OVERFLOW GLOBALLY (BOTTOM ENSURANCE)
    ========================================================================== */
 * {

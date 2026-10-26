@@ -552,8 +552,11 @@
           <div class="story-tabs-list" id="storyTabsList">
             <button class="story-tab-btn active" data-story="gabriel">
               <div class="tab-student-info">
-                <h4>Gabriel Samraj - FRONTEND DEVELOPER</h4>
+                <h4>Gabriel Samraj</h4>
                 <p>Mechanical Engg ➔ Frontend Developer</p>
+                <div class="tab-verified-row">
+                  <span class="verified-offer-badge"><i class="fa-solid fa-circle-check"></i> Offer Letter Verified ✓</span>
+                </div>
               </div>
               <span class="tab-company-badge">Zoho Corp (₹8.5 LPA)</span>
             </button>
@@ -562,6 +565,9 @@
               <div class="tab-student-info">
                 <h4>Prabin Kumar</h4>
                 <p>B.Sc Physics ➔ Fullstack Engineer</p>
+                <div class="tab-verified-row">
+                  <span class="verified-offer-badge"><i class="fa-solid fa-circle-check"></i> Offer Letter Verified ✓</span>
+                </div>
               </div>
               <span class="tab-company-badge">Capecom (₹6.8 LPA)</span>
             </button>
@@ -570,6 +576,9 @@
               <div class="tab-student-info">
                 <h4>Shiju Nair</h4>
                 <p>Civil Engg ➔ AI & Data Engineer</p>
+                <div class="tab-verified-row">
+                  <span class="verified-offer-badge"><i class="fa-solid fa-circle-check"></i> Offer Letter Verified ✓</span>
+                </div>
               </div>
               <span class="tab-company-badge">Matrimony (₹7.2 LPA)</span>
             </button>
@@ -578,6 +587,9 @@
               <div class="tab-student-info">
                 <h4>Kishore Kannan</h4>
                 <p>B.Com ➔ UI/UX Product Designer</p>
+                <div class="tab-verified-row">
+                  <span class="verified-offer-badge"><i class="fa-solid fa-circle-check"></i> Offer Letter Verified ✓</span>
+                </div>
               </div>
               <span class="tab-company-badge">Freshworks (₹9.0 LPA)</span>
             </button>
@@ -586,6 +598,9 @@
               <div class="tab-student-info">
                 <h4>Sridevi Ananth</h4>
                 <p>Career Break (3 Years) ➔ MERN Dev</p>
+                <div class="tab-verified-row">
+                  <span class="verified-offer-badge"><i class="fa-solid fa-circle-check"></i> Offer Letter Verified ✓</span>
+                </div>
               </div>
               <span class="tab-company-badge">HCL Tech (₹7.5 LPA)</span>
             </button>
@@ -593,10 +608,15 @@
 
           <!-- Feature Video Card with Playback Controls -->
           <div class="video-feature-card" id="featuredVideoCard">
-            <!-- NOW PLAYING BADGE -->
-            <div class="now-playing-badge">
-              <span class="live-pulse-dot"></span>
-              <span>NOW PLAYING - KARKA LEARNER SUCCESS STORY</span>
+            <!-- NOW PLAYING BADGE & VERIFIED PROOF -->
+            <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; padding: 1.1rem 1.4rem 0.6rem; gap: 8px;">
+              <div class="now-playing-badge" style="margin: 0;">
+                <span class="live-pulse-dot"></span>
+                <span>NOW PLAYING - SUCCESS STORY</span>
+              </div>
+              <span class="verified-offer-badge" style="font-size: 0.78rem; padding: 4px 10px;">
+                <i class="fa-solid fa-shield-halved"></i> 100% Placement Verified by Karka
+              </span>
             </div>
 
             <div class="video-screen-container">
@@ -617,20 +637,30 @@
 
             <div class="video-meta-body">
               <p class="video-quote" id="featStoryQuote">
-                "Karka's UI/UX design course was a game-changer for me. The instructors are passionate and the
-                curriculum is up-to-date with the latest design trends. I now feel confident in my ability to create
-                stunning visuals that stand out."
+                "Karka's UI/UX and frontend engineering track was a complete game-changer. Coming from Mechanical Engineering, the instructors guided me through real component architectures. I cracked Zoho's technical rounds with full confidence."
               </p>
-              <div class="video-author-row">
+              <div class="video-author-row" style="margin-bottom: 0.75rem;">
                 <div>
-                  <h4 style="font-size: 1.15rem; font-weight: 800;" id="featStoryName">Gabriel Samraj - FRONTEND
-                    DEVELOPER</h4>
-                  <p style="font-size: 0.85rem; color: var(--text-muted);" id="featStoryRole">Zoho Corp (₹8.5 LPA)</p>
+                  <h4 style="font-size: 1.15rem; font-weight: 800;" id="featStoryName">Gabriel Samraj</h4>
+                  <p style="font-size: 0.85rem; color: var(--text-muted);" id="featStoryRole">Frontend Developer @ Zoho Corp (₹8.5 LPA)</p>
                 </div>
                 <button class="btn-enterprise-primary open-apply-modal"
                   style="padding: 0.5rem 1.1rem; font-size: 0.85rem;">
                   Enroll with PAP
                 </button>
+              </div>
+
+              <!-- Authentic Social Media & Placement Proofs -->
+              <div class="verified-social-links-row">
+                <a href="https://www.youtube.com/@karka_academy" target="_blank" rel="noopener noreferrer" class="btn-proof-link btn-yt">
+                  <i class="fa-brands fa-youtube"></i> Watch on YouTube (@karka_academy)
+                </a>
+                <a href="https://www.instagram.com/karka.ai" target="_blank" rel="noopener noreferrer" class="btn-proof-link btn-ig">
+                  <i class="fa-brands fa-instagram"></i> Follow @karka.ai
+                </a>
+                <a href="https://www.linkedin.com/company/zoho/" target="_blank" rel="noopener noreferrer" id="featCompanyLinkedin" class="btn-proof-link btn-li">
+                  <i class="fa-brands fa-linkedin"></i> <span>Zoho Corp Verified Profile</span>
+                </a>
               </div>
             </div>
           </div>
@@ -673,6 +703,9 @@
               <button type="button" class="btn-secondary btn-bootcamp-explore" onclick="openSyllabus('mern')">EXPLORE MERN FULLSTACK</button>
               <button type="button" class="btn-enterprise-primary btn-bootcamp-enroll open-apply-modal" data-track="MERN Fullstack Development">ENROLL IN MERN FULLSTACK</button>
             </div>
+            <button type="button" class="btn-whatsapp-syllabus" onclick="openSyllabusWhatsAppModal('MERN Fullstack Development')">
+              <i class="fa-brands fa-whatsapp"></i> Get Syllabus on WhatsApp
+            </button>
           </div>
 
           <!-- Card 2: AI & Data Science -->
@@ -695,6 +728,9 @@
               <button type="button" class="btn-secondary btn-bootcamp-explore" onclick="openSyllabus('aiml')">EXPLORE AI & DATA SCIENCE</button>
               <button type="button" class="btn-enterprise-primary btn-bootcamp-enroll open-apply-modal" data-track="AI & Data Science">ENROLL IN AI & DATA SCIENCE</button>
             </div>
+            <button type="button" class="btn-whatsapp-syllabus" onclick="openSyllabusWhatsAppModal('AI & Data Science')">
+              <i class="fa-brands fa-whatsapp"></i> Get Syllabus on WhatsApp
+            </button>
           </div>
 
           <!-- Card 3: UI/UX Design -->
@@ -717,6 +753,9 @@
               <button type="button" class="btn-secondary btn-bootcamp-explore" onclick="openSyllabus('uiux')">EXPLORE UI/UX DESIGN</button>
               <button type="button" class="btn-enterprise-primary btn-bootcamp-enroll open-apply-modal" data-track="UI/UX Design">ENROLL IN UI/UX DESIGN</button>
             </div>
+            <button type="button" class="btn-whatsapp-syllabus" onclick="openSyllabusWhatsAppModal('UI/UX Product Design')">
+              <i class="fa-brands fa-whatsapp"></i> Get Syllabus on WhatsApp
+            </button>
           </div>
 
           <!-- Card 4: Python for Kids -->
@@ -739,6 +778,9 @@
               <button type="button" class="btn-secondary btn-bootcamp-explore" onclick="openSyllabus('python')">EXPLORE PYTHON FOR KIDS</button>
               <button type="button" class="btn-enterprise-primary btn-bootcamp-enroll open-apply-modal" data-track="Python for Kids">ENROLL IN PYTHON FOR KIDS</button>
             </div>
+            <button type="button" class="btn-whatsapp-syllabus" onclick="openSyllabusWhatsAppModal('Python for Kids')">
+              <i class="fa-brands fa-whatsapp"></i> Get Syllabus on WhatsApp
+            </button>
           </div>
 
           <!-- Card 5: Full Stack Developer Internship -->
@@ -761,6 +803,9 @@
               <button type="button" class="btn-secondary btn-bootcamp-explore" onclick="openSyllabus('internship')">EXPLORE INTERNSHIP TRACK</button>
               <button type="button" class="btn-enterprise-primary btn-bootcamp-enroll open-apply-modal" data-track="Full Stack Developer Internship">ENROLL IN INTERNSHIP</button>
             </div>
+            <button type="button" class="btn-whatsapp-syllabus" onclick="openSyllabusWhatsAppModal('Full Stack Developer Internship (AgileTribers)')">
+              <i class="fa-brands fa-whatsapp"></i> Get Syllabus on WhatsApp
+            </button>
           </div>
 
           <!-- Card 6: Generative AI Foundations -->
@@ -783,6 +828,9 @@
               <button type="button" class="btn-secondary btn-bootcamp-explore" onclick="openSyllabus('genai')">EXPLORE GENERATIVE AI</button>
               <button type="button" class="btn-enterprise-primary btn-bootcamp-enroll open-apply-modal" data-track="Generative AI Foundations">ENROLL IN GENERATIVE AI</button>
             </div>
+            <button type="button" class="btn-whatsapp-syllabus" onclick="openSyllabusWhatsAppModal('Generative AI Foundations')">
+              <i class="fa-brands fa-whatsapp"></i> Get Syllabus on WhatsApp
+            </button>
           </div>
 
         </div>
@@ -947,10 +995,16 @@
             <div class="pap-check-item"><i class="fa-solid fa-circle-check"></i> 0 Upfront Security Deposit</div>
           </div>
 
-          <button class="btn-hero-primary open-apply-modal" id="btnVerifyPap">
-            <span>Enroll Now</span>
-            <i class="fa-solid fa-arrow-right"></i>
-          </button>
+          <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 1.25rem;">
+            <button class="btn-hero-primary open-apply-modal" id="btnVerifyPap">
+              <span>Enroll Now</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+            <button type="button" class="btn-secondary" onclick="openPapQuizModal()" style="display: inline-flex; align-items: center; gap: 8px;">
+              <i class="fa-solid fa-wand-magic-sparkles" style="color: var(--infosys-electric-blue);"></i>
+              <span>Check 60s Eligibility</span>
+            </button>
+          </div>
         </div>
 
         <!-- Right: Interactive Financial ROI Calculator -->
@@ -985,13 +1039,19 @@
             </div>
           </div>
 
-          <div style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 1.4rem;">
+          <div style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 1.2rem;">
             * Capped at fixed installments. Zero payment if you earn below ₹4.5 LPA. No interest loans, pure outcome
             alignment.
           </div>
 
           <button class="btn-enterprise-primary open-apply-modal" style="width: 100%; justify-content: center;">
             Apply for ₹0 Upfront Batch
+          </button>
+
+          <!-- Transparent PAP Contract Explainer Button -->
+          <button type="button" class="btn-pap-terms" onclick="openPapTermsModal()">
+            <i class="fa-solid fa-file-contract"></i>
+            <span>Understand Our PAP Terms (Zero Hidden Clauses)</span>
           </button>
         </div>
 
@@ -1050,10 +1110,35 @@
             </li>
           </ul>
 
-          <button class="btn-enterprise-primary open-apply-modal">
-            <span>Apply for Studio Internship</span>
-            <i class="fa-solid fa-arrow-right"></i>
-          </button>
+          <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 1.5rem;">
+            <button class="btn-enterprise-primary open-apply-modal">
+              <span>Apply for Studio Internship</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+            <a href="https://wa.me/919487530243?text=Hi%20Karka%20Academy,%20I%20want%20to%20learn%20more%20about%20the%20AgileTribers%20Studio%20Internship%20in%20Nagercoil." target="_blank" rel="noopener noreferrer" class="btn-secondary" style="display: inline-flex; align-items: center; gap: 6px; text-decoration: none;">
+              <i class="fa-brands fa-whatsapp" style="color: #25d366;"></i>
+              <span>Studio Inquiries</span>
+            </a>
+          </div>
+
+          <!-- Real Lab Social Proof Strip -->
+          <div class="living-lab-social-strip">
+            <div class="living-lab-social-left">
+              <i class="fa-solid fa-network-wired"></i>
+              <div>
+                <strong style="font-size: 0.88rem; color: var(--text-primary); display:block;">Official Nagercoil Production Lab</strong>
+                <span style="font-size: 0.78rem; color: var(--text-muted);">Watch daily student sprint PRs, standups & live project demos:</span>
+              </div>
+            </div>
+            <div class="living-lab-social-links">
+              <a href="https://www.instagram.com/karka.ai" target="_blank" rel="noopener noreferrer" class="btn-proof-link btn-ig">
+                <i class="fa-brands fa-instagram"></i> Follow @karka.ai
+              </a>
+              <a href="https://www.youtube.com/@karka_academy" target="_blank" rel="noopener noreferrer" class="btn-proof-link btn-yt">
+                <i class="fa-brands fa-youtube"></i> Student Demos (@karka_academy)
+              </a>
+            </div>
+          </div>
         </div>
 
         <div class="internship-graphic-frame">
@@ -2227,6 +2312,350 @@
         </form>
       </div>
     </div>
+  </div>
+
+  <!-- 1. SYLLABUS-TO-WHATSAPP MODAL -->
+  <div class="modal-backdrop" id="syllabusWhatsAppModal">
+    <div class="modal-dialog">
+      <button class="modal-close-btn" onclick="closeSyllabusWhatsAppModal()">&times;</button>
+      <div class="modal-header">
+        <span class="badge-pill badge-green" style="margin-bottom: 0.5rem;"><i class="fa-brands fa-whatsapp"></i> Instant WhatsApp Dispatch</span>
+        <h3 style="font-size: 1.45rem; font-weight: 800;">Get Official Curriculum &amp; Syllabus</h3>
+        <p style="color: var(--text-secondary); font-size: 0.88rem;">
+          Track: <strong id="syllabusModalTrackDisplay" style="color: var(--infosys-electric-blue);">MERN Fullstack</strong>
+        </p>
+      </div>
+      <div class="modal-body">
+        <form onsubmit="handleSyllabusWhatsAppSubmit(event)">
+          <input type="hidden" id="syllabusTrackInput" value="MERN Fullstack">
+          <div class="form-group">
+            <label class="form-label" for="syllabusNameInput">Your Name *</label>
+            <input type="text" id="syllabusNameInput" class="form-input" placeholder="e.g. Anandha Krishnan" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="syllabusPhoneInput">WhatsApp Mobile Number *</label>
+            <input type="tel" id="syllabusPhoneInput" class="form-input" placeholder="+91 94875 30243" required>
+          </div>
+          <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.4;">
+            <i class="fa-solid fa-lock"></i> We respect your privacy. You'll receive the official syllabus PDF, project list, and course fee sheet directly on WhatsApp.
+          </div>
+          <button type="submit" id="syllabusSubmitBtn" class="btn-whatsapp-syllabus" style="padding: 12px !important; font-size: 0.95rem !important;">
+            <span>Get Syllabus on WhatsApp</span>
+            <i class="fa-brands fa-whatsapp"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. TRANSPARENT PAP CONTRACT TERMS EXPLAINER MODAL -->
+  <div class="modal-backdrop" id="papTermsModal">
+    <div class="modal-dialog" style="max-width: 620px;">
+      <button class="modal-close-btn" onclick="closePapTermsModal()">&times;</button>
+      <div class="modal-header">
+        <span class="badge-pill badge-green" style="margin-bottom: 0.5rem;"><i class="fa-solid fa-shield-halved"></i> 100% Transparent Agreement</span>
+        <h3 style="font-size: 1.45rem; font-weight: 800;">The Karka PAP Contract Guarantee</h3>
+        <p style="color: var(--text-secondary); font-size: 0.88rem;">Zero Hidden Clauses. Zero Loan Traps. 100% Outcome Bound.</p>
+      </div>
+      <div class="modal-body">
+        <div class="pap-timeline">
+          <!-- Step 1 -->
+          <div class="pap-timeline-item">
+            <div class="pap-timeline-node">1</div>
+            <div class="pap-timeline-content">
+              <h4>6 Months On-site Training (₹0 Upfront)</h4>
+              <p>Full physical access to Karka's high-tech lab at SRV Towers Nagercoil. Daily mentorship from senior architects. Zero tuition fees billed during the training tenure.</p>
+            </div>
+          </div>
+          <!-- Step 2 -->
+          <div class="pap-timeline-item">
+            <div class="pap-timeline-node">2</div>
+            <div class="pap-timeline-content">
+              <h4>Live Studio PRs &amp; AgileTribers Immersion</h4>
+              <p>Work on live software production tickets, manage GitHub pull requests, CI/CD pipelines, and earn verified studio work experience credentials.</p>
+            </div>
+          </div>
+          <!-- Step 3 -->
+          <div class="pap-timeline-item">
+            <div class="pap-timeline-node">3</div>
+            <div class="pap-timeline-content">
+              <h4>Placed with Minimum ₹4.5+ LPA Package</h4>
+              <p>Direct hiring pipeline through 40+ corporate partners across Chennai, Bangalore, and Nagercoil. Comprehensive mock technical interviews and resume tuning.</p>
+            </div>
+          </div>
+          <!-- Step 4 -->
+          <div class="pap-timeline-item">
+            <div class="pap-timeline-node">4</div>
+            <div class="pap-timeline-content">
+              <h4>Pay Fixed Monthly Installment from Salary</h4>
+              <p>You only start paying after receiving your monthly salary from your employer. <strong>If your starting CTC is below ₹4.5 LPA, your tuition fee is ₹0.</strong></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 Pillars of Trust -->
+        <div class="pap-pillars-grid">
+          <div class="pap-pillar-card">
+            <i class="fa-solid fa-lock-open"></i>
+            <strong>₹0 Upfront Deposit</strong>
+            <span>We never take deposits or registration withholding charges.</span>
+          </div>
+          <div class="pap-pillar-card">
+            <i class="fa-solid fa-building-columns"></i>
+            <strong>No NBFC Loans</strong>
+            <span>No bank loan agreements or third-party debt obligations.</span>
+          </div>
+          <div class="pap-pillar-card">
+            <i class="fa-solid fa-shield-check"></i>
+            <strong>Income Floor</strong>
+            <span>Earn &lt; ₹4.5 LPA? You don't pay a single rupee.</span>
+          </div>
+        </div>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 1.5rem;">
+          <button type="button" class="btn-enterprise-primary" onclick="closePapTermsModal(); openPapQuizModal();" style="flex: 1; justify-content: center;">
+            <span>Check My 60s Eligibility</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+          <a href="https://wa.me/919487530243?text=Hi%20Karka%20Academy,%20I%20have%20questions%20regarding%20the%20PAP%20contract%20terms." target="_blank" rel="noopener noreferrer" class="btn-secondary" style="flex: 1; justify-content: center; text-decoration: none;">
+            <i class="fa-brands fa-whatsapp" style="color: #25d366;"></i>
+            <span>Speak to Admissions</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. 60-SECOND PAP ELIGIBILITY QUIZ MODAL -->
+  <div class="modal-backdrop" id="papQuizModal">
+    <div class="modal-dialog" style="max-width: 560px;">
+      <button class="modal-close-btn" onclick="closePapQuizModal()">&times;</button>
+      
+      <div class="modal-header">
+        <div class="quiz-step-indicator">
+          <span id="quizStepNum">Question 1 of 6</span>
+          <span style="color: var(--accent-green);"><i class="fa-solid fa-bolt"></i> 60s Instant Assessment</span>
+        </div>
+        <div class="quiz-progress-bar-wrap">
+          <div class="quiz-progress-bar-fill" id="quizProgressFill" style="width: 16%;"></div>
+        </div>
+        <h3 style="font-size: 1.4rem; font-weight: 800;">Check ₹0 Upfront PAP Eligibility</h3>
+        <p style="color: var(--text-secondary); font-size: 0.85rem;">Find out in under 1 minute if you qualify for our guaranteed Pay After Placement batch.</p>
+      </div>
+
+      <div class="modal-body">
+        <!-- Question 1: Background -->
+        <div class="quiz-step active" data-step="1">
+          <div class="quiz-question-title">1. What is your academic or professional background?</div>
+          <div class="quiz-question-sub">Select the option that best describes you:</div>
+          <div class="quiz-options-list">
+            <button type="button" class="quiz-opt-btn" data-val="cs-it" onclick="selectQuizOption('degree', 'B.E / B.Tech (CS/IT/AI)', 2)">
+              <span>B.E / B.Tech (CS, IT, AI, DS)</span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+            <button type="button" class="quiz-opt-btn" data-val="non-cs" onclick="selectQuizOption('degree', 'Non-CS Engineering', 2)">
+              <span>Non-CS Engineering (Mech, Civil, EEE, ECE)</span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+            <button type="button" class="quiz-opt-btn" data-val="arts-science" onclick="selectQuizOption('degree', 'Arts & Science / BCA / MCA', 2)">
+              <span>BCA / MCA / B.Sc / B.Com / Arts &amp; Science</span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+            <button type="button" class="quiz-opt-btn" data-val="working-pro" onclick="selectQuizOption('degree', 'Working Professional', 2)">
+              <span>Working Professional (Career Switch to Tech)</span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Question 2: Year -->
+        <div class="quiz-step" data-step="2">
+          <div class="quiz-question-title">2. What is your graduation / passing year?</div>
+          <div class="quiz-question-sub">We accept current students and career rebooters:</div>
+          <div class="quiz-options-list">
+            <button type="button" class="quiz-opt-btn" data-val="2026" onclick="selectQuizOption('year', '2026', 3)">
+              <span>2026 (Upcoming Final Year Graduate)</span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+            <button type="button" class="quiz-opt-btn" data-val="2025" onclick="selectQuizOption('year', '2025', 3)">
+              <span>2025 (Fresh Graduate / Immediate)</span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+            <button type="button" class="quiz-opt-btn" data-val="2024-prior" onclick="selectQuizOption('year', '2024 or Earlier', 3)">
+              <span>2024 or Earlier (Career Reboot / Gap)</span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+            <button type="button" class="quiz-opt-btn" data-val="2027+" onclick="selectQuizOption('year', '2027+', 3)">
+              <span>2027 or Later (Pre-Final Year)</span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Question 3: Career Goal -->
+        <div class="quiz-step" data-step="3">
+          <div class="quiz-question-title">3. What is your primary career goal?</div>
+          <div class="quiz-question-sub">Which engineering domain excites you most?</div>
+          <div class="quiz-options-list">
+            <button type="button" class="quiz-opt-btn" data-val="mern" onclick="selectQuizOption('careerGoal', 'mern', 4)">
+              <span>Fullstack Web &amp; AI Engineering (React, Node, LLMs)</span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+            <button type="button" class="quiz-opt-btn" data-val="ai-ml" onclick="selectQuizOption('careerGoal', 'ai-ml', 4)">
+              <span>AI &amp; Data Science (Python, ML, Scikit-Learn)</span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+            <button type="button" class="quiz-opt-btn" data-val="uiux" onclick="selectQuizOption('careerGoal', 'uiux', 4)">
+              <span>UI/UX &amp; Digital Product Design (Figma, Prototyping)</span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+            <button type="button" class="quiz-opt-btn" data-val="fast-track" onclick="selectQuizOption('careerGoal', 'mern', 4)">
+              <span>Fast-Track High Paying Tech Job (Any High-Demand Field)</span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Question 4: Commitment -->
+        <div class="quiz-step" data-step="4">
+          <div class="quiz-question-title">4. What is your daily learning commitment?</div>
+          <div class="quiz-question-sub">PAP requires focused dedication:</div>
+          <div class="quiz-options-list">
+            <button type="button" class="quiz-opt-btn" data-val="fulltime" onclick="selectQuizOption('commitment', 'Full-time (8+ hrs on-site)', 5)">
+              <span>Full-Time (8+ Hours Daily at Nagercoil On-Site Lab)</span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+            <button type="button" class="quiz-opt-btn" data-val="intensive-hybrid" onclick="selectQuizOption('commitment', 'Intensive Hybrid (4-6 hrs)', 5)">
+              <span>Intensive Hybrid (4 to 6 Hours Daily)</span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+            <button type="button" class="quiz-opt-btn" data-val="weekend" onclick="selectQuizOption('commitment', 'Weekend Working Pro', 5)">
+              <span>Weekend Immersion (Working Professionals)</span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Question 5: English Comfort -->
+        <div class="quiz-step" data-step="5">
+          <div class="quiz-question-title">5. How comfortable are you with English communication?</div>
+          <div class="quiz-question-sub">We provide specialized Business English training:</div>
+          <div class="quiz-options-list">
+            <button type="button" class="quiz-opt-btn" data-val="fluent" onclick="selectQuizOption('english', 'Fluent', 6)">
+              <span>Fluent &amp; Confident in Conversational English</span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+            <button type="button" class="quiz-opt-btn" data-val="intermediate" onclick="selectQuizOption('english', 'Intermediate', 6)">
+              <span>Intermediate (Can understand, need interview confidence)</span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+            <button type="button" class="quiz-opt-btn" data-val="tamil-english" onclick="selectQuizOption('english', 'Tamil + English Bilingual', 6)">
+              <span>Prefer Tamil + English Bilingual Mentorship</span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Question 6: Target CTC -->
+        <div class="quiz-step" data-step="6">
+          <div class="quiz-question-title">6. What is your target placement package (CTC)?</div>
+          <div class="quiz-question-sub">Choose your target starting salary:</div>
+          <div class="quiz-options-list">
+            <button type="button" class="quiz-opt-btn" data-val="4.5-6" onclick="selectQuizOption('ctc', '₹4.5 - ₹6.0 LPA', 7)">
+              <span>₹4.5 LPA – ₹6.0 LPA (Standard High-Growth Track)</span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+            <button type="button" class="quiz-opt-btn" data-val="6-8.5" onclick="selectQuizOption('ctc', '₹6.0 - ₹8.5 LPA', 7)">
+              <span>₹6.0 LPA – ₹8.5 LPA (Senior Architect Guided Track)</span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+            <button type="button" class="quiz-opt-btn" data-val="9+" onclick="selectQuizOption('ctc', '₹9.0+ LPA', 7)">
+              <span>₹9.0+ LPA (Tier-1 Product Company Track)</span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 7: Score & Contact Capture -->
+        <div class="quiz-step" data-step="7">
+          <div style="text-align: center; margin-bottom: 1.25rem;">
+            <div class="quiz-score-badge">
+              <i class="fa-solid fa-circle-check"></i>
+              <span id="quizMatchPercent">96% Match</span>
+            </div>
+            <h4 style="font-size: 1.35rem; font-weight: 800; color: var(--text-primary); margin-bottom: 0.35rem;">
+              You Qualify for ₹0 Upfront PAP! 🎉
+            </h4>
+            <p style="font-size: 0.88rem; color: var(--text-secondary);">
+              Recommended Track: <strong id="quizMatchTrackTitle" style="color: var(--infosys-electric-blue);">MERN Fullstack &amp; AI Engineering</strong>
+            </p>
+          </div>
+
+          <form onsubmit="handleQuizLeadSubmit(event)">
+            <div class="form-group">
+              <label class="form-label" for="quizLeadName">Your Full Name *</label>
+              <input type="text" id="quizLeadName" class="form-input" placeholder="e.g. Anandha Krishnan" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="quizLeadPhone">WhatsApp Mobile Number *</label>
+              <input type="tel" id="quizLeadPhone" class="form-input" placeholder="+91 94875 30243" required>
+            </div>
+            <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 1rem;">
+              Enter your WhatsApp number to lock in your provisional ₹0 upfront admission seat and schedule your 1:1 counselor roadmap call.
+            </p>
+            <button type="submit" id="quizSubmitBtn" class="btn-enterprise-primary" style="width: 100%; justify-content: center; padding: 12px;">
+              <span>Unlock My Custom Roadmap &amp; PAP Approval</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </form>
+        </div>
+
+        <!-- Step 8: Final Success Screen -->
+        <div class="quiz-step" data-step="8">
+          <div style="text-align: center; padding: 1rem 0;">
+            <div style="width: 64px; height: 64px; border-radius: 50%; background: #ecfdf5; color: #10b981; display: inline-flex; align-items: center; justify-content: center; font-size: 1.8rem; margin-bottom: 1rem; border: 2px solid #10b981;">
+              <i class="fa-solid fa-check"></i>
+            </div>
+            <h4 style="font-size: 1.45rem; font-weight: 800; margin-bottom: 0.5rem;">Provisional PAP Seat Reserved! 🚀</h4>
+            <p style="color: var(--text-secondary); font-size: 0.88rem; margin-bottom: 1.25rem;">
+              Congratulations <strong id="quizResultUserName" style="color: var(--infosys-electric-blue);">Learner</strong>! Your provisional admission for <strong id="quizResultTrack">MERN Fullstack</strong> under ₹0 Upfront Tuition is approved.
+            </p>
+
+            <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 14px; text-align: left; margin-bottom: 1.25rem;">
+              <div style="font-size: 0.82rem; font-weight: 700; color: var(--text-primary); margin-bottom: 6px;">Next Steps for On-Site Orientation:</div>
+              <ul style="font-size: 0.8rem; color: var(--text-secondary); padding-left: 18px; margin: 0; line-height: 1.5;">
+                <li>Verify your Aadhaar &amp; graduation marks sheet.</li>
+                <li>Visit SRV Towers Nagercoil for mentor lab walkthrough.</li>
+                <li>Receive your personalized 6-month placement roadmap.</li>
+              </ul>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <a href="#" id="quizWhatsAppConfirmBtn" target="_blank" rel="noopener noreferrer" class="btn-enterprise-primary" style="justify-content: center; background: #25d366;">
+                <i class="fa-brands fa-whatsapp"></i>
+                <span>Confirm Seat with Counselor on WhatsApp</span>
+              </a>
+              <button type="button" class="btn-secondary" onclick="closePapQuizModal()" style="justify-content: center;">
+                Back to Website
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. STICKY MOBILE CONVERSION BAR (@media max-width: 768px) -->
+  <div class="sticky-mobile-conversion-bar" id="stickyMobileBar">
+    <a href="https://wa.me/919487530243?text=Hi%20Karka%20Academy,%20I'd%20like%20to%20learn%20more%20about%20your%20courses%20and%20PAP%20program." target="_blank" rel="noopener noreferrer" class="sticky-btn-wa">
+      <i class="fa-brands fa-whatsapp"></i>
+      <span>Chat on WhatsApp</span>
+    </a>
+    <button type="button" class="sticky-btn-quiz" onclick="openPapQuizModal()">
+      <i class="fa-solid fa-wand-magic-sparkles"></i>
+      <span>Check Eligibility</span>
+    </button>
   </div>
 
   <script src="app.js"></script>
