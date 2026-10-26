@@ -11,6 +11,7 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 
+const path = require('path');
 const ContactLead = require('./models/ContactLead');
 const EnrollmentLead = require('./models/EnrollmentLead');
 
@@ -20,6 +21,7 @@ const PORT = process.env.PORT || 5000;
 // Middleware
 app.use(cors());
 app.use(express.json());
+app.use(express.static(path.join(__dirname, '..')));
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI)
@@ -68,7 +70,98 @@ app.post('/api/enroll', async (req, res) => {
   }
 });
 
+// Admin Authentication Middleware
+const ADMIN_KEY = process.env.ADMIN_SECRET_KEY || 'karka@admin2026';
+
+const requireAdmin = (req, res, next) => {
+  const providedKey = req.headers['x-admin-key'] || req.query.adminKey || (req.body && req.body.adminKey);
+  if (!providedKey || providedKey !== ADMIN_KEY) {
+    return res.status(401).json({
+      success: false,
+      message: 'Unauthorized: Invalid or missing Admin API Key'
+    });
+  }
+  next();
+};
+
+// POST /api/admin/verify - Verify admin passcode
+app.post('/api/admin/verify', requireAdmin, (req, res) => {
+  res.status(200).json({ success: true, message: 'Passcode verified successfully' });
+});
+
+// GET /api/admin/leads - Fetch all Contact and Enrollment leads (newest first)
+app.get('/api/admin/leads', requireAdmin, async (req, res) => {
+  try {
+    const contacts = await ContactLead.find().sort({ createdAt: -1 });
+    const enrollments = await EnrollmentLead.find().sort({ createdAt: -1 });
+    return res.status(200).json({
+      success: true,
+      contacts,
+      enrollments
+    });
+  } catch (error) {
+    console.error('Error fetching admin leads:', error);
+    return res.status(500).json({ success: false, message: 'Server error fetching leads' });
+  }
+});
+
+// DELETE /api/admin/lead/:type/:id - Delete lead (type: contact or enrollment)
+app.delete('/api/admin/lead/:type/:id', requireAdmin, async (req, res) => {
+  try {
+    const { type, id } = req.params;
+    let deleted = null;
+    if (type === 'contact') {
+      deleted = await ContactLead.findByIdAndDelete(id);
+    } else if (type === 'enrollment') {
+      deleted = await EnrollmentLead.findByIdAndDelete(id);
+    } else {
+      return res.status(400).json({ success: false, message: 'Invalid lead type' });
+    }
+
+    if (!deleted) {
+      return res.status(404).json({ success: false, message: 'Lead record not found' });
+    }
+
+    console.log(`Deleted ${type} lead:`, id);
+    return res.status(200).json({ success: true, message: 'Lead deleted successfully', id });
+  } catch (error) {
+    console.error('Error deleting lead:', error);
+    return res.status(500).json({ success: false, message: 'Server error deleting lead' });
+  }
+});
+
+// PATCH /api/admin/lead/:type/:id - Update lead status
+app.patch('/api/admin/lead/:type/:id', requireAdmin, async (req, res) => {
+  try {
+    const { type, id } = req.params;
+    const { status } = req.body;
+    if (!status) {
+      return res.status(400).json({ success: false, message: 'Status is required' });
+    }
+
+    let updated = null;
+    if (type === 'contact') {
+      updated = await ContactLead.findByIdAndUpdate(id, { status }, { returnDocument: 'after', new: true });
+    } else if (type === 'enrollment') {
+      updated = await EnrollmentLead.findByIdAndUpdate(id, { status }, { returnDocument: 'after', new: true });
+    } else {
+      return res.status(400).json({ success: false, message: 'Invalid lead type' });
+    }
+
+    if (!updated) {
+      return res.status(404).json({ success: false, message: 'Lead record not found' });
+    }
+
+    console.log(`Updated ${type} lead ${id} status to:`, status);
+    return res.status(200).json({ success: true, message: 'Lead status updated successfully', data: updated });
+  } catch (error) {
+    console.error('Error updating lead status:', error);
+    return res.status(500).json({ success: false, message: 'Server error updating lead status' });
+  }
+});
+
 // Start Server
 app.listen(PORT, () => {
   console.log(`Karka Academy Backend server is running on http://localhost:${PORT}`);
 });
+

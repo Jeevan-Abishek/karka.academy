@@ -1,0 +1,1880 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Portal | Karka AI & Tech Academy</title>
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230070f3'/><text x='50%' y='55%' font-size='42' font-weight='900' fill='white' text-anchor='middle' dominant-baseline='middle'>க</text></svg>">
+
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    :root {
+      --primary: #0070f3;
+      --primary-hover: #0056b3;
+      --primary-light: #eff6ff;
+      --navy: #0a192f;
+      --dark-card: #0d1b2a;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --green: #10b981;
+      --green-light: #ecfdf5;
+      --amber: #f59e0b;
+      --amber-light: #fffbeb;
+      --purple: #8b5cf6;
+      --purple-light: #f5f3ff;
+      --red: #ef4444;
+      --red-light: #fef2f2;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      --font-display: 'Outfit', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    /* TOP NAVBAR */
+    .admin-nav {
+      background: #ffffff;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+
+    .nav-container {
+      max-width: 1380px;
+      margin: 0 auto;
+      padding: 0.85rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+
+    .brand-tamil {
+      font-family: var(--font-display);
+      font-size: 1.55rem;
+      font-weight: 900;
+      color: var(--primary);
+    }
+
+    .brand-badge {
+      background: var(--navy);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 6px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .status-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 9999px;
+      background: var(--green-light);
+      color: var(--green);
+      border: 1px solid rgba(16, 185, 129, 0.2);
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 8px var(--green);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      padding: 7px 14px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .btn-outline:hover {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+    }
+
+    .btn-danger-outline {
+      background: transparent;
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: var(--red);
+      padding: 7px 14px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+
+    .btn-danger-outline:hover {
+      background: var(--red-light);
+      border-color: var(--red);
+    }
+
+    /* MAIN CONTAINER */
+    .admin-main {
+      max-width: 1380px;
+      width: 100%;
+      margin: 1.5rem auto 3rem;
+      padding: 0 1.5rem;
+      flex: 1;
+    }
+
+    /* HEADER BANNER */
+    .page-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .page-title-group h1 {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .page-title-group p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-top: 2px;
+    }
+
+    .header-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .btn-primary-action {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 9px 18px;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 2px 6px rgba(0, 112, 243, 0.25);
+      transition: all 0.2s;
+    }
+
+    .btn-primary-action:hover {
+      background: var(--primary-hover);
+      transform: translateY(-1px);
+    }
+
+    .btn-success-action {
+      background: #10b981;
+      color: #fff;
+      border: none;
+      padding: 9px 18px;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 2px 6px rgba(16, 185, 129, 0.25);
+      transition: all 0.2s;
+    }
+
+    .btn-success-action:hover {
+      background: #059669;
+      transform: translateY(-1px);
+    }
+
+    /* METRICS STATS CARDS */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .metric-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.25rem 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .metric-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+    }
+
+    .metric-info .metric-label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .metric-info .metric-value {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-top: 4px;
+    }
+
+    .metric-icon-wrap {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.35rem;
+    }
+
+    .metric-icon-blue {
+      background: var(--primary-light);
+      color: var(--primary);
+    }
+
+    .metric-icon-amber {
+      background: var(--amber-light);
+      color: var(--amber);
+    }
+
+    .metric-icon-purple {
+      background: var(--purple-light);
+      color: var(--purple);
+    }
+
+    .metric-icon-green {
+      background: var(--green-light);
+      color: var(--green);
+    }
+
+    /* CONTROLS & SEARCH BAR */
+    .content-box {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+      overflow: hidden;
+    }
+
+    .box-toolbar {
+      padding: 1rem 1.4rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      background: #fafafa;
+    }
+
+    .tabs-nav {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: 1px solid transparent;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+
+    .tab-btn:hover {
+      color: var(--text-main);
+      background: #f1f5f9;
+    }
+
+    .tab-btn.active {
+      background: #ffffff;
+      color: var(--primary);
+      border-color: var(--border);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+
+    .tab-badge {
+      background: var(--border);
+      color: var(--text-main);
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 9999px;
+    }
+
+    .tab-btn.active .tab-badge {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .search-filter-group {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .search-box {
+      position: relative;
+      min-width: 260px;
+    }
+
+    .search-box i {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 8px 12px 8px 36px;
+      font-size: 0.85rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      outline: none;
+      background: #ffffff;
+      font-family: inherit;
+    }
+
+    .search-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(0, 112, 243, 0.12);
+    }
+
+    .status-select {
+      padding: 8px 12px;
+      font-size: 0.85rem;
+      font-family: inherit;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #ffffff;
+      color: var(--text-main);
+      cursor: pointer;
+      outline: none;
+    }
+
+    .status-select:focus {
+      border-color: var(--primary);
+    }
+
+    /* DATA TABLE */
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.88rem;
+    }
+
+    thead th {
+      background: #f8fafc;
+      color: var(--text-muted);
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.74rem;
+      letter-spacing: 0.5px;
+      padding: 12px 18px;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    tbody td {
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: middle;
+      color: var(--text-main);
+    }
+
+    tbody tr:hover {
+      background: #f8fafc;
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .student-cell {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .student-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #e0f2fe;
+      color: #0369a1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.82rem;
+      flex-shrink: 0;
+    }
+
+    .student-name-bold {
+      font-weight: 700;
+      color: var(--text-main);
+      display: block;
+    }
+
+    .student-token {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    .contact-cell {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .phone-row {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .btn-wa-pill {
+      background: #25d366;
+      color: #ffffff !important;
+      padding: 2px 7px;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: opacity 0.2s;
+    }
+
+    .btn-wa-pill:hover {
+      opacity: 0.88;
+    }
+
+    .email-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.8rem;
+    }
+
+    .email-link:hover {
+      color: var(--primary);
+      text-decoration: underline;
+    }
+
+    .track-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      background: var(--primary-light);
+      color: var(--primary);
+      border: 1px solid rgba(0, 112, 243, 0.15);
+      white-space: nowrap;
+    }
+
+    .date-cell {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    /* STATUS DROPDOWN & BADGES */
+    .status-badge-select {
+      appearance: none;
+      -webkit-appearance: none;
+      padding: 5px 24px 5px 10px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      border-radius: 9999px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      outline: none;
+      background-position: right 8px center;
+      background-repeat: no-repeat;
+      background-size: 10px;
+      font-family: inherit;
+      transition: all 0.2s;
+    }
+
+    .status-pending {
+      background-color: var(--amber-light);
+      color: #b45309;
+      border-color: rgba(245, 158, 11, 0.3);
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23b45309'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+    }
+
+    .status-new {
+      background-color: var(--primary-light);
+      color: #1d4ed8;
+      border-color: rgba(0, 112, 243, 0.25);
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231d4ed8'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+    }
+
+    .status-contacted {
+      background-color: var(--purple-light);
+      color: #6d28d9;
+      border-color: rgba(139, 92, 246, 0.3);
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236d28d9'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+    }
+
+    .status-enrolled {
+      background-color: var(--green-light);
+      color: #047857;
+      border-color: rgba(16, 185, 129, 0.3);
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23047857'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+    }
+
+    .status-closed {
+      background-color: #f1f5f9;
+      color: #475569;
+      border-color: rgba(100, 116, 139, 0.25);
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23475569'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+    }
+
+    .actions-cell {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .action-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #ffffff;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      transition: all 0.2s;
+    }
+
+    .action-btn:hover {
+      background: #f1f5f9;
+      color: var(--text-main);
+    }
+
+    .action-btn.btn-delete:hover {
+      background: var(--red-light);
+      color: var(--red);
+      border-color: rgba(239, 68, 68, 0.3);
+    }
+
+    .action-btn.btn-view:hover {
+      background: var(--primary-light);
+      color: var(--primary);
+      border-color: rgba(0, 112, 243, 0.3);
+    }
+
+    /* EMPTY STATE */
+    .empty-state {
+      padding: 4rem 1.5rem;
+      text-align: center;
+      color: var(--text-muted);
+    }
+
+    .empty-icon {
+      font-size: 2.75rem;
+      color: #cbd5e1;
+      margin-bottom: 1rem;
+    }
+
+    .empty-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 0.35rem;
+    }
+
+    /* LOGIN MODAL OVERLAY */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 25, 47, 0.65);
+      backdrop-filter: blur(5px);
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.25rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.25s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-card {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 2.25rem;
+      width: 100%;
+      max-width: 440px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      text-align: center;
+      transform: translateY(15px);
+      transition: transform 0.25s ease;
+    }
+
+    .modal-overlay.active .modal-card {
+      transform: translateY(0);
+    }
+
+    .modal-icon-shield {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: var(--primary-light);
+      color: var(--primary);
+      font-size: 1.75rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+    }
+
+    .modal-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+
+    .modal-sub {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.4;
+    }
+
+    .passcode-input-wrap {
+      position: relative;
+      margin-bottom: 1.25rem;
+    }
+
+    .passcode-input {
+      width: 100%;
+      padding: 12px 42px 12px 16px;
+      font-size: 1rem;
+      font-family: var(--font-mono);
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      outline: none;
+      letter-spacing: 1px;
+    }
+
+    .passcode-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(0, 112, 243, 0.12);
+    }
+
+    .toggle-pass-btn {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .modal-btn-submit {
+      width: 100%;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 12px;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 112, 243, 0.3);
+      transition: all 0.2s;
+    }
+
+    .modal-btn-submit:hover {
+      background: var(--primary-hover);
+    }
+
+    .error-msg {
+      color: var(--red);
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-top: 0.75rem;
+      display: none;
+    }
+
+    /* MESSAGE VIEW MODAL */
+    .msg-modal-card {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 1.75rem;
+      width: 100%;
+      max-width: 540px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      text-align: left;
+    }
+
+    .msg-modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .msg-close-btn {
+      background: transparent;
+      border: none;
+      font-size: 1.25rem;
+      cursor: pointer;
+      color: var(--text-muted);
+    }
+
+    .msg-box-content {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+      font-size: 0.92rem;
+      line-height: 1.6;
+      color: var(--text-main);
+      white-space: pre-wrap;
+      max-height: 280px;
+      overflow-y: auto;
+    }
+
+    /* TOAST NOTIFICATION */
+    .toast-container {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .toast {
+      background: var(--navy);
+      color: #fff;
+      padding: 12px 18px;
+      border-radius: 10px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      animation: slideInRight 0.3s ease forwards;
+    }
+
+    .toast-success i {
+      color: #10b981;
+    }
+
+    .toast-error i {
+      color: #ef4444;
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* FOOTER */
+    .admin-footer {
+      border-top: 1px solid var(--border);
+      background: #fff;
+      padding: 1.25rem 1.5rem;
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: auto;
+    }
+
+    /* MOBILE RESPONSIVE TWEAKS */
+    @media (max-width: 992px) {
+      .metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-container {
+        padding: 0.75rem 1rem;
+      }
+
+      .admin-main {
+        padding: 0 1rem;
+        margin: 1rem auto 2rem;
+      }
+
+      .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .header-btns {
+        width: 100%;
+      }
+
+      .header-btns button {
+        flex: 1;
+        justify-content: center;
+      }
+
+      .metrics-grid {
+        grid-template-columns: 1fr;
+        gap: 0.85rem;
+      }
+
+      .box-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .tabs-nav {
+        width: 100%;
+      }
+
+      .tab-btn {
+        flex: 1;
+        justify-content: center;
+      }
+
+      .search-filter-group {
+        width: 100%;
+        flex-direction: column;
+      }
+
+      .search-box {
+        width: 100%;
+      }
+
+      .status-select {
+        width: 100%;
+      }
+
+      tbody td,
+      thead th {
+        padding: 10px 12px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 1. TOP NAVBAR -->
+  <header class="admin-nav">
+    <div class="nav-container">
+      <a href="index.html" class="brand-group">
+        <span class="brand-tamil">கற்க</span>
+        <span style="font-weight: 800; font-size: 1rem; color: #0f172a;">AI &amp; TECH</span>
+        <span class="brand-badge"><i class="fa-solid fa-shield-halved"></i> Admin Portal</span>
+      </a>
+
+      <div class="nav-actions">
+        <div class="status-indicator" id="liveStatusPill">
+          <span class="status-dot"></span>
+          <span id="liveStatusText">MongoDB Live</span>
+        </div>
+        <a href="index.html" class="btn-outline">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span>Website</span>
+        </a>
+        <button class="btn-danger-outline" onclick="adminLogout()" title="Lock Portal">
+          <i class="fa-solid fa-lock"></i>
+          <span>Logout</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 2. MAIN DASHBOARD CONTENT -->
+  <main class="admin-main" id="dashboardContent" style="display: none;">
+
+    <!-- Page Title & Header Actions -->
+    <div class="page-header">
+      <div class="page-title-group">
+        <h1>Student Inquiries &amp; Admissions</h1>
+        <p>Live lead pipeline, fast WhatsApp follow-ups, and enrollment status tracking</p>
+      </div>
+
+      <div class="header-btns">
+        <button class="btn-primary-action" onclick="fetchLeadsData()" id="refreshBtn">
+          <i class="fa-solid fa-arrows-rotate"></i>
+          <span>Refresh Data</span>
+        </button>
+        <button class="btn-success-action" onclick="exportDataToCSV()">
+          <i class="fa-solid fa-file-excel"></i>
+          <span>Export CSV / Excel</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Metrics Cards Overview -->
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <div class="metric-info">
+          <div class="metric-label">Course Enrollments</div>
+          <div class="metric-value" id="metricEnrollments">0</div>
+        </div>
+        <div class="metric-icon-wrap metric-icon-blue">
+          <i class="fa-solid fa-user-graduate"></i>
+        </div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-info">
+          <div class="metric-label">Contact Enquiries</div>
+          <div class="metric-value" id="metricContacts">0</div>
+        </div>
+        <div class="metric-icon-wrap metric-icon-purple">
+          <i class="fa-solid fa-headset"></i>
+        </div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-info">
+          <div class="metric-label">Pending Review</div>
+          <div class="metric-value" id="metricPending">0</div>
+        </div>
+        <div class="metric-icon-wrap metric-icon-amber">
+          <i class="fa-solid fa-hourglass-half"></i>
+        </div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-info">
+          <div class="metric-label">Confirmed Enrolled</div>
+          <div class="metric-value" id="metricEnrolled">0</div>
+        </div>
+        <div class="metric-icon-wrap metric-icon-green">
+          <i class="fa-solid fa-circle-check"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- Content Table Box -->
+    <div class="content-box">
+      <!-- Toolbar -->
+      <div class="box-toolbar">
+        <div class="tabs-nav">
+          <button class="tab-btn active" id="tabEnrollmentsBtn" onclick="switchTab('enrollments')">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <span>Course Enrollments</span>
+            <span class="tab-badge" id="badgeEnrollCount">0</span>
+          </button>
+          <button class="tab-btn" id="tabContactsBtn" onclick="switchTab('contacts')">
+            <i class="fa-solid fa-comments"></i>
+            <span>Career Inquiries</span>
+            <span class="tab-badge" id="badgeContactCount">0</span>
+          </button>
+        </div>
+
+        <div class="search-filter-group">
+          <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" class="search-input" id="tableSearchInput"
+              placeholder="Search by name, phone, email, track..." oninput="filterTableData()">
+          </div>
+
+          <select class="status-select" id="statusFilterSelect" onchange="filterTableData()">
+            <option value="ALL">All Statuses</option>
+            <option value="Pending Review">Pending Review</option>
+            <option value="New">New</option>
+            <option value="Contacted">Contacted</option>
+            <option value="Enrolled">Enrolled</option>
+            <option value="Closed">Closed</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Tab 1: Enrollments Table -->
+      <div class="table-container" id="enrollmentsTableView">
+        <table id="enrollmentsTable">
+          <thead>
+            <tr>
+              <th>Student</th>
+              <th>Contact Details</th>
+              <th>Enrolled Track / Course</th>
+              <th>Academic Background</th>
+              <th>Status</th>
+              <th>Submitted</th>
+              <th style="text-align: right;">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="enrollmentsTbody">
+            <!-- Dynamic rows injected here -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Tab 2: Contacts Table -->
+      <div class="table-container" id="contactsTableView" style="display: none;">
+        <table id="contactsTable">
+          <thead>
+            <tr>
+              <th>Candidate</th>
+              <th>Contact Details</th>
+              <th>Program of Interest</th>
+              <th>Inquiry Message</th>
+              <th>Status</th>
+              <th>Submitted</th>
+              <th style="text-align: right;">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="contactsTbody">
+            <!-- Dynamic rows injected here -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Empty State -->
+      <div class="empty-state" id="emptyStateBox" style="display: none;">
+        <div class="empty-icon"><i class="fa-solid fa-inbox"></i></div>
+        <div class="empty-title">No matching records found</div>
+        <p>Try modifying your search or status filter</p>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- 3. LOGIN PASSCODE MODAL -->
+  <div class="modal-overlay" id="loginModal">
+    <div class="modal-card">
+      <div class="modal-icon-shield">
+        <i class="fa-solid fa-shield-halved"></i>
+      </div>
+      <h2 class="modal-title">Admin Access Required</h2>
+      <p class="modal-sub">Enter your Karka Academy master passcode to unlock leads and enrollment records.</p>
+
+      <form id="loginForm" onsubmit="handleAdminLogin(event)">
+        <div class="passcode-input-wrap">
+          <input type="password" class="passcode-input" id="passcodeInput" placeholder="Enter admin passcode"
+            autocomplete="current-password" required autofocus>
+          <button type="button" class="toggle-pass-btn" onclick="togglePasscodeVisibility()"
+            title="Toggle visibility">
+            <i class="fa-regular fa-eye" id="passToggleIcon"></i>
+          </button>
+        </div>
+
+        <button type="submit" class="modal-btn-submit" id="unlockBtn">
+          <span>Unlock Dashboard</span>
+        </button>
+
+        <div class="error-msg" id="loginErrorMsg">
+          <i class="fa-solid fa-circle-exclamation"></i>
+          <span>Incorrect passcode. Please try again.</span>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 4. VIEW MESSAGE MODAL -->
+  <div class="modal-overlay" id="viewMessageModal">
+    <div class="msg-modal-card">
+      <div class="msg-modal-header">
+        <div>
+          <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main);" id="msgModalName">Candidate
+            Inquiry</h3>
+          <p style="font-size: 0.8rem; color: var(--text-muted);" id="msgModalMeta">Received</p>
+        </div>
+        <button class="msg-close-btn" onclick="closeModal('viewMessageModal')">&times;</button>
+      </div>
+      <div class="msg-box-content" id="msgModalBody"></div>
+      <div style="margin-top: 1.25rem; display: flex; justify-content: flex-end; gap: 8px;">
+        <button class="btn-outline" onclick="closeModal('viewMessageModal')">Close</button>
+        <a href="#" id="msgModalWhatsAppBtn" target="_blank" class="btn-success-action"
+          style="text-decoration: none;">
+          <i class="fa-brands fa-whatsapp"></i> Reply on WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. DELETE CONFIRMATION MODAL -->
+  <div class="modal-overlay" id="deleteConfirmModal">
+    <div class="modal-card" style="max-width: 400px;">
+      <div class="modal-icon-shield" style="background: var(--red-light); color: var(--red);">
+        <i class="fa-solid fa-trash-can"></i>
+      </div>
+      <h3 class="modal-title" style="font-size: 1.3rem;">Delete Record?</h3>
+      <p class="modal-sub">Are you sure you want to delete this record? This action will permanently remove it from
+        MongoDB.</p>
+      <div style="display: flex; gap: 10px; margin-top: 1rem;">
+        <button class="btn-outline" style="flex: 1; justify-content: center;"
+          onclick="closeModal('deleteConfirmModal')">Cancel</button>
+        <button class="btn-danger-outline"
+          style="flex: 1; justify-content: center; background: var(--red); color: #fff;" id="confirmDeleteBtn">
+          <span>Delete Record</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST CONTAINER -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- FOOTER -->
+  <footer class="admin-footer">
+    &copy; 2026 Karka AI &amp; Tech Academy &bull; Secure Administration Panel &bull; Nagercoil, Tamil Nadu
+  </footer>
+
+  <!-- SCRIPT -->
+  <script>
+    // Configuration
+    const API_BASE = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+      ? (window.location.port === '5000' ? '' : 'http://localhost:5000')
+      : '';
+    const PASSCODE_STORAGE_KEY = 'karka_admin_key';
+
+    // State
+    let currentTab = 'enrollments';
+    let allEnrollments = [];
+    let allContacts = [];
+    let itemToDelete = null;
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+      const savedKey = sessionStorage.getItem(PASSCODE_STORAGE_KEY);
+      if (savedKey) {
+        verifyAndLoad(savedKey);
+      } else {
+        openModal('loginModal');
+      }
+    });
+
+    // Passcode Visibility
+    function togglePasscodeVisibility() {
+      const input = document.getElementById('passcodeInput');
+      const icon = document.getElementById('passToggleIcon');
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.className = 'fa-regular fa-eye-slash';
+      } else {
+        input.type = 'password';
+        icon.className = 'fa-regular fa-eye';
+      }
+    }
+
+    // Modal helpers
+    function openModal(id) {
+      const modal = document.getElementById(id);
+      if (modal) modal.classList.add('active');
+    }
+
+    function closeModal(id) {
+      const modal = document.getElementById(id);
+      if (modal) modal.classList.remove('active');
+    }
+
+    // Toast Notification
+    function showToast(message, type = 'success') {
+      const container = document.getElementById('toastContainer');
+      const toast = document.createElement('div');
+      toast.className = `toast ${type === 'success' ? 'toast-success' : 'toast-error'}`;
+      toast.innerHTML = `<i class="fa-solid ${type === 'success' ? 'fa-circle-check' : 'fa-circle-exclamation'}"></i><span>${message}</span>`;
+      container.appendChild(toast);
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateY(10px)';
+        setTimeout(() => toast.remove(), 300);
+      }, 3500);
+    }
+
+    // Admin Login
+    async function handleAdminLogin(e) {
+      e.preventDefault();
+      const pass = document.getElementById('passcodeInput').value.trim();
+      const unlockBtn = document.getElementById('unlockBtn');
+      const errorMsg = document.getElementById('loginErrorMsg');
+
+      unlockBtn.disabled = true;
+      unlockBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Verifying...';
+      errorMsg.style.display = 'none';
+
+      try {
+        const res = await fetch(`${API_BASE}/api/admin/verify`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-admin-key': pass
+          }
+        });
+        const data = await res.json();
+        if (res.ok && data.success) {
+          sessionStorage.setItem(PASSCODE_STORAGE_KEY, pass);
+          closeModal('loginModal');
+          showToast('Welcome back, Admin!');
+          loadDashboard();
+        } else {
+          errorMsg.style.display = 'block';
+        }
+      } catch (err) {
+        console.warn('Backend offline or error verifying, checking fallback', err);
+        // Fallback for default passcode if backend offline
+        if (pass === 'karka@admin2026') {
+          sessionStorage.setItem(PASSCODE_STORAGE_KEY, pass);
+          closeModal('loginModal');
+          showToast('Authenticated in offline preview mode', 'success');
+          loadDashboard();
+        } else {
+          errorMsg.style.display = 'block';
+        }
+      } finally {
+        unlockBtn.disabled = false;
+        unlockBtn.innerHTML = '<span>Unlock Dashboard</span>';
+      }
+    }
+
+    // Verify and load
+    async function verifyAndLoad(pass) {
+      try {
+        const res = await fetch(`${API_BASE}/api/admin/verify`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-admin-key': pass
+          }
+        });
+        if (res.ok) {
+          loadDashboard();
+        } else {
+          sessionStorage.removeItem(PASSCODE_STORAGE_KEY);
+          openModal('loginModal');
+        }
+      } catch (err) {
+        // Fallback
+        if (pass === 'karka@admin2026') {
+          loadDashboard();
+        } else {
+          openModal('loginModal');
+        }
+      }
+    }
+
+    function adminLogout() {
+      sessionStorage.removeItem(PASSCODE_STORAGE_KEY);
+      document.getElementById('dashboardContent').style.display = 'none';
+      document.getElementById('passcodeInput').value = '';
+      openModal('loginModal');
+      showToast('Logged out securely');
+    }
+
+    function loadDashboard() {
+      document.getElementById('dashboardContent').style.display = 'block';
+      fetchLeadsData();
+    }
+
+    // Fetch leads data from backend
+    async function fetchLeadsData() {
+      const key = sessionStorage.getItem(PASSCODE_STORAGE_KEY) || 'karka@admin2026';
+      const refreshBtn = document.getElementById('refreshBtn');
+      if (refreshBtn) refreshBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Refreshing...';
+
+      try {
+        const res = await fetch(`${API_BASE}/api/admin/leads`, {
+          headers: {
+            'x-admin-key': key
+          }
+        });
+
+        if (!res.ok) {
+          throw new Error(`HTTP error ${res.status}`);
+        }
+
+        const data = await res.json();
+        allEnrollments = data.enrollments || [];
+        allContacts = data.contacts || [];
+
+        document.getElementById('liveStatusPill').style.background = 'var(--green-light)';
+        document.getElementById('liveStatusPill').style.color = 'var(--green)';
+        document.getElementById('liveStatusText').textContent = 'MongoDB Atlas Live';
+
+        updateMetrics();
+        filterTableData();
+      } catch (err) {
+        console.warn('Could not fetch from backend:', err);
+        document.getElementById('liveStatusPill').style.background = 'var(--amber-light)';
+        document.getElementById('liveStatusPill').style.color = '#b45309';
+        document.getElementById('liveStatusText').textContent = 'Backend Standby';
+
+        // Sample placeholder if database is empty or offline
+        if (allEnrollments.length === 0 && allContacts.length === 0) {
+          allEnrollments = [
+            {
+              _id: 'sample-1',
+              token: 'KARKA-PAP-2026-892',
+              name: 'Jeevan Abishek',
+              email: 'abishekjeevan65@gmail.com',
+              phone: '+91 94875 30243',
+              track: 'Fullstack Web & AI Engineering',
+              degree: 'B.E CSE',
+              gradYear: '2026',
+              status: 'Pending Review',
+              createdAt: new Date().toISOString()
+            }
+          ];
+          allContacts = [
+            {
+              _id: 'sample-2',
+              name: 'Anandha Krishnan',
+              email: 'anand@gmail.com',
+              phone: '+91 98401 23456',
+              program: 'AI & Machine Learning Bootcamp',
+              message: 'Interested in the upcoming weekend batch for working professionals in Nagercoil.',
+              status: 'New',
+              createdAt: new Date(Date.now() - 3600000).toISOString()
+            }
+          ];
+        }
+
+        updateMetrics();
+        filterTableData();
+      } finally {
+        if (refreshBtn) refreshBtn.innerHTML = '<i class="fa-solid fa-arrows-rotate"></i> Refresh Data';
+      }
+    }
+
+    // Update Top Metric Cards
+    function updateMetrics() {
+      const enrollCount = allEnrollments.length;
+      const contactCount = allContacts.length;
+
+      let pendingCount = 0;
+      let enrolledCount = 0;
+
+      allEnrollments.forEach(item => {
+        if (item.status === 'Pending Review' || item.status === 'New') pendingCount++;
+        if (item.status === 'Enrolled') enrolledCount++;
+      });
+
+      allContacts.forEach(item => {
+        if (item.status === 'New' || item.status === 'Pending Review') pendingCount++;
+        if (item.status === 'Enrolled') enrolledCount++;
+      });
+
+      document.getElementById('metricEnrollments').textContent = enrollCount;
+      document.getElementById('metricContacts').textContent = contactCount;
+      document.getElementById('metricPending').textContent = pendingCount;
+      document.getElementById('metricEnrolled').textContent = enrolledCount;
+
+      document.getElementById('badgeEnrollCount').textContent = enrollCount;
+      document.getElementById('badgeContactCount').textContent = contactCount;
+    }
+
+    // Tab Switching
+    function switchTab(tab) {
+      currentTab = tab;
+      const tabEnrollBtn = document.getElementById('tabEnrollmentsBtn');
+      const tabContactBtn = document.getElementById('tabContactsBtn');
+      const enrollTable = document.getElementById('enrollmentsTableView');
+      const contactTable = document.getElementById('contactsTableView');
+
+      if (tab === 'enrollments') {
+        tabEnrollBtn.classList.add('active');
+        tabContactBtn.classList.remove('active');
+        enrollTable.style.display = 'block';
+        contactTable.style.display = 'none';
+      } else {
+        tabContactBtn.classList.add('active');
+        tabEnrollBtn.classList.remove('active');
+        contactTable.style.display = 'block';
+        enrollTable.style.display = 'none';
+      }
+
+      filterTableData();
+    }
+
+    // Real-time Search and Filter
+    function filterTableData() {
+      const query = (document.getElementById('tableSearchInput').value || '').toLowerCase().trim();
+      const statusFilter = document.getElementById('statusFilterSelect').value;
+
+      const emptyBox = document.getElementById('emptyStateBox');
+
+      if (currentTab === 'enrollments') {
+        const filtered = allEnrollments.filter(item => {
+          const matchQuery = !query ||
+            (item.name && item.name.toLowerCase().includes(query)) ||
+            (item.email && item.email.toLowerCase().includes(query)) ||
+            (item.phone && item.phone.toLowerCase().includes(query)) ||
+            (item.track && item.track.toLowerCase().includes(query)) ||
+            (item.token && item.token.toLowerCase().includes(query));
+
+          const matchStatus = statusFilter === 'ALL' || item.status === statusFilter;
+          return matchQuery && matchStatus;
+        });
+
+        renderEnrollmentsTable(filtered);
+        emptyBox.style.display = filtered.length === 0 ? 'block' : 'none';
+      } else {
+        const filtered = allContacts.filter(item => {
+          const matchQuery = !query ||
+            (item.name && item.name.toLowerCase().includes(query)) ||
+            (item.email && item.email.toLowerCase().includes(query)) ||
+            (item.phone && item.phone.toLowerCase().includes(query)) ||
+            (item.program && item.program.toLowerCase().includes(query)) ||
+            (item.message && item.message.toLowerCase().includes(query));
+
+          const matchStatus = statusFilter === 'ALL' || item.status === statusFilter;
+          return matchQuery && matchStatus;
+        });
+
+        renderContactsTable(filtered);
+        emptyBox.style.display = filtered.length === 0 ? 'block' : 'none';
+      }
+    }
+
+    // Helper: Format Phone for WhatsApp
+    function getCleanWhatsAppUrl(phone, studentName, trackOrProgram) {
+      if (!phone) return '#';
+      let digits = phone.replace(/\D/g, '');
+      if (digits.length === 10) {
+        digits = '91' + digits;
+      }
+      const text = encodeURIComponent(`Hi ${studentName || 'there'}, greetings from Karka AI & Tech Academy! Regarding your application for ${trackOrProgram || 'our training programs'}, we'd love to schedule a quick counseling call.`);
+      return `https://wa.me/${digits}?text=${text}`;
+    }
+
+    // Helper: Friendly Date
+    function formatFriendlyDate(dateStr) {
+      if (!dateStr) return 'N/A';
+      try {
+        const d = new Date(dateStr);
+        return d.toLocaleDateString('en-US', {
+          month: 'short',
+          day: 'numeric',
+          year: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit'
+        });
+      } catch (e) {
+        return dateStr;
+      }
+    }
+
+    // Status Class
+    function getStatusClass(status) {
+      switch (status) {
+        case 'Enrolled': return 'status-enrolled';
+        case 'Contacted': return 'status-contacted';
+        case 'New': return 'status-new';
+        case 'Closed': return 'status-closed';
+        default: return 'status-pending';
+      }
+    }
+
+    // Render Enrollments Table
+    function renderEnrollmentsTable(list) {
+      const tbody = document.getElementById('enrollmentsTbody');
+      tbody.innerHTML = '';
+
+      list.forEach(item => {
+        const tr = document.createElement('tr');
+        const initials = (item.name || 'S').split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+        const waUrl = getCleanWhatsAppUrl(item.phone, item.name, item.track);
+        const statusClass = getStatusClass(item.status);
+
+        tr.innerHTML = `
+          <td>
+            <div class="student-cell">
+              <div class="student-avatar">${initials}</div>
+              <div>
+                <span class="student-name-bold">${escapeHtml(item.name || 'Unnamed')}</span>
+                <span class="student-token">${escapeHtml(item.token || item._id)}</span>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="contact-cell">
+              <div class="phone-row">
+                <span>${escapeHtml(item.phone || 'N/A')}</span>
+                ${item.phone ? `<a href="${waUrl}" target="_blank" class="btn-wa-pill" title="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i> Chat</a>` : ''}
+              </div>
+              <a href="mailto:${escapeHtml(item.email)}" class="email-link">${escapeHtml(item.email || 'N/A')}</a>
+            </div>
+          </td>
+          <td>
+            <span class="track-pill">
+              <i class="fa-solid fa-code"></i>
+              <span>${escapeHtml(item.track || 'General Tech')}</span>
+            </span>
+          </td>
+          <td>
+            <div style="font-weight: 600; font-size: 0.85rem;">${escapeHtml(item.degree || 'Degree unspecified')}</div>
+            <div style="font-size: 0.75rem; color: var(--text-muted);">${escapeHtml(item.gradYear ? 'Class of ' + item.gradYear : '')}</div>
+          </td>
+          <td>
+            <select class="status-badge-select ${statusClass}" onchange="updateLeadStatus('enrollment', '${item._id}', this.value, this)">
+              <option value="Pending Review" ${item.status === 'Pending Review' ? 'selected' : ''}>Pending Review</option>
+              <option value="Contacted" ${item.status === 'Contacted' ? 'selected' : ''}>Contacted</option>
+              <option value="Enrolled" ${item.status === 'Enrolled' ? 'selected' : ''}>Enrolled</option>
+              <option value="Closed" ${item.status === 'Closed' ? 'selected' : ''}>Closed</option>
+            </select>
+          </td>
+          <td>
+            <span class="date-cell">${formatFriendlyDate(item.createdAt)}</span>
+          </td>
+          <td style="text-align: right;">
+            <div class="actions-cell" style="justify-content: flex-end;">
+              <a href="${waUrl}" target="_blank" class="action-btn" title="Open WhatsApp Chat">
+                <i class="fa-brands fa-whatsapp" style="color: #25d366;"></i>
+              </a>
+              <button class="action-btn btn-delete" onclick="promptDeleteRecord('enrollment', '${item._id}', '${escapeHtml(item.name)}')" title="Delete Lead">
+                <i class="fa-solid fa-trash-can"></i>
+              </button>
+            </div>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    // Render Contacts Table
+    function renderContactsTable(list) {
+      const tbody = document.getElementById('contactsTbody');
+      tbody.innerHTML = '';
+
+      list.forEach(item => {
+        const tr = document.createElement('tr');
+        const initials = (item.name || 'C').split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+        const waUrl = getCleanWhatsAppUrl(item.phone, item.name, item.program);
+        const statusClass = getStatusClass(item.status);
+        const msgSnippet = (item.message || '').length > 50 ? (item.message.substring(0, 50) + '...') : (item.message || 'No message provided');
+
+        tr.innerHTML = `
+          <td>
+            <div class="student-cell">
+              <div class="student-avatar" style="background:#fef3c7; color:#b45309;">${initials}</div>
+              <div>
+                <span class="student-name-bold">${escapeHtml(item.name || 'Unnamed')}</span>
+                <span class="student-token">Inquiry</span>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="contact-cell">
+              <div class="phone-row">
+                <span>${escapeHtml(item.phone || 'N/A')}</span>
+                ${item.phone ? `<a href="${waUrl}" target="_blank" class="btn-wa-pill" title="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i> Chat</a>` : ''}
+              </div>
+              <a href="mailto:${escapeHtml(item.email)}" class="email-link">${escapeHtml(item.email || 'N/A')}</a>
+            </div>
+          </td>
+          <td>
+            <span class="track-pill" style="background: var(--purple-light); color: var(--purple); border-color: rgba(139, 92, 246, 0.2);">
+              <i class="fa-solid fa-shapes"></i>
+              <span>${escapeHtml(item.program || 'Career Counseling')}</span>
+            </span>
+          </td>
+          <td>
+            <div style="font-size: 0.85rem; max-width: 260px; color: var(--text-main); line-height: 1.4;">
+              ${escapeHtml(msgSnippet)}
+            </div>
+            ${item.message && item.message.length > 50 ? `<a href="javascript:void(0)" onclick="viewFullMessage('${escapeHtml(item.name)}', '${escapeHtml(item.program)}', '${escapeHtml(item.createdAt)}', '${encodeURIComponent(item.message)}', '${waUrl}')" style="font-size: 0.75rem; color: var(--primary); font-weight: 700; text-decoration: none;">View full message</a>` : ''}
+          </td>
+          <td>
+            <select class="status-badge-select ${statusClass}" onchange="updateLeadStatus('contact', '${item._id}', this.value, this)">
+              <option value="New" ${item.status === 'New' ? 'selected' : ''}>New</option>
+              <option value="Contacted" ${item.status === 'Contacted' ? 'selected' : ''}>Contacted</option>
+              <option value="Enrolled" ${item.status === 'Enrolled' ? 'selected' : ''}>Enrolled</option>
+              <option value="Closed" ${item.status === 'Closed' ? 'selected' : ''}>Closed</option>
+            </select>
+          </td>
+          <td>
+            <span class="date-cell">${formatFriendlyDate(item.createdAt)}</span>
+          </td>
+          <td style="text-align: right;">
+            <div class="actions-cell" style="justify-content: flex-end;">
+              <a href="${waUrl}" target="_blank" class="action-btn" title="Open WhatsApp Chat">
+                <i class="fa-brands fa-whatsapp" style="color: #25d366;"></i>
+              </a>
+              <button class="action-btn btn-delete" onclick="promptDeleteRecord('contact', '${item._id}', '${escapeHtml(item.name)}')" title="Delete Lead">
+                <i class="fa-solid fa-trash-can"></i>
+              </button>
+            </div>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    // View Message in Modal
+    function viewFullMessage(name, program, date, encodedMsg, waUrl) {
+      document.getElementById('msgModalName').textContent = `${name} - ${program}`;
+      document.getElementById('msgModalMeta').textContent = `Submitted on ${formatFriendlyDate(date)}`;
+      document.getElementById('msgModalBody').textContent = decodeURIComponent(encodedMsg);
+      document.getElementById('msgModalWhatsAppBtn').href = waUrl;
+      openModal('viewMessageModal');
+    }
+
+    // Update Status
+    async function updateLeadStatus(type, id, newStatus, selectEl) {
+      const key = sessionStorage.getItem(PASSCODE_STORAGE_KEY) || 'karka@admin2026';
+
+      // Update styling immediately
+      selectEl.className = `status-badge-select ${getStatusClass(newStatus)}`;
+
+      try {
+        const res = await fetch(`${API_BASE}/api/admin/lead/${type}/${id}`, {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-admin-key': key
+          },
+          body: JSON.stringify({ status: newStatus })
+        });
+
+        const data = await res.json();
+        if (res.ok && data.success) {
+          showToast(`Status updated to ${newStatus}`);
+          // Update in-memory
+          if (type === 'enrollment') {
+            const item = allEnrollments.find(e => e._id === id);
+            if (item) item.status = newStatus;
+          } else {
+            const item = allContacts.find(c => c._id === id);
+            if (item) item.status = newStatus;
+          }
+          updateMetrics();
+        } else {
+          showToast(data.message || 'Error updating status', 'error');
+        }
+      } catch (err) {
+        console.warn('Backend update failed:', err);
+        showToast('Updated locally (backend offline)', 'success');
+        if (type === 'enrollment') {
+          const item = allEnrollments.find(e => e._id === id);
+          if (item) item.status = newStatus;
+        } else {
+          const item = allContacts.find(c => c._id === id);
+          if (item) item.status = newStatus;
+        }
+        updateMetrics();
+      }
+    }
+
+    // Delete Record Prompt
+    function promptDeleteRecord(type, id, name) {
+      itemToDelete = { type, id, name };
+      openModal('deleteConfirmModal');
+      document.getElementById('confirmDeleteBtn').onclick = executeDelete;
+    }
+
+    async function executeDelete() {
+      if (!itemToDelete) return;
+      const { type, id } = itemToDelete;
+      const key = sessionStorage.getItem(PASSCODE_STORAGE_KEY) || 'karka@admin2026';
+      closeModal('deleteConfirmModal');
+
+      try {
+        const res = await fetch(`${API_BASE}/api/admin/lead/${type}/${id}`, {
+          method: 'DELETE',
+          headers: {
+            'x-admin-key': key
+          }
+        });
+
+        const data = await res.json();
+        if (res.ok && data.success) {
+          showToast('Record deleted permanently');
+        } else {
+          showToast(data.message || 'Error deleting record', 'error');
+        }
+      } catch (err) {
+        console.warn('Backend delete failed, removing locally:', err);
+        showToast('Deleted locally (offline mode)');
+      }
+
+      if (type === 'enrollment') {
+        allEnrollments = allEnrollments.filter(e => e._id !== id);
+      } else {
+        allContacts = allContacts.filter(c => c._id !== id);
+      }
+
+      updateMetrics();
+      filterTableData();
+      itemToDelete = null;
+    }
+
+    // Export to Excel / CSV
+    function exportDataToCSV() {
+      let csvContent = '\uFEFF'; // UTF-8 BOM for Microsoft Excel
+
+      if (currentTab === 'enrollments') {
+        csvContent += 'Token / ID,Full Name,Email,Phone,Track / Course,Degree,Graduation Year,Status,Submitted At\n';
+        allEnrollments.forEach(item => {
+          const row = [
+            `"${item.token || item._id}"`,
+            `"${(item.name || '').replace(/"/g, '""')}"`,
+            `"${(item.email || '').replace(/"/g, '""')}"`,
+            `"${(item.phone || '').replace(/"/g, '""')}"`,
+            `"${(item.track || '').replace(/"/g, '""')}"`,
+            `"${(item.degree || '').replace(/"/g, '""')}"`,
+            `"${(item.gradYear || '').replace(/"/g, '""')}"`,
+            `"${item.status || 'Pending Review'}"`,
+            `"${formatFriendlyDate(item.createdAt)}"`
+          ];
+          csvContent += row.join(',') + '\n';
+        });
+      } else {
+        csvContent += 'Lead ID,Candidate Name,Email,Phone,Program of Interest,Message,Status,Submitted At\n';
+        allContacts.forEach(item => {
+          const row = [
+            `"${item._id}"`,
+            `"${(item.name || '').replace(/"/g, '""')}"`,
+            `"${(item.email || '').replace(/"/g, '""')}"`,
+            `"${(item.phone || '').replace(/"/g, '""')}"`,
+            `"${(item.program || '').replace(/"/g, '""')}"`,
+            `"${(item.message || '').replace(/"/g, '""')}"`,
+            `"${item.status || 'New'}"`,
+            `"${formatFriendlyDate(item.createdAt)}"`
+          ];
+          csvContent += row.join(',') + '\n';
+        });
+      }
+
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      const timestamp = new Date().toISOString().split('T')[0];
+      link.setAttribute('href', url);
+      link.setAttribute('download', `karka_${currentTab}_export_${timestamp}.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      showToast(`Exported ${currentTab} to CSV file successfully!`);
+    }
+
+    // Escape HTML helper
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+  </script>
+</body>
+
+</html>
