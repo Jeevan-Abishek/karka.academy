@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const ContactLeadSchema = new mongoose.Schema({
   name: { type: String, required: true },
-  email: { type: String, required: true },
+  email: { type: String, default: '' },
   phone: { type: String, required: true },
   program: { type: String, required: true },
   message: { type: String },

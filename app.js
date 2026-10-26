@@ -1556,58 +1556,129 @@ window.initGradCalculator = initGradCalculator;
 // 1. SYLLABUS-TO-WHATSAPP MODAL
 function openSyllabusWhatsAppModal(trackName) {
   const modal = document.getElementById('syllabusWhatsAppModal');
-  const titleTrack = document.getElementById('syllabusModalTrackDisplay');
-  const inputTrack = document.getElementById('syllabusTrackInput');
-  if (titleTrack) titleTrack.textContent = trackName || 'Fullstack Tech';
-  if (inputTrack) inputTrack.value = trackName || 'Fullstack Tech';
+  const headerTitle = document.getElementById('syllabusModalHeaderTitle');
+  const selectTrack = document.getElementById('syllabusTrackSelect');
+  const errorMsg = document.getElementById('syllabusPhoneError');
+  const toast = document.getElementById('syllabusSuccessToast');
+  const form = document.getElementById('syllabusWhatsAppForm');
+  const phoneInput = document.getElementById('syllabusPhoneInput');
+
+  if (errorMsg) errorMsg.style.display = 'none';
+  if (toast) toast.style.display = 'none';
+  if (form) form.style.display = 'block';
+
+  const defaultTrack = trackName || 'MERN Fullstack Development';
+  if (headerTitle) {
+    headerTitle.textContent = `Download ${defaultTrack} Official Syllabus & Fee Structure`;
+  }
+
+  if (selectTrack) {
+    let found = false;
+    for (let i = 0; i < selectTrack.options.length; i++) {
+      if (selectTrack.options[i].value.toLowerCase().includes(defaultTrack.toLowerCase()) ||
+          defaultTrack.toLowerCase().includes(selectTrack.options[i].value.toLowerCase())) {
+        selectTrack.selectedIndex = i;
+        found = true;
+        break;
+      }
+    }
+    if (!found) {
+      // Add custom track option and select it
+      const newOpt = document.createElement('option');
+      newOpt.value = defaultTrack;
+      newOpt.textContent = defaultTrack;
+      selectTrack.appendChild(newOpt);
+      selectTrack.value = defaultTrack;
+    }
+  }
+
+  // Prevent background scrolling
+  document.body.classList.add('modal-open');
   if (modal) modal.classList.add('active');
+  if (phoneInput) setTimeout(() => phoneInput.focus(), 150);
 }
 
 function closeSyllabusWhatsAppModal() {
   const modal = document.getElementById('syllabusWhatsAppModal');
   if (modal) modal.classList.remove('active');
+  document.body.classList.remove('modal-open');
 }
 
 async function handleSyllabusWhatsAppSubmit(e) {
   e.preventDefault();
-  const track = document.getElementById('syllabusTrackInput')?.value || 'Tech Track';
-  const name = document.getElementById('syllabusNameInput')?.value || 'Prospective Student';
-  const phone = document.getElementById('syllabusPhoneInput')?.value || '';
+  const nameInput = document.getElementById('syllabusNameInput');
+  const phoneInput = document.getElementById('syllabusPhoneInput');
+  const selectTrack = document.getElementById('syllabusTrackSelect');
+  const optInCheckbox = document.getElementById('syllabusOptInCheckbox');
   const submitBtn = document.getElementById('syllabusSubmitBtn');
+  const errorMsg = document.getElementById('syllabusPhoneError');
+  const toast = document.getElementById('syllabusSuccessToast');
+  const form = document.getElementById('syllabusWhatsAppForm');
+
+  const name = nameInput ? nameInput.value.trim() : '';
+  const rawPhone = phoneInput ? phoneInput.value.trim().replace(/\D/g, '') : '';
+  const track = selectTrack ? selectTrack.value : 'MERN Fullstack Development';
+  const optIn = optInCheckbox ? optInCheckbox.checked : true;
+
+  // Validate 10-digit Indian phone number
+  if (rawPhone.length !== 10) {
+    if (errorMsg) {
+      errorMsg.style.display = 'block';
+      errorMsg.textContent = 'Please enter a valid 10-digit WhatsApp number (without +91)';
+    }
+    phoneInput?.focus();
+    return;
+  }
+  if (errorMsg) errorMsg.style.display = 'none';
 
   if (submitBtn) {
     submitBtn.disabled = true;
-    submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Connecting to WhatsApp...';
+    submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Preparing Syllabus...';
   }
 
-  // Asynchronously record lead in MongoDB backend
+  // Asynchronously send lead data to POST /api/leads/syllabus-download
   try {
     const apiBase = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
       ? (window.location.port === '5000' ? '' : 'http://localhost:5000')
       : '';
-    await fetch(`${apiBase}/api/contact`, {
+    await fetch(`${apiBase}/api/leads/syllabus-download`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         name: name,
-        phone: phone,
-        program: `Syllabus Request: ${track}`,
-        message: `Student requested official syllabus for ${track} via direct WhatsApp trigger.`
+        phone: '+91' + rawPhone,
+        course: track,
+        source: 'whatsapp_syllabus_download',
+        optInUpdates: optIn,
+        status: 'New'
       })
     });
   } catch (err) {
-    console.warn('Backend logging offline or non-blocking:', err);
+    console.warn('Backend logging error or offline:', err);
   }
 
-  // Construct official WhatsApp link with student track
-  const waUrl = `https://wa.me/919487530243?text=${encodeURIComponent(`Hi Karka Academy, please send the official syllabus for ${track}. My name is ${name} (${phone}).`)}`;
+  // Construct official WhatsApp chat link:
+  // https://wa.me/919487530243?text=Hi%20Karka%20Academy,%20I%20am%20[NAME].%20Please%20send%20me%20the%20detailed%20syllabus%20and%20PAP%20fee%20structure%20for%20[TRACK_NAME].
+  const waText = `Hi Karka Academy, I am ${name}. Please send me the detailed syllabus and PAP fee structure for ${track}.`;
+  const waUrl = `https://wa.me/919487530243?text=${encodeURIComponent(waText)}`;
   window.open(waUrl, '_blank');
 
-  closeSyllabusWhatsAppModal();
+  // Friendly success confirmation toast
+  if (toast) {
+    toast.style.display = 'block';
+  }
+
   if (submitBtn) {
     submitBtn.disabled = false;
-    submitBtn.innerHTML = '<span>Get Syllabus on WhatsApp</span> <i class="fa-brands fa-whatsapp"></i>';
+    submitBtn.innerHTML = '<span>Receive Syllabus on WhatsApp &rarr;</span> <i class="fa-brands fa-whatsapp"></i>';
   }
+
+  // Auto-close modal in 2 seconds
+  setTimeout(() => {
+    closeSyllabusWhatsAppModal();
+    if (form) form.reset();
+    if (toast) toast.style.display = 'none';
+  }, 2000);
 }
 
 // 2. PAP CONTRACT EXPLAINER MODAL

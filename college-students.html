@@ -158,6 +158,9 @@
               <span>Explore Full Stack Developer Internship</span>
               <i class="fa-solid fa-arrow-right"></i>
             </button>
+            <button type="button" class="btn-whatsapp-syllabus" onclick="openSyllabusWhatsAppModal('Full Stack Developer Internship')">
+              <i class="fa-brands fa-whatsapp"></i> Get Syllabus on WhatsApp
+            </button>
           </div>
         </article>
 
@@ -182,6 +185,9 @@
             <button type="button" class="btn-enterprise-primary" onclick="openSyllabus('data-science-foundations')" style="width: 100%; justify-content: center; gap: 0.5rem;">
               <span>Explore Data Science Foundations</span>
               <i class="fa-solid fa-arrow-right"></i>
+            </button>
+            <button type="button" class="btn-whatsapp-syllabus" onclick="openSyllabusWhatsAppModal('Data Science Foundations')">
+              <i class="fa-brands fa-whatsapp"></i> Get Syllabus on WhatsApp
             </button>
           </div>
         </article>
@@ -223,6 +229,9 @@
               <span>Explore UI/UX Design Internship</span>
               <i class="fa-solid fa-arrow-right"></i>
             </button>
+            <button type="button" class="btn-whatsapp-syllabus" onclick="openSyllabusWhatsAppModal('UI/UX Design Internship')">
+              <i class="fa-brands fa-whatsapp"></i> Get Syllabus on WhatsApp
+            </button>
           </div>
         </article>
 
@@ -244,6 +253,9 @@
             <button type="button" class="btn-enterprise-primary" onclick="openSyllabus('advanced-python-automation')" style="width: 100%; justify-content: center; gap: 0.5rem;">
               <span>Explore Advanced Python for Automation</span>
               <i class="fa-solid fa-arrow-right"></i>
+            </button>
+            <button type="button" class="btn-whatsapp-syllabus" onclick="openSyllabusWhatsAppModal('Advanced Python for Automation')">
+              <i class="fa-brands fa-whatsapp"></i> Get Syllabus on WhatsApp
             </button>
           </div>
         </article>
@@ -267,6 +279,9 @@
               <span>Explore Java Backend with Spring Boot</span>
               <i class="fa-solid fa-arrow-right"></i>
             </button>
+            <button type="button" class="btn-whatsapp-syllabus" onclick="openSyllabusWhatsAppModal('Java Backend with Spring Boot')">
+              <i class="fa-brands fa-whatsapp"></i> Get Syllabus on WhatsApp
+            </button>
           </div>
         </article>
 
@@ -289,6 +304,9 @@
               <span>Explore Advanced React Architecture</span>
               <i class="fa-solid fa-arrow-right"></i>
             </button>
+            <button type="button" class="btn-whatsapp-syllabus" onclick="openSyllabusWhatsAppModal('Advanced React Architecture')">
+              <i class="fa-brands fa-whatsapp"></i> Get Syllabus on WhatsApp
+            </button>
           </div>
         </article>
 
@@ -310,6 +328,9 @@
             <button type="button" class="btn-enterprise-primary" onclick="openSyllabus('sql-database')" style="width: 100%; justify-content: center; gap: 0.5rem;">
               <span>Explore SQL &amp; Database Architecture Mastery</span>
               <i class="fa-solid fa-arrow-right"></i>
+            </button>
+            <button type="button" class="btn-whatsapp-syllabus" onclick="openSyllabusWhatsAppModal('SQL & Database Architecture Mastery')">
+              <i class="fa-brands fa-whatsapp"></i> Get Syllabus on WhatsApp
             </button>
           </div>
         </article>
@@ -564,6 +585,79 @@
         <p id="syllabusModalSubtitle" style="color: var(--text-secondary); font-size: 0.85rem;">Detailed syllabus modules &amp; studio internship specs</p>
       </div>
       <div class="modal-body" id="syllabusModalContent"></div>
+    </div>
+  </div>
+
+  <!-- WHATSAPP SYLLABUS DOWNLOAD LEAD MODAL -->
+  <div class="modal-backdrop" id="syllabusWhatsAppModal">
+    <div class="modal-dialog" style="max-width: 480px;">
+      <button class="modal-close-btn" onclick="closeSyllabusWhatsAppModal()">&times;</button>
+      <div class="modal-header" style="text-align: left;">
+        <span class="badge-pill badge-green" style="margin-bottom: 0.5rem;"><i class="fa-brands fa-whatsapp"></i> Instant WhatsApp Dispatch</span>
+        <h3 id="syllabusModalHeaderTitle" style="font-size: 1.35rem; font-weight: 800;">Download Official Syllabus &amp; Fee Structure</h3>
+        <p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 4px;">
+          Direct PDF delivery to your mobile &bull; Up-to-date 2026 Curriculum
+        </p>
+      </div>
+      <div class="modal-body">
+        <form id="syllabusWhatsAppForm" onsubmit="handleSyllabusWhatsAppSubmit(event)">
+          <!-- Full Name -->
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label class="form-label" for="syllabusNameInput" style="font-size: 0.86rem; font-weight: 700; display: block; margin-bottom: 6px;">Full Name *</label>
+            <input type="text" id="syllabusNameInput" class="form-input" placeholder="e.g. Anandha Krishnan" required style="width: 100%;">
+          </div>
+
+          <!-- WhatsApp Number -->
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label class="form-label" for="syllabusPhoneInput" style="font-size: 0.86rem; font-weight: 700; display: block; margin-bottom: 6px;">WhatsApp Number *</label>
+            <div style="display: flex; gap: 8px;">
+              <span style="background: var(--bg-subtle, #f1f5f9); border: 1px solid var(--border-hairline, #cbd5e1); border-radius: 8px; padding: 10px 12px; font-weight: 700; font-size: 0.9rem; color: var(--text-secondary, #475569); display: flex; align-items: center; gap: 4px;">
+                <img src="https://flagcdn.com/w20/in.png" width="18" alt="India flag" style="border-radius: 2px;"> +91
+              </span>
+              <input type="tel" id="syllabusPhoneInput" class="form-input" placeholder="9487530243" maxlength="10" pattern="[0-9]{10}" required style="flex: 1;" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+            </div>
+            <span id="syllabusPhoneError" style="font-size: 0.78rem; color: #ef4444; display: none; margin-top: 4px;">Please enter a valid 10-digit WhatsApp number</span>
+          </div>
+
+          <!-- Course / Track Dropdown -->
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label class="form-label" for="syllabusTrackSelect" style="font-size: 0.86rem; font-weight: 700; display: block; margin-bottom: 6px;">Selected Course / Practice Track *</label>
+            <select id="syllabusTrackSelect" class="form-select" required style="width: 100%;">
+              <option value="Full Stack Developer Internship">Full Stack Developer Internship</option>
+              <option value="Data Science Foundations">Data Science Foundations</option>
+              <option value="UI/UX Design Internship">UI/UX Design Internship</option>
+              <option value="Advanced Python for Automation">Advanced Python for Automation</option>
+              <option value="Java Backend with Spring Boot">Java Backend with Spring Boot</option>
+              <option value="Advanced React Architecture">Advanced React Architecture</option>
+              <option value="SQL & Database Architecture Mastery">SQL &amp; Database Architecture Mastery</option>
+            </select>
+          </div>
+
+          <!-- Checkbox for Batch Dates & Placement Eligibility -->
+          <div class="form-group" style="margin-bottom: 1.25rem;">
+            <label style="display: flex; align-items: flex-start; gap: 8px; font-size: 0.84rem; color: var(--text-secondary, #475569); cursor: pointer; line-height: 1.4;">
+              <input type="checkbox" id="syllabusOptInCheckbox" checked style="margin-top: 3px; accent-color: #25D366; width: 16px; height: 16px;">
+              <span>Send me batch dates and placement eligibility on WhatsApp</span>
+            </label>
+          </div>
+
+          <!-- CTA Button -->
+          <button type="submit" id="syllabusSubmitBtn" class="btn-whatsapp-syllabus" style="width: 100%; justify-content: center; padding: 13px !important; font-size: 0.95rem !important; border-radius: 10px !important;">
+            <span>Receive Syllabus on WhatsApp &rarr;</span>
+            <i class="fa-brands fa-whatsapp" style="font-size: 1.15rem;"></i>
+          </button>
+
+          <!-- Trust note -->
+          <div style="font-size: 0.78rem; color: var(--text-muted, #64748b); text-align: center; margin-top: 0.85rem;">
+            🔒 100% Privacy. No spam. Direct curriculum access.
+          </div>
+        </form>
+
+        <!-- Success Toast Notification -->
+        <div id="syllabusSuccessToast" style="display: none; background: #ecfdf5; border: 1.5px solid #10b981; border-radius: 10px; padding: 12px 16px; margin-top: 1rem; text-align: center; color: #047857; font-size: 0.9rem; font-weight: 700; animation: fadeInToast 0.3s ease;">
+          <i class="fa-solid fa-circle-check" style="margin-right: 6px;"></i> Sent! Check your WhatsApp chat with Karka Academy.
+        </div>
+      </div>
     </div>
   </div>
 

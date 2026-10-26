@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config({ path: require('path').join(__dirname, '.env') });
 const dns = require('dns');
 // Use public DNS to ensure robust SRV resolution on Windows
 try {
@@ -67,6 +67,43 @@ app.post('/api/enroll', async (req, res) => {
   } catch (error) {
     console.error('Error saving enrollment lead:', error);
     return res.status(500).json({ success: false, message: 'Server error saving enrollment' });
+  }
+});
+
+// POST /api/leads/syllabus-download - Syllabus download WhatsApp trigger
+app.post('/api/leads/syllabus-download', async (req, res) => {
+  try {
+    const { name, phone, course, optInUpdates } = req.body;
+    if (!name || !phone) {
+      return res.status(400).json({ success: false, message: 'Name and Phone are required' });
+    }
+
+    const cleanName = String(name).trim();
+    const cleanPhone = String(phone).trim();
+    const selectedCourse = course ? String(course).trim() : 'Official Syllabus Download';
+
+    // Save under enrollmentleads collection as requested
+    const newEnrollmentLead = new EnrollmentLead({
+      name: cleanName,
+      phone: cleanPhone,
+      course: selectedCourse,
+      track: selectedCourse,
+      source: 'whatsapp_syllabus_download',
+      status: 'New',
+      createdAt: new Date()
+    });
+
+    await newEnrollmentLead.save();
+    console.log('Saved WhatsApp Syllabus Lead (EnrollmentLead):', newEnrollmentLead);
+
+    return res.status(200).json({
+      success: true,
+      message: 'Lead saved successfully',
+      data: newEnrollmentLead
+    });
+  } catch (error) {
+    console.error('Error saving syllabus download lead:', error);
+    return res.status(500).json({ success: false, message: 'Server error saving syllabus lead' });
   }
 });
 
