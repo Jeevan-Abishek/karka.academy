@@ -208,7 +208,7 @@ function initMobileDrawer() {
 
   // Automatically close drawers and restore scroll if viewport resized to desktop width
   window.addEventListener('resize', () => {
-    if (window.innerWidth >= 1024) {
+    if (window.innerWidth >= 769) {
       closeMegaDrawer();
       closeCoursesDrawer();
     }
@@ -1491,12 +1491,52 @@ function closeProDrawer() {
   }
 }
 
+function initProDrawer() {
+  const drawer = document.getElementById('proDrawer');
+  const overlay = document.getElementById('proDrawerOverlay');
+  if (!drawer) return;
+
+  const links = drawer.querySelectorAll('a, button');
+  links.forEach(el => {
+    el.addEventListener('click', () => {
+      closeProDrawer();
+    });
+  });
+
+  if (overlay) {
+    overlay.addEventListener('click', () => {
+      closeProDrawer();
+    });
+  }
+
+  const closeBtn = drawer.querySelector('.pro-drawer-close-btn');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      closeProDrawer();
+    });
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeProDrawer();
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 769) {
+      closeProDrawer();
+    }
+  });
+}
+
 window.toggleProDrawer = toggleProDrawer;
 window.closeProDrawer = closeProDrawer;
+window.initProDrawer = initProDrawer;
 window.initGradCalculator = initGradCalculator;
 
-// Auto-run grad calculator on pages containing the slider
+// Auto-run grad calculator & pro drawer on pages
 document.addEventListener('DOMContentLoaded', () => {
   initGradCalculator();
+  initProDrawer();
 });
 

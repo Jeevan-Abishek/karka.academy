@@ -1,15 +1,17 @@
 /* ==========================================================================
-   FORCE ZERO HORIZONTAL OVERFLOW GLOBALLY (TOP ENSURANCE)
+   1. GLOBAL FLUID TYPOGRAPHY & OVERFLOW PREVENTION
    ========================================================================== */
+* {
+  box-sizing: border-box !important;
+}
+
 html, body {
   overflow-x: hidden !important;
   width: 100% !important;
   max-width: 100vw !important;
-  position: relative;
-}
-
-*, *::before, *::after {
-  box-sizing: border-box !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: relative !important;
 }
 
 /* ==========================================================================
@@ -7497,35 +7499,153 @@ input[type=range], .infosys-range-slider {
   box-shadow: 0 14px 35px rgba(0, 112, 243, 0.55), 0 0 30px rgba(56, 189, 248, 0.6) !important;
 }
 
-/* ========================================================
-   CLEAN NAVIGATION LINKS - EVEN SPACING & SMOOTH HOVER
-   ======================================================== */
+/* ==========================================================================
+   2. DESKTOP SYSTEM VIEW (min-width: 769px)
+   ========================================================================== */
 @media (min-width: 769px) {
-  .nav-links, .nav-menu-links, .pro-nav-links {
+
+  /* Header & Navbar: Keep clean horizontal row layout */
+  header, .header, .main-header, .navbar, .pro-header-clean, .navbar-infosys {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+    height: 80px !important;
+  }
+
+  .pro-header-inner, .nav-main-layout {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+    max-width: 1240px !important;
+    margin: 0 auto !important;
+    padding: 0 1.5rem !important;
+  }
+
+  /* Show brand logo, navigation links (Home, School, College, Graduates, Professionals) */
+  .desktop-nav, .nav-links, .pro-nav-links, .nav-menu-links {
     display: flex !important;
     align-items: center !important;
-    gap: 1.8rem !important;
+    gap: 1.5rem !important;
     list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .nav-links a, .nav-menu-links a, .pro-nav-links a, .pro-nav-a {
+    color: #1e293b !important;
+    font-weight: 600 !important;
+    font-size: 0.95rem !important;
+    text-decoration: none !important;
+    transition: color 0.25s ease !important;
+    white-space: nowrap !important;
+  }
+
+  .nav-links a:hover, .nav-links a.active, .nav-links a.active-link,
+  .nav-menu-links a:hover, .nav-menu-links a.active,
+  .pro-nav-links a:hover, .pro-nav-links a.active-link,
+  .pro-nav-a:hover, .pro-nav-a.active-link {
+    color: #0070f3 !important;
+  }
+
+  /* Primary "Enroll Now" CTA: visible on desktop */
+  .btn-pro-enroll-solid, .btn-nav-enroll, .btn-enroll {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 12px 24px !important;
+    font-size: 0.92rem !important;
+    font-weight: 800 !important;
+    border-radius: var(--radius-pill) !important;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    text-decoration: none !important;
+  }
+
+  /* Hide mobile hamburger toggle on desktop */
+  .mobile-toggle, .hamburger-btn, .pro-mobile-toggle, .mobile-menu-btn, .mobile-courses-btn {
+    display: none !important;
+  }
+
+  /* Hide mobile slide drawers on desktop */
+  .enterprise-drawer, .pro-mobile-drawer, .pro-drawer-overlay {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+
+  /* Hero Section: Display text on the left and hero illustration/image on the right (2-column, align-items: center) */
+  .hero-exclusive-section, .professionals-hero, .pro-hero-container {
+    display: block !important;
+    padding: 2.5rem 0 !important;
+  }
+
+  .hero-grid {
+    display: grid !important;
+    grid-template-columns: 1.15fr 0.85fr !important;
+    align-items: center !important;
+    gap: 3.5rem !important;
+    text-align: left !important;
+  }
+
+  .pro-hero-card-clean {
+    display: grid !important;
+    grid-template-columns: 1.1fr 0.9fr !important;
+    align-items: center !important;
+    gap: 3rem !important;
+    text-align: left !important;
+    padding: 3.5rem 3.5rem 0 !important;
+  }
+
+  .hero-content, .hero-text, .hero-left-content, .pro-hero-left-content {
+    text-align: left !important;
+    max-width: 100% !important;
+  }
+
+  .hero-badges, .features-row, .meta-tags, .pro-feature-pills-row, .hero-cta-group {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: flex-start !important;
+    gap: 0.75rem !important;
+  }
+
+  .hero-image, .hero-img-wrapper, .pro-hero-image-wrap, .pro-hero-img-wrap, .hero-visual-wrapper, .mascot-image-card {
+    max-width: 100% !important;
+    margin: 0 !important;
+    display: block !important;
+  }
+
+  /* Course Grids: Render neatly in 3 columns with consistent gap (24px) */
+  .courses-grid, .pro-cards-grid-3col, .grid-3, .bootcamps-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 24px !important;
+  }
+
+  .pro-cards-grid-2col {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 24px !important;
+  }
+
+  .pro-cards-grid-4col, .grid-4 {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 24px !important;
+  }
+
+  /* Buttons & CTAs: Standard desktop button paddings (12px 24px) with smooth hover transitions */
+  .btn-primary, .btn-hero-primary, .btn-enterprise-primary, .btn-secondary,
+  .btn-bootcamp-enroll, .btn-bootcamp-explore, .btn-pro-prefooter-apply, .btn-pro-prefooter-explore {
+    padding: 12px 24px !important;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
   }
 }
 
-.nav-links a, .nav-menu-links a, .pro-nav-links a, .pro-nav-a {
-  color: #1e293b !important;
-  font-weight: 600 !important;
-  font-size: 0.95rem !important;
-  text-decoration: none !important;
-  transition: color 0.25s ease !important;
-}
-
-.nav-links a:hover, .nav-links a.active,
-.nav-menu-links a:hover, .nav-menu-links a.active,
-.pro-nav-links a:hover, .pro-nav-links a.active-link,
-.pro-nav-a:hover, .pro-nav-a.active-link {
-  color: #0070f3 !important;
-}
-
 /* ==========================================================================
-   2. MOBILE HEADER & BREAKPOINT RULES (@media (max-width: 768px))
+   3. MOBILE VIEW FIXES (@media (max-width: 768px))
    ========================================================================== */
 @media (max-width: 768px) {
 
@@ -7534,12 +7654,12 @@ input[type=range], .infosys-range-slider {
     overflow-x: hidden !important;
     width: 100% !important;
     max-width: 100vw !important;
-    position: relative;
+    position: relative !important;
     margin: 0 !important;
     padding: 0 !important;
   }
 
-  *, *::before, *::after {
+  * {
     box-sizing: border-box !important;
   }
 
@@ -7548,7 +7668,7 @@ input[type=range], .infosys-range-slider {
     height: auto !important;
   }
 
-  /* - Top Bar: */
+  /* Top Bar: Compact height (padding: 6px 12px), single row, hide social icons/phone text, show admissions pill badge cleanly */
   .top-bar, .announcement-bar, .top-ticker-banner, .infosys-top-strip {
     display: flex !important;
     justify-content: space-between !important;
@@ -7557,6 +7677,8 @@ input[type=range], .infosys-range-slider {
     font-size: 0.72rem !important;
     overflow: hidden !important;
     width: 100% !important;
+    height: auto !important;
+    min-height: 36px !important;
     box-sizing: border-box !important;
   }
 
@@ -7575,7 +7697,15 @@ input[type=range], .infosys-range-slider {
     display: none !important;
   }
 
-  /* - Main Header & Navbar: */
+  .strip-batch-pill, .chip-upcoming {
+    display: inline-flex !important;
+    font-size: 0.72rem !important;
+    padding: 3px 8px !important;
+  }
+
+  /* Header & Hamburger Drawer:
+     - Header displays brand logo on the left (max-width: 150px) and hamburger icon (☰) on the right.
+     - Hide desktop nav links and desktop enroll button from header row. */
   header, .header, .main-header, .navbar, .pro-header-clean, .navbar-infosys {
     display: flex !important;
     justify-content: space-between !important;
@@ -7583,6 +7713,7 @@ input[type=range], .infosys-range-slider {
     padding: 8px 14px !important;
     width: 100% !important;
     height: auto !important;
+    min-height: 60px !important;
     box-sizing: border-box !important;
   }
 
@@ -7595,28 +7726,9 @@ input[type=range], .infosys-range-slider {
     max-width: 100% !important;
   }
 
-  /* Hide desktop menu items and bulky dropdowns on mobile */
-  .nav-links, 
-  .pro-nav-links, 
-  .nav-menu-links, 
-  .desktop-nav, 
-  .dropdown, 
-  .courses-dropdown,
-  .header .btn-enroll,
-  .pro-header-clean .btn-pro-enroll-solid,
-  .navbar-infosys .btn-pro-enroll-solid,
-  .header .btn-pro-enroll-solid,
-  .nav-actions .btn-pro-enroll-solid,
-  .pro-header-inner .btn-pro-enroll-solid,
-  .nav-main-layout .btn-pro-enroll-solid,
-  .header .btn-nav-enroll,
-  .navbar .btn-nav-enroll {
-    display: none !important;
-  }
-
-  /* Make Logo fit mobile cleanly */
+  /* Logo: max-width 150px */
   .logo, .logo-wrapper, .logo img, .pro-logo-group {
-    max-width: 160px !important;
+    max-width: 150px !important;
     height: auto !important;
   }
 
@@ -7628,7 +7740,27 @@ input[type=range], .infosys-range-slider {
     font-size: 0.72rem !important;
   }
 
-  /* Ensure Mobile Hamburger Toggle is visible and well-aligned */
+  /* Hide desktop nav links and desktop enroll button from header row */
+  .nav-links, 
+  .pro-nav-links, 
+  .nav-menu-links, 
+  .desktop-nav, 
+  .dropdown, 
+  .courses-dropdown,
+  header .btn-enroll,
+  .header .btn-enroll,
+  .header .btn-pro-enroll-solid,
+  .pro-header-clean .btn-pro-enroll-solid,
+  .navbar-infosys .btn-pro-enroll-solid,
+  .nav-actions .btn-pro-enroll-solid,
+  .pro-header-inner .btn-pro-enroll-solid,
+  .nav-main-layout .btn-pro-enroll-solid,
+  header .btn-nav-enroll,
+  .navbar .btn-nav-enroll {
+    display: none !important;
+  }
+
+  /* Hamburger icon (☰) on the right */
   .mobile-toggle, .hamburger-btn, .pro-mobile-toggle, .mobile-menu-btn {
     display: flex !important;
     align-items: center !important;
@@ -7638,9 +7770,30 @@ input[type=range], .infosys-range-slider {
     color: #0b57d0 !important;
     background: transparent !important;
     border: none !important;
+    padding: 4px !important;
+    margin-left: auto !important;
   }
 
-  /* 3. HERO SECTION & PILL BADGES: */
+  /* Mobile Drawer & Full-width "ENROLL NOW" Button */
+  .pro-mobile-drawer .btn-pro-enroll-solid,
+  .enterprise-drawer .btn-enterprise-primary,
+  .pro-mobile-drawer .open-apply-modal,
+  .enterprise-drawer .open-apply-modal {
+    display: flex !important;
+    width: 100% !important;
+    min-height: 48px !important;
+    justify-content: center !important;
+    align-items: center !important;
+    font-size: 1rem !important;
+    font-weight: 800 !important;
+  }
+
+  /* Hero Section:
+     - Strict vertical stacking: flex-direction: column !important; text-align: center !important.
+     - Headline: font-size: clamp(1.6rem, 5vw, 2rem) !important; line-height: 1.25 !important;
+     - Paragraphs & Subtitles: font-size: 0.95rem !important; line-height: 1.5 !important; max-width: 92% !important; margin: 0 auto 1.5rem auto !important;
+     - Hero Image: width: 100% !important; max-width: 290px !important; height: auto !important; margin: 0 auto !important; display: block !important;
+     - CTA Button: width: 92% !important; max-width: 340px !important; margin: 0 auto !important; padding: 14px 20px !important; font-size: 1rem !important; min-height: 48px !important; */
   .hero-exclusive-section, .hero, .professionals-hero, .pro-hero-container {
     display: flex !important;
     flex-direction: column !important;
@@ -7667,7 +7820,21 @@ input[type=range], .infosys-range-slider {
   .hero-content, .hero-text, .hero-left-content, .pro-hero-left-content {
     max-width: 100% !important;
     width: 100% !important;
+    text-align: center !important;
     box-sizing: border-box !important;
+  }
+
+  .hero h1, .hero-title, .pro-hero-card-clean h1, .pro-hero-h1-clean, .hero-headline {
+    font-size: clamp(1.6rem, 5vw, 2rem) !important;
+    line-height: 1.25 !important;
+    word-break: break-word !important;
+  }
+
+  .hero p, .hero-subtitle, .pro-hero-card-clean p, .hero-subhead {
+    font-size: 0.95rem !important;
+    line-height: 1.5 !important;
+    max-width: 92% !important;
+    margin: 0 auto 1.5rem auto !important;
   }
 
   .hero-pill-badge, .exclusive-badge, .hero-badge,
@@ -7686,26 +7853,52 @@ input[type=range], .infosys-range-slider {
     gap: 0.5rem !important;
   }
 
-  .hero h1, .hero-title, .pro-hero-card-clean h1, .pro-hero-h1-clean, .hero-headline {
-    font-size: 1.75rem !important;
-    line-height: 1.25 !important;
-    word-break: break-word !important;
-  }
-
-  .hero p, .hero-subtitle, .pro-hero-card-clean p, .hero-subhead {
-    font-size: 0.92rem !important;
-    line-height: 1.5 !important;
-  }
-
   .hero-image, .hero-img-wrapper, .pro-hero-image-wrap,
   .pro-hero-img-wrap, .hero-visual-wrapper, .mascot-image-card {
     width: 100% !important;
-    max-width: 320px !important;
+    max-width: 290px !important;
+    height: auto !important;
     margin: 0 auto !important;
+    display: block !important;
   }
 
-  /* Make all cards and lists 1-column on mobile */
-  .courses-grid, .cards-grid, .pro-cards-grid-3col, .pro-cards-grid-2col, .grid-3, .grid-4,
+  .hero-image img, .hero-img-wrapper img, .pro-hero-image-wrap img,
+  .pro-hero-img-wrap img, .hero-visual-wrapper img, .mascot-image-card img {
+    width: 100% !important;
+    max-width: 290px !important;
+    height: auto !important;
+    margin: 0 auto !important;
+    display: block !important;
+  }
+
+  .hero-cta-group, .hero-btn-group {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+    gap: 0.75rem !important;
+  }
+
+  .btn-hero-primary, .hero .btn-primary, .professionals-hero .btn-primary,
+  .pro-hero-container .btn-primary, .btn-hero-cta, .hero .open-apply-modal {
+    width: 92% !important;
+    max-width: 340px !important;
+    margin: 0 auto !important;
+    padding: 14px 20px !important;
+    font-size: 1rem !important;
+    min-height: 48px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Course Cards & Grids:
+     - Convert all grids (.courses-grid, .pro-cards-grid-3col, .pro-cards-grid-2col, .grid-3, .grid-4, .bootcamps-grid) to 1 column: grid-template-columns: 1fr !important; width: 100% !important;.
+     - Course card images: width: 100% !important; height: 180px !important; object-fit: cover !important; border-radius: 12px 12px 0 0 !important;.
+     - Card body content: padding: 16px !important;.
+     - Course CTA buttons inside cards: width: 100% !important; min-height: 44px !important; justify-content: center !important;. */
+  .courses-grid, .cards-grid, .pro-cards-grid-3col, .pro-cards-grid-2col, .pro-cards-grid-4col, .grid-3, .grid-4,
   .bootcamps-grid, .career-directory-grid, .career-directory-accordion-grid {
     grid-template-columns: 1fr !important;
     width: 100% !important;
@@ -7721,34 +7914,72 @@ input[type=range], .infosys-range-slider {
     box-sizing: border-box !important;
   }
 
-  /* Footer & Map Container */
+  .course-thumb-img, .course-card-thumb img, .course-card img, .pro-clean-card img, .card-image img {
+    width: 100% !important;
+    height: 180px !important;
+    object-fit: cover !important;
+    border-radius: 12px 12px 0 0 !important;
+  }
+
+  .course-card-thumb {
+    width: 100% !important;
+    height: 180px !important;
+    overflow: hidden !important;
+    border-radius: 12px 12px 0 0 !important;
+  }
+
+  .pro-card-body-content, .course-card-body, .card-body {
+    padding: 16px !important;
+    box-sizing: border-box !important;
+  }
+
+  .course-card button, .course-card .btn, .course-card a.btn,
+  .pro-clean-card button, .pro-clean-card a.btn, .pro-clean-card .btn-enterprise-primary,
+  .bootcamp-card button, .bootcamp-footer-actions button {
+    width: 100% !important;
+    min-height: 44px !important;
+    justify-content: center !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Footer & Google Map:
+     - Footer stacks in a clean single column (gap: 24px).
+     - Google Map iframe: width: 100% !important; height: 260px !important; border-radius: 12px !important;. */
   .footer-container, .footer-grid, .pro-footer-grid,
   .footer-top-grid, .footer-content-grid, .footer-main-grid,
-  .footer-map-container, .footer-map-box, .pro-footer-map-embed {
+  .footer-map-container, .footer-map-box, .pro-footer-map-embed, .pro-footer-container {
     display: flex !important;
     flex-direction: column !important;
-    gap: 2rem !important;
+    gap: 24px !important;
     padding: 2rem 1rem !important;
     width: 100% !important;
     box-sizing: border-box !important;
   }
 
-  iframe {
-    max-width: 100% !important;
+  iframe, .footer-map-frame iframe, .pro-footer-map-embed iframe {
     width: 100% !important;
+    height: 260px !important;
+    border-radius: 12px !important;
+    max-width: 100% !important;
+    border: 0 !important;
+    box-sizing: border-box !important;
   }
 }
 
 /* ==========================================================================
    FORCE ZERO HORIZONTAL OVERFLOW GLOBALLY (BOTTOM ENSURANCE)
    ========================================================================== */
+* {
+  box-sizing: border-box !important;
+}
+
 html, body {
   overflow-x: hidden !important;
   width: 100% !important;
   max-width: 100vw !important;
-  position: relative;
-}
-
-*, *::before, *::after {
-  box-sizing: border-box !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: relative !important;
 }
