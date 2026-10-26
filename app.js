@@ -1825,6 +1825,135 @@ async function handleQuizLeadSubmit(e) {
   }
 }
 
+/* ==========================================================================
+   17. FEATURE #3: TRY CODING IN 60 SECONDS (INTERACTIVE SANDBOX)
+   ========================================================================== */
+const INITIAL_SANDBOX_CODE = `<button style="background: #e2e8f0; color: #0f172a; padding: 12px 24px; border-radius: 8px;">
+  Click Me
+</button>`;
+
+function initSandboxChallenge() {
+  const codeInput = document.getElementById('sandboxCodeInput');
+  const liveOutput = document.getElementById('sandboxLiveOutput');
+
+  if (!codeInput || !liveOutput) return;
+
+  // Real-time live preview update on typing
+  codeInput.addEventListener('input', () => {
+    updateSandboxPreview(codeInput.value);
+  });
+
+  // Initial preview render
+  updateSandboxPreview(codeInput.value);
+}
+
+function updateSandboxPreview(code) {
+  const liveOutput = document.getElementById('sandboxLiveOutput');
+  if (!liveOutput) return;
+
+  // Basic sanitization: allow harmless button/div/span/style markup
+  // Remove script tags or execution handlers for security
+  const safeCode = code
+    .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+    .replace(/on\w+="[^"]*"/gi, '')
+    .replace(/on\w+='[^']*'/gi, '');
+
+  liveOutput.innerHTML = safeCode;
+}
+
+function runSandboxVerify() {
+  const codeInput = document.getElementById('sandboxCodeInput');
+  const liveOutput = document.getElementById('sandboxLiveOutput');
+  const feedbackEl = document.getElementById('sandboxStatusFeedback');
+  const successBanner = document.getElementById('sandboxSuccessBanner');
+
+  if (!codeInput) return;
+
+  const rawCode = codeInput.value;
+  updateSandboxPreview(rawCode);
+
+  // Criteria validation
+  const hasButtonTag = /<button[\s\S]*?>[\s\S]*?<\/button>/i.test(rawCode);
+  const hasLabel = /start\s+my\s+career/i.test(rawCode);
+  const hasColor = /#0b57d0|rgb\(\s*11\s*,\s*87\s*,\s*208\s*\)/i.test(rawCode);
+
+  if (hasButtonTag && hasLabel && hasColor) {
+    // 1. Success! Trigger Confetti burst
+    if (typeof confetti === 'function') {
+      confetti({
+        particleCount: 90,
+        spread: 80,
+        origin: { y: 0.65 }
+      });
+    }
+
+    // 2. Show Success Achievement Banner
+    if (successBanner) {
+      successBanner.style.display = 'flex';
+      successBanner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    // 3. Positive feedback message
+    if (feedbackEl) {
+      feedbackEl.innerHTML = `
+        <span class="status-badge-success" style="color: #059669; font-weight: 700; display: inline-flex; align-items: center; gap: 6px;">
+          <i class="fa-solid fa-circle-check"></i> Perfect! Both conditions met. Your styled button is rendered live.
+        </span>
+      `;
+    }
+  } else {
+    // Gentle encouraging guidance without error jargon
+    if (successBanner) successBanner.style.display = 'none';
+
+    let guidance = '';
+    if (!hasLabel && hasColor) {
+      guidance = 'Great job setting the background color! Now replace "Click Me" with "Start My Career".';
+    } else if (hasLabel && !hasColor) {
+      guidance = 'Awesome text update! Now change background: #e2e8f0 to background: #0b57d0.';
+    } else {
+      guidance = 'Almost there! Set the button text to "Start My Career" and background to "#0b57d0".';
+    }
+
+    if (feedbackEl) {
+      feedbackEl.innerHTML = `
+        <span class="status-badge-guidance" style="color: #d97706; font-weight: 600; display: inline-flex; align-items: center; gap: 6px;">
+          <i class="fa-solid fa-circle-info"></i> ${guidance}
+        </span>
+      `;
+    }
+  }
+}
+
+function resetSandboxChallenge() {
+  const codeInput = document.getElementById('sandboxCodeInput');
+  const feedbackEl = document.getElementById('sandboxStatusFeedback');
+  const successBanner = document.getElementById('sandboxSuccessBanner');
+  const hintBubble = document.getElementById('sandboxHintBubble');
+
+  if (codeInput) {
+    codeInput.value = INITIAL_SANDBOX_CODE;
+    updateSandboxPreview(INITIAL_SANDBOX_CODE);
+  }
+
+  if (successBanner) successBanner.style.display = 'none';
+  if (hintBubble) hintBubble.style.display = 'none';
+
+  if (feedbackEl) {
+    feedbackEl.innerHTML = `
+      <span class="sandbox-feedback-prompt">
+        <i class="fa-regular fa-lightbulb"></i> Edit the snippet above or click <strong>"Run Code &amp; Verify"</strong> to test your button.
+      </span>
+    `;
+  }
+}
+
+function toggleSandboxHint() {
+  const hintBubble = document.getElementById('sandboxHintBubble');
+  if (!hintBubble) return;
+  const isHidden = hintBubble.style.display === 'none' || !hintBubble.style.display;
+  hintBubble.style.display = isHidden ? 'block' : 'none';
+}
+
 // Global Window Exports
 window.openSyllabusWhatsAppModal = openSyllabusWhatsAppModal;
 window.closeSyllabusWhatsAppModal = closeSyllabusWhatsAppModal;
@@ -1836,10 +1965,15 @@ window.closePapQuizModal = closePapQuizModal;
 window.selectQuizOption = selectQuizOption;
 window.goToQuizStep = goToQuizStep;
 window.handleQuizLeadSubmit = handleQuizLeadSubmit;
+window.runSandboxVerify = runSandboxVerify;
+window.resetSandboxChallenge = resetSandboxChallenge;
+window.toggleSandboxHint = toggleSandboxHint;
 
-// Auto-run grad calculator & pro drawer on pages
+// Auto-run grad calculator, pro drawer, & interactive sandbox
 document.addEventListener('DOMContentLoaded', () => {
   initGradCalculator();
   initProDrawer();
+  initSandboxChallenge();
 });
+
 

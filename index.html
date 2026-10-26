@@ -476,6 +476,128 @@
       </div>
     </section>
 
+    <!-- 4B. TRY CODING IN 60 SECONDS INTERACTIVE SANDBOX (#tryCoding) -->
+    <section class="section-padding interactive-sandbox-section" id="tryCoding">
+      <div class="container">
+        <div class="section-head-centered">
+          <div class="section-eyebrow">
+            <i class="fa-solid fa-code"></i> Live Interactive Sandbox
+          </div>
+          <h2 class="section-heading-corporate">Think You Can't Code? Try It in 60 Seconds!</h2>
+          <p class="section-subtext-corporate">
+            No setup required. Experience our hands-on pedagogy directly in your browser.
+          </p>
+        </div>
+
+        <div class="sandbox-ide-card">
+          <!-- IDE Header with macOS dots & challenge goal -->
+          <div class="sandbox-ide-header">
+            <div class="sandbox-mac-dots">
+              <span class="mac-dot mac-dot-red"></span>
+              <span class="mac-dot mac-dot-yellow"></span>
+              <span class="mac-dot mac-dot-green"></span>
+            </div>
+            <div class="sandbox-ide-title">
+              <i class="fa-solid fa-terminal"></i> Karka DevStudio &mdash; Interactive Sandbox
+            </div>
+            <div class="sandbox-badge-difficulty">
+              <span class="badge-pill badge-green"><i class="fa-solid fa-bolt"></i> 60-Sec Challenge</span>
+            </div>
+          </div>
+
+          <!-- Challenge Instructions Bar -->
+          <div class="sandbox-instructions-bar">
+            <div class="sandbox-task-desc">
+              <strong><i class="fa-solid fa-bullseye" style="color: var(--infosys-electric-blue);"></i> Mission:</strong> 
+              <span>Customize your AI Welcome Button: Change the button label to <code>'Start My Career'</code> and set the background color to <code>'#0b57d0'</code>.</span>
+            </div>
+            <button type="button" class="btn-sandbox-hint" id="sandboxHintBtn" onclick="toggleSandboxHint()">
+              <i class="fa-solid fa-lightbulb"></i> Need a Hint?
+            </button>
+          </div>
+
+          <!-- Hint Bubble (Hidden by default) -->
+          <div class="sandbox-hint-bubble" id="sandboxHintBubble" style="display: none;">
+            <div class="sandbox-hint-content">
+              <i class="fa-solid fa-robot" style="color: var(--infosys-electric-blue); font-size: 1.25rem;"></i>
+              <div>
+                <strong>Spike AI Hint:</strong> Try replacing <code>Click Me</code> with <code>Start My Career</code>, and change <code>background: #e2e8f0;</code> to <code>background: #0b57d0;</code>. You can also change the text color to <code>#ffffff</code> for optimal contrast!
+              </div>
+            </div>
+          </div>
+
+          <!-- Split View Layout: Editor (Left) & Live Preview Canvas (Right) -->
+          <div class="sandbox-workspace-grid">
+            <!-- Left / Top: Interactive Code Editor -->
+            <div class="sandbox-editor-panel">
+              <div class="sandbox-panel-tab">
+                <span class="tab-label"><i class="fa-brands fa-html5" style="color: #e34f26;"></i> index.html</span>
+                <span class="tab-status-dot" title="Live Editing"></span>
+              </div>
+              <div class="sandbox-editor-wrapper">
+                <textarea id="sandboxCodeInput" class="sandbox-code-textarea" spellcheck="false" autocomplete="off" autocapitalize="off" aria-label="Code Editor">&lt;button style="background: #e2e8f0; color: #0f172a; padding: 12px 24px; border-radius: 8px;"&gt;
+  Click Me
+&lt;/button&gt;</textarea>
+              </div>
+            </div>
+
+            <!-- Right / Bottom: Live Preview Canvas -->
+            <div class="sandbox-preview-panel">
+              <div class="sandbox-panel-tab">
+                <span class="tab-label"><i class="fa-solid fa-display" style="color: #10b981;"></i> Live Preview Canvas</span>
+                <span class="preview-badge-live">LIVE PREVIEW</span>
+              </div>
+              <div class="sandbox-preview-stage" id="sandboxPreviewStage">
+                <div id="sandboxLiveOutput">
+                  <button style="background: #e2e8f0; color: #0f172a; padding: 12px 24px; border-radius: 8px;">
+                    Click Me
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action Buttons & Feedback Bar -->
+          <div class="sandbox-action-bar">
+            <div class="sandbox-buttons-group">
+              <button type="button" class="btn-enterprise-primary" id="sandboxRunBtn" onclick="runSandboxVerify()">
+                <i class="fa-solid fa-play"></i>
+                <span>Run Code &amp; Verify</span>
+              </button>
+              <button type="button" class="btn-secondary" id="sandboxResetBtn" onclick="resetSandboxChallenge()">
+                <i class="fa-solid fa-rotate-left"></i>
+                <span>Reset Challenge</span>
+              </button>
+            </div>
+            <div class="sandbox-status-feedback" id="sandboxStatusFeedback">
+              <span class="sandbox-feedback-prompt"><i class="fa-regular fa-lightbulb"></i> Edit the snippet above or click <strong>"Run Code &amp; Verify"</strong> to test your button.</span>
+            </div>
+          </div>
+
+          <!-- Success Achievement Banner (Hidden until verified) -->
+          <div class="sandbox-success-banner" id="sandboxSuccessBanner" style="display: none;">
+            <div class="sandbox-success-content">
+              <div class="sandbox-success-badge">
+                <i class="fa-solid fa-award"></i>
+              </div>
+              <div>
+                <h4 class="sandbox-success-title">🎉 Coding Aptitude Verified! You just built your first component in under 60 seconds.</h4>
+                <p class="sandbox-success-desc">
+                  You have genuine practical aptitude for modern software engineering. Launch your developer journey with Karka's Pay After Placement model.
+                </p>
+              </div>
+            </div>
+            <div class="sandbox-success-action">
+              <button type="button" class="btn-enterprise-primary btn-sandbox-cta open-apply-modal" onclick="openModal('applyModal');">
+                <span>Claim Your ₹0 Upfront Pay After Placement Seat &rarr;</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
     <!-- 5. WHY KARKA? (#whyChooseUs) -->
     <section class="section-padding" id="whyChooseUs">
       <div class="container">
