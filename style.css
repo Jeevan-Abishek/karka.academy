@@ -1,4 +1,18 @@
 /* ==========================================================================
+   FORCE ZERO HORIZONTAL OVERFLOW GLOBALLY (TOP ENSURANCE)
+   ========================================================================== */
+html, body {
+  overflow-x: hidden !important;
+  width: 100% !important;
+  max-width: 100vw !important;
+  position: relative;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box !important;
+}
+
+/* ==========================================================================
    KARKA AI & TECH ACADEMY - COMPREHENSIVE DESIGN SYSTEM
    Executive Modern Tech Aesthetic | Light Theme Default with Dark Mode Support
    Fully Responsive | Accessible | Enterprise Polish
@@ -7511,16 +7525,18 @@ input[type=range], .infosys-range-slider {
 }
 
 /* ==========================================================================
-   2. MOBILE BREAKPOINTS (@media (max-width: 768px))
+   2. MOBILE HEADER & BREAKPOINT RULES (@media (max-width: 768px))
    ========================================================================== */
 @media (max-width: 768px) {
-  /* Global Overflow & Container Protection */
+
+  /* Global Zero Overflow Protection on Mobile */
   html, body {
     overflow-x: hidden !important;
     width: 100% !important;
     max-width: 100vw !important;
-    margin: 0;
-    padding: 0;
+    position: relative;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
   *, *::before, *::after {
@@ -7532,86 +7548,177 @@ input[type=range], .infosys-range-slider {
     height: auto !important;
   }
 
-  /* Hero Section: Stack text and image vertically */
-  .hero, .hero-section, .hero-container, .professionals-hero,
-  .hero-exclusive-section, .hero-grid, .pro-hero-container, .pro-hero-card-clean {
+  /* - Top Bar: */
+  .top-bar, .announcement-bar, .top-ticker-banner, .infosys-top-strip {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 6px 12px !important;
+    font-size: 0.72rem !important;
+    overflow: hidden !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .top-bar .chip-upcoming, 
+  .top-bar .social-icons, 
+  .top-bar .phone-link, 
+  .top-bar-extra,
+  .infosys-top-strip .top-strip-social,
+  .infosys-top-strip .top-strip-phone,
+  .infosys-top-strip .top-strip-location,
+  .infosys-top-strip .strip-divider,
+  .top-strip-social,
+  .top-strip-phone,
+  .top-strip-location,
+  .strip-divider {
+    display: none !important;
+  }
+
+  /* - Main Header & Navbar: */
+  header, .header, .main-header, .navbar, .pro-header-clean, .navbar-infosys {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 8px 14px !important;
+    width: 100% !important;
+    height: auto !important;
+    box-sizing: border-box !important;
+  }
+
+  .pro-header-inner, .nav-main-layout {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+    padding: 0 !important;
+    max-width: 100% !important;
+  }
+
+  /* Hide desktop menu items and bulky dropdowns on mobile */
+  .nav-links, 
+  .pro-nav-links, 
+  .nav-menu-links, 
+  .desktop-nav, 
+  .dropdown, 
+  .courses-dropdown,
+  .header .btn-enroll,
+  .pro-header-clean .btn-pro-enroll-solid,
+  .navbar-infosys .btn-pro-enroll-solid,
+  .header .btn-pro-enroll-solid,
+  .nav-actions .btn-pro-enroll-solid,
+  .pro-header-inner .btn-pro-enroll-solid,
+  .nav-main-layout .btn-pro-enroll-solid,
+  .header .btn-nav-enroll,
+  .navbar .btn-nav-enroll {
+    display: none !important;
+  }
+
+  /* Make Logo fit mobile cleanly */
+  .logo, .logo-wrapper, .logo img, .pro-logo-group {
+    max-width: 160px !important;
+    height: auto !important;
+  }
+
+  .pro-logo-tamil {
+    font-size: 1.25rem !important;
+  }
+
+  .pro-logo-sub {
+    font-size: 0.72rem !important;
+  }
+
+  /* Ensure Mobile Hamburger Toggle is visible and well-aligned */
+  .mobile-toggle, .hamburger-btn, .pro-mobile-toggle, .mobile-menu-btn {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 1.6rem !important;
+    cursor: pointer !important;
+    color: #0b57d0 !important;
+    background: transparent !important;
+    border: none !important;
+  }
+
+  /* 3. HERO SECTION & PILL BADGES: */
+  .hero-exclusive-section, .hero, .professionals-hero, .pro-hero-container {
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 1.5rem 1rem !important;
+    text-align: center !important;
+    gap: 1.5rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .pro-hero-card-clean, .hero-grid {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     text-align: center !important;
-    padding: 2rem 1rem !important;
-    gap: 2rem !important;
+    padding: 1.5rem 1rem !important;
+    gap: 1.5rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
   }
 
   .hero-content, .hero-text, .hero-left-content, .pro-hero-left-content {
     max-width: 100% !important;
     width: 100% !important;
+    box-sizing: border-box !important;
   }
 
-  .hero h1, .hero-title, .hero-headline, .pro-hero-h1-clean {
-    font-size: 1.85rem !important;
+  .hero-pill-badge, .exclusive-badge, .hero-badge,
+  .hero-exclusive-tag, .pro-pill-badge, .hero-badges,
+  .features-row, .meta-tags, .pro-feature-pills-row {
+    font-size: 0.78rem !important;
+    padding: 6px 12px !important;
+    max-width: 95% !important;
+    margin: 0 auto 1rem auto !important;
+    white-space: normal !important;
     line-height: 1.3 !important;
-  }
-
-  .hero-image, .hero-img-wrapper, .hero-visual-wrapper, .pro-hero-img-wrap, .mascot-image-card {
-    width: 100% !important;
-    max-width: 340px !important;
-    margin: 0 auto !important;
-  }
-
-  /* Feature badges / Tags list */
-  .hero-badges, .features-row, .meta-tags,
-  .pro-feature-pills-row, .hero-cta-group, .hero-badges-row {
+    box-sizing: border-box !important;
     display: flex !important;
     flex-wrap: wrap !important;
     justify-content: center !important;
     gap: 0.5rem !important;
   }
 
-  .pro-badge-pill-item {
-    width: auto !important;
-    max-width: 100% !important;
+  .hero h1, .hero-title, .pro-hero-card-clean h1, .pro-hero-h1-clean, .hero-headline {
+    font-size: 1.75rem !important;
+    line-height: 1.25 !important;
+    word-break: break-word !important;
   }
 
-  /* Course Grid & Cards: Single column on mobile */
-  .courses-grid, .cards-grid, .grid-3, .grid-4,
-  .pro-cards-grid-3col, .pro-cards-grid-2col, .bootcamps-grid,
-  .career-directory-grid, .career-directory-accordion-grid {
-    display: grid !important;
+  .hero p, .hero-subtitle, .pro-hero-card-clean p, .hero-subhead {
+    font-size: 0.92rem !important;
+    line-height: 1.5 !important;
+  }
+
+  .hero-image, .hero-img-wrapper, .pro-hero-image-wrap,
+  .pro-hero-img-wrap, .hero-visual-wrapper, .mascot-image-card {
+    width: 100% !important;
+    max-width: 320px !important;
+    margin: 0 auto !important;
+  }
+
+  /* Make all cards and lists 1-column on mobile */
+  .courses-grid, .cards-grid, .pro-cards-grid-3col, .pro-cards-grid-2col, .grid-3, .grid-4,
+  .bootcamps-grid, .career-directory-grid, .career-directory-accordion-grid {
     grid-template-columns: 1fr !important;
+    width: 100% !important;
+    display: grid !important;
     gap: 1.5rem !important;
     padding: 0 1rem !important;
+    box-sizing: border-box !important;
   }
 
   .course-card, .pro-clean-card, .bootcamp-card, .career-directory-card {
     width: 100% !important;
     min-width: 0 !important;
-  }
-
-  /* Navigation bar on mobile */
-  .nav-links, .pro-nav-links, .nav-menu-links, .desktop-nav {
-    display: none !important; /* If a mobile hamburger toggle exists */
-  }
-
-  /* Mobile Hamburger / Menu Toggles */
-  .hamburger-btn,
-  .mobile-toggle,
-  .mobile-menu-btn,
-  .pro-mobile-toggle {
-    display: inline-flex !important;
-  }
-
-  .pro-header-clean .btn-pro-enroll-solid {
-    padding: 0.45rem 0.85rem !important;
-    font-size: 0.75rem !important;
-  }
-
-  .pro-logo-tamil {
-    font-size: 1.4rem !important;
-  }
-
-  .pro-logo-sub {
-    font-size: 0.8rem !important;
+    box-sizing: border-box !important;
   }
 
   /* Footer & Map Container */
@@ -7622,10 +7729,26 @@ input[type=range], .infosys-range-slider {
     flex-direction: column !important;
     gap: 2rem !important;
     padding: 2rem 1rem !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
 
   iframe {
     max-width: 100% !important;
     width: 100% !important;
   }
+}
+
+/* ==========================================================================
+   FORCE ZERO HORIZONTAL OVERFLOW GLOBALLY (BOTTOM ENSURANCE)
+   ========================================================================== */
+html, body {
+  overflow-x: hidden !important;
+  width: 100% !important;
+  max-width: 100vw !important;
+  position: relative;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box !important;
 }
