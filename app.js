@@ -1923,10 +1923,10 @@ async function handleQuizLeadSubmit(e) {
    17. FEATURE #3: ANTIGRAVITY ENGINE & CODE LAB (PHYSICS SANDBOX)
    ========================================================================== */
 const INITIAL_SANDBOX_CODE = `<button class="antigravity-thruster-btn" style="
-  background: linear-gradient(135deg, #0b1120 0%, #1e1b4b 100%);
-  color: #38bdf8;
-  border: 1px solid rgba(56, 189, 248, 0.5);
-  box-shadow: 0 16px 36px rgba(6, 182, 212, 0.45), 0 0 20px rgba(99, 102, 241, 0.35);
+  background: linear-gradient(135deg, #064e3b 0%, #065f46 50%, #022c22 100%);
+  color: #34d399;
+  border: 1px solid rgba(52, 211, 153, 0.5);
+  box-shadow: 0 16px 36px rgba(16, 185, 129, 0.45), 0 0 24px rgba(52, 211, 153, 0.35);
   transform: translateY(-16px) rotate(-1.5deg);
   border-radius: 12px;
   padding: 14px 28px;
@@ -1937,48 +1937,62 @@ const INITIAL_SANDBOX_CODE = `<button class="antigravity-thruster-btn" style="
 </button>`;
 
 const GRAVITY_PRESETS = {
-  orbit: `<button class="antigravity-thruster-btn" style="
-  background: linear-gradient(135deg, #06283d 0%, #1363df 100%);
-  color: #dff6ff;
-  border: 1px solid #47b5ff;
-  box-shadow: 0 22px 48px rgba(19, 99, 223, 0.65), 0 0 28px rgba(71, 181, 255, 0.55);
-  transform: translateY(-24px) rotate(-3deg) scale(1.05);
+  drift: `<button class="antigravity-thruster-btn" style="
+  background: linear-gradient(135deg, #064e3b 0%, #065f46 50%, #022c22 100%);
+  color: #34d399;
+  border: 1px solid rgba(52, 211, 153, 0.5);
+  box-shadow: 0 16px 36px rgba(16, 185, 129, 0.45), 0 0 24px rgba(52, 211, 153, 0.35);
+  transform: translateY(-16px) rotate(-1.5deg);
+  border-radius: 12px;
+  padding: 14px 28px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+">
+  ⚡ Zero-G Drift
+</button>`,
+  thruster: `<button class="antigravity-thruster-btn" style="
+  background: linear-gradient(135deg, #78350f 0%, #d97706 50%, #451a03 100%);
+  color: #fef3c7;
+  border: 1px solid #f59e0b;
+  box-shadow: 0 24px 50px rgba(245, 158, 11, 0.65), 0 0 32px rgba(245, 158, 11, 0.5);
+  transform: translateY(-26px) rotate(1deg) scale(1.05);
   border-radius: 16px;
   padding: 15px 32px;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0.8px;
 ">
-  🛸 Orbit Stabilized
+  🔥 Thruster Overdrive
 </button>`,
-  hyper: `<button class="antigravity-thruster-btn" style="
-  background: linear-gradient(135deg, #2e0854 0%, #7c3aed 100%);
-  color: #ffffff;
-  border: 1px solid #c084fc;
-  box-shadow: 0 26px 56px rgba(124, 58, 237, 0.7), 0 0 38px rgba(192, 132, 252, 0.8);
-  transform: translateY(-28px) scale(1.08);
-  border-radius: 30px;
+  warp: `<button class="antigravity-thruster-btn" style="
+  background: linear-gradient(135deg, #2e1065 0%, #6d28d9 50%, #1e1b4b 100%);
+  color: #ede9fe;
+  border: 1px solid #a78bfa;
+  box-shadow: 0 24px 52px rgba(139, 92, 246, 0.7), 0 0 36px rgba(167, 139, 250, 0.65);
+  transform: translateY(-32px) rotate(-5deg) scale(1.08);
+  border-radius: 20px;
   padding: 16px 34px;
   font-weight: 800;
   letter-spacing: 1px;
-">
-  ⚡ Hyper-Drive Glow
-</button>`,
-  warp: `<button class="antigravity-thruster-btn" style="
-  background: linear-gradient(135deg, #022c22 0%, #059669 100%);
-  color: #a7f3d0;
-  border: 1px solid #34d399;
-  box-shadow: 0 20px 42px rgba(5, 150, 105, 0.65), 0 0 26px rgba(52, 211, 153, 0.55);
-  transform: translateY(-20px) rotate(4deg) skewX(-3deg);
-  border-radius: 14px;
-  padding: 14px 30px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
 ">
   🌀 Quantum Warp
 </button>`
 };
 
+// Backwards-compatible aliases
+GRAVITY_PRESETS.orbit = GRAVITY_PRESETS.drift;
+GRAVITY_PRESETS.hyper = GRAVITY_PRESETS.thruster;
+
+const PRESET_PHYSICS = {
+  drift: { g: '0.08', y: '-16', rot: '-1.5' },
+  thruster: { g: '0.35', y: '-26', rot: '1.0' },
+  warp: { g: '0.85', y: '-32', rot: '-5.0' },
+  orbit: { g: '0.08', y: '-16', rot: '-1.5' },
+  hyper: { g: '0.35', y: '-26', rot: '1.0' }
+};
+
 let antigravityParticleSystem = null;
+let codeDebounceTimer = null;
+let parallaxRafId = null;
 
 function initSandboxChallenge() {
   const codeInput = document.getElementById('sandboxCodeInput');
@@ -1987,11 +2001,21 @@ function initSandboxChallenge() {
 
   if (!codeInput || !liveOutput) return;
 
-  // Real-time live preview update on typing & gutter line numbering
+  // Initialize hardware physics sliders
+  initAntigravitySliders();
+
+  // Initialize 3D Mouse Parallax
+  initAntigravityParallax();
+
+  // Live preview update with debounced parsing
   codeInput.addEventListener('input', () => {
     updateSandboxPreview(codeInput.value);
     updateGutterLineNumbers();
-    updateTelemetryHud(codeInput.value);
+
+    clearTimeout(codeDebounceTimer);
+    codeDebounceTimer = setTimeout(() => {
+      syncCodeToSlidersAndHud(codeInput.value);
+    }, 60);
   });
 
   // Sync scrolling between code textarea & line numbers gutter
@@ -1999,7 +2023,7 @@ function initSandboxChallenge() {
     if (gutter) gutter.scrollTop = codeInput.scrollTop;
   });
 
-  // Support Tab key inside the editor for smooth coding
+  // Support Tab key inside editor
   codeInput.addEventListener('keydown', (e) => {
     if (e.key === 'Tab') {
       e.preventDefault();
@@ -2009,17 +2033,175 @@ function initSandboxChallenge() {
       codeInput.selectionStart = codeInput.selectionEnd = start + 2;
       updateSandboxPreview(codeInput.value);
       updateGutterLineNumbers();
-      updateTelemetryHud(codeInput.value);
+      syncCodeToSlidersAndHud(codeInput.value);
     }
   });
 
   // Initial preview render & gutter setup
   updateSandboxPreview(codeInput.value);
   updateGutterLineNumbers();
-  updateTelemetryHud(codeInput.value);
+  syncCodeToSlidersAndHud(codeInput.value);
 
   // Initialize Canvas Floating Zero-G Particle Simulation
   initAntigravityParticles();
+}
+
+/* ==========================================================================
+   HARDWARE-ACCELERATED PHYSICS SLIDERS & REAL-TIME CSS SYNC
+   ========================================================================== */
+function initAntigravitySliders() {
+  const sliderGravity = document.getElementById('sliderGravity');
+  const sliderY = document.getElementById('sliderY');
+  const sliderRot = document.getElementById('sliderRot');
+
+  if (!sliderGravity || !sliderY || !sliderRot) return;
+
+  const onSliderChange = () => {
+    const gVal = sliderGravity.value;
+    const yVal = sliderY.value;
+    const rotVal = sliderRot.value;
+
+    applyPhysicsState(gVal, yVal, rotVal, true);
+  };
+
+  sliderGravity.addEventListener('input', onSliderChange);
+  sliderY.addEventListener('input', onSliderChange);
+  sliderRot.addEventListener('input', onSliderChange);
+}
+
+function applyPhysicsState(gVal, yVal, rotVal, updateCodeInput = false) {
+  // Update tile display values
+  const valG = document.getElementById('sliderValGravity');
+  const valY = document.getElementById('sliderValY');
+  const valRot = document.getElementById('sliderValRot');
+  if (valG) valG.textContent = `${parseFloat(gVal).toFixed(2)}G`;
+  if (valY) valY.textContent = `${yVal}px`;
+  if (valRot) valRot.textContent = `${rotVal}°`;
+
+  // Update slider positions if called externally
+  const sliderGravity = document.getElementById('sliderGravity');
+  const sliderY = document.getElementById('sliderY');
+  const sliderRot = document.getElementById('sliderRot');
+  if (sliderGravity && sliderGravity.value !== String(gVal)) sliderGravity.value = gVal;
+  if (sliderY && sliderY.value !== String(yVal)) sliderY.value = yVal;
+  if (sliderRot && sliderRot.value !== String(rotVal)) sliderRot.value = rotVal;
+
+  // Real-time CSS Custom Properties sync for 60fps GPU acceleration
+  const wrap = document.getElementById('antigravityLevitationWrap');
+  if (wrap) {
+    wrap.style.setProperty('--grav-y', `${yVal}px`);
+    wrap.style.setProperty('--grav-rot', `${rotVal}deg`);
+    wrap.style.setProperty('--grav-field', gVal);
+  }
+
+  // Update HUD telemetry metrics
+  const coordsVal = document.getElementById('hudCoordsVal');
+  const hudGravityVal = document.getElementById('hudGravityVal');
+  const tiltChip = document.getElementById('previewTiltChip');
+  const chamberTelemetryText = document.getElementById('chamberTelemetryText');
+
+  const gNum = parseFloat(gVal);
+  const fieldDesc = gNum < 0.2 ? 'MICROGRAVITY' : gNum < 0.6 ? 'EQUILIBRIUM' : 'HIGH-G WARP';
+
+  if (coordsVal) {
+    coordsVal.textContent = `X:00 | Y:${yVal}px | ROT:${rotVal}°`;
+  }
+  if (hudGravityVal) {
+    hudGravityVal.textContent = `${parseFloat(gVal).toFixed(2)}G (${fieldDesc})`;
+  }
+  if (tiltChip) {
+    tiltChip.textContent = `TILT: ${rotVal}°`;
+  }
+  if (chamberTelemetryText) {
+    chamberTelemetryText.textContent = `PHYSICS: LEVITATING // ELEVATION: ${yVal}px // FIELD: ${parseFloat(gVal).toFixed(2)}G`;
+  }
+
+  // Update the button's inline style directly in live output without DOM destroy/rebuild
+  const liveOutput = document.getElementById('sandboxLiveOutput');
+  const btn = liveOutput ? liveOutput.querySelector('button') : null;
+  if (btn) {
+    btn.style.transform = `translateY(${yVal}px) rotate(${rotVal}deg)`;
+  }
+
+  // Optionally sync updated transform text into the editable code editor
+  if (updateCodeInput) {
+    const codeInput = document.getElementById('sandboxCodeInput');
+    if (codeInput) {
+      let code = codeInput.value;
+      if (/transform:\s*[^;]+;/i.test(code)) {
+        code = code.replace(/transform:\s*[^;]+;/i, `transform: translateY(${yVal}px) rotate(${rotVal}deg);`);
+      } else if (/style="/i.test(code)) {
+        code = code.replace(/style="/i, `style="\n  transform: translateY(${yVal}px) rotate(${rotVal}deg);`);
+      }
+      codeInput.value = code;
+      updateGutterLineNumbers();
+    }
+  }
+}
+
+function syncCodeToSlidersAndHud(code) {
+  let translateY = '-16';
+  const tyMatch = code.match(/translateY\(\s*([-\d.]+)(?:px)?\s*\)/i);
+  if (tyMatch) translateY = tyMatch[1];
+
+  let rotate = '-1.5';
+  const rotMatch = code.match(/rotate\(\s*([-\d.]+)(?:deg)?\s*\)/i);
+  if (rotMatch) rotate = rotMatch[1];
+
+  const sliderGravity = document.getElementById('sliderGravity');
+  const currentG = sliderGravity ? sliderGravity.value : '0.08';
+
+  applyPhysicsState(currentG, translateY, rotate, false);
+}
+
+/* ==========================================================================
+   3D MOUSE PARALLAX TRACKING (requestAnimationFrame)
+   ========================================================================== */
+function initAntigravityParallax() {
+  const stage = document.getElementById('sandboxPreviewStage');
+  const chamber = document.getElementById('antigravityParallaxChamber');
+  if (!stage || !chamber) return;
+
+  let currentTiltX = 0;
+  let currentTiltY = 0;
+  let targetTiltX = 0;
+  let targetTiltY = 0;
+  let isHovered = false;
+
+  const onMouseMove = (e) => {
+    const rect = stage.getBoundingClientRect();
+    if (rect.width === 0 || rect.height === 0) return;
+    const nx = (e.clientX - rect.left) / rect.width - 0.5; // -0.5 to 0.5
+    const ny = (e.clientY - rect.top) / rect.height - 0.5; // -0.5 to 0.5
+    targetTiltX = -ny * 18; // degrees
+    targetTiltY = nx * 22;  // degrees
+    isHovered = true;
+  };
+
+  const onMouseLeave = () => {
+    targetTiltX = 0;
+    targetTiltY = 0;
+    isHovered = false;
+  };
+
+  stage.addEventListener('mousemove', onMouseMove, { passive: true });
+  stage.addEventListener('mouseleave', onMouseLeave, { passive: true });
+
+  function renderParallax() {
+    // Smooth lerp (linear interpolation)
+    const lerpFactor = isHovered ? 0.12 : 0.08;
+    currentTiltX += (targetTiltX - currentTiltX) * lerpFactor;
+    currentTiltY += (targetTiltY - currentTiltY) * lerpFactor;
+
+    if (chamber) {
+      chamber.style.transform = `perspective(1000px) rotateX(${currentTiltX.toFixed(2)}deg) rotateY(${currentTiltY.toFixed(2)}deg)`;
+    }
+
+    parallaxRafId = requestAnimationFrame(renderParallax);
+  }
+
+  cancelAnimationFrame(parallaxRafId);
+  renderParallax();
 }
 
 function updateGutterLineNumbers() {
@@ -2036,57 +2218,34 @@ function updateGutterLineNumbers() {
   gutter.innerHTML = html;
 }
 
-function updateTelemetryHud(code) {
-  const coordsVal = document.getElementById('hudCoordsVal');
-  const tiltChip = document.getElementById('previewTiltChip');
-  const chamberTelemetryText = document.getElementById('chamberTelemetryText');
-
-  // Extract transform translateY
-  let translateY = '-16px';
-  const tyMatch = code.match(/translateY\(\s*([-\d.]+px)\s*\)/i);
-  if (tyMatch) translateY = tyMatch[1];
-
-  // Extract rotate
-  let rotate = '-1.5°';
-  const rotMatch = code.match(/rotate\(\s*([-\d.]+deg)\s*\)/i);
-  if (rotMatch) rotate = rotMatch[1];
-
-  // Extract scale
-  let scale = '1.0';
-  const scMatch = code.match(/scale\(\s*([\d.]+)\s*\)/i);
-  if (scMatch) scale = scMatch[1];
-
-  if (coordsVal) {
-    coordsVal.textContent = `X:00 | Y:${translateY} | ROT:${rotate}`;
-  }
-  if (tiltChip) {
-    tiltChip.textContent = `TILT: ${rotate}`;
-  }
-  if (chamberTelemetryText) {
-    chamberTelemetryText.textContent = `PHYSICS: LEVITATING // ELEVATION: ${translateY} // MICROGRAVITY: 0.08G`;
-  }
-}
-
 function applyGravityPreset(presetKey) {
   const codeInput = document.getElementById('sandboxCodeInput');
-  if (!codeInput || !GRAVITY_PRESETS[presetKey]) return;
+  const resolvedKey = GRAVITY_PRESETS[presetKey] ? presetKey : 'drift';
+  if (!codeInput) return;
 
   // Toggle active class on preset buttons
   document.querySelectorAll('.btn-hud-preset').forEach(btn => {
-    const isMatch = btn.getAttribute('onclick')?.includes(`'${presetKey}'`);
+    const onclickAttr = btn.getAttribute('onclick') || '';
+    const isMatch = onclickAttr.includes(`'${resolvedKey}'`) || 
+                    (resolvedKey === 'drift' && onclickAttr.includes("'orbit'")) ||
+                    (resolvedKey === 'thruster' && onclickAttr.includes("'hyper'"));
     btn.classList.toggle('active', !!isMatch);
   });
 
-  codeInput.value = GRAVITY_PRESETS[presetKey];
+  // Inject code
+  codeInput.value = GRAVITY_PRESETS[resolvedKey];
   updateSandboxPreview(codeInput.value);
   updateGutterLineNumbers();
-  updateTelemetryHud(codeInput.value);
+
+  // Sync physics sliders and telemetry
+  const physics = PRESET_PHYSICS[resolvedKey] || PRESET_PHYSICS.drift;
+  applyPhysicsState(physics.g, physics.y, physics.rot, false);
 
   // Apply active animation class to the levitation wrap
   const wrap = document.getElementById('antigravityLevitationWrap');
   if (wrap) {
-    wrap.classList.remove('anim-orbit', 'anim-hyper', 'anim-warp');
-    wrap.classList.add(`anim-${presetKey}`);
+    wrap.classList.remove('anim-drift', 'anim-thruster', 'anim-warp', 'anim-orbit', 'anim-hyper');
+    wrap.classList.add(`anim-${resolvedKey}`);
   }
 
   // Trigger interactive particle surge
@@ -2105,10 +2264,16 @@ function applyGravityPreset(presetKey) {
   // Brief status toast
   const feedbackEl = document.getElementById('sandboxStatusFeedback');
   if (feedbackEl) {
-    const presetNames = { orbit: 'Zero-G Orbit', hyper: 'Hyper-Glow Thrusters', warp: 'Quantum Warp' };
+    const presetNames = {
+      drift: '⚡ Zero-G Drift',
+      thruster: '🔥 Thruster Overdrive',
+      warp: '🌀 Quantum Warp',
+      orbit: '⚡ Zero-G Drift',
+      hyper: '🔥 Thruster Overdrive'
+    };
     feedbackEl.innerHTML = `
-      <span class="status-badge-guidance" style="color: #38bdf8; font-weight: 700; display: inline-flex; align-items: center; gap: 6px;">
-        <i class="fa-solid fa-satellite-dish fa-spin-pulse"></i> Telemetry Coordinates Injected: [${presetNames[presetKey]}]. Ready to Launch.
+      <span class="status-badge-guidance" style="color: #34d399; font-weight: 700; display: inline-flex; align-items: center; gap: 6px;">
+        <i class="fa-solid fa-satellite-dish fa-spin-pulse"></i> Telemetry Coordinates Injected: [${presetNames[resolvedKey]}]. Ready to Launch.
       </span>
     `;
   }
@@ -2128,7 +2293,7 @@ function updateSandboxPreview(code) {
 
   const btn = liveOutput.querySelector('button');
   if (btn) {
-    btn.style.transition = 'transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease';
+    btn.style.transition = 'transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease';
   }
 }
 
@@ -2142,7 +2307,7 @@ function runSandboxVerify() {
 
   const rawCode = codeInput.value;
   updateSandboxPreview(rawCode);
-  updateTelemetryHud(rawCode);
+  syncCodeToSlidersAndHud(rawCode);
 
   // Trigger cosmic particle acceleration & shockwave pulse safely
   try {
@@ -2153,7 +2318,7 @@ function runSandboxVerify() {
     console.warn('Particle pulse error suppressed:', err);
   }
 
-  // Dynamic transform updates to the floating button preview without console errors
+  // Dynamic transform updates to floating button preview
   const thrusterBtn = liveOutput ? liveOutput.querySelector('button') : null;
   if (thrusterBtn) {
     const origTransform = thrusterBtn.style.transform || 'translateY(-16px) rotate(-1.5deg)';
@@ -2171,14 +2336,14 @@ function runSandboxVerify() {
     liveOutput.classList.add('antigravity-pulse-active');
   }
 
-  // Trigger celebratory confetti burst with space/neon colors safely
+  // Trigger celebratory confetti burst with cyber neon colors safely
   if (typeof confetti === 'function') {
     try {
       confetti({
         particleCount: 85,
         spread: 90,
         origin: { y: 0.65 },
-        colors: ['#06b6d4', '#38bdf8', '#6366f1', '#a855f7', '#ffffff']
+        colors: ['#10b981', '#34d399', '#f59e0b', '#8b5cf6', '#ffffff']
       });
     } catch (e) {
       console.warn('Confetti burst skipped:', e);
@@ -2196,7 +2361,7 @@ function runSandboxVerify() {
   // Positive Telemetry Feedback Message
   if (feedbackEl) {
     feedbackEl.innerHTML = `
-      <span class="status-badge-success" style="color: #38bdf8; font-weight: 700; display: inline-flex; align-items: center; gap: 8px;">
+      <span class="status-badge-success" style="color: #34d399; font-weight: 700; display: inline-flex; align-items: center; gap: 8px;">
         <i class="fa-solid fa-satellite-dish fa-spin-pulse"></i> <strong>SIMULATION ENGAGED:</strong> Antigravity Thrusters Synchronized! Element levitating in zero-g equilibrium.
       </span>
     `;
@@ -2211,15 +2376,18 @@ function resetSandboxChallenge() {
 
   const wrap = document.getElementById('antigravityLevitationWrap');
   if (wrap) {
-    wrap.classList.remove('anim-orbit', 'anim-hyper', 'anim-warp');
+    wrap.classList.remove('anim-drift', 'anim-thruster', 'anim-warp', 'anim-orbit', 'anim-hyper');
+    wrap.classList.add('anim-drift');
   }
-  document.querySelectorAll('.btn-hud-preset').forEach(btn => btn.classList.remove('active'));
+  document.querySelectorAll('.btn-hud-preset').forEach(btn => {
+    btn.classList.toggle('active', btn.classList.contains('preset-emerald'));
+  });
 
   if (codeInput) {
     codeInput.value = INITIAL_SANDBOX_CODE;
     updateSandboxPreview(INITIAL_SANDBOX_CODE);
     updateGutterLineNumbers();
-    updateTelemetryHud(INITIAL_SANDBOX_CODE);
+    applyPhysicsState('0.08', '-16', '-1.5', false);
   }
 
   if (successBanner) successBanner.style.display = 'none';
@@ -2246,7 +2414,7 @@ function toggleSandboxHint() {
 }
 
 /* ==========================================================================
-   FLOATING ZERO-GRAVITY PARTICLE CANVAS ENGINE
+   FLOATING ZERO-GRAVITY PARTICLE CANVAS ENGINE (ELECTRIC CYBERPUNK PALETTE)
    ========================================================================== */
 function initAntigravityParticles() {
   const canvas = document.getElementById('sandboxParticleCanvas');
@@ -2279,20 +2447,20 @@ function initAntigravityParticles() {
     mouse.active = false;
   });
 
-  // Spawn Zero-G particles
-  const particleCount = 30;
+  // Spawn Zero-G particles with Electric Cyberpunk colors
+  const particleCount = 32;
   const particles = [];
-  const colors = ['#38bdf8', '#818cf8', '#06b6d4', '#c084fc', '#ffffff'];
+  const colors = ['#10b981', '#34d399', '#f59e0b', '#8b5cf6', '#a78bfa', '#ffffff'];
 
   for (let i = 0; i < particleCount; i++) {
     particles.push({
       x: Math.random() * width,
       y: Math.random() * height,
-      size: Math.random() * 2.2 + 0.8,
+      size: Math.random() * 2.4 + 0.8,
       speedY: -(Math.random() * 0.45 + 0.15), // drifting slowly upward against gravity
       speedX: (Math.random() - 0.5) * 0.3,
-      alpha: Math.random() * 0.6 + 0.2,
-      baseAlpha: Math.random() * 0.6 + 0.2,
+      alpha: Math.random() * 0.65 + 0.2,
+      baseAlpha: Math.random() * 0.65 + 0.2,
       color: colors[Math.floor(Math.random() * colors.length)],
       angle: Math.random() * Math.PI * 2,
       angleSpeed: (Math.random() - 0.5) * 0.03
@@ -2306,15 +2474,15 @@ function initAntigravityParticles() {
     rings.push({
       x: width / 2,
       y: height / 2,
-      radius: 5,
+      radius: 6,
       maxRadius: Math.max(width, height) * 0.75,
-      alpha: 0.9,
+      alpha: 0.95,
       lineWidth: 2.5
     });
 
     // Particle acceleration burst
     particles.forEach((p) => {
-      p.speedY *= 2.2;
+      p.speedY *= 2.4;
       p.alpha = 1.0;
       setTimeout(() => {
         p.speedY = -(Math.random() * 0.45 + 0.15);
@@ -2326,20 +2494,20 @@ function initAntigravityParticles() {
   function render() {
     ctx.clearRect(0, 0, width, height);
 
-    // Draw gravitational wave rings
+    // Draw gravitational wave rings in Electric Emerald
     for (let r = rings.length - 1; r >= 0; r--) {
       const ring = rings[r];
       ctx.save();
       ctx.beginPath();
       ctx.arc(ring.x, ring.y, ring.radius, 0, Math.PI * 2);
-      ctx.strokeStyle = `rgba(56, 189, 248, ${ring.alpha})`;
+      ctx.strokeStyle = `rgba(52, 211, 153, ${ring.alpha})`;
       ctx.lineWidth = ring.lineWidth;
-      ctx.shadowColor = '#06b6d4';
-      ctx.shadowBlur = 12;
+      ctx.shadowColor = '#10b981';
+      ctx.shadowBlur = 14;
       ctx.stroke();
       ctx.restore();
 
-      ring.radius += 3.5;
+      ring.radius += 3.6;
       ring.alpha *= 0.96;
       if (ring.alpha < 0.02 || ring.radius > ring.maxRadius) {
         rings.splice(r, 1);
@@ -2509,123 +2677,7 @@ async function handleCampusPassSubmit(e) {
 }
 
 /* ==========================================================================
-   19. FEATURE #5: SPIKE LITE INTERACTIVE 60-SECOND CODING PLAYGROUND
-   ========================================================================== */
-const SPIKE_LITE_DEFAULT_CODE = `<button style="background: #e2e8f0; color: #0f172a; padding: 12px 24px; border-radius: 8px;">
-  Click Me
-</button>`;
-
-function initSpikeLitePlayground() {
-  const editor = document.getElementById('spikeLiteCodeEditor');
-  if (editor && !editor.value.trim()) {
-    editor.value = SPIKE_LITE_DEFAULT_CODE;
-  }
-  renderSpikeLiteLive();
-}
-
-function renderSpikeLiteLive() {
-  const editor = document.getElementById('spikeLiteCodeEditor');
-  const stage = document.getElementById('spikeLitePreviewStage');
-  if (!editor || !stage) return;
-
-  const rawCode = editor.value;
-  stage.innerHTML = rawCode;
-}
-
-function runSpikeLiteVerify() {
-  const editor = document.getElementById('spikeLiteCodeEditor');
-  const stage = document.getElementById('spikeLitePreviewStage');
-  const feedback = document.getElementById('spikeLiteFeedback');
-  const reward = document.getElementById('spikeUnlockedReward');
-  const verifyBtn = document.getElementById('btnSpikeVerify');
-
-  if (!editor) return;
-  const code = editor.value.trim();
-
-  // Live render
-  renderSpikeLiteLive();
-
-  const renderedBtn = stage ? stage.querySelector('button') : null;
-  const btnText = renderedBtn ? renderedBtn.textContent.trim().toLowerCase() : '';
-  const btnStyle = renderedBtn ? window.getComputedStyle(renderedBtn) : null;
-  const bgComputed = btnStyle ? btnStyle.backgroundColor : '';
-
-  const codeNormalized = code.toLowerCase().replace(/\s+/g, ' ');
-  const hasTargetText = btnText.includes('start my tech career') || codeNormalized.includes('start my tech career');
-  const hasTargetColor = codeNormalized.includes('#0b57d0') || 
-                          bgComputed.includes('11, 87, 208') || 
-                          codeNormalized.includes('rgb(11, 87, 208)') ||
-                          codeNormalized.includes('rgb(11,87,208)');
-
-  if (hasTargetText && hasTargetColor) {
-    // Challenge solved!
-    if (typeof confetti === 'function') {
-      confetti({
-        particleCount: 90,
-        spread: 65,
-        origin: { y: 0.6 }
-      });
-    }
-
-    if (feedback) {
-      feedback.style.color = '#059669';
-      feedback.innerHTML = '<i class="fa-solid fa-circle-check"></i> <strong>Mission Accomplished!</strong> Button styled &amp; text updated!';
-    }
-
-    if (reward) {
-      reward.style.display = 'flex';
-      reward.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
-
-    if (verifyBtn) {
-      verifyBtn.classList.remove('btn-enterprise-primary');
-      verifyBtn.classList.add('btn-whatsapp-syllabus');
-      verifyBtn.innerHTML = '<i class="fa-solid fa-check"></i> <span>Aptitude Verified!</span>';
-    }
-  } else if (!hasTargetText && !hasTargetColor) {
-    if (feedback) {
-      feedback.style.color = '#dc2626';
-      feedback.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i> Change text to <code>"Start My Tech Career"</code> and background to <code>"#0b57d0"</code>.';
-    }
-  } else if (!hasTargetText) {
-    if (feedback) {
-      feedback.style.color = '#d97706';
-      feedback.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Background color looks great! Now change the button text to <code>"Start My Tech Career"</code>.';
-    }
-  } else {
-    if (feedback) {
-      feedback.style.color = '#d97706';
-      feedback.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Button text is correct! Now change the background to <code>"#0b57d0"</code>.';
-    }
-  }
-}
-
-function resetSpikeLiteChallenge() {
-  const editor = document.getElementById('spikeLiteCodeEditor');
-  const feedback = document.getElementById('spikeLiteFeedback');
-  const reward = document.getElementById('spikeUnlockedReward');
-  const verifyBtn = document.getElementById('btnSpikeVerify');
-
-  if (editor) {
-    editor.value = SPIKE_LITE_DEFAULT_CODE;
-  }
-  renderSpikeLiteLive();
-
-  if (feedback) {
-    feedback.style.color = '';
-    feedback.textContent = 'Tweak the code above and click Run Code & Verify';
-  }
-  if (reward) {
-    reward.style.display = 'none';
-  }
-  if (verifyBtn) {
-    verifyBtn.className = 'btn-enterprise-primary';
-    verifyBtn.innerHTML = '<i class="fa-solid fa-play"></i> <span>Run Code &amp; Verify</span>';
-  }
-}
-
-/* ==========================================================================
-   20. FEATURE #3: STICKY MOBILE CONVERSION BAR OBSERVER
+   19. FEATURE #3: STICKY MOBILE CONVERSION BAR OBSERVER
    ========================================================================== */
 function initStickyMobileBarObserver() {
   const bar = document.getElementById('stickyMobileBar');
@@ -2676,13 +2728,11 @@ window.handleQuizLeadSubmit = handleQuizLeadSubmit;
 window.openCampusPassModal = openCampusPassModal;
 window.closeCampusPassModal = closeCampusPassModal;
 window.handleCampusPassSubmit = handleCampusPassSubmit;
-window.renderSpikeLiteLive = renderSpikeLiteLive;
-window.runSpikeLiteVerify = runSpikeLiteVerify;
-window.resetSpikeLiteChallenge = resetSpikeLiteChallenge;
 window.runSandboxVerify = runSandboxVerify;
 window.resetSandboxChallenge = resetSandboxChallenge;
 window.toggleSandboxHint = toggleSandboxHint;
 window.applyGravityPreset = applyGravityPreset;
+window.applyPhysicsState = applyPhysicsState;
 
 // Auto-run features on DOMContentLoaded
 document.addEventListener('DOMContentLoaded', () => {
@@ -2690,7 +2740,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initProDrawer();
   initSandboxChallenge();
   initCampusPassDatePicker();
-  initSpikeLitePlayground();
   initStickyMobileBarObserver();
 });
 

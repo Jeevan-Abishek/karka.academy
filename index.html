@@ -526,34 +526,58 @@
             <div class="hud-telemetry-strip">
               <div class="hud-telemetry-readouts">
                 <span class="hud-metric">
-                  <i class="fa-solid fa-gauge-high"></i> SYS.STATUS: <strong class="hud-accent-cyan">ZERO-G
-                    ACTIVE</strong>
+                  <i class="fa-solid fa-gauge-high hud-accent-emerald"></i> SYS.STATUS: <strong class="hud-accent-emerald">ZERO-G ACTIVE</strong>
                 </span>
                 <span class="hud-sep">//</span>
                 <span class="hud-metric">
-                  <i class="fa-solid fa-compass"></i> COORDS: <strong id="hudCoordsVal" class="hud-accent-indigo">X:00 |
-                    Y:-16 | ROT:-1.5°</strong>
+                  <i class="fa-solid fa-compass hud-accent-amber"></i> COORDS: <strong id="hudCoordsVal" class="hud-accent-amber">X:00 | Y:-16px | ROT:-1.5°</strong>
                 </span>
                 <span class="hud-sep">//</span>
                 <span class="hud-metric">
-                  <i class="fa-solid fa-weight-scale"></i> FIELD: <strong id="hudGravityVal"
-                    class="hud-accent-emerald">0.08G (MICROGRAVITY)</strong>
+                  <i class="fa-solid fa-weight-scale hud-accent-violet"></i> FIELD: <strong id="hudGravityVal" class="hud-accent-violet">0.08G (MICROGRAVITY)</strong>
                 </span>
               </div>
               <div class="hud-telemetry-presets">
-                <span class="hud-preset-lbl">QUICK INJECT:</span>
-                <button type="button" class="btn-hud-preset" onclick="applyGravityPreset('orbit')"
-                  title="Inject Zero-G Orbit Coordinates">
-                  <i class="fa-solid fa-shuttle-space"></i> Orbit Float
+                <span class="hud-preset-lbl">QUICK PRESETS:</span>
+                <button type="button" class="btn-hud-preset preset-emerald active" onclick="applyGravityPreset('drift')"
+                  title="Zero-G Drift: Slow orbital float with emerald pulse">
+                  <i class="fa-solid fa-bolt"></i> ⚡ Zero-G Drift
                 </button>
-                <button type="button" class="btn-hud-preset" onclick="applyGravityPreset('hyper')"
-                  title="Inject Hyper-Glow Thruster Coordinates">
-                  <i class="fa-solid fa-bolt"></i> Hyper-Glow
+                <button type="button" class="btn-hud-preset preset-amber" onclick="applyGravityPreset('thruster')"
+                  title="Thruster Overdrive: High-frequency vibration with amber flame glow">
+                  <i class="fa-solid fa-fire-flame-curved"></i> 🔥 Thruster Overdrive
                 </button>
-                <button type="button" class="btn-hud-preset" onclick="applyGravityPreset('warp')"
-                  title="Inject Quantum Warp Coordinates">
-                  <i class="fa-solid fa-tornado"></i> Warp Vortex
+                <button type="button" class="btn-hud-preset preset-violet" onclick="applyGravityPreset('warp')"
+                  title="Quantum Warp: 3D perspective spin with violet refraction">
+                  <i class="fa-solid fa-tornado"></i> 🌀 Quantum Warp
                 </button>
+              </div>
+            </div>
+
+            <!-- Hardware Physics Sliders Matrix -->
+            <div class="hud-sliders-matrix">
+              <div class="hud-slider-tile tile-emerald">
+                <div class="hud-slider-header">
+                  <span class="hud-slider-name"><i class="fa-solid fa-weight-scale"></i> GRAVITY FIELD (G)</span>
+                  <span class="hud-slider-val hud-accent-emerald" id="sliderValGravity">0.08G</span>
+                </div>
+                <input type="range" class="hud-slider-input slider-emerald" id="sliderGravity" min="0" max="1" step="0.01" value="0.08" aria-label="Gravity Field">
+              </div>
+
+              <div class="hud-slider-tile tile-amber">
+                <div class="hud-slider-header">
+                  <span class="hud-slider-name"><i class="fa-solid fa-arrows-up-down"></i> VERTICAL DRIFT (Y)</span>
+                  <span class="hud-slider-val hud-accent-amber" id="sliderValY">-16px</span>
+                </div>
+                <input type="range" class="hud-slider-input slider-amber" id="sliderY" min="-40" max="10" step="1" value="-16" aria-label="Vertical Drift">
+              </div>
+
+              <div class="hud-slider-tile tile-violet">
+                <div class="hud-slider-header">
+                  <span class="hud-slider-name"><i class="fa-solid fa-rotate"></i> ROTATIONAL TILT (DEG)</span>
+                  <span class="hud-slider-val hud-accent-violet" id="sliderValRot">-1.5°</span>
+                </div>
+                <input type="range" class="hud-slider-input slider-violet" id="sliderRot" min="-15" max="15" step="0.5" value="-1.5" aria-label="Rotational Tilt">
               </div>
             </div>
 
@@ -564,10 +588,8 @@
                   <i class="fa-solid fa-crosshairs"></i> MISSION DIRECTIVE
                 </div>
                 <div class="hud-mission-instructions">
-                  <strong>Mission: Adjust CSS gravity &amp; transform properties</strong>
-                  <span>&mdash; Calibrate component thrusters! Fine-tune <code>transform: translateY(...)</code>,
-                    <code>rotate(...)</code>, and glowing <code>box-shadow</code> to maintain weightless orbital
-                    equilibrium.</span>
+                  <strong>Mission: Calibrate zero-g quantum thrusters</strong>
+                  <span>&mdash; Move sliders or edit code! Real-time transforms (<code>--grav-y</code>, <code>--grav-rot</code>) stream directly to GPU at 60fps.</span>
                 </div>
               </div>
               <button type="button" class="btn-hud-hint-toggle" id="sandboxHintBtn" onclick="toggleSandboxHint()">
@@ -579,20 +601,19 @@
             <!-- Telemetry Diagnostic Intel Drawer -->
             <div class="sandbox-hint-bubble hud-intel-drawer" id="sandboxHintBubble" style="display: none;">
               <div class="hud-intel-grid">
-                <div class="hud-intel-card">
+                <div class="hud-intel-card card-emerald">
                   <div class="intel-step-num">ACTION 01 &bull; ELEVATION</div>
-                  <p>Counteract mass using <code>transform: translateY(-24px) rotate(-3deg);</code> for higher orbital
-                    float.</p>
+                  <p>Fine-tune vertical drift using slider or <code>transform: translateY(-24px) rotate(-3deg);</code> for higher orbital float.</p>
                 </div>
-                <div class="hud-intel-card">
+                <div class="hud-intel-card card-amber">
                   <div class="intel-step-num">ACTION 02 &bull; PLASMA GLOW</div>
-                  <p>Ignite ion thrusters:
-                    <code>box-shadow: 0 20px 40px rgba(6, 182, 212, 0.6), 0 0 25px rgba(99, 102, 241, 0.5);</code>
+                  <p>Ignite thrusters with cyber amber or emerald glow:
+                    <code>box-shadow: 0 20px 40px rgba(16, 185, 129, 0.5), 0 0 25px rgba(245, 158, 11, 0.4);</code>
                   </p>
                 </div>
-                <div class="hud-intel-card">
+                <div class="hud-intel-card card-violet">
                   <div class="intel-step-num">ACTION 03 &bull; HULL SHIELD</div>
-                  <p>Stabilize magnetic shield: <code>border: 1px solid #38bdf8; border-radius: 14px;</code></p>
+                  <p>Stabilize magnetic hull: <code>border: 1px solid #34d399; border-radius: 14px;</code></p>
                 </div>
               </div>
             </div>
@@ -604,7 +625,7 @@
             <div class="sandbox-editor-panel antigravity-editor-panel">
               <div class="sandbox-panel-tab antigravity-panel-tab">
                 <div class="tab-label-group">
-                  <i class="fa-brands fa-css3-alt" style="color: #38bdf8;"></i>
+                  <i class="fa-brands fa-css3-alt hud-accent-emerald"></i>
                   <span class="tab-title-text">antigravity-thruster.css</span>
                   <span class="tab-tag-active">MUTABLE</span>
                 </div>
@@ -617,10 +638,10 @@
                 <div class="code-editor-gutter" id="codeEditorGutter" aria-hidden="true"></div>
                 <textarea id="sandboxCodeInput" class="sandbox-code-textarea antigravity-code-textarea"
                   spellcheck="false" autocomplete="off" autocapitalize="off" aria-label="Antigravity Code Editor">&lt;button class="antigravity-thruster-btn" style="
-  background: linear-gradient(135deg, #0b1120 0%, #1e1b4b 100%);
-  color: #38bdf8;
-  border: 1px solid rgba(56, 189, 248, 0.5);
-  box-shadow: 0 16px 36px rgba(6, 182, 212, 0.45), 0 0 20px rgba(99, 102, 241, 0.35);
+  background: linear-gradient(135deg, #064e3b 0%, #065f46 50%, #022c22 100%);
+  color: #34d399;
+  border: 1px solid rgba(52, 211, 153, 0.5);
+  box-shadow: 0 16px 36px rgba(16, 185, 129, 0.45), 0 0 24px rgba(52, 211, 153, 0.35);
   transform: translateY(-16px) rotate(-1.5deg);
   border-radius: 12px;
   padding: 14px 28px;
@@ -636,7 +657,7 @@
             <div class="sandbox-preview-panel antigravity-preview-panel">
               <div class="sandbox-panel-tab antigravity-panel-tab">
                 <div class="tab-label-group">
-                  <i class="fa-solid fa-atom fa-spin" style="color: #06b6d4; --fa-animation-duration: 8s;"></i>
+                  <i class="fa-solid fa-atom fa-spin hud-accent-emerald" style="--fa-animation-duration: 8s;"></i>
                   <span class="tab-title-text">Zero-Gravity Preview Chamber</span>
                 </div>
                 <div class="preview-stage-chips">
@@ -656,13 +677,17 @@
                   <span class="axis-mark-x">+X [THRUSTER VECTOR]</span>
                 </div>
 
-                <!-- Weightless Levitation Wrapper with smooth floating animation -->
-                <div class="antigravity-levitation-wrap" id="antigravityLevitationWrap">
-                  <div id="sandboxLiveOutput">
-                    <button class="antigravity-thruster-btn"
-                      style="background: linear-gradient(135deg, #0b1120 0%, #1e1b4b 100%); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.5); box-shadow: 0 16px 36px rgba(6, 182, 212, 0.45), 0 0 20px rgba(99, 102, 241, 0.35); transform: translateY(-16px) rotate(-1.5deg); border-radius: 12px; padding: 14px 28px; font-weight: 700; letter-spacing: 0.5px;">
-                      🛸 Defy Gravity
-                    </button>
+                <!-- 3D Perspective Parallax Chamber Wrapper -->
+                <div class="antigravity-parallax-chamber" id="antigravityParallaxChamber">
+                  <!-- Weightless Levitation Wrapper with smooth floating animation -->
+                  <div class="antigravity-levitation-wrap" id="antigravityLevitationWrap"
+                    style="--grav-y: -16px; --grav-rot: -1.5deg; --grav-field: 0.08;">
+                    <div id="sandboxLiveOutput">
+                      <button class="antigravity-thruster-btn"
+                        style="background: linear-gradient(135deg, #064e3b 0%, #065f46 50%, #022c22 100%); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.5); box-shadow: 0 16px 36px rgba(16, 185, 129, 0.45), 0 0 24px rgba(52, 211, 153, 0.35); transform: translateY(-16px) rotate(-1.5deg); border-radius: 12px; padding: 14px 28px; font-weight: 700; letter-spacing: 0.5px;">
+                        🛸 Defy Gravity
+                      </button>
+                    </div>
                   </div>
                 </div>
 
@@ -2154,82 +2179,6 @@
 
         </div>
 
-      </div>
-    </section>
-
-    <!-- 12B. SPIKE LITE: INTERACTIVE 60-SECOND CODING PLAYGROUND -->
-    <section class="section-padding spike-lite-section" id="spike-lite-playground">
-      <div class="container">
-        <div class="spike-lite-card">
-          <div class="spike-lite-header">
-            <div class="spike-lite-header-left">
-              <span class="badge-pill badge-green"><i class="fa-solid fa-bolt"></i> Spike AI Interactive Sandbox</span>
-              <h2 class="spike-lite-heading">Think You Can't Code? Try It in 60 Seconds!</h2>
-              <p class="spike-lite-subheading">
-                Experience Spike AI's live feedback. Edit the mini-code snippet below to pass the challenge and prove your software engineering aptitude.
-              </p>
-            </div>
-            <div class="spike-lite-timer-badge">
-              <i class="fa-solid fa-stopwatch"></i>
-              <span>60s Challenge</span>
-            </div>
-          </div>
-
-          <!-- Mission Directive Prompt -->
-          <div class="spike-mission-box">
-            <div class="spike-mission-label"><i class="fa-solid fa-bullseye"></i> YOUR MISSION:</div>
-            <div class="spike-mission-text">
-              <span>1. Change the button text from <code>"Click Me"</code> to <code>"Start My Tech Career"</code></span>
-              <span>2. Change the button background from <code>#e2e8f0</code> to <code>#0b57d0</code></span>
-            </div>
-          </div>
-
-          <!-- Playground Grid: Editor on Left, Live Preview on Right -->
-          <div class="spike-playground-grid">
-            <!-- Left: Mini Code Editor -->
-            <div class="spike-editor-pane">
-              <div class="spike-pane-title">
-                <span><i class="fa-solid fa-code"></i> HTML / Inline CSS Editor</span>
-                <button type="button" class="btn-spike-reset" onclick="resetSpikeLiteChallenge()" title="Reset snippet">
-                  <i class="fa-solid fa-rotate-left"></i> Reset
-                </button>
-              </div>
-              <textarea id="spikeLiteCodeEditor" class="spike-code-textarea" spellcheck="false" oninput="renderSpikeLiteLive()">&lt;button style="background: #e2e8f0; color: #0f172a; padding: 12px 24px; border-radius: 8px;"&gt;
-  Click Me
-&lt;/button&gt;</textarea>
-              <div class="spike-editor-actions">
-                <button type="button" id="btnSpikeVerify" class="btn-enterprise-primary" onclick="runSpikeLiteVerify()">
-                  <i class="fa-solid fa-play"></i>
-                  <span>Run Code &amp; Verify</span>
-                </button>
-                <span id="spikeLiteFeedback" class="spike-feedback-hint">Tweak the code above and click Run Code &amp; Verify</span>
-              </div>
-            </div>
-
-            <!-- Right: Live Preview Box -->
-            <div class="spike-preview-pane">
-              <div class="spike-pane-title">
-                <span><i class="fa-solid fa-eye"></i> Live Sandbox Preview</span>
-                <span class="spike-live-tag"><span class="pulse-dot"></span> LIVE RENDER</span>
-              </div>
-              <div class="spike-preview-stage" id="spikeLitePreviewStage">
-                <!-- Live rendered button will be injected here -->
-              </div>
-            </div>
-          </div>
-
-          <!-- Celebratory Unlocked Reward Banner -->
-          <div id="spikeUnlockedReward" class="spike-unlocked-reward" style="display: none;">
-            <div class="spike-reward-icon"><i class="fa-solid fa-award"></i></div>
-            <div class="spike-reward-content">
-              <h4>Aptitude Confirmed! Challenge Solved 🎉</h4>
-              <p>You wrote real web code and updated a live interactive UI component in under 60 seconds. You have the engineering aptitude for our outcome-based bootcamp!</p>
-            </div>
-            <button type="button" class="btn-enterprise-primary btn-claim-unlocked-seat" onclick="openModal('applyModal')">
-              <span>Aptitude Confirmed! Claim Your ₹0 Upfront Seat &rarr;</span>
-            </button>
-          </div>
-        </div>
       </div>
     </section>
 
