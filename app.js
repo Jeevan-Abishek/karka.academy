@@ -947,12 +947,15 @@ function initModals() {
       });
     }
 
-    // 3. Wire "Register for Infini" buttons
-    if (lower.includes('register for infini') || btn.classList.contains('open-infini-modal') || btn.id === 'btnRegisterInfini') {
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        openInfiniModal();
-      });
+    // 3. Wire "Register for Infini" buttons (only if not an external link)
+    if (btn.classList.contains('open-infini-modal')) {
+      const href = btn.getAttribute('href');
+      if (!href || href.startsWith('#') || href.startsWith('javascript:')) {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          openInfiniModal();
+        });
+      }
     }
   });
 
@@ -1826,33 +1829,192 @@ async function handleQuizLeadSubmit(e) {
 }
 
 /* ==========================================================================
-   17. FEATURE #3: TRY CODING IN 60 SECONDS (INTERACTIVE SANDBOX)
+   17. FEATURE #3: ANTIGRAVITY ENGINE & CODE LAB (PHYSICS SANDBOX)
    ========================================================================== */
-const INITIAL_SANDBOX_CODE = `<button style="background: #e2e8f0; color: #0f172a; padding: 12px 24px; border-radius: 8px;">
-  Click Me
+const INITIAL_SANDBOX_CODE = `<button class="antigravity-thruster-btn" style="
+  background: linear-gradient(135deg, #0b1120 0%, #1e1b4b 100%);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.5);
+  box-shadow: 0 16px 36px rgba(6, 182, 212, 0.45), 0 0 20px rgba(99, 102, 241, 0.35);
+  transform: translateY(-16px) rotate(-1.5deg);
+  border-radius: 12px;
+  padding: 14px 28px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+">
+  🛸 Defy Gravity
 </button>`;
+
+const GRAVITY_PRESETS = {
+  orbit: `<button class="antigravity-thruster-btn" style="
+  background: linear-gradient(135deg, #06283d 0%, #1363df 100%);
+  color: #dff6ff;
+  border: 1px solid #47b5ff;
+  box-shadow: 0 22px 48px rgba(19, 99, 223, 0.65), 0 0 28px rgba(71, 181, 255, 0.55);
+  transform: translateY(-24px) rotate(-3deg) scale(1.05);
+  border-radius: 16px;
+  padding: 15px 32px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+">
+  🛸 Orbit Stabilized
+</button>`,
+  hyper: `<button class="antigravity-thruster-btn" style="
+  background: linear-gradient(135deg, #2e0854 0%, #7c3aed 100%);
+  color: #ffffff;
+  border: 1px solid #c084fc;
+  box-shadow: 0 26px 56px rgba(124, 58, 237, 0.7), 0 0 38px rgba(192, 132, 252, 0.8);
+  transform: translateY(-28px) scale(1.08);
+  border-radius: 30px;
+  padding: 16px 34px;
+  font-weight: 800;
+  letter-spacing: 1px;
+">
+  ⚡ Hyper-Drive Glow
+</button>`,
+  warp: `<button class="antigravity-thruster-btn" style="
+  background: linear-gradient(135deg, #022c22 0%, #059669 100%);
+  color: #a7f3d0;
+  border: 1px solid #34d399;
+  box-shadow: 0 20px 42px rgba(5, 150, 105, 0.65), 0 0 26px rgba(52, 211, 153, 0.55);
+  transform: translateY(-20px) rotate(4deg) skewX(-3deg);
+  border-radius: 14px;
+  padding: 14px 30px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+">
+  🌀 Quantum Warp
+</button>`
+};
+
+let antigravityParticleSystem = null;
 
 function initSandboxChallenge() {
   const codeInput = document.getElementById('sandboxCodeInput');
   const liveOutput = document.getElementById('sandboxLiveOutput');
+  const gutter = document.getElementById('codeEditorGutter');
 
   if (!codeInput || !liveOutput) return;
 
-  // Real-time live preview update on typing
+  // Real-time live preview update on typing & gutter line numbering
   codeInput.addEventListener('input', () => {
     updateSandboxPreview(codeInput.value);
+    updateGutterLineNumbers();
+    updateTelemetryHud(codeInput.value);
   });
 
-  // Initial preview render
+  // Sync scrolling between code textarea & line numbers gutter
+  codeInput.addEventListener('scroll', () => {
+    if (gutter) gutter.scrollTop = codeInput.scrollTop;
+  });
+
+  // Support Tab key inside the editor for smooth coding
+  codeInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Tab') {
+      e.preventDefault();
+      const start = codeInput.selectionStart;
+      const end = codeInput.selectionEnd;
+      codeInput.value = codeInput.value.substring(0, start) + '  ' + codeInput.value.substring(end);
+      codeInput.selectionStart = codeInput.selectionEnd = start + 2;
+      updateSandboxPreview(codeInput.value);
+      updateGutterLineNumbers();
+      updateTelemetryHud(codeInput.value);
+    }
+  });
+
+  // Initial preview render & gutter setup
   updateSandboxPreview(codeInput.value);
+  updateGutterLineNumbers();
+  updateTelemetryHud(codeInput.value);
+
+  // Initialize Canvas Floating Zero-G Particle Simulation
+  initAntigravityParticles();
+}
+
+function updateGutterLineNumbers() {
+  const codeInput = document.getElementById('sandboxCodeInput');
+  const gutter = document.getElementById('codeEditorGutter');
+  if (!codeInput || !gutter) return;
+
+  const lines = codeInput.value.split('\n');
+  const lineCount = Math.max(lines.length, 11);
+  let html = '';
+  for (let i = 1; i <= lineCount; i++) {
+    html += `<span>${i}</span>`;
+  }
+  gutter.innerHTML = html;
+}
+
+function updateTelemetryHud(code) {
+  const coordsVal = document.getElementById('hudCoordsVal');
+  const tiltChip = document.getElementById('previewTiltChip');
+  const chamberTelemetryText = document.getElementById('chamberTelemetryText');
+
+  // Extract transform translateY
+  let translateY = '-16px';
+  const tyMatch = code.match(/translateY\(\s*([-\d.]+px)\s*\)/i);
+  if (tyMatch) translateY = tyMatch[1];
+
+  // Extract rotate
+  let rotate = '-1.5°';
+  const rotMatch = code.match(/rotate\(\s*([-\d.]+deg)\s*\)/i);
+  if (rotMatch) rotate = rotMatch[1];
+
+  // Extract scale
+  let scale = '1.0';
+  const scMatch = code.match(/scale\(\s*([\d.]+)\s*\)/i);
+  if (scMatch) scale = scMatch[1];
+
+  if (coordsVal) {
+    coordsVal.textContent = `X:00 | Y:${translateY} | ROT:${rotate}`;
+  }
+  if (tiltChip) {
+    tiltChip.textContent = `TILT: ${rotate}`;
+  }
+  if (chamberTelemetryText) {
+    chamberTelemetryText.textContent = `PHYSICS: LEVITATING // ELEVATION: ${translateY} // MICROGRAVITY: 0.08G`;
+  }
+}
+
+function applyGravityPreset(presetKey) {
+  const codeInput = document.getElementById('sandboxCodeInput');
+  if (!codeInput || !GRAVITY_PRESETS[presetKey]) return;
+
+  codeInput.value = GRAVITY_PRESETS[presetKey];
+  updateSandboxPreview(codeInput.value);
+  updateGutterLineNumbers();
+  updateTelemetryHud(codeInput.value);
+
+  // Trigger interactive particle surge
+  if (antigravityParticleSystem && typeof antigravityParticleSystem.pulse === 'function') {
+    antigravityParticleSystem.pulse();
+  }
+
+  // Visual pulse on the output container
+  const liveOutput = document.getElementById('sandboxLiveOutput');
+  if (liveOutput) {
+    liveOutput.classList.remove('antigravity-pulse-active');
+    void liveOutput.offsetWidth; // trigger reflow
+    liveOutput.classList.add('antigravity-pulse-active');
+  }
+
+  // Brief status toast
+  const feedbackEl = document.getElementById('sandboxStatusFeedback');
+  if (feedbackEl) {
+    const presetNames = { orbit: 'Zero-G Orbit', hyper: 'Hyper-Glow Thrusters', warp: 'Quantum Warp' };
+    feedbackEl.innerHTML = `
+      <span class="status-badge-guidance" style="color: #38bdf8; font-weight: 700; display: inline-flex; align-items: center; gap: 6px;">
+        <i class="fa-solid fa-satellite-dish fa-spin-pulse"></i> Telemetry Coordinates Injected: [${presetNames[presetKey]}]. Ready to Launch.
+      </span>
+    `;
+  }
 }
 
 function updateSandboxPreview(code) {
   const liveOutput = document.getElementById('sandboxLiveOutput');
   if (!liveOutput) return;
 
-  // Basic sanitization: allow harmless button/div/span/style markup
-  // Remove script tags or execution handlers for security
+  // Basic sanitization: strip executable scripts
   const safeCode = code
     .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
     .replace(/on\w+="[^"]*"/gi, '')
@@ -1871,56 +2033,49 @@ function runSandboxVerify() {
 
   const rawCode = codeInput.value;
   updateSandboxPreview(rawCode);
+  updateTelemetryHud(rawCode);
 
-  // Criteria validation
-  const hasButtonTag = /<button[\s\S]*?>[\s\S]*?<\/button>/i.test(rawCode);
-  const hasLabel = /start\s+my\s+career/i.test(rawCode);
-  const hasColor = /#0b57d0|rgb\(\s*11\s*,\s*87\s*,\s*208\s*\)/i.test(rawCode);
+  // Trigger cosmic particle acceleration & shockwave pulse
+  if (antigravityParticleSystem && typeof antigravityParticleSystem.pulse === 'function') {
+    antigravityParticleSystem.pulse();
+  }
 
-  if (hasButtonTag && hasLabel && hasColor) {
-    // 1. Success! Trigger Confetti burst
-    if (typeof confetti === 'function') {
-      confetti({
-        particleCount: 90,
-        spread: 80,
-        origin: { y: 0.65 }
-      });
-    }
+  // Check physics properties presence
+  const hasTransform = /transform/i.test(rawCode);
+  const hasTranslate = /translate/i.test(rawCode);
+  const hasShadow = /box-shadow/i.test(rawCode);
+  const hasButton = /<button[\s\S]*?>[\s\S]*?<\/button>/i.test(rawCode);
 
-    // 2. Show Success Achievement Banner
-    if (successBanner) {
-      successBanner.style.display = 'flex';
-      successBanner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
+  // Trigger celebratory confetti burst with space/neon colors
+  if (typeof confetti === 'function') {
+    confetti({
+      particleCount: 85,
+      spread: 90,
+      origin: { y: 0.65 },
+      colors: ['#06b6d4', '#38bdf8', '#6366f1', '#a855f7', '#ffffff']
+    });
+  }
 
-    // 3. Positive feedback message
-    if (feedbackEl) {
-      feedbackEl.innerHTML = `
-        <span class="status-badge-success" style="color: #059669; font-weight: 700; display: inline-flex; align-items: center; gap: 6px;">
-          <i class="fa-solid fa-circle-check"></i> Perfect! Both conditions met. Your styled button is rendered live.
-        </span>
-      `;
-    }
-  } else {
-    // Gentle encouraging guidance without error jargon
-    if (successBanner) successBanner.style.display = 'none';
+  // Pulse animation on the preview container
+  if (liveOutput) {
+    liveOutput.classList.remove('antigravity-pulse-active');
+    void liveOutput.offsetWidth; // trigger reflow
+    liveOutput.classList.add('antigravity-pulse-active');
+  }
 
-    let guidance = '';
-    if (!hasLabel && hasColor) {
-      guidance = 'Great job setting the background color! Now replace "Click Me" with "Start My Career".';
-    } else if (hasLabel && !hasColor) {
-      guidance = 'Awesome text update! Now change background: #e2e8f0 to background: #0b57d0.';
-    } else {
-      guidance = 'Almost there! Set the button text to "Start My Career" and background to "#0b57d0".';
-    }
+  // Show Success Achievement Banner
+  if (successBanner) {
+    successBanner.style.display = 'flex';
+    successBanner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
 
-    if (feedbackEl) {
-      feedbackEl.innerHTML = `
-        <span class="status-badge-guidance" style="color: #d97706; font-weight: 600; display: inline-flex; align-items: center; gap: 6px;">
-          <i class="fa-solid fa-circle-info"></i> ${guidance}
-        </span>
-      `;
-    }
+  // Positive Telemetry Feedback Message
+  if (feedbackEl) {
+    feedbackEl.innerHTML = `
+      <span class="status-badge-success" style="color: #38bdf8; font-weight: 700; display: inline-flex; align-items: center; gap: 8px;">
+        <i class="fa-solid fa-satellite-dish fa-spin-pulse"></i> <strong>SIMULATION ENGAGED:</strong> Antigravity Thrusters Synchronized! Element levitating in zero-g equilibrium.
+      </span>
+    `;
   }
 }
 
@@ -1933,6 +2088,8 @@ function resetSandboxChallenge() {
   if (codeInput) {
     codeInput.value = INITIAL_SANDBOX_CODE;
     updateSandboxPreview(INITIAL_SANDBOX_CODE);
+    updateGutterLineNumbers();
+    updateTelemetryHud(INITIAL_SANDBOX_CODE);
   }
 
   if (successBanner) successBanner.style.display = 'none';
@@ -1941,9 +2098,13 @@ function resetSandboxChallenge() {
   if (feedbackEl) {
     feedbackEl.innerHTML = `
       <span class="sandbox-feedback-prompt">
-        <i class="fa-regular fa-lightbulb"></i> Edit the snippet above or click <strong>"Run Code &amp; Verify"</strong> to test your button.
+        <i class="fa-solid fa-satellite"></i> Tweak CSS coordinates above &amp; click <strong>"[ 🚀 Launch Simulation ]"</strong> to ignite thrusters.
       </span>
     `;
+  }
+
+  if (antigravityParticleSystem && typeof antigravityParticleSystem.pulse === 'function') {
+    antigravityParticleSystem.pulse();
   }
 }
 
@@ -1952,6 +2113,154 @@ function toggleSandboxHint() {
   if (!hintBubble) return;
   const isHidden = hintBubble.style.display === 'none' || !hintBubble.style.display;
   hintBubble.style.display = isHidden ? 'block' : 'none';
+}
+
+/* ==========================================================================
+   FLOATING ZERO-GRAVITY PARTICLE CANVAS ENGINE
+   ========================================================================== */
+function initAntigravityParticles() {
+  const canvas = document.getElementById('sandboxParticleCanvas');
+  const stage = document.getElementById('sandboxPreviewStage');
+  if (!canvas || !stage) return;
+
+  const ctx = canvas.getContext('2d');
+  let animationFrameId = null;
+  let width = (canvas.width = stage.clientWidth);
+  let height = (canvas.height = stage.clientHeight);
+
+  const resizeHandler = () => {
+    if (!stage) return;
+    width = canvas.width = stage.clientWidth;
+    height = canvas.height = stage.clientHeight;
+  };
+  window.addEventListener('resize', resizeHandler);
+
+  // Mouse gravitational attraction coordinates
+  let mouse = { x: width / 2, y: height / 2, active: false };
+
+  stage.addEventListener('mousemove', (e) => {
+    const rect = stage.getBoundingClientRect();
+    mouse.x = e.clientX - rect.left;
+    mouse.y = e.clientY - rect.top;
+    mouse.active = true;
+  });
+
+  stage.addEventListener('mouseleave', () => {
+    mouse.active = false;
+  });
+
+  // Spawn Zero-G particles
+  const particleCount = 30;
+  const particles = [];
+  const colors = ['#38bdf8', '#818cf8', '#06b6d4', '#c084fc', '#ffffff'];
+
+  for (let i = 0; i < particleCount; i++) {
+    particles.push({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      size: Math.random() * 2.2 + 0.8,
+      speedY: -(Math.random() * 0.45 + 0.15), // drifting slowly upward against gravity
+      speedX: (Math.random() - 0.5) * 0.3,
+      alpha: Math.random() * 0.6 + 0.2,
+      baseAlpha: Math.random() * 0.6 + 0.2,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      angle: Math.random() * Math.PI * 2,
+      angleSpeed: (Math.random() - 0.5) * 0.03
+    });
+  }
+
+  // Shockwave gravitational ring effect
+  let rings = [];
+
+  function pulse() {
+    rings.push({
+      x: width / 2,
+      y: height / 2,
+      radius: 5,
+      maxRadius: Math.max(width, height) * 0.75,
+      alpha: 0.9,
+      lineWidth: 2.5
+    });
+
+    // Particle acceleration burst
+    particles.forEach((p) => {
+      p.speedY *= 2.2;
+      p.alpha = 1.0;
+      setTimeout(() => {
+        p.speedY = -(Math.random() * 0.45 + 0.15);
+        p.alpha = p.baseAlpha;
+      }, 1000);
+    });
+  }
+
+  function render() {
+    ctx.clearRect(0, 0, width, height);
+
+    // Draw gravitational wave rings
+    for (let r = rings.length - 1; r >= 0; r--) {
+      const ring = rings[r];
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(ring.x, ring.y, ring.radius, 0, Math.PI * 2);
+      ctx.strokeStyle = `rgba(56, 189, 248, ${ring.alpha})`;
+      ctx.lineWidth = ring.lineWidth;
+      ctx.shadowColor = '#06b6d4';
+      ctx.shadowBlur = 12;
+      ctx.stroke();
+      ctx.restore();
+
+      ring.radius += 3.5;
+      ring.alpha *= 0.96;
+      if (ring.alpha < 0.02 || ring.radius > ring.maxRadius) {
+        rings.splice(r, 1);
+      }
+    }
+
+    // Render & update weightless drifting particles
+    for (let i = 0; i < particles.length; i++) {
+      const p = particles[i];
+
+      // Subtle sinusoidal zero-g sway
+      p.angle += p.angleSpeed;
+      p.x += p.speedX + Math.sin(p.angle) * 0.25;
+      p.y += p.speedY;
+
+      // Mouse gravitational pull when near
+      if (mouse.active) {
+        const dx = mouse.x - p.x;
+        const dy = mouse.y - p.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 120 && dist > 1) {
+          p.x += (dx / dist) * 0.6;
+          p.y += (dy / dist) * 0.6;
+        }
+      }
+
+      // Wrap around canvas edges (infinite zero-g space)
+      if (p.y < -10) p.y = height + 10;
+      if (p.x < -10) p.x = width + 10;
+      if (p.x > width + 10) p.x = -10;
+
+      // Draw particle with subtle glow
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = p.color;
+      ctx.globalAlpha = p.alpha;
+      ctx.shadowColor = p.color;
+      ctx.shadowBlur = 6;
+      ctx.fill();
+      ctx.restore();
+    }
+
+    animationFrameId = requestAnimationFrame(render);
+  }
+
+  render();
+
+  antigravityParticleSystem = {
+    pulse
+  };
 }
 
 // Global Window Exports
@@ -1968,6 +2277,7 @@ window.handleQuizLeadSubmit = handleQuizLeadSubmit;
 window.runSandboxVerify = runSandboxVerify;
 window.resetSandboxChallenge = resetSandboxChallenge;
 window.toggleSandboxHint = toggleSandboxHint;
+window.applyGravityPreset = applyGravityPreset;
 
 // Auto-run grad calculator, pro drawer, & interactive sandbox
 document.addEventListener('DOMContentLoaded', () => {
@@ -1975,5 +2285,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initProDrawer();
   initSandboxChallenge();
 });
+
 
 

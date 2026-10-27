@@ -68,11 +68,10 @@
     <header class="navbar-infosys" id="navbar">
       <div class="container nav-main-layout">
 
-        <!-- Brand Logo Linking to Home: கற்க AI & TECH Academy -->
+        <!-- Brand Logo Linking to Home: Newly Uploaded கற்க AI & TECH Academy Image Logo -->
         <a href="index.html" class="pro-logo-group" aria-label="Karka AI & Tech Academy Home">
-          <span class="pro-logo-tamil">கற்க</span>
-          <span class="pro-logo-sep"></span>
-          <span class="pro-logo-sub"><span>AI &amp; TECH</span> Academy</span>
+          <img src="assets/images/karka-logo.png" alt="கற்க AI & TECH Academy" class="navbar-brand-logo" width="168"
+            height="55">
         </a>
 
         <!-- Desktop Navigation Wrapper -->
@@ -167,10 +166,13 @@
         </div>
         <ul class="drawer-nav-list">
           <li><a href="index.html" class="drawer-link active">Home <i class="fa-solid fa-chevron-right"></i></a></li>
-          <li><a href="school-students.html" class="drawer-link">School Students <i class="fa-solid fa-chevron-right"></i></a></li>
-          <li><a href="college-students.html" class="drawer-link">College Students <i class="fa-solid fa-chevron-right"></i></a></li>
+          <li><a href="school-students.html" class="drawer-link">School Students <i
+                class="fa-solid fa-chevron-right"></i></a></li>
+          <li><a href="college-students.html" class="drawer-link">College Students <i
+                class="fa-solid fa-chevron-right"></i></a></li>
           <li><a href="graduates.html" class="drawer-link">Graduates <i class="fa-solid fa-chevron-right"></i></a></li>
-          <li><a href="professionals.html" class="drawer-link">Professionals <i class="fa-solid fa-chevron-right"></i></a></li>
+          <li><a href="professionals.html" class="drawer-link">Professionals <i
+                class="fa-solid fa-chevron-right"></i></a></li>
         </ul>
         <div class="drawer-footer">
           <button class="btn-enterprise-primary open-apply-modal"
@@ -399,11 +401,11 @@
 
             <div class="platform-footer-row">
               <span class="platform-note">Free entry · Join multiple contests · Teams of 1–4</span>
-              <button class="btn-enterprise-primary open-infini-modal" id="btnRegisterInfini"
-                onclick="openInfiniModal()">
+              <a href="https://spike.karka.academy/login?callbackUrl=https%3A%2F%2Fspike.karka.academy%2F"
+                target="_blank" rel="noopener noreferrer" class="btn-enterprise-primary" id="btnRegisterInfini">
                 <span>Register for Infini</span>
                 <i class="fa-solid fa-arrow-right"></i>
-              </button>
+              </a>
             </div>
           </div>
 
@@ -435,7 +437,7 @@
                 <i class="fa-solid fa-keyboard"></i>
                 <div>
                   <strong>Hands-On</strong>
-                  <span>In-browser live sandbox code check</span>
+                  <span>Antigravity Physics Code Lab &amp; live check</span>
                 </div>
               </div>
               <div class="spike-feature-box">
@@ -464,10 +466,11 @@
 
             <div class="platform-footer-row">
               <span class="platform-note">Included free for all enrolled Karka academy students</span>
-              <button class="btn-enterprise-primary" onclick="openSpikeDemo()">
+              <a href="https://spike.karka.academy/login?callbackUrl=https%3A%2F%2Fspike.karka.academy%2F"
+                target="_blank" rel="noopener noreferrer" class="btn-enterprise-primary" id="btnOpenSpike">
                 <span>Open Spike</span>
                 <i class="fa-solid fa-arrow-up-right-from-square"></i>
-              </button>
+              </a>
             </div>
           </div>
 
@@ -476,119 +479,243 @@
       </div>
     </section>
 
-    <!-- 4B. TRY CODING IN 60 SECONDS INTERACTIVE SANDBOX (#tryCoding) -->
-    <section class="section-padding interactive-sandbox-section" id="tryCoding">
+    <!-- 4B. ANTIGRAVITY PHYSICS CODE LAB (#tryCoding) -->
+    <section class="section-padding interactive-sandbox-section antigravity-code-lab-section" id="tryCoding">
       <div class="container">
-        <div class="section-head-centered">
-          <div class="section-eyebrow">
-            <i class="fa-solid fa-code"></i> Live Interactive Sandbox
+        <!-- Section Header & Tagline -->
+        <div class="section-head-centered antigravity-section-head">
+          <div class="section-eyebrow antigravity-badge">
+            <span class="antigravity-pulse-dot"></span>
+            <span>🛸 ANTIGRAVITY ENGINE &amp; CODE LAB</span>
           </div>
-          <h2 class="section-heading-corporate">Think You Can't Code? Try It in 60 Seconds!</h2>
-          <p class="section-subtext-corporate">
-            No setup required. Experience our hands-on pedagogy directly in your browser.
+          <h2 class="section-heading-corporate antigravity-heading">Defy Limits. Code Beyond Gravity.</h2>
+          <p class="section-subtext-corporate antigravity-subheading">
+            Experience a physics-driven, zero-gravity UI component sandbox. Tweak code and watch elements float and
+            react in real-time.
           </p>
         </div>
 
-        <div class="sandbox-ide-card">
-          <!-- IDE Header with macOS dots & challenge goal -->
-          <div class="sandbox-ide-header">
+        <!-- Glassmorphism Sandbox IDE Container -->
+        <div class="sandbox-ide-card antigravity-ide-card">
+          <!-- IDE Header with macOS dots & Telemetry Status -->
+          <div class="sandbox-ide-header antigravity-ide-header">
             <div class="sandbox-mac-dots">
-              <span class="mac-dot mac-dot-red"></span>
-              <span class="mac-dot mac-dot-yellow"></span>
-              <span class="mac-dot mac-dot-green"></span>
+              <span class="mac-dot mac-dot-red" title="Orbital Lock"></span>
+              <span class="mac-dot mac-dot-yellow" title="Telemetry Sync"></span>
+              <span class="mac-dot mac-dot-green" title="Antigravity Thrusters On"></span>
             </div>
-            <div class="sandbox-ide-title">
-              <i class="fa-solid fa-terminal"></i> Karka DevStudio &mdash; Interactive Sandbox
+            <div class="sandbox-ide-title antigravity-ide-title">
+              <i class="fa-solid fa-satellite-dish antigravity-radar-icon"></i>
+              <span>ANTIGRAVITY OS // PHYSICS LAB v2.4</span>
             </div>
-            <div class="sandbox-badge-difficulty">
-              <span class="badge-pill badge-green"><i class="fa-solid fa-bolt"></i> 60-Sec Challenge</span>
-            </div>
-          </div>
-
-          <!-- Challenge Instructions Bar -->
-          <div class="sandbox-instructions-bar">
-            <div class="sandbox-task-desc">
-              <strong><i class="fa-solid fa-bullseye" style="color: var(--infosys-electric-blue);"></i> Mission:</strong> 
-              <span>Customize your AI Welcome Button: Change the button label to <code>'Start My Career'</code> and set the background color to <code>'#0b57d0'</code>.</span>
-            </div>
-            <button type="button" class="btn-sandbox-hint" id="sandboxHintBtn" onclick="toggleSandboxHint()">
-              <i class="fa-solid fa-lightbulb"></i> Need a Hint?
-            </button>
-          </div>
-
-          <!-- Hint Bubble (Hidden by default) -->
-          <div class="sandbox-hint-bubble" id="sandboxHintBubble" style="display: none;">
-            <div class="sandbox-hint-content">
-              <i class="fa-solid fa-robot" style="color: var(--infosys-electric-blue); font-size: 1.25rem;"></i>
-              <div>
-                <strong>Spike AI Hint:</strong> Try replacing <code>Click Me</code> with <code>Start My Career</code>, and change <code>background: #e2e8f0;</code> to <code>background: #0b57d0;</code>. You can also change the text color to <code>#ffffff</code> for optimal contrast!
-              </div>
+            <div class="antigravity-status-pill">
+              <span class="antigravity-live-beacon"></span>
+              <span>ZERO-G SIMULATOR</span>
             </div>
           </div>
 
-          <!-- Split View Layout: Editor (Left) & Live Preview Canvas (Right) -->
-          <div class="sandbox-workspace-grid">
-            <!-- Left / Top: Interactive Code Editor -->
-            <div class="sandbox-editor-panel">
-              <div class="sandbox-panel-tab">
-                <span class="tab-label"><i class="fa-brands fa-html5" style="color: #e34f26;"></i> index.html</span>
-                <span class="tab-status-dot" title="Live Editing"></span>
+          <!-- Futuristic Telemetry HUD (Heads-Up Display) -->
+          <div class="antigravity-telemetry-hud">
+            <!-- HUD Sci-Fi Corner Brackets -->
+            <div class="hud-bracket hud-bracket-tl"></div>
+            <div class="hud-bracket hud-bracket-tr"></div>
+            <div class="hud-bracket hud-bracket-bl"></div>
+            <div class="hud-bracket hud-bracket-br"></div>
+
+            <!-- Telemetry Status Bar -->
+            <div class="hud-telemetry-strip">
+              <div class="hud-telemetry-readouts">
+                <span class="hud-metric">
+                  <i class="fa-solid fa-gauge-high"></i> SYS.STATUS: <strong class="hud-accent-cyan">ZERO-G
+                    ACTIVE</strong>
+                </span>
+                <span class="hud-sep">//</span>
+                <span class="hud-metric">
+                  <i class="fa-solid fa-compass"></i> COORDS: <strong id="hudCoordsVal" class="hud-accent-indigo">X:00 |
+                    Y:-16 | ROT:-1.5°</strong>
+                </span>
+                <span class="hud-sep">//</span>
+                <span class="hud-metric">
+                  <i class="fa-solid fa-weight-scale"></i> FIELD: <strong id="hudGravityVal"
+                    class="hud-accent-emerald">0.08G (MICROGRAVITY)</strong>
+                </span>
               </div>
-              <div class="sandbox-editor-wrapper">
-                <textarea id="sandboxCodeInput" class="sandbox-code-textarea" spellcheck="false" autocomplete="off" autocapitalize="off" aria-label="Code Editor">&lt;button style="background: #e2e8f0; color: #0f172a; padding: 12px 24px; border-radius: 8px;"&gt;
-  Click Me
-&lt;/button&gt;</textarea>
+              <div class="hud-telemetry-presets">
+                <span class="hud-preset-lbl">QUICK INJECT:</span>
+                <button type="button" class="btn-hud-preset" onclick="applyGravityPreset('orbit')"
+                  title="Inject Zero-G Orbit Coordinates">
+                  <i class="fa-solid fa-shuttle-space"></i> Orbit Float
+                </button>
+                <button type="button" class="btn-hud-preset" onclick="applyGravityPreset('hyper')"
+                  title="Inject Hyper-Glow Thruster Coordinates">
+                  <i class="fa-solid fa-bolt"></i> Hyper-Glow
+                </button>
+                <button type="button" class="btn-hud-preset" onclick="applyGravityPreset('warp')"
+                  title="Inject Quantum Warp Coordinates">
+                  <i class="fa-solid fa-tornado"></i> Warp Vortex
+                </button>
               </div>
             </div>
 
-            <!-- Right / Bottom: Live Preview Canvas -->
-            <div class="sandbox-preview-panel">
-              <div class="sandbox-panel-tab">
-                <span class="tab-label"><i class="fa-solid fa-display" style="color: #10b981;"></i> Live Preview Canvas</span>
-                <span class="preview-badge-live">LIVE PREVIEW</span>
+            <!-- Mission Directive Prompt -->
+            <div class="hud-mission-row">
+              <div class="hud-mission-content">
+                <div class="hud-mission-badge">
+                  <i class="fa-solid fa-crosshairs"></i> MISSION DIRECTIVE
+                </div>
+                <div class="hud-mission-instructions">
+                  <strong>Mission: Adjust CSS gravity &amp; transform properties</strong>
+                  <span>&mdash; Calibrate component thrusters! Fine-tune <code>transform: translateY(...)</code>,
+                    <code>rotate(...)</code>, and glowing <code>box-shadow</code> to maintain weightless orbital
+                    equilibrium.</span>
+                </div>
               </div>
-              <div class="sandbox-preview-stage" id="sandboxPreviewStage">
-                <div id="sandboxLiveOutput">
-                  <button style="background: #e2e8f0; color: #0f172a; padding: 12px 24px; border-radius: 8px;">
-                    Click Me
-                  </button>
+              <button type="button" class="btn-hud-hint-toggle" id="sandboxHintBtn" onclick="toggleSandboxHint()">
+                <i class="fa-solid fa-terminal"></i>
+                <span>Telemetry Intel</span>
+              </button>
+            </div>
+
+            <!-- Telemetry Diagnostic Intel Drawer -->
+            <div class="sandbox-hint-bubble hud-intel-drawer" id="sandboxHintBubble" style="display: none;">
+              <div class="hud-intel-grid">
+                <div class="hud-intel-card">
+                  <div class="intel-step-num">ACTION 01 &bull; ELEVATION</div>
+                  <p>Counteract mass using <code>transform: translateY(-24px) rotate(-3deg);</code> for higher orbital
+                    float.</p>
+                </div>
+                <div class="hud-intel-card">
+                  <div class="intel-step-num">ACTION 02 &bull; PLASMA GLOW</div>
+                  <p>Ignite ion thrusters:
+                    <code>box-shadow: 0 20px 40px rgba(6, 182, 212, 0.6), 0 0 25px rgba(99, 102, 241, 0.5);</code>
+                  </p>
+                </div>
+                <div class="hud-intel-card">
+                  <div class="intel-step-num">ACTION 03 &bull; HULL SHIELD</div>
+                  <p>Stabilize magnetic shield: <code>border: 1px solid #38bdf8; border-radius: 14px;</code></p>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Action Buttons & Feedback Bar -->
-          <div class="sandbox-action-bar">
-            <div class="sandbox-buttons-group">
-              <button type="button" class="btn-enterprise-primary" id="sandboxRunBtn" onclick="runSandboxVerify()">
-                <i class="fa-solid fa-play"></i>
-                <span>Run Code &amp; Verify</span>
-              </button>
-              <button type="button" class="btn-secondary" id="sandboxResetBtn" onclick="resetSandboxChallenge()">
-                <i class="fa-solid fa-rotate-left"></i>
-                <span>Reset Challenge</span>
-              </button>
+          <!-- Split View Layout: Code Editor (Left) & Live Preview Canvas (Right) -->
+          <div class="sandbox-workspace-grid antigravity-workspace-grid">
+            <!-- Left / Top: Interactive Code Editor Panel -->
+            <div class="sandbox-editor-panel antigravity-editor-panel">
+              <div class="sandbox-panel-tab antigravity-panel-tab">
+                <div class="tab-label-group">
+                  <i class="fa-brands fa-css3-alt" style="color: #38bdf8;"></i>
+                  <span class="tab-title-text">antigravity-thruster.css</span>
+                  <span class="tab-tag-active">MUTABLE</span>
+                </div>
+                <div class="tab-telemetry-indicator">
+                  <span class="editor-active-dot" title="Editor Active"></span>
+                  <span class="editor-live-text">LIVE KERNEL</span>
+                </div>
+              </div>
+              <div class="sandbox-editor-wrapper antigravity-editor-wrapper">
+                <div class="code-editor-gutter" id="codeEditorGutter" aria-hidden="true"></div>
+                <textarea id="sandboxCodeInput" class="sandbox-code-textarea antigravity-code-textarea"
+                  spellcheck="false" autocomplete="off" autocapitalize="off" aria-label="Antigravity Code Editor">&lt;button class="antigravity-thruster-btn" style="
+  background: linear-gradient(135deg, #0b1120 0%, #1e1b4b 100%);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.5);
+  box-shadow: 0 16px 36px rgba(6, 182, 212, 0.45), 0 0 20px rgba(99, 102, 241, 0.35);
+  transform: translateY(-16px) rotate(-1.5deg);
+  border-radius: 12px;
+  padding: 14px 28px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+"&gt;
+  🛸 Defy Gravity
+&lt;/button&gt;</textarea>
+              </div>
             </div>
-            <div class="sandbox-status-feedback" id="sandboxStatusFeedback">
-              <span class="sandbox-feedback-prompt"><i class="fa-regular fa-lightbulb"></i> Edit the snippet above or click <strong>"Run Code &amp; Verify"</strong> to test your button.</span>
+
+            <!-- Right / Bottom: Interactive Live Preview Canvas -->
+            <div class="sandbox-preview-panel antigravity-preview-panel">
+              <div class="sandbox-panel-tab antigravity-panel-tab">
+                <div class="tab-label-group">
+                  <i class="fa-solid fa-atom fa-spin" style="color: #06b6d4; --fa-animation-duration: 8s;"></i>
+                  <span class="tab-title-text">Zero-Gravity Preview Chamber</span>
+                </div>
+                <div class="preview-stage-chips">
+                  <span class="preview-chip" id="previewTiltChip">TILT: -1.5°</span>
+                  <span class="preview-badge-live">WEIGHTLESS</span>
+                </div>
+              </div>
+              <div class="sandbox-preview-stage antigravity-preview-stage" id="sandboxPreviewStage">
+                <!-- Floating Cosmic Particle Canvas Background -->
+                <canvas id="sandboxParticleCanvas" class="antigravity-particles-canvas"></canvas>
+
+                <!-- Chamber Reticle Crosshairs & Orbital Grid Lines -->
+                <div class="chamber-crosshair chamber-crosshair-h"></div>
+                <div class="chamber-crosshair chamber-crosshair-v"></div>
+                <div class="chamber-axis-info">
+                  <span class="axis-mark-y">-Y [ANTIGRAVITY DRIFT]</span>
+                  <span class="axis-mark-x">+X [THRUSTER VECTOR]</span>
+                </div>
+
+                <!-- Weightless Levitation Wrapper with smooth floating animation -->
+                <div class="antigravity-levitation-wrap" id="antigravityLevitationWrap">
+                  <div id="sandboxLiveOutput">
+                    <button class="antigravity-thruster-btn"
+                      style="background: linear-gradient(135deg, #0b1120 0%, #1e1b4b 100%); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.5); box-shadow: 0 16px 36px rgba(6, 182, 212, 0.45), 0 0 20px rgba(99, 102, 241, 0.35); transform: translateY(-16px) rotate(-1.5deg); border-radius: 12px; padding: 14px 28px; font-weight: 700; letter-spacing: 0.5px;">
+                      🛸 Defy Gravity
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Live Dynamic Telemetry Chamber Readout -->
+                <div class="chamber-telemetry-badge" id="chamberTelemetryBadge">
+                  <i class="fa-solid fa-circle-nodes"></i>
+                  <span id="chamberTelemetryText">PHYSICS: LEVITATING // ELEVATION: -16px // MICROGRAVITY: 0.08G</span>
+                </div>
+              </div>
             </div>
           </div>
 
-          <!-- Success Achievement Banner (Hidden until verified) -->
-          <div class="sandbox-success-banner" id="sandboxSuccessBanner" style="display: none;">
-            <div class="sandbox-success-content">
-              <div class="sandbox-success-badge">
-                <i class="fa-solid fa-award"></i>
+          <!-- Action Buttons & High-Tech Feedback Bar -->
+          <div class="sandbox-action-bar antigravity-action-bar">
+            <div class="sandbox-buttons-group antigravity-buttons-group">
+              <button type="button" class="btn-antigravity-launch" id="sandboxRunBtn" onclick="runSandboxVerify()">
+                <span class="btn-launch-glow"></span>
+                <i class="fa-solid fa-rocket"></i>
+                <span>[ 🚀 Launch Simulation ]</span>
+              </button>
+              <button type="button" class="btn-antigravity-reset" id="sandboxResetBtn"
+                onclick="resetSandboxChallenge()">
+                <i class="fa-solid fa-rotate-left"></i>
+                <span>[ 🔄 Reset Coordinates ]</span>
+              </button>
+            </div>
+            <div class="sandbox-status-feedback antigravity-status-feedback" id="sandboxStatusFeedback">
+              <span class="sandbox-feedback-prompt">
+                <i class="fa-solid fa-satellite"></i> Tweak CSS coordinates above &amp; click <strong>"[ 🚀 Launch
+                  Simulation ]"</strong> to ignite thrusters.
+              </span>
+            </div>
+          </div>
+
+          <!-- Success Achievement Banner (Revealed on Launch Simulation) -->
+          <div class="sandbox-success-banner antigravity-success-banner" id="sandboxSuccessBanner"
+            style="display: none;">
+            <div class="sandbox-success-content antigravity-success-content">
+              <div class="sandbox-success-badge antigravity-success-badge">
+                <i class="fa-solid fa-user-astronaut"></i>
               </div>
               <div>
-                <h4 class="sandbox-success-title">🎉 Coding Aptitude Verified! You just built your first component in under 60 seconds.</h4>
+                <h4 class="sandbox-success-title">🛸 ZERO-G ORBIT ATTAINED! Flight Telemetry Stabilized.</h4>
                 <p class="sandbox-success-desc">
-                  You have genuine practical aptitude for modern software engineering. Launch your developer journey with Karka's Pay After Placement model.
+                  You successfully engineered and calibrated a physics-driven UI component. You have the exact builder
+                  mindset required for next-gen software engineering. Launch your journey with Karka's Pay After
+                  Placement model.
                 </p>
               </div>
             </div>
             <div class="sandbox-success-action">
-              <button type="button" class="btn-enterprise-primary btn-sandbox-cta open-apply-modal" onclick="openModal('applyModal');">
+              <button type="button" class="btn-enterprise-primary btn-sandbox-cta open-apply-modal"
+                onclick="openModal('applyModal');">
                 <span>Claim Your ₹0 Upfront Pay After Placement Seat &rarr;</span>
               </button>
             </div>
@@ -614,42 +741,48 @@
           <div class="why-us-card">
             <div class="why-us-icon"><i class="fa-solid fa-hand-holding-dollar"></i></div>
             <h3>1. Pay After You Get Hired</h3>
-            <p>₹0 upfront tuition fees. Learn first, get placed with a minimum ₹4.5+ LPA package, and pay only after receiving your monthly salary.</p>
+            <p>₹0 upfront tuition fees. Learn first, get placed with a minimum ₹4.5+ LPA package, and pay only after
+              receiving your monthly salary.</p>
           </div>
 
           <!-- Card 2 -->
           <div class="why-us-card">
             <div class="why-us-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
             <h3>2. AI-First Curriculum</h3>
-            <p>Generative AI, Prompt Engineering, LLM agents, and modern tools (Cursor, Copilot) integrated directly into daily coding drills.</p>
+            <p>Generative AI, Prompt Engineering, LLM agents, and modern tools (Cursor, Copilot) integrated directly
+              into daily coding drills.</p>
           </div>
 
           <!-- Card 3 -->
           <div class="why-us-card">
             <div class="why-us-icon"><i class="fa-solid fa-briefcase"></i></div>
             <h3>3. Live Internships</h3>
-            <p>AgileTribers studio production PRs, live client tickets, and verified GitHub repositories instead of toy tutorial certificates.</p>
+            <p>AgileTribers studio production PRs, live client tickets, and verified GitHub repositories instead of toy
+              tutorial certificates.</p>
           </div>
 
           <!-- Card 4 -->
           <div class="why-us-card">
             <div class="why-us-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
             <h3>4. On-Site Mentorship</h3>
-            <p>Continuous on-site guidance at our dedicated physical tech lab in Nagercoil. Get unblocked immediately by experienced architects.</p>
+            <p>Continuous on-site guidance at our dedicated physical tech lab in Nagercoil. Get unblocked immediately by
+              experienced architects.</p>
           </div>
 
           <!-- Card 5 -->
           <div class="why-us-card">
             <div class="why-us-icon"><i class="fa-solid fa-network-wired"></i></div>
             <h3>5. Direct Pipelines</h3>
-            <p>Direct hiring tie-ups with 40+ corporate partners and startups across Chennai, Bangalore, and Nagercoil for verified placements.</p>
+            <p>Direct hiring tie-ups with 40+ corporate partners and startups across Chennai, Bangalore, and Nagercoil
+              for verified placements.</p>
           </div>
 
           <!-- Card 6 -->
           <div class="why-us-card">
             <div class="why-us-icon"><i class="fa-solid fa-layer-group"></i></div>
             <h3>6. 4-Pillar System</h3>
-            <p>A proven, structured pedagogy combining Business English, scalable fullstack architecture, AI velocity, and intensive mock interviews.</p>
+            <p>A proven, structured pedagogy combining Business English, scalable fullstack architecture, AI velocity,
+              and intensive mock interviews.</p>
           </div>
         </div>
 
@@ -677,7 +810,8 @@
                 <h4>Gabriel Samraj</h4>
                 <p>Mechanical Engg ➔ Frontend Developer</p>
                 <div class="tab-verified-row">
-                  <span class="verified-offer-badge"><i class="fa-solid fa-circle-check"></i> Offer Letter Verified ✓</span>
+                  <span class="verified-offer-badge"><i class="fa-solid fa-circle-check"></i> Offer Letter Verified
+                    ✓</span>
                 </div>
               </div>
               <span class="tab-company-badge">Zoho Corp (₹8.5 LPA)</span>
@@ -688,7 +822,8 @@
                 <h4>Prabin Kumar</h4>
                 <p>B.Sc Physics ➔ Fullstack Engineer</p>
                 <div class="tab-verified-row">
-                  <span class="verified-offer-badge"><i class="fa-solid fa-circle-check"></i> Offer Letter Verified ✓</span>
+                  <span class="verified-offer-badge"><i class="fa-solid fa-circle-check"></i> Offer Letter Verified
+                    ✓</span>
                 </div>
               </div>
               <span class="tab-company-badge">Capecom (₹6.8 LPA)</span>
@@ -699,7 +834,8 @@
                 <h4>Shiju Nair</h4>
                 <p>Civil Engg ➔ AI & Data Engineer</p>
                 <div class="tab-verified-row">
-                  <span class="verified-offer-badge"><i class="fa-solid fa-circle-check"></i> Offer Letter Verified ✓</span>
+                  <span class="verified-offer-badge"><i class="fa-solid fa-circle-check"></i> Offer Letter Verified
+                    ✓</span>
                 </div>
               </div>
               <span class="tab-company-badge">Matrimony (₹7.2 LPA)</span>
@@ -710,7 +846,8 @@
                 <h4>Kishore Kannan</h4>
                 <p>B.Com ➔ UI/UX Product Designer</p>
                 <div class="tab-verified-row">
-                  <span class="verified-offer-badge"><i class="fa-solid fa-circle-check"></i> Offer Letter Verified ✓</span>
+                  <span class="verified-offer-badge"><i class="fa-solid fa-circle-check"></i> Offer Letter Verified
+                    ✓</span>
                 </div>
               </div>
               <span class="tab-company-badge">Freshworks (₹9.0 LPA)</span>
@@ -721,7 +858,8 @@
                 <h4>Sridevi Ananth</h4>
                 <p>Career Break (3 Years) ➔ MERN Dev</p>
                 <div class="tab-verified-row">
-                  <span class="verified-offer-badge"><i class="fa-solid fa-circle-check"></i> Offer Letter Verified ✓</span>
+                  <span class="verified-offer-badge"><i class="fa-solid fa-circle-check"></i> Offer Letter Verified
+                    ✓</span>
                 </div>
               </div>
               <span class="tab-company-badge">HCL Tech (₹7.5 LPA)</span>
@@ -731,7 +869,8 @@
           <!-- Feature Video Card with Playback Controls -->
           <div class="video-feature-card" id="featuredVideoCard">
             <!-- NOW PLAYING BADGE & VERIFIED PROOF -->
-            <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; padding: 1.1rem 1.4rem 0.6rem; gap: 8px;">
+            <div
+              style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; padding: 1.1rem 1.4rem 0.6rem; gap: 8px;">
               <div class="now-playing-badge" style="margin: 0;">
                 <span class="live-pulse-dot"></span>
                 <span>NOW PLAYING - SUCCESS STORY</span>
@@ -759,12 +898,15 @@
 
             <div class="video-meta-body">
               <p class="video-quote" id="featStoryQuote">
-                "Karka's UI/UX and frontend engineering track was a complete game-changer. Coming from Mechanical Engineering, the instructors guided me through real component architectures. I cracked Zoho's technical rounds with full confidence."
+                "Karka's UI/UX and frontend engineering track was a complete game-changer. Coming from Mechanical
+                Engineering, the instructors guided me through real component architectures. I cracked Zoho's technical
+                rounds with full confidence."
               </p>
               <div class="video-author-row" style="margin-bottom: 0.75rem;">
                 <div>
                   <h4 style="font-size: 1.15rem; font-weight: 800;" id="featStoryName">Gabriel Samraj</h4>
-                  <p style="font-size: 0.85rem; color: var(--text-muted);" id="featStoryRole">Frontend Developer @ Zoho Corp (₹8.5 LPA)</p>
+                  <p style="font-size: 0.85rem; color: var(--text-muted);" id="featStoryRole">Frontend Developer @ Zoho
+                    Corp (₹8.5 LPA)</p>
                 </div>
                 <button class="btn-enterprise-primary open-apply-modal"
                   style="padding: 0.5rem 1.1rem; font-size: 0.85rem;">
@@ -774,13 +916,16 @@
 
               <!-- Authentic Social Media & Placement Proofs -->
               <div class="verified-social-links-row">
-                <a href="https://www.youtube.com/@karka_academy" target="_blank" rel="noopener noreferrer" class="btn-proof-link btn-yt">
+                <a href="https://www.youtube.com/@karka_academy" target="_blank" rel="noopener noreferrer"
+                  class="btn-proof-link btn-yt">
                   <i class="fa-brands fa-youtube"></i> Watch on YouTube (@karka_academy)
                 </a>
-                <a href="https://www.instagram.com/karka.ai" target="_blank" rel="noopener noreferrer" class="btn-proof-link btn-ig">
+                <a href="https://www.instagram.com/karka.ai" target="_blank" rel="noopener noreferrer"
+                  class="btn-proof-link btn-ig">
                   <i class="fa-brands fa-instagram"></i> Follow @karka.ai
                 </a>
-                <a href="https://www.linkedin.com/company/zoho/" target="_blank" rel="noopener noreferrer" id="featCompanyLinkedin" class="btn-proof-link btn-li">
+                <a href="https://www.linkedin.com/company/zoho/" target="_blank" rel="noopener noreferrer"
+                  id="featCompanyLinkedin" class="btn-proof-link btn-li">
                   <i class="fa-brands fa-linkedin"></i> <span>Zoho Corp Verified Profile</span>
                 </a>
               </div>
@@ -816,16 +961,21 @@
               <span class="star-rating"><i class="fa-solid fa-star"></i> 4.8</span>
               <span class="enrollment-count">(200+ reviews)</span>
               <span>•</span>
-              <span style="font-weight: 600; color: var(--infosys-electric-blue);"><i class="fa-solid fa-users"></i> 800+ Enrolled</span>
+              <span style="font-weight: 600; color: var(--infosys-electric-blue);"><i class="fa-solid fa-users"></i>
+                800+ Enrolled</span>
             </div>
             <p class="bootcamp-desc">
-              Master React, Node.js, Express, MongoDB, TypeScript, RESTful architecture, and AI-accelerated code generation.
+              Master React, Node.js, Express, MongoDB, TypeScript, RESTful architecture, and AI-accelerated code
+              generation.
             </p>
             <div class="bootcamp-footer-actions">
-              <button type="button" class="btn-secondary btn-bootcamp-explore" onclick="openSyllabus('mern')">EXPLORE MERN FULLSTACK</button>
-              <button type="button" class="btn-enterprise-primary btn-bootcamp-enroll open-apply-modal" data-track="MERN Fullstack Development">ENROLL IN MERN FULLSTACK</button>
+              <button type="button" class="btn-secondary btn-bootcamp-explore" onclick="openSyllabus('mern')">EXPLORE
+                MERN FULLSTACK</button>
+              <button type="button" class="btn-enterprise-primary btn-bootcamp-enroll open-apply-modal"
+                data-track="MERN Fullstack Development">ENROLL IN MERN FULLSTACK</button>
             </div>
-            <button type="button" class="btn-whatsapp-syllabus" onclick="openSyllabusWhatsAppModal('MERN Fullstack Development')">
+            <button type="button" class="btn-whatsapp-syllabus"
+              onclick="openSyllabusWhatsAppModal('MERN Fullstack Development')">
               <i class="fa-brands fa-whatsapp"></i> Get Syllabus on WhatsApp
             </button>
           </div>
@@ -841,16 +991,21 @@
               <span class="star-rating"><i class="fa-solid fa-star"></i> 4.9</span>
               <span class="enrollment-count">(180+ reviews)</span>
               <span>•</span>
-              <span style="font-weight: 600; color: var(--infosys-electric-blue);"><i class="fa-solid fa-users"></i> 650+ Enrolled</span>
+              <span style="font-weight: 600; color: var(--infosys-electric-blue);"><i class="fa-solid fa-users"></i>
+                650+ Enrolled</span>
             </div>
             <p class="bootcamp-desc">
-              Python for Data Science, Pandas, NumPy, statistical modeling, machine learning algorithms, Scikit-Learn, and Power BI dashboards.
+              Python for Data Science, Pandas, NumPy, statistical modeling, machine learning algorithms, Scikit-Learn,
+              and Power BI dashboards.
             </p>
             <div class="bootcamp-footer-actions">
-              <button type="button" class="btn-secondary btn-bootcamp-explore" onclick="openSyllabus('aiml')">EXPLORE AI & DATA SCIENCE</button>
-              <button type="button" class="btn-enterprise-primary btn-bootcamp-enroll open-apply-modal" data-track="AI & Data Science">ENROLL IN AI & DATA SCIENCE</button>
+              <button type="button" class="btn-secondary btn-bootcamp-explore" onclick="openSyllabus('aiml')">EXPLORE AI
+                & DATA SCIENCE</button>
+              <button type="button" class="btn-enterprise-primary btn-bootcamp-enroll open-apply-modal"
+                data-track="AI & Data Science">ENROLL IN AI & DATA SCIENCE</button>
             </div>
-            <button type="button" class="btn-whatsapp-syllabus" onclick="openSyllabusWhatsAppModal('AI & Data Science')">
+            <button type="button" class="btn-whatsapp-syllabus"
+              onclick="openSyllabusWhatsAppModal('AI & Data Science')">
               <i class="fa-brands fa-whatsapp"></i> Get Syllabus on WhatsApp
             </button>
           </div>
@@ -866,16 +1021,21 @@
               <span class="star-rating"><i class="fa-solid fa-star"></i> 4.8</span>
               <span class="enrollment-count">(150+ reviews)</span>
               <span>•</span>
-              <span style="font-weight: 600; color: var(--infosys-electric-blue);"><i class="fa-solid fa-users"></i> 520+ Enrolled</span>
+              <span style="font-weight: 600; color: var(--infosys-electric-blue);"><i class="fa-solid fa-users"></i>
+                520+ Enrolled</span>
             </div>
             <p class="bootcamp-desc">
-              Figma mastery, design systems, UX research, wireframing, high-fidelity micro-interactions, usability testing, and client prototypes.
+              Figma mastery, design systems, UX research, wireframing, high-fidelity micro-interactions, usability
+              testing, and client prototypes.
             </p>
             <div class="bootcamp-footer-actions">
-              <button type="button" class="btn-secondary btn-bootcamp-explore" onclick="openSyllabus('uiux')">EXPLORE UI/UX DESIGN</button>
-              <button type="button" class="btn-enterprise-primary btn-bootcamp-enroll open-apply-modal" data-track="UI/UX Design">ENROLL IN UI/UX DESIGN</button>
+              <button type="button" class="btn-secondary btn-bootcamp-explore" onclick="openSyllabus('uiux')">EXPLORE
+                UI/UX DESIGN</button>
+              <button type="button" class="btn-enterprise-primary btn-bootcamp-enroll open-apply-modal"
+                data-track="UI/UX Design">ENROLL IN UI/UX DESIGN</button>
             </div>
-            <button type="button" class="btn-whatsapp-syllabus" onclick="openSyllabusWhatsAppModal('UI/UX Product Design')">
+            <button type="button" class="btn-whatsapp-syllabus"
+              onclick="openSyllabusWhatsAppModal('UI/UX Product Design')">
               <i class="fa-brands fa-whatsapp"></i> Get Syllabus on WhatsApp
             </button>
           </div>
@@ -891,14 +1051,18 @@
               <span class="star-rating"><i class="fa-solid fa-star"></i> 4.8</span>
               <span class="enrollment-count">(200+ reviews)</span>
               <span>•</span>
-              <span style="font-weight: 600; color: var(--infosys-electric-blue);"><i class="fa-solid fa-users"></i> 200+ Enrolled</span>
+              <span style="font-weight: 600; color: var(--infosys-electric-blue);"><i class="fa-solid fa-users"></i>
+                200+ Enrolled</span>
             </div>
             <p class="bootcamp-desc">
-              Interactive introduction to programming logic using Python. Build 2D arcade games and animations while learning core computational concepts.
+              Interactive introduction to programming logic using Python. Build 2D arcade games and animations while
+              learning core computational concepts.
             </p>
             <div class="bootcamp-footer-actions">
-              <button type="button" class="btn-secondary btn-bootcamp-explore" onclick="openSyllabus('python')">EXPLORE PYTHON FOR KIDS</button>
-              <button type="button" class="btn-enterprise-primary btn-bootcamp-enroll open-apply-modal" data-track="Python for Kids">ENROLL IN PYTHON FOR KIDS</button>
+              <button type="button" class="btn-secondary btn-bootcamp-explore" onclick="openSyllabus('python')">EXPLORE
+                PYTHON FOR KIDS</button>
+              <button type="button" class="btn-enterprise-primary btn-bootcamp-enroll open-apply-modal"
+                data-track="Python for Kids">ENROLL IN PYTHON FOR KIDS</button>
             </div>
             <button type="button" class="btn-whatsapp-syllabus" onclick="openSyllabusWhatsAppModal('Python for Kids')">
               <i class="fa-brands fa-whatsapp"></i> Get Syllabus on WhatsApp
@@ -916,16 +1080,21 @@
               <span class="star-rating"><i class="fa-solid fa-star"></i> 4.8</span>
               <span class="enrollment-count">(200+ reviews)</span>
               <span>•</span>
-              <span style="font-weight: 600; color: var(--infosys-electric-blue);"><i class="fa-solid fa-users"></i> 800+ Enrolled</span>
+              <span style="font-weight: 600; color: var(--infosys-electric-blue);"><i class="fa-solid fa-users"></i>
+                800+ Enrolled</span>
             </div>
             <p class="bootcamp-desc">
-              Rigorous MERN stack studio training at AgileTribers. Master DevOps, System Design, PR reviews, and production best practices.
+              Rigorous MERN stack studio training at AgileTribers. Master DevOps, System Design, PR reviews, and
+              production best practices.
             </p>
             <div class="bootcamp-footer-actions">
-              <button type="button" class="btn-secondary btn-bootcamp-explore" onclick="openSyllabus('internship')">EXPLORE INTERNSHIP TRACK</button>
-              <button type="button" class="btn-enterprise-primary btn-bootcamp-enroll open-apply-modal" data-track="Full Stack Developer Internship">ENROLL IN INTERNSHIP</button>
+              <button type="button" class="btn-secondary btn-bootcamp-explore"
+                onclick="openSyllabus('internship')">EXPLORE INTERNSHIP TRACK</button>
+              <button type="button" class="btn-enterprise-primary btn-bootcamp-enroll open-apply-modal"
+                data-track="Full Stack Developer Internship">ENROLL IN INTERNSHIP</button>
             </div>
-            <button type="button" class="btn-whatsapp-syllabus" onclick="openSyllabusWhatsAppModal('Full Stack Developer Internship (AgileTribers)')">
+            <button type="button" class="btn-whatsapp-syllabus"
+              onclick="openSyllabusWhatsAppModal('Full Stack Developer Internship (AgileTribers)')">
               <i class="fa-brands fa-whatsapp"></i> Get Syllabus on WhatsApp
             </button>
           </div>
@@ -941,16 +1110,21 @@
               <span class="star-rating"><i class="fa-solid fa-star"></i> 4.8</span>
               <span class="enrollment-count">(200+ reviews)</span>
               <span>•</span>
-              <span style="font-weight: 600; color: var(--infosys-electric-blue);"><i class="fa-solid fa-users"></i> 900+ Enrolled</span>
+              <span style="font-weight: 600; color: var(--infosys-electric-blue);"><i class="fa-solid fa-users"></i>
+                900+ Enrolled</span>
             </div>
             <p class="bootcamp-desc">
-              Master Generative AI, advanced prompt engineering, LLM endpoint integration, LangChain, vector databases, and multi-agent systems.
+              Master Generative AI, advanced prompt engineering, LLM endpoint integration, LangChain, vector databases,
+              and multi-agent systems.
             </p>
             <div class="bootcamp-footer-actions">
-              <button type="button" class="btn-secondary btn-bootcamp-explore" onclick="openSyllabus('genai')">EXPLORE GENERATIVE AI</button>
-              <button type="button" class="btn-enterprise-primary btn-bootcamp-enroll open-apply-modal" data-track="Generative AI Foundations">ENROLL IN GENERATIVE AI</button>
+              <button type="button" class="btn-secondary btn-bootcamp-explore" onclick="openSyllabus('genai')">EXPLORE
+                GENERATIVE AI</button>
+              <button type="button" class="btn-enterprise-primary btn-bootcamp-enroll open-apply-modal"
+                data-track="Generative AI Foundations">ENROLL IN GENERATIVE AI</button>
             </div>
-            <button type="button" class="btn-whatsapp-syllabus" onclick="openSyllabusWhatsAppModal('Generative AI Foundations')">
+            <button type="button" class="btn-whatsapp-syllabus"
+              onclick="openSyllabusWhatsAppModal('Generative AI Foundations')">
               <i class="fa-brands fa-whatsapp"></i> Get Syllabus on WhatsApp
             </button>
           </div>
@@ -959,7 +1133,8 @@
 
         <!-- Pagination buttons [1], [2], [3], [4], [5], [6] and link "View All Courses" -->
         <div class="bootcamp-pagination-row">
-          <button type="button" class="bootcamp-page-btn active" data-page="1" onclick="switchBootcampPage(1)">1</button>
+          <button type="button" class="bootcamp-page-btn active" data-page="1"
+            onclick="switchBootcampPage(1)">1</button>
           <button type="button" class="bootcamp-page-btn" data-page="2" onclick="switchBootcampPage(2)">2</button>
           <button type="button" class="bootcamp-page-btn" data-page="3" onclick="switchBootcampPage(3)">3</button>
           <button type="button" class="bootcamp-page-btn" data-page="4" onclick="switchBootcampPage(4)">4</button>
@@ -978,7 +1153,8 @@
           <div class="section-eyebrow">Proven Engineering Pedagogy</div>
           <h2 class="section-heading-corporate">4 Pillars of a Job-Ready Tech Career</h2>
           <p class="section-subtext-corporate">
-            A structured, 4-phase transformation roadmap designed to take aspiring builders from fundamental concepts to enterprise-grade employment.
+            A structured, 4-phase transformation roadmap designed to take aspiring builders from fundamental concepts to
+            enterprise-grade employment.
           </p>
         </div>
 
@@ -989,7 +1165,8 @@
             <span class="pillar-badge-num">PILLAR 01</span>
             <h3>01 Master the Language of Business</h3>
             <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 1rem;">
-              Articulate complex technical architecture, lead daily agile standups, and write pristine technical specifications.
+              Articulate complex technical architecture, lead daily agile standups, and write pristine technical
+              specifications.
             </p>
             <ul class="pillar-items-list">
               <li><i class="fa-solid fa-circle-check"></i> Daily Standups in English</li>
@@ -999,14 +1176,16 @@
           </div>
 
           <!-- Pillar 2 (CORE PILLAR) -->
-          <div class="pillar-step-card" style="border-color: var(--infosys-electric-blue); box-shadow: var(--shadow-card);">
+          <div class="pillar-step-card"
+            style="border-color: var(--infosys-electric-blue); box-shadow: var(--shadow-card);">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
               <span class="pillar-badge-num">PILLAR 02</span>
               <span class="badge-pill badge-blue" style="font-size:0.7rem;">CORE PILLAR</span>
             </div>
             <h3>02 Build Scalable Modern Apps</h3>
             <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 1rem;">
-              Ship production-grade fullstack web applications, microservices, databases, and Docker containers following enterprise standards.
+              Ship production-grade fullstack web applications, microservices, databases, and Docker containers
+              following enterprise standards.
             </p>
             <ul class="pillar-items-list">
               <li><i class="fa-solid fa-circle-check"></i> React 19, TypeScript, Next.js</li>
@@ -1020,7 +1199,8 @@
             <span class="pillar-badge-num">PILLAR 03</span>
             <h3>03 AI Skills</h3>
             <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 1rem;">
-              Write complex code 5x faster, generate automated unit tests, refactor legacy codebases, and integrate native LLM capabilities.
+              Write complex code 5x faster, generate automated unit tests, refactor legacy codebases, and integrate
+              native LLM capabilities.
             </p>
             <ul class="pillar-items-list">
               <li><i class="fa-solid fa-circle-check"></i> Prompt Engineering & Context</li>
@@ -1034,7 +1214,8 @@
             <span class="pillar-badge-num">PILLAR 04</span>
             <h3>04 Interview Skills</h3>
             <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 1rem;">
-              Whiteboard algorithms, simulated mock interviews with practicing senior engineering leads, and salary offer negotiation.
+              Whiteboard algorithms, simulated mock interviews with practicing senior engineering leads, and salary
+              offer negotiation.
             </p>
             <ul class="pillar-items-list">
               <li><i class="fa-solid fa-circle-check"></i> 1:1 Tech Lead Mock Rounds</li>
@@ -1122,7 +1303,8 @@
               <span>Enroll Now</span>
               <i class="fa-solid fa-arrow-right"></i>
             </button>
-            <button type="button" class="btn-secondary" onclick="openPapQuizModal()" style="display: inline-flex; align-items: center; gap: 8px;">
+            <button type="button" class="btn-secondary" onclick="openPapQuizModal()"
+              style="display: inline-flex; align-items: center; gap: 8px;">
               <i class="fa-solid fa-wand-magic-sparkles" style="color: var(--infosys-electric-blue);"></i>
               <span>Check 60s Eligibility</span>
             </button>
@@ -1237,7 +1419,9 @@
               <span>Apply for Studio Internship</span>
               <i class="fa-solid fa-arrow-right"></i>
             </button>
-            <a href="https://wa.me/919487530243?text=Hi%20Karka%20Academy,%20I%20want%20to%20learn%20more%20about%20the%20AgileTribers%20Studio%20Internship%20in%20Nagercoil." target="_blank" rel="noopener noreferrer" class="btn-secondary" style="display: inline-flex; align-items: center; gap: 6px; text-decoration: none;">
+            <a href="https://wa.me/919487530243?text=Hi%20Karka%20Academy,%20I%20want%20to%20learn%20more%20about%20the%20AgileTribers%20Studio%20Internship%20in%20Nagercoil."
+              target="_blank" rel="noopener noreferrer" class="btn-secondary"
+              style="display: inline-flex; align-items: center; gap: 6px; text-decoration: none;">
               <i class="fa-brands fa-whatsapp" style="color: #25d366;"></i>
               <span>Studio Inquiries</span>
             </a>
@@ -1248,15 +1432,19 @@
             <div class="living-lab-social-left">
               <i class="fa-solid fa-network-wired"></i>
               <div>
-                <strong style="font-size: 0.88rem; color: var(--text-primary); display:block;">Official Nagercoil Production Lab</strong>
-                <span style="font-size: 0.78rem; color: var(--text-muted);">Watch daily student sprint PRs, standups & live project demos:</span>
+                <strong style="font-size: 0.88rem; color: var(--text-primary); display:block;">Official Nagercoil
+                  Production Lab</strong>
+                <span style="font-size: 0.78rem; color: var(--text-muted);">Watch daily student sprint PRs, standups &
+                  live project demos:</span>
               </div>
             </div>
             <div class="living-lab-social-links">
-              <a href="https://www.instagram.com/karka.ai" target="_blank" rel="noopener noreferrer" class="btn-proof-link btn-ig">
+              <a href="https://www.instagram.com/karka.ai" target="_blank" rel="noopener noreferrer"
+                class="btn-proof-link btn-ig">
                 <i class="fa-brands fa-instagram"></i> Follow @karka.ai
               </a>
-              <a href="https://www.youtube.com/@karka_academy" target="_blank" rel="noopener noreferrer" class="btn-proof-link btn-yt">
+              <a href="https://www.youtube.com/@karka_academy" target="_blank" rel="noopener noreferrer"
+                class="btn-proof-link btn-yt">
                 <i class="fa-brands fa-youtube"></i> Student Demos (@karka_academy)
               </a>
             </div>
@@ -1298,7 +1486,8 @@
 
         <!-- Alumni Success Stories Category Filter Pills -->
         <div class="reviews-filter-bar" role="tablist" aria-label="Alumni Success Stories Filter">
-          <button type="button" class="review-filter-pill tab-active" data-review-filter="all" role="tab" aria-selected="true">
+          <button type="button" class="review-filter-pill tab-active" data-review-filter="all" role="tab"
+            aria-selected="true">
             <i class="fa-solid fa-users"></i>
             <span>All Stories (9)</span>
           </button>
@@ -1306,11 +1495,13 @@
             <i class="fa-solid fa-graduation-cap"></i>
             <span>Non-CS to Tech (4)</span>
           </button>
-          <button type="button" class="review-filter-pill" data-review-filter="mech-civil" role="tab" aria-selected="false">
+          <button type="button" class="review-filter-pill" data-review-filter="mech-civil" role="tab"
+            aria-selected="false">
             <i class="fa-solid fa-compass-drafting"></i>
             <span>Mechanical & Civil Switch (3)</span>
           </button>
-          <button type="button" class="review-filter-pill" data-review-filter="career-break" role="tab" aria-selected="false">
+          <button type="button" class="review-filter-pill" data-review-filter="career-break" role="tab"
+            aria-selected="false">
             <i class="fa-solid fa-rotate-left"></i>
             <span>Career Break (2)</span>
           </button>
@@ -1322,7 +1513,8 @@
             <!-- Arun 5★: Non-CS -->
             <div class="review-card" data-category="non-cs">
               <div class="review-card-top">
-                <span class="review-switch-tag tag-noncs"><i class="fa-solid fa-shuffle"></i> Arts & Science → Tech</span>
+                <span class="review-switch-tag tag-noncs"><i class="fa-solid fa-shuffle"></i> Arts & Science →
+                  Tech</span>
                 <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
                     class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
               </div>
@@ -1340,11 +1532,13 @@
             <!-- Vikram 5★: Mech & Civil -->
             <div class="review-card" data-category="mech-civil">
               <div class="review-card-top">
-                <span class="review-switch-tag tag-mech"><i class="fa-solid fa-gears"></i> B.E. Mechanical → Software</span>
+                <span class="review-switch-tag tag-mech"><i class="fa-solid fa-gears"></i> B.E. Mechanical →
+                  Software</span>
                 <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
                     class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
               </div>
-              <p class="review-text">"Hands down the best decision I made for my career. Coming from mechanical engineering, the project-based learning
+              <p class="review-text">"Hands down the best decision I made for my career. Coming from mechanical
+                engineering, the project-based learning
                 really helped me build confidence."</p>
               <div class="reviewer-profile">
                 <div class="reviewer-avatar">V</div>
@@ -1358,11 +1552,13 @@
             <!-- Priya 5★: Career Break -->
             <div class="review-card" data-category="career-break">
               <div class="review-card-top">
-                <span class="review-switch-tag tag-break"><i class="fa-solid fa-rotate-left"></i> 2-Year Gap → Tech Comeback</span>
+                <span class="review-switch-tag tag-break"><i class="fa-solid fa-rotate-left"></i> 2-Year Gap → Tech
+                  Comeback</span>
                 <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
                     class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
               </div>
-              <p class="review-text">"Karka's Nagercoil lab made all the difference after my 2-year career break. Sitting next to mentors who
+              <p class="review-text">"Karka's Nagercoil lab made all the difference after my 2-year career break.
+                Sitting next to mentors who
                 debugged my React code saved me months of trial and error."</p>
               <div class="reviewer-profile">
                 <div class="reviewer-avatar">P</div>
@@ -1376,11 +1572,13 @@
             <!-- Rahul 5★: Mech & Civil -->
             <div class="review-card" data-category="mech-civil">
               <div class="review-card-top">
-                <span class="review-switch-tag tag-mech"><i class="fa-solid fa-compass-drafting"></i> Civil Engg → Backend</span>
+                <span class="review-switch-tag tag-mech"><i class="fa-solid fa-compass-drafting"></i> Civil Engg →
+                  Backend</span>
                 <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
                     class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
               </div>
-              <p class="review-text">"Spike AI and the living lab gave me real production exposure. Switched from Civil to Backend development with full confidence during technical rounds."</p>
+              <p class="review-text">"Spike AI and the living lab gave me real production exposure. Switched from Civil
+                to Backend development with full confidence during technical rounds."</p>
               <div class="reviewer-profile">
                 <div class="reviewer-avatar">R</div>
                 <div>
@@ -1393,7 +1591,8 @@
             <!-- Karthik 5★: Non-CS -->
             <div class="review-card" data-category="non-cs">
               <div class="review-card-top">
-                <span class="review-switch-tag tag-noncs"><i class="fa-solid fa-square-root-variable"></i> B.Sc Maths → AI Engineer</span>
+                <span class="review-switch-tag tag-noncs"><i class="fa-solid fa-square-root-variable"></i> B.Sc Maths →
+                  AI Engineer</span>
                 <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
                     class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
               </div>
@@ -1411,7 +1610,8 @@
             <!-- Divya 5★: Career Break -->
             <div class="review-card" data-category="career-break">
               <div class="review-card-top">
-                <span class="review-switch-tag tag-break"><i class="fa-solid fa-rotate-left"></i> Maternity Break → Product Designer</span>
+                <span class="review-switch-tag tag-break"><i class="fa-solid fa-rotate-left"></i> Maternity Break →
+                  Product Designer</span>
                 <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
                     class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
               </div>
@@ -1429,9 +1629,11 @@
             <!-- Sneha 4★: Non-CS -->
             <div class="review-card" data-category="non-cs">
               <div class="review-card-top">
-                <span class="review-switch-tag tag-noncs"><i class="fa-solid fa-calculator"></i> B.Com → Python Developer</span>
+                <span class="review-switch-tag tag-noncs"><i class="fa-solid fa-calculator"></i> B.Com → Python
+                  Developer</span>
                 <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></div>
+                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                </div>
               </div>
               <p class="review-text">"Intense curriculum with lots of daily code pushes. If you are ready to work hard
                 for 6 months, Karka will transform your career even without any CS background."</p>
@@ -1447,9 +1649,11 @@
             <!-- Anitha 4★: Non-CS -->
             <div class="review-card" data-category="non-cs">
               <div class="review-card-top">
-                <span class="review-switch-tag tag-noncs"><i class="fa-solid fa-chart-pie"></i> B.Com CA → Data Analyst</span>
+                <span class="review-switch-tag tag-noncs"><i class="fa-solid fa-chart-pie"></i> B.Com CA → Data
+                  Analyst</span>
                 <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></div>
+                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                </div>
               </div>
               <p class="review-text">"Coming from B.Com, I was terrified of coding. The step-by-step logic drills in
                 month 1 made Python and SQL remarkably easy to grasp and land my analyst role."</p>
@@ -1465,9 +1669,11 @@
             <!-- Sandeep 4★: Mech & Civil -->
             <div class="review-card" data-category="mech-civil">
               <div class="review-card-top">
-                <span class="review-switch-tag tag-mech"><i class="fa-solid fa-screwdriver-wrench"></i> Diploma Mech → QA Automation</span>
+                <span class="review-switch-tag tag-mech"><i class="fa-solid fa-screwdriver-wrench"></i> Diploma Mech →
+                  QA Automation</span>
                 <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></div>
+                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                </div>
               </div>
               <p class="review-text">"Great community, hackathons, and mock interview drills. The mentorship and mock
                 rounds gave me immense confidence to clear technical QA rounds."</p>
@@ -1546,7 +1752,8 @@
             <div class="directory-accordion-body">
               <ul class="directory-course-list">
                 <li class="directory-course-item">
-                  <span><i class="fa-brands fa-react" style="color:var(--infosys-electric-blue);"></i> MERN Stack (MongoDB, React, Node)</span>
+                  <span><i class="fa-brands fa-react" style="color:var(--infosys-electric-blue);"></i> MERN Stack
+                    (MongoDB, React, Node)</span>
                   <span class="badge-pill badge-green">PAP</span>
                 </li>
                 <li class="directory-course-item">
@@ -1554,7 +1761,8 @@
                   <span class="badge-pill badge-green">PAP</span>
                 </li>
                 <li class="directory-course-item">
-                  <span><i class="fa-brands fa-python" style="color:var(--infosys-electric-blue);"></i> React + Python Django/FastAPI</span>
+                  <span><i class="fa-brands fa-python" style="color:var(--infosys-electric-blue);"></i> React + Python
+                    Django/FastAPI</span>
                   <span class="badge-pill badge-green">PAP</span>
                 </li>
               </ul>
@@ -1589,15 +1797,18 @@
             <div class="directory-accordion-body">
               <ul class="directory-course-list">
                 <li class="directory-course-item">
-                  <span><i class="fa-solid fa-wand-magic-sparkles" style="color:var(--infosys-purple);"></i> GenAI Foundations & Prompting</span>
+                  <span><i class="fa-solid fa-wand-magic-sparkles" style="color:var(--infosys-purple);"></i> GenAI
+                    Foundations & Prompting</span>
                   <span class="badge-pill badge-blue">Hot</span>
                 </li>
                 <li class="directory-course-item">
-                  <span><i class="fa-solid fa-microchip" style="color:var(--infosys-electric-blue);"></i> GenAI Engineering Mastery</span>
+                  <span><i class="fa-solid fa-microchip" style="color:var(--infosys-electric-blue);"></i> GenAI
+                    Engineering Mastery</span>
                   <span class="badge-pill badge-green">PAP</span>
                 </li>
                 <li class="directory-course-item">
-                  <span><i class="fa-solid fa-robot" style="color:var(--accent-green);"></i> LLM Developer & Agentic AI</span>
+                  <span><i class="fa-solid fa-robot" style="color:var(--accent-green);"></i> LLM Developer & Agentic
+                    AI</span>
                   <span class="badge-pill badge-green">PAP</span>
                 </li>
               </ul>
@@ -1632,15 +1843,18 @@
             <div class="directory-accordion-body">
               <ul class="directory-course-list">
                 <li class="directory-course-item">
-                  <span><i class="fa-solid fa-database" style="color:var(--infosys-electric-blue);"></i> AI & Data Science Professional</span>
+                  <span><i class="fa-solid fa-database" style="color:var(--infosys-electric-blue);"></i> AI & Data
+                    Science Professional</span>
                   <span class="badge-pill badge-green">PAP</span>
                 </li>
                 <li class="directory-course-item">
-                  <span><i class="fa-solid fa-chart-simple" style="color:var(--infosys-amber);"></i> Data Analytics with AI</span>
+                  <span><i class="fa-solid fa-chart-simple" style="color:var(--infosys-amber);"></i> Data Analytics with
+                    AI</span>
                   <span class="badge-pill badge-green">PAP</span>
                 </li>
                 <li class="directory-course-item">
-                  <span><i class="fa-solid fa-network-wired" style="color:var(--infosys-cyan);"></i> Data Engineering & Cloud ETL</span>
+                  <span><i class="fa-solid fa-network-wired" style="color:var(--infosys-cyan);"></i> Data Engineering &
+                    Cloud ETL</span>
                   <span class="badge-pill badge-blue">New</span>
                 </li>
               </ul>
@@ -1675,15 +1889,18 @@
             <div class="directory-accordion-body">
               <ul class="directory-course-list">
                 <li class="directory-course-item">
-                  <span><i class="fa-solid fa-vector-square" style="color:var(--infosys-electric-blue);"></i> UI/UX & Product Design</span>
+                  <span><i class="fa-solid fa-vector-square" style="color:var(--infosys-electric-blue);"></i> UI/UX &
+                    Product Design</span>
                   <span class="badge-pill badge-green">PAP</span>
                 </li>
                 <li class="directory-course-item">
-                  <span><i class="fa-solid fa-desktop" style="color:var(--infosys-cyan);"></i> Modern Responsive Web Design</span>
+                  <span><i class="fa-solid fa-desktop" style="color:var(--infosys-cyan);"></i> Modern Responsive Web
+                    Design</span>
                   <span class="badge-pill badge-blue">Popular</span>
                 </li>
                 <li class="directory-course-item">
-                  <span><i class="fa-solid fa-brush" style="color:var(--infosys-purple);"></i> Graphic Design & Brand Identity</span>
+                  <span><i class="fa-solid fa-brush" style="color:var(--infosys-purple);"></i> Graphic Design & Brand
+                    Identity</span>
                   <span class="badge-pill badge-blue">Creative</span>
                 </li>
               </ul>
@@ -1718,15 +1935,18 @@
             <div class="directory-accordion-body">
               <ul class="directory-course-list">
                 <li class="directory-course-item">
-                  <span><i class="fa-solid fa-film" style="color:var(--infosys-electric-blue);"></i> Premiere & After Effects Video Editing</span>
+                  <span><i class="fa-solid fa-film" style="color:var(--infosys-electric-blue);"></i> Premiere & After
+                    Effects Video Editing</span>
                   <span class="badge-pill badge-blue">Media</span>
                 </li>
                 <li class="directory-course-item">
-                  <span><i class="fa-solid fa-bezier-curve" style="color:var(--infosys-amber);"></i> 2D & Motion Graphics Animation</span>
+                  <span><i class="fa-solid fa-bezier-curve" style="color:var(--infosys-amber);"></i> 2D & Motion
+                    Graphics Animation</span>
                   <span class="badge-pill badge-blue">Media</span>
                 </li>
                 <li class="directory-course-item">
-                  <span><i class="fa-solid fa-headphones" style="color:var(--accent-green);"></i> AI Video & Audio Production</span>
+                  <span><i class="fa-solid fa-headphones" style="color:var(--accent-green);"></i> AI Video & Audio
+                    Production</span>
                   <span class="badge-pill badge-blue">Trending</span>
                 </li>
               </ul>
@@ -1735,7 +1955,8 @@
                   <i class="fa-solid fa-calendar-check"></i>
                   <span>Request Roadmap</span>
                 </button>
-                <button type="button" class="btn-enterprise-primary open-apply-modal" data-track="Digital Media Courses">
+                <button type="button" class="btn-enterprise-primary open-apply-modal"
+                  data-track="Digital Media Courses">
                   <span>Enroll in Track</span>
                   <i class="fa-solid fa-arrow-right"></i>
                 </button>
@@ -1761,15 +1982,18 @@
             <div class="directory-accordion-body">
               <ul class="directory-course-list">
                 <li class="directory-course-item">
-                  <span><i class="fa-solid fa-magnifying-glass-chart" style="color:var(--infosys-electric-blue);"></i> Performance Digital Marketing</span>
+                  <span><i class="fa-solid fa-magnifying-glass-chart" style="color:var(--infosys-electric-blue);"></i>
+                    Performance Digital Marketing</span>
                   <span class="badge-pill badge-blue">Growth</span>
                 </li>
                 <li class="directory-course-item">
-                  <span><i class="fa-solid fa-arrow-trend-up" style="color:var(--accent-green);"></i> Technical SEO & Analytics</span>
+                  <span><i class="fa-solid fa-arrow-trend-up" style="color:var(--accent-green);"></i> Technical SEO &
+                    Analytics</span>
                   <span class="badge-pill badge-blue">Growth</span>
                 </li>
                 <li class="directory-course-item">
-                  <span><i class="fa-solid fa-pen-nib" style="color:var(--infosys-purple);"></i> AI Content & Copywriting</span>
+                  <span><i class="fa-solid fa-pen-nib" style="color:var(--infosys-purple);"></i> AI Content &
+                    Copywriting</span>
                   <span class="badge-pill badge-blue">Copy</span>
                 </li>
               </ul>
@@ -1804,15 +2028,18 @@
             <div class="directory-accordion-body">
               <ul class="directory-course-list">
                 <li class="directory-course-item">
-                  <span><i class="fa-solid fa-server" style="color:var(--infosys-electric-blue);"></i> Cloud DevOps & Kubernetes</span>
+                  <span><i class="fa-solid fa-server" style="color:var(--infosys-electric-blue);"></i> Cloud DevOps &
+                    Kubernetes</span>
                   <span class="badge-pill badge-green">PAP</span>
                 </li>
                 <li class="directory-course-item">
-                  <span><i class="fa-solid fa-vial-circle-check" style="color:var(--accent-green);"></i> QA & Automated Selenium Testing</span>
+                  <span><i class="fa-solid fa-vial-circle-check" style="color:var(--accent-green);"></i> QA & Automated
+                    Selenium Testing</span>
                   <span class="badge-pill badge-green">PAP</span>
                 </li>
                 <li class="directory-course-item">
-                  <span><i class="fa-solid fa-shield-halved" style="color:#ef4444;"></i> Cybersecurity & Server Defense</span>
+                  <span><i class="fa-solid fa-shield-halved" style="color:#ef4444;"></i> Cybersecurity & Server
+                    Defense</span>
                   <span class="badge-pill badge-blue">Security</span>
                 </li>
               </ul>
@@ -1847,15 +2074,18 @@
             <div class="directory-accordion-body">
               <ul class="directory-course-list">
                 <li class="directory-course-item">
-                  <span><i class="fa-solid fa-user-tie" style="color:var(--infosys-electric-blue);"></i> HR Operations & Tech Recruiting</span>
+                  <span><i class="fa-solid fa-user-tie" style="color:var(--infosys-electric-blue);"></i> HR Operations &
+                    Tech Recruiting</span>
                   <span class="badge-pill badge-blue">Biz</span>
                 </li>
                 <li class="directory-course-item">
-                  <span><i class="fa-solid fa-calculator" style="color:var(--accent-green);"></i> Tally Prime & Corporate Finance</span>
+                  <span><i class="fa-solid fa-calculator" style="color:var(--accent-green);"></i> Tally Prime &
+                    Corporate Finance</span>
                   <span class="badge-pill badge-blue">Finance</span>
                 </li>
                 <li class="directory-course-item">
-                  <span><i class="fa-solid fa-diagram-project" style="color:var(--infosys-purple);"></i> Technical Business Analyst (BA)</span>
+                  <span><i class="fa-solid fa-diagram-project" style="color:var(--infosys-purple);"></i> Technical
+                    Business Analyst (BA)</span>
                   <span class="badge-pill badge-green">PAP</span>
                 </li>
               </ul>
@@ -2012,25 +2242,33 @@
           <div
             style="margin-top: 2rem; display: flex; flex-direction: column; gap: 0.8rem; font-size: 0.92rem; color: var(--text-secondary);">
             <div>
-              <a href="https://www.google.com/maps/search/?api=1&query=Karka+AI+%26+Tech+Academy+SRV+Towers+Nagercoil" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none; display: flex; align-items: flex-start; gap: 8px;">
-                <i class="fa-solid fa-location-dot" style="color:var(--infosys-electric-blue); width:20px; margin-top: 3px;"></i>
-                <span>Ground floor, SRV Towers, Muthamizh St, near Girias Veppamoodu, Nagercoil, Tamil Nadu 629001, India</span>
+              <a href="https://www.google.com/maps/search/?api=1&query=Karka+AI+%26+Tech+Academy+SRV+Towers+Nagercoil"
+                target="_blank" rel="noopener noreferrer"
+                style="color: inherit; text-decoration: none; display: flex; align-items: flex-start; gap: 8px;">
+                <i class="fa-solid fa-location-dot"
+                  style="color:var(--infosys-electric-blue); width:20px; margin-top: 3px;"></i>
+                <span>Ground floor, SRV Towers, Muthamizh St, near Girias Veppamoodu, Nagercoil, Tamil Nadu 629001,
+                  India</span>
               </a>
             </div>
             <div>
-              <a href="tel:+919487530243" style="color: inherit; text-decoration: none; display: flex; align-items: center; gap: 8px;">
+              <a href="tel:+919487530243"
+                style="color: inherit; text-decoration: none; display: flex; align-items: center; gap: 8px;">
                 <i class="fa-solid fa-phone" style="color:var(--infosys-electric-blue); width:20px;"></i>
                 <span>+91 94875 30243</span>
               </a>
             </div>
             <div>
-              <a href="mailto:admissions@karka.academy" style="color: inherit; text-decoration: none; display: flex; align-items: center; gap: 8px;">
+              <a href="mailto:admissions@karka.academy"
+                style="color: inherit; text-decoration: none; display: flex; align-items: center; gap: 8px;">
                 <i class="fa-solid fa-envelope" style="color:var(--infosys-electric-blue); width:20px;"></i>
                 <span>admissions@karka.academy</span>
               </a>
             </div>
             <div style="margin-top: 0.4rem;">
-              <a href="https://www.google.com/maps/search/?api=1&query=Karka+AI+%26+Tech+Academy+SRV+Towers+Nagercoil" target="_blank" rel="noopener noreferrer" style="color: var(--infosys-electric-blue); font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
+              <a href="https://www.google.com/maps/search/?api=1&query=Karka+AI+%26+Tech+Academy+SRV+Towers+Nagercoil"
+                target="_blank" rel="noopener noreferrer"
+                style="color: var(--infosys-electric-blue); font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
                 <i class="fa-solid fa-diamond-turn-right"></i> Get Directions
               </a>
             </div>
@@ -2130,13 +2368,13 @@
               fluency, physical lab mentorship, and risk-free Pay After Placement career models.
             </p>
             <div class="footer-social-links">
-              <a href="https://facebook.com" target="_blank" rel="noopener" class="social-circle-link"
-                aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-              <a href="https://www.instagram.com/karka.ai" target="_blank" rel="noopener" class="social-circle-link"
-                aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener" class="social-circle-link"
-                aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-              <a href="https://youtube.com" target="_blank" rel="noopener" class="social-circle-link"
+              <a href="https://www.facebook.com/karka.academy" target="_blank" rel="noopener noreferrer"
+                class="social-circle-link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+              <a href="https://www.instagram.com/karka.ai" target="_blank" rel="noopener noreferrer"
+                class="social-circle-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+              <a href="https://www.linkedin.com/company/karka-academy/home/" target="_blank" rel="noopener noreferrer"
+                class="social-circle-link" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-circle-link"
                 aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
             </div>
           </div>
@@ -2177,13 +2415,17 @@
             </form>
             <div class="footer-contact-info">
               <p>
-                <a href="https://www.google.com/maps/search/?api=1&query=Karka+AI+%26+Tech+Academy+SRV+Towers+Nagercoil" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none; display: flex; align-items: flex-start; gap: 8px;">
+                <a href="https://www.google.com/maps/search/?api=1&query=Karka+AI+%26+Tech+Academy+SRV+Towers+Nagercoil"
+                  target="_blank" rel="noopener noreferrer"
+                  style="color: inherit; text-decoration: none; display: flex; align-items: flex-start; gap: 8px;">
                   <i class="fa-solid fa-location-dot" style="color:var(--infosys-electric-blue); margin-top: 3px;"></i>
-                  <span>Ground floor, SRV Towers, Muthamizh St, near Girias Veppamoodu, Nagercoil, Tamil Nadu 629001</span>
+                  <span>Ground floor, SRV Towers, Muthamizh St, near Girias Veppamoodu, Nagercoil, Tamil Nadu
+                    629001</span>
                 </a>
               </p>
               <p>
-                <a href="tel:+919487530243" style="color: inherit; text-decoration: none; display: flex; align-items: center; gap: 8px;">
+                <a href="tel:+919487530243"
+                  style="color: inherit; text-decoration: none; display: flex; align-items: center; gap: 8px;">
                   <i class="fa-solid fa-phone" style="color:var(--infosys-electric-blue);"></i>
                   <span>+91 94875 30243</span>
                 </a>
@@ -2191,10 +2433,12 @@
             </div>
             <div class="footer-map-frame"
               style="margin-top: 1rem; border-radius: 8px; overflow: hidden; border: 1px solid rgba(255,255,255,0.15); max-width: 320px;">
-              <a href="https://www.google.com/maps/search/?api=1&query=Karka+AI+%26+Tech+Academy+SRV+Towers+Nagercoil" target="_blank" rel="noopener noreferrer" title="View on Google Maps">
+              <a href="https://www.google.com/maps/search/?api=1&query=Karka+AI+%26+Tech+Academy+SRV+Towers+Nagercoil"
+                target="_blank" rel="noopener noreferrer" title="View on Google Maps">
                 <iframe
                   src="https://maps.google.com/maps?q=Ground%20floor%2C%20SRV%20Towers%2C%20Muthamizh%20St%2C%20near%20Girias%20Veppamoodu%2C%20Nagercoil%2C%20Tamil%20Nadu%20629001&t=&z=16&ie=UTF8&iwloc=&output=embed"
-                  width="100%" height="160" style="border:0; display:block; pointer-events: none;" allowfullscreen="" loading="lazy">
+                  width="100%" height="160" style="border:0; display:block; pointer-events: none;" allowfullscreen=""
+                  loading="lazy">
                 </iframe>
               </a>
             </div>
@@ -2209,7 +2453,9 @@
           <div style="display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap;">
             <a href="#" style="color: #64748b; text-decoration: none;">Privacy Policy</a>
             <a href="#" style="color: #64748b; text-decoration: none;">Terms of Service</a>
-            <a href="admin.html" style="color: #38bdf8; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 5px;"><i class="fa-solid fa-lock" style="font-size: 0.72rem;"></i> Admin Portal</a>
+            <a href="admin.html"
+              style="color: #38bdf8; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 5px;"><i
+                class="fa-solid fa-lock" style="font-size: 0.72rem;"></i> Admin Portal</a>
           </div>
           <div style="font-weight: 700; color: #38bdf8; letter-spacing: 0.05em;">
             BUILT WITH PASSION BY KARKA
@@ -2432,6 +2678,15 @@
             Submit Team Registration
           </button>
         </form>
+        <div
+          style="text-align: center; margin-top: 1rem; padding-top: 0.75rem; border-top: 1px solid var(--border-subtle);">
+          <a href="https://spike.karka.academy/login?callbackUrl=https%3A%2F%2Fspike.karka.academy%2F" target="_blank"
+            rel="noopener noreferrer"
+            style="color: var(--infosys-electric-blue); font-size: 0.88rem; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 0.4rem;">
+            <span>Visit Official Registration Portal</span>
+            <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.8rem;"></i>
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -2441,8 +2696,10 @@
     <div class="modal-dialog" style="max-width: 520px;">
       <button class="modal-close-btn" onclick="closeSyllabusWhatsAppModal()">&times;</button>
       <div class="modal-header">
-        <span class="badge-pill badge-green" style="margin-bottom: 0.5rem;"><i class="fa-brands fa-whatsapp"></i> Instant WhatsApp Dispatch</span>
-        <h3 id="syllabusModalHeaderTitle" style="font-size: 1.35rem; font-weight: 800;">Download MERN Fullstack Official Syllabus &amp; Fee Structure</h3>
+        <span class="badge-pill badge-green" style="margin-bottom: 0.5rem;"><i class="fa-brands fa-whatsapp"></i>
+          Instant WhatsApp Dispatch</span>
+        <h3 id="syllabusModalHeaderTitle" style="font-size: 1.35rem; font-weight: 800;">Download MERN Fullstack Official
+          Syllabus &amp; Fee Structure</h3>
         <p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 4px;">
           Direct PDF delivery to your mobile &bull; Up-to-date 2026 Curriculum
         </p>
@@ -2451,31 +2708,42 @@
         <form id="syllabusWhatsAppForm" onsubmit="handleSyllabusWhatsAppSubmit(event)">
           <!-- Full Name -->
           <div class="form-group" style="margin-bottom: 1rem;">
-            <label class="form-label" for="syllabusNameInput" style="font-size: 0.86rem; font-weight: 700; display: block; margin-bottom: 6px;">Full Name *</label>
-            <input type="text" id="syllabusNameInput" class="form-input" placeholder="e.g. Anandha Krishnan" required style="width: 100%;">
+            <label class="form-label" for="syllabusNameInput"
+              style="font-size: 0.86rem; font-weight: 700; display: block; margin-bottom: 6px;">Full Name *</label>
+            <input type="text" id="syllabusNameInput" class="form-input" placeholder="e.g. Anandha Krishnan" required
+              style="width: 100%;">
           </div>
 
           <!-- WhatsApp Number -->
           <div class="form-group" style="margin-bottom: 1rem;">
-            <label class="form-label" for="syllabusPhoneInput" style="font-size: 0.86rem; font-weight: 700; display: block; margin-bottom: 6px;">WhatsApp Number *</label>
+            <label class="form-label" for="syllabusPhoneInput"
+              style="font-size: 0.86rem; font-weight: 700; display: block; margin-bottom: 6px;">WhatsApp Number
+              *</label>
             <div style="display: flex; gap: 8px;">
-              <span style="background: var(--bg-subtle, #f1f5f9); border: 1px solid var(--border-hairline, #cbd5e1); border-radius: 8px; padding: 10px 12px; font-weight: 700; font-size: 0.9rem; color: var(--text-secondary, #475569); display: flex; align-items: center; gap: 4px;">
+              <span
+                style="background: var(--bg-subtle, #f1f5f9); border: 1px solid var(--border-hairline, #cbd5e1); border-radius: 8px; padding: 10px 12px; font-weight: 700; font-size: 0.9rem; color: var(--text-secondary, #475569); display: flex; align-items: center; gap: 4px;">
                 <img src="https://flagcdn.com/w20/in.png" width="18" alt="India flag" style="border-radius: 2px;"> +91
               </span>
-              <input type="tel" id="syllabusPhoneInput" class="form-input" placeholder="9487530243" maxlength="10" pattern="[0-9]{10}" required style="flex: 1;" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+              <input type="tel" id="syllabusPhoneInput" class="form-input" placeholder="9487530243" maxlength="10"
+                pattern="[0-9]{10}" required style="flex: 1;" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
             </div>
-            <span id="syllabusPhoneError" style="font-size: 0.78rem; color: #ef4444; display: none; margin-top: 4px;">Please enter a valid 10-digit WhatsApp number</span>
+            <span id="syllabusPhoneError"
+              style="font-size: 0.78rem; color: #ef4444; display: none; margin-top: 4px;">Please enter a valid 10-digit
+              WhatsApp number</span>
           </div>
 
           <!-- Course / Track Dropdown -->
           <div class="form-group" style="margin-bottom: 1rem;">
-            <label class="form-label" for="syllabusTrackSelect" style="font-size: 0.86rem; font-weight: 700; display: block; margin-bottom: 6px;">Selected Course / Practice Track *</label>
+            <label class="form-label" for="syllabusTrackSelect"
+              style="font-size: 0.86rem; font-weight: 700; display: block; margin-bottom: 6px;">Selected Course /
+              Practice Track *</label>
             <select id="syllabusTrackSelect" class="form-select" required style="width: 100%;">
               <option value="MERN Fullstack Development">MERN Fullstack Development</option>
               <option value="AI & Data Science">AI &amp; Data Science</option>
               <option value="UI/UX Product Design">UI/UX Product Design</option>
               <option value="Python for Kids & Teens">Python for Kids &amp; Teens</option>
-              <option value="Full Stack Developer Internship (AgileTribers)">Full Stack Developer Internship (AgileTribers)</option>
+              <option value="Full Stack Developer Internship (AgileTribers)">Full Stack Developer Internship
+                (AgileTribers)</option>
               <option value="Generative AI & Agent Workflows">Generative AI &amp; Agent Workflows</option>
               <option value="Business English & Corporate Prep">Business English &amp; Corporate Prep</option>
             </select>
@@ -2483,14 +2751,17 @@
 
           <!-- Checkbox for Batch Dates & Placement Eligibility -->
           <div class="form-group" style="margin-bottom: 1.25rem;">
-            <label style="display: flex; align-items: flex-start; gap: 8px; font-size: 0.84rem; color: var(--text-secondary, #475569); cursor: pointer; line-height: 1.4;">
-              <input type="checkbox" id="syllabusOptInCheckbox" checked style="margin-top: 3px; accent-color: #25D366; width: 16px; height: 16px;">
+            <label
+              style="display: flex; align-items: flex-start; gap: 8px; font-size: 0.84rem; color: var(--text-secondary, #475569); cursor: pointer; line-height: 1.4;">
+              <input type="checkbox" id="syllabusOptInCheckbox" checked
+                style="margin-top: 3px; accent-color: #25D366; width: 16px; height: 16px;">
               <span>Send me batch dates and placement eligibility on WhatsApp</span>
             </label>
           </div>
 
           <!-- CTA Button -->
-          <button type="submit" id="syllabusSubmitBtn" class="btn-whatsapp-syllabus" style="width: 100%; justify-content: center; padding: 13px !important; font-size: 0.95rem !important; border-radius: 10px !important;">
+          <button type="submit" id="syllabusSubmitBtn" class="btn-whatsapp-syllabus"
+            style="width: 100%; justify-content: center; padding: 13px !important; font-size: 0.95rem !important; border-radius: 10px !important;">
             <span>Receive Syllabus on WhatsApp &rarr;</span>
             <i class="fa-brands fa-whatsapp" style="font-size: 1.15rem;"></i>
           </button>
@@ -2502,8 +2773,10 @@
         </form>
 
         <!-- Success Toast Notification -->
-        <div id="syllabusSuccessToast" style="display: none; background: #ecfdf5; border: 1.5px solid #10b981; border-radius: 10px; padding: 12px 16px; margin-top: 1rem; text-align: center; color: #047857; font-size: 0.9rem; font-weight: 700; animation: fadeInToast 0.3s ease;">
-          <i class="fa-solid fa-circle-check" style="margin-right: 6px;"></i> Sent! Check your WhatsApp chat with Karka Academy.
+        <div id="syllabusSuccessToast"
+          style="display: none; background: #ecfdf5; border: 1.5px solid #10b981; border-radius: 10px; padding: 12px 16px; margin-top: 1rem; text-align: center; color: #047857; font-size: 0.9rem; font-weight: 700; animation: fadeInToast 0.3s ease;">
+          <i class="fa-solid fa-circle-check" style="margin-right: 6px;"></i> Sent! Check your WhatsApp chat with Karka
+          Academy.
         </div>
       </div>
     </div>
@@ -2514,9 +2787,11 @@
     <div class="modal-dialog" style="max-width: 620px;">
       <button class="modal-close-btn" onclick="closePapTermsModal()">&times;</button>
       <div class="modal-header">
-        <span class="badge-pill badge-green" style="margin-bottom: 0.5rem;"><i class="fa-solid fa-shield-halved"></i> 100% Transparent Agreement</span>
+        <span class="badge-pill badge-green" style="margin-bottom: 0.5rem;"><i class="fa-solid fa-shield-halved"></i>
+          100% Transparent Agreement</span>
         <h3 style="font-size: 1.45rem; font-weight: 800;">The Karka PAP Contract Guarantee</h3>
-        <p style="color: var(--text-secondary); font-size: 0.88rem;">Zero Hidden Clauses. Zero Loan Traps. 100% Outcome Bound.</p>
+        <p style="color: var(--text-secondary); font-size: 0.88rem;">Zero Hidden Clauses. Zero Loan Traps. 100% Outcome
+          Bound.</p>
       </div>
       <div class="modal-body">
         <div class="pap-timeline">
@@ -2525,7 +2800,8 @@
             <div class="pap-timeline-node">1</div>
             <div class="pap-timeline-content">
               <h4>6 Months On-site Training (₹0 Upfront)</h4>
-              <p>Full physical access to Karka's high-tech lab at SRV Towers Nagercoil. Daily mentorship from senior architects. Zero tuition fees billed during the training tenure.</p>
+              <p>Full physical access to Karka's high-tech lab at SRV Towers Nagercoil. Daily mentorship from senior
+                architects. Zero tuition fees billed during the training tenure.</p>
             </div>
           </div>
           <!-- Step 2 -->
@@ -2533,7 +2809,8 @@
             <div class="pap-timeline-node">2</div>
             <div class="pap-timeline-content">
               <h4>Live Studio PRs &amp; AgileTribers Immersion</h4>
-              <p>Work on live software production tickets, manage GitHub pull requests, CI/CD pipelines, and earn verified studio work experience credentials.</p>
+              <p>Work on live software production tickets, manage GitHub pull requests, CI/CD pipelines, and earn
+                verified studio work experience credentials.</p>
             </div>
           </div>
           <!-- Step 3 -->
@@ -2541,7 +2818,8 @@
             <div class="pap-timeline-node">3</div>
             <div class="pap-timeline-content">
               <h4>Placed with Minimum ₹4.5+ LPA Package</h4>
-              <p>Direct hiring pipeline through 40+ corporate partners across Chennai, Bangalore, and Nagercoil. Comprehensive mock technical interviews and resume tuning.</p>
+              <p>Direct hiring pipeline through 40+ corporate partners across Chennai, Bangalore, and Nagercoil.
+                Comprehensive mock technical interviews and resume tuning.</p>
             </div>
           </div>
           <!-- Step 4 -->
@@ -2549,7 +2827,8 @@
             <div class="pap-timeline-node">4</div>
             <div class="pap-timeline-content">
               <h4>Pay Fixed Monthly Installment from Salary</h4>
-              <p>You only start paying after receiving your monthly salary from your employer. <strong>If your starting CTC is below ₹4.5 LPA, your tuition fee is ₹0.</strong></p>
+              <p>You only start paying after receiving your monthly salary from your employer. <strong>If your starting
+                  CTC is below ₹4.5 LPA, your tuition fee is ₹0.</strong></p>
             </div>
           </div>
         </div>
@@ -2574,11 +2853,14 @@
         </div>
 
         <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 1.5rem;">
-          <button type="button" class="btn-enterprise-primary" onclick="closePapTermsModal(); openPapQuizModal();" style="flex: 1; justify-content: center;">
+          <button type="button" class="btn-enterprise-primary" onclick="closePapTermsModal(); openPapQuizModal();"
+            style="flex: 1; justify-content: center;">
             <span>Check My 60s Eligibility</span>
             <i class="fa-solid fa-arrow-right"></i>
           </button>
-          <a href="https://wa.me/919487530243?text=Hi%20Karka%20Academy,%20I%20have%20questions%20regarding%20the%20PAP%20contract%20terms." target="_blank" rel="noopener noreferrer" class="btn-secondary" style="flex: 1; justify-content: center; text-decoration: none;">
+          <a href="https://wa.me/919487530243?text=Hi%20Karka%20Academy,%20I%20have%20questions%20regarding%20the%20PAP%20contract%20terms."
+            target="_blank" rel="noopener noreferrer" class="btn-secondary"
+            style="flex: 1; justify-content: center; text-decoration: none;">
             <i class="fa-brands fa-whatsapp" style="color: #25d366;"></i>
             <span>Speak to Admissions</span>
           </a>
@@ -2591,7 +2873,7 @@
   <div class="modal-backdrop" id="papQuizModal">
     <div class="modal-dialog" style="max-width: 560px;">
       <button class="modal-close-btn" onclick="closePapQuizModal()">&times;</button>
-      
+
       <div class="modal-header">
         <div class="quiz-step-indicator">
           <span id="quizStepNum">Question 1 of 6</span>
@@ -2601,7 +2883,8 @@
           <div class="quiz-progress-bar-fill" id="quizProgressFill" style="width: 16%;"></div>
         </div>
         <h3 style="font-size: 1.4rem; font-weight: 800;">Check ₹0 Upfront PAP Eligibility</h3>
-        <p style="color: var(--text-secondary); font-size: 0.85rem;">Find out in under 1 minute if you qualify for our guaranteed Pay After Placement batch.</p>
+        <p style="color: var(--text-secondary); font-size: 0.85rem;">Find out in under 1 minute if you qualify for our
+          guaranteed Pay After Placement batch.</p>
       </div>
 
       <div class="modal-body">
@@ -2610,19 +2893,23 @@
           <div class="quiz-question-title">1. What is your academic or professional background?</div>
           <div class="quiz-question-sub">Select the option that best describes you:</div>
           <div class="quiz-options-list">
-            <button type="button" class="quiz-opt-btn" data-val="cs-it" onclick="selectQuizOption('degree', 'B.E / B.Tech (CS/IT/AI)', 2)">
+            <button type="button" class="quiz-opt-btn" data-val="cs-it"
+              onclick="selectQuizOption('degree', 'B.E / B.Tech (CS/IT/AI)', 2)">
               <span>B.E / B.Tech (CS, IT, AI, DS)</span>
               <i class="fa-solid fa-chevron-right"></i>
             </button>
-            <button type="button" class="quiz-opt-btn" data-val="non-cs" onclick="selectQuizOption('degree', 'Non-CS Engineering', 2)">
+            <button type="button" class="quiz-opt-btn" data-val="non-cs"
+              onclick="selectQuizOption('degree', 'Non-CS Engineering', 2)">
               <span>Non-CS Engineering (Mech, Civil, EEE, ECE)</span>
               <i class="fa-solid fa-chevron-right"></i>
             </button>
-            <button type="button" class="quiz-opt-btn" data-val="arts-science" onclick="selectQuizOption('degree', 'Arts & Science / BCA / MCA', 2)">
+            <button type="button" class="quiz-opt-btn" data-val="arts-science"
+              onclick="selectQuizOption('degree', 'Arts & Science / BCA / MCA', 2)">
               <span>BCA / MCA / B.Sc / B.Com / Arts &amp; Science</span>
               <i class="fa-solid fa-chevron-right"></i>
             </button>
-            <button type="button" class="quiz-opt-btn" data-val="working-pro" onclick="selectQuizOption('degree', 'Working Professional', 2)">
+            <button type="button" class="quiz-opt-btn" data-val="working-pro"
+              onclick="selectQuizOption('degree', 'Working Professional', 2)">
               <span>Working Professional (Career Switch to Tech)</span>
               <i class="fa-solid fa-chevron-right"></i>
             </button>
@@ -2642,7 +2929,8 @@
               <span>2025 (Fresh Graduate / Immediate)</span>
               <i class="fa-solid fa-chevron-right"></i>
             </button>
-            <button type="button" class="quiz-opt-btn" data-val="2024-prior" onclick="selectQuizOption('year', '2024 or Earlier', 3)">
+            <button type="button" class="quiz-opt-btn" data-val="2024-prior"
+              onclick="selectQuizOption('year', '2024 or Earlier', 3)">
               <span>2024 or Earlier (Career Reboot / Gap)</span>
               <i class="fa-solid fa-chevron-right"></i>
             </button>
@@ -2658,19 +2946,23 @@
           <div class="quiz-question-title">3. What is your primary career goal?</div>
           <div class="quiz-question-sub">Which engineering domain excites you most?</div>
           <div class="quiz-options-list">
-            <button type="button" class="quiz-opt-btn" data-val="mern" onclick="selectQuizOption('careerGoal', 'mern', 4)">
+            <button type="button" class="quiz-opt-btn" data-val="mern"
+              onclick="selectQuizOption('careerGoal', 'mern', 4)">
               <span>Fullstack Web &amp; AI Engineering (React, Node, LLMs)</span>
               <i class="fa-solid fa-chevron-right"></i>
             </button>
-            <button type="button" class="quiz-opt-btn" data-val="ai-ml" onclick="selectQuizOption('careerGoal', 'ai-ml', 4)">
+            <button type="button" class="quiz-opt-btn" data-val="ai-ml"
+              onclick="selectQuizOption('careerGoal', 'ai-ml', 4)">
               <span>AI &amp; Data Science (Python, ML, Scikit-Learn)</span>
               <i class="fa-solid fa-chevron-right"></i>
             </button>
-            <button type="button" class="quiz-opt-btn" data-val="uiux" onclick="selectQuizOption('careerGoal', 'uiux', 4)">
+            <button type="button" class="quiz-opt-btn" data-val="uiux"
+              onclick="selectQuizOption('careerGoal', 'uiux', 4)">
               <span>UI/UX &amp; Digital Product Design (Figma, Prototyping)</span>
               <i class="fa-solid fa-chevron-right"></i>
             </button>
-            <button type="button" class="quiz-opt-btn" data-val="fast-track" onclick="selectQuizOption('careerGoal', 'mern', 4)">
+            <button type="button" class="quiz-opt-btn" data-val="fast-track"
+              onclick="selectQuizOption('careerGoal', 'mern', 4)">
               <span>Fast-Track High Paying Tech Job (Any High-Demand Field)</span>
               <i class="fa-solid fa-chevron-right"></i>
             </button>
@@ -2682,15 +2974,18 @@
           <div class="quiz-question-title">4. What is your daily learning commitment?</div>
           <div class="quiz-question-sub">PAP requires focused dedication:</div>
           <div class="quiz-options-list">
-            <button type="button" class="quiz-opt-btn" data-val="fulltime" onclick="selectQuizOption('commitment', 'Full-time (8+ hrs on-site)', 5)">
+            <button type="button" class="quiz-opt-btn" data-val="fulltime"
+              onclick="selectQuizOption('commitment', 'Full-time (8+ hrs on-site)', 5)">
               <span>Full-Time (8+ Hours Daily at Nagercoil On-Site Lab)</span>
               <i class="fa-solid fa-chevron-right"></i>
             </button>
-            <button type="button" class="quiz-opt-btn" data-val="intensive-hybrid" onclick="selectQuizOption('commitment', 'Intensive Hybrid (4-6 hrs)', 5)">
+            <button type="button" class="quiz-opt-btn" data-val="intensive-hybrid"
+              onclick="selectQuizOption('commitment', 'Intensive Hybrid (4-6 hrs)', 5)">
               <span>Intensive Hybrid (4 to 6 Hours Daily)</span>
               <i class="fa-solid fa-chevron-right"></i>
             </button>
-            <button type="button" class="quiz-opt-btn" data-val="weekend" onclick="selectQuizOption('commitment', 'Weekend Working Pro', 5)">
+            <button type="button" class="quiz-opt-btn" data-val="weekend"
+              onclick="selectQuizOption('commitment', 'Weekend Working Pro', 5)">
               <span>Weekend Immersion (Working Professionals)</span>
               <i class="fa-solid fa-chevron-right"></i>
             </button>
@@ -2702,15 +2997,18 @@
           <div class="quiz-question-title">5. How comfortable are you with English communication?</div>
           <div class="quiz-question-sub">We provide specialized Business English training:</div>
           <div class="quiz-options-list">
-            <button type="button" class="quiz-opt-btn" data-val="fluent" onclick="selectQuizOption('english', 'Fluent', 6)">
+            <button type="button" class="quiz-opt-btn" data-val="fluent"
+              onclick="selectQuizOption('english', 'Fluent', 6)">
               <span>Fluent &amp; Confident in Conversational English</span>
               <i class="fa-solid fa-chevron-right"></i>
             </button>
-            <button type="button" class="quiz-opt-btn" data-val="intermediate" onclick="selectQuizOption('english', 'Intermediate', 6)">
+            <button type="button" class="quiz-opt-btn" data-val="intermediate"
+              onclick="selectQuizOption('english', 'Intermediate', 6)">
               <span>Intermediate (Can understand, need interview confidence)</span>
               <i class="fa-solid fa-chevron-right"></i>
             </button>
-            <button type="button" class="quiz-opt-btn" data-val="tamil-english" onclick="selectQuizOption('english', 'Tamil + English Bilingual', 6)">
+            <button type="button" class="quiz-opt-btn" data-val="tamil-english"
+              onclick="selectQuizOption('english', 'Tamil + English Bilingual', 6)">
               <span>Prefer Tamil + English Bilingual Mentorship</span>
               <i class="fa-solid fa-chevron-right"></i>
             </button>
@@ -2722,11 +3020,13 @@
           <div class="quiz-question-title">6. What is your target placement package (CTC)?</div>
           <div class="quiz-question-sub">Choose your target starting salary:</div>
           <div class="quiz-options-list">
-            <button type="button" class="quiz-opt-btn" data-val="4.5-6" onclick="selectQuizOption('ctc', '₹4.5 - ₹6.0 LPA', 7)">
+            <button type="button" class="quiz-opt-btn" data-val="4.5-6"
+              onclick="selectQuizOption('ctc', '₹4.5 - ₹6.0 LPA', 7)">
               <span>₹4.5 LPA – ₹6.0 LPA (Standard High-Growth Track)</span>
               <i class="fa-solid fa-chevron-right"></i>
             </button>
-            <button type="button" class="quiz-opt-btn" data-val="6-8.5" onclick="selectQuizOption('ctc', '₹6.0 - ₹8.5 LPA', 7)">
+            <button type="button" class="quiz-opt-btn" data-val="6-8.5"
+              onclick="selectQuizOption('ctc', '₹6.0 - ₹8.5 LPA', 7)">
               <span>₹6.0 LPA – ₹8.5 LPA (Senior Architect Guided Track)</span>
               <i class="fa-solid fa-chevron-right"></i>
             </button>
@@ -2748,7 +3048,8 @@
               You Qualify for ₹0 Upfront PAP! 🎉
             </h4>
             <p style="font-size: 0.88rem; color: var(--text-secondary);">
-              Recommended Track: <strong id="quizMatchTrackTitle" style="color: var(--infosys-electric-blue);">MERN Fullstack &amp; AI Engineering</strong>
+              Recommended Track: <strong id="quizMatchTrackTitle" style="color: var(--infosys-electric-blue);">MERN
+                Fullstack &amp; AI Engineering</strong>
             </p>
           </div>
 
@@ -2762,9 +3063,11 @@
               <input type="tel" id="quizLeadPhone" class="form-input" placeholder="+91 94875 30243" required>
             </div>
             <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 1rem;">
-              Enter your WhatsApp number to lock in your provisional ₹0 upfront admission seat and schedule your 1:1 counselor roadmap call.
+              Enter your WhatsApp number to lock in your provisional ₹0 upfront admission seat and schedule your 1:1
+              counselor roadmap call.
             </p>
-            <button type="submit" id="quizSubmitBtn" class="btn-enterprise-primary" style="width: 100%; justify-content: center; padding: 12px;">
+            <button type="submit" id="quizSubmitBtn" class="btn-enterprise-primary"
+              style="width: 100%; justify-content: center; padding: 12px;">
               <span>Unlock My Custom Roadmap &amp; PAP Approval</span>
               <i class="fa-solid fa-arrow-right"></i>
             </button>
@@ -2774,17 +3077,24 @@
         <!-- Step 8: Final Success Screen -->
         <div class="quiz-step" data-step="8">
           <div style="text-align: center; padding: 1rem 0;">
-            <div style="width: 64px; height: 64px; border-radius: 50%; background: #ecfdf5; color: #10b981; display: inline-flex; align-items: center; justify-content: center; font-size: 1.8rem; margin-bottom: 1rem; border: 2px solid #10b981;">
+            <div
+              style="width: 64px; height: 64px; border-radius: 50%; background: #ecfdf5; color: #10b981; display: inline-flex; align-items: center; justify-content: center; font-size: 1.8rem; margin-bottom: 1rem; border: 2px solid #10b981;">
               <i class="fa-solid fa-check"></i>
             </div>
-            <h4 style="font-size: 1.45rem; font-weight: 800; margin-bottom: 0.5rem;">Provisional PAP Seat Reserved! 🚀</h4>
+            <h4 style="font-size: 1.45rem; font-weight: 800; margin-bottom: 0.5rem;">Provisional PAP Seat Reserved! 🚀
+            </h4>
             <p style="color: var(--text-secondary); font-size: 0.88rem; margin-bottom: 1.25rem;">
-              Congratulations <strong id="quizResultUserName" style="color: var(--infosys-electric-blue);">Learner</strong>! Your provisional admission for <strong id="quizResultTrack">MERN Fullstack</strong> under ₹0 Upfront Tuition is approved.
+              Congratulations <strong id="quizResultUserName"
+                style="color: var(--infosys-electric-blue);">Learner</strong>! Your provisional admission for <strong
+                id="quizResultTrack">MERN Fullstack</strong> under ₹0 Upfront Tuition is approved.
             </p>
 
-            <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 14px; text-align: left; margin-bottom: 1.25rem;">
-              <div style="font-size: 0.82rem; font-weight: 700; color: var(--text-primary); margin-bottom: 6px;">Next Steps for On-Site Orientation:</div>
-              <ul style="font-size: 0.8rem; color: var(--text-secondary); padding-left: 18px; margin: 0; line-height: 1.5;">
+            <div
+              style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 14px; text-align: left; margin-bottom: 1.25rem;">
+              <div style="font-size: 0.82rem; font-weight: 700; color: var(--text-primary); margin-bottom: 6px;">Next
+                Steps for On-Site Orientation:</div>
+              <ul
+                style="font-size: 0.8rem; color: var(--text-secondary); padding-left: 18px; margin: 0; line-height: 1.5;">
                 <li>Verify your Aadhaar &amp; graduation marks sheet.</li>
                 <li>Visit SRV Towers Nagercoil for mentor lab walkthrough.</li>
                 <li>Receive your personalized 6-month placement roadmap.</li>
@@ -2792,11 +3102,13 @@
             </div>
 
             <div style="display: flex; flex-direction: column; gap: 10px;">
-              <a href="#" id="quizWhatsAppConfirmBtn" target="_blank" rel="noopener noreferrer" class="btn-enterprise-primary" style="justify-content: center; background: #25d366;">
+              <a href="#" id="quizWhatsAppConfirmBtn" target="_blank" rel="noopener noreferrer"
+                class="btn-enterprise-primary" style="justify-content: center; background: #25d366;">
                 <i class="fa-brands fa-whatsapp"></i>
                 <span>Confirm Seat with Counselor on WhatsApp</span>
               </a>
-              <button type="button" class="btn-secondary" onclick="closePapQuizModal()" style="justify-content: center;">
+              <button type="button" class="btn-secondary" onclick="closePapQuizModal()"
+                style="justify-content: center;">
                 Back to Website
               </button>
             </div>
@@ -2809,7 +3121,8 @@
 
   <!-- 4. STICKY MOBILE CONVERSION BAR (@media max-width: 768px) -->
   <div class="sticky-mobile-conversion-bar" id="stickyMobileBar">
-    <a href="https://wa.me/919487530243?text=Hi%20Karka%20Academy,%20I'd%20like%20to%20learn%20more%20about%20your%20courses%20and%20PAP%20program." target="_blank" rel="noopener noreferrer" class="sticky-btn-wa">
+    <a href="https://wa.me/919487530243?text=Hi%20Karka%20Academy,%20I'd%20like%20to%20learn%20more%20about%20your%20courses%20and%20PAP%20program."
+      target="_blank" rel="noopener noreferrer" class="sticky-btn-wa">
       <i class="fa-brands fa-whatsapp"></i>
       <span>Chat on WhatsApp</span>
     </a>
