@@ -8884,211 +8884,168 @@ body.modal-open {
 }
 
 /* ==========================================================================
-   FEATURE #3: ANTIGRAVITY ENGINE & CODE LAB (ELECTRIC CYBERPUNK / OBSIDIAN STEALTH)
+   FEATURE #3: INTERACTIVE CODE LAB (CLEAN PROFESSIONAL EDTECH DESIGN)
    ========================================================================== */
-.antigravity-code-lab-section {
-  background: #06080d !important;
+.code-lab-section {
+  background: #f8fafc !important;
   position: relative;
   overflow: hidden;
-  padding-top: 90px;
-  padding-bottom: 100px;
+  padding-top: 80px;
+  padding-bottom: 90px;
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
 }
 
-/* Micro-dot grid overlay and radial subtle mesh gradients */
-.antigravity-code-lab-section::before {
+/* Subtle background blueprint dot pattern */
+.code-lab-section::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: 
-    radial-gradient(rgba(52, 211, 153, 0.14) 1px, transparent 1px),
-    radial-gradient(circle at 15% 20%, rgba(16, 185, 129, 0.12) 0%, transparent 45%),
-    radial-gradient(circle at 85% 80%, rgba(139, 92, 246, 0.14) 0%, transparent 50%),
-    radial-gradient(circle at 50% 50%, rgba(245, 158, 11, 0.05) 0%, transparent 60%);
-  background-size: 24px 24px, 100% 100%, 100% 100%, 100% 100%;
+  background-image: radial-gradient(rgba(148, 163, 184, 0.2) 1px, transparent 1px);
+  background-size: 24px 24px;
   pointer-events: none;
   z-index: 1;
 }
 
-.antigravity-code-lab-section .container {
+.code-lab-section .container {
   position: relative;
   z-index: 2;
 }
 
 /* Header & Tagline */
-.antigravity-section-head {
-  margin-bottom: 40px;
+.code-lab-section-head {
+  margin-bottom: 36px;
 }
 
-.antigravity-badge {
+.code-lab-badge {
   display: inline-flex !important;
   align-items: center !important;
-  gap: 10px !important;
-  padding: 8px 18px !important;
-  background: rgba(16, 185, 129, 0.1) !important;
-  border: 1px solid rgba(52, 211, 153, 0.35) !important;
+  gap: 8px !important;
+  padding: 6px 16px !important;
+  background: rgba(11, 87, 208, 0.08) !important;
+  border: 1px solid rgba(11, 87, 208, 0.22) !important;
   border-radius: 999px !important;
-  color: #34d399 !important;
+  color: #0b57d0 !important;
   font-family: 'JetBrains Mono', 'Fira Code', monospace !important;
   font-size: 0.82rem !important;
   font-weight: 700 !important;
-  letter-spacing: 1.5px !important;
+  letter-spacing: 0.8px !important;
   text-transform: uppercase !important;
-  box-shadow: 0 0 24px rgba(16, 185, 129, 0.22) !important;
-  margin-bottom: 18px !important;
+  margin-bottom: 16px !important;
 }
 
-.antigravity-pulse-dot {
-  width: 9px;
-  height: 9px;
-  background: #10b981;
+.code-lab-pulse-dot {
+  width: 8px;
+  height: 8px;
+  background: #0b57d0;
   border-radius: 50%;
   display: inline-block;
-  box-shadow: 0 0 10px #10b981;
-  animation: pulseEmeraldDot 1.8s infinite;
+  box-shadow: 0 0 6px rgba(11, 87, 208, 0.5);
+  animation: pulseBlueDot 2s infinite;
 }
 
-@keyframes pulseEmeraldDot {
-  0% { transform: scale(0.9); opacity: 0.6; box-shadow: 0 0 4px #10b981; }
-  50% { transform: scale(1.3); opacity: 1; box-shadow: 0 0 14px #10b981, 0 0 22px rgba(52, 211, 153, 0.6); }
-  100% { transform: scale(0.9); opacity: 0.6; box-shadow: 0 0 4px #10b981; }
+@keyframes pulseBlueDot {
+  0% { transform: scale(0.9); opacity: 0.7; }
+  50% { transform: scale(1.2); opacity: 1; box-shadow: 0 0 8px rgba(11, 87, 208, 0.6); }
+  100% { transform: scale(0.9); opacity: 0.7; }
 }
 
-.antigravity-heading {
-  font-size: clamp(2rem, 4.5vw, 3.2rem) !important;
-  font-weight: 900 !important;
-  line-height: 1.15 !important;
-  letter-spacing: -0.8px !important;
-  background: linear-gradient(135deg, #ffffff 30%, #34d399 70%, #a78bfa 100%) !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  margin-bottom: 16px !important;
-  text-shadow: 0 0 40px rgba(16, 185, 129, 0.2) !important;
+.code-lab-heading {
+  font-size: clamp(2rem, 4.2vw, 3rem) !important;
+  font-weight: 800 !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.6px !important;
+  color: #0f172a !important;
+  margin-bottom: 14px !important;
 }
 
-.antigravity-subheading {
-  max-width: 680px !important;
+.code-lab-subheading {
+  max-width: 660px !important;
   margin: 0 auto !important;
-  color: #94a3b8 !important;
+  color: #475569 !important;
   font-size: 1.05rem !important;
   line-height: 1.6 !important;
 }
 
-/* Obsidian Stealth Glassmorphism IDE Card */
-.antigravity-ide-card {
+/* Professional Slate-Dark IDE Container */
+.code-lab-ide-card {
   max-width: 1040px;
   margin: 0 auto;
-  background: rgba(6, 8, 13, 0.88) !important;
-  backdrop-filter: blur(24px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
-  border: 1px solid rgba(52, 211, 153, 0.2) !important;
-  border-radius: 20px !important;
+  background: #0f172a !important;
+  border: 1px solid #334155 !important;
+  border-radius: 16px !important;
   overflow: hidden;
-  box-shadow: 
-    0 30px 80px -20px rgba(0, 0, 0, 0.95),
-    0 0 50px -10px rgba(16, 185, 129, 0.18),
-    0 0 90px -20px rgba(139, 92, 246, 0.16),
-    inset 0 1px 1px rgba(255, 255, 255, 0.12) !important;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 20px 45px -10px rgba(15, 23, 42, 0.25) !important;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
-.antigravity-ide-card:hover {
-  border-color: rgba(52, 211, 153, 0.38) !important;
-  box-shadow: 
-    0 35px 90px -20px rgba(0, 0, 0, 0.98),
-    0 0 65px -8px rgba(16, 185, 129, 0.28),
-    0 0 110px -20px rgba(139, 92, 246, 0.24),
-    inset 0 1px 2px rgba(255, 255, 255, 0.18) !important;
+.code-lab-ide-card:hover {
+  border-color: #475569 !important;
+  box-shadow: 0 25px 55px -10px rgba(15, 23, 42, 0.35) !important;
 }
 
 /* IDE Header */
-.antigravity-ide-header {
+.code-lab-ide-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 22px;
-  background: rgba(5, 7, 11, 0.96) !important;
-  border-bottom: 1px solid rgba(52, 211, 153, 0.18) !important;
+  padding: 12px 20px;
+  background: #1e293b !important;
+  border-bottom: 1px solid #334155 !important;
   gap: 14px;
 }
 
-.antigravity-ide-title {
-  color: #cbd5e1 !important;
+.code-lab-ide-title {
+  color: #f1f5f9 !important;
   font-family: 'JetBrains Mono', 'Fira Code', monospace !important;
-  font-size: 0.84rem !important;
+  font-size: 0.82rem !important;
   font-weight: 700 !important;
-  letter-spacing: 0.8px !important;
+  letter-spacing: 0.6px !important;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 
-.antigravity-radar-icon {
-  color: #10b981;
-  font-size: 0.95rem;
-  animation: radarScan 3s linear infinite;
+.code-lab-header-icon {
+  color: #38bdf8;
+  font-size: 0.9rem;
 }
 
-@keyframes radarScan {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.antigravity-status-pill {
+.code-lab-status-pill {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 4px 12px;
+  gap: 7px;
+  padding: 4px 10px;
   border-radius: 999px;
-  background: rgba(16, 185, 129, 0.12);
-  border: 1px solid rgba(52, 211, 153, 0.35);
-  color: #34d399;
+  background: rgba(5, 150, 105, 0.15);
+  border: 1px solid rgba(5, 150, 105, 0.35);
+  color: #10b981;
   font-family: 'JetBrains Mono', 'Fira Code', monospace;
   font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.4px;
 }
 
-.antigravity-live-beacon {
+.code-lab-live-beacon {
   width: 7px;
   height: 7px;
   border-radius: 50%;
   background: #10b981;
-  box-shadow: 0 0 8px #10b981;
-  animation: beaconPulse 1.5s infinite;
+  display: inline-block;
+  animation: beaconPulse 1.8s infinite;
 }
 
-@keyframes beaconPulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(0.8); }
+/* Component Controls Strip */
+.code-lab-controls-panel {
+  background: #131d31;
+  border-bottom: 1px solid #334155;
+  padding: 16px 20px;
 }
 
-/* Futuristic Telemetry HUD (Heads-Up Display) */
-.antigravity-telemetry-hud {
-  position: relative;
-  background: rgba(8, 12, 19, 0.85);
-  border-bottom: 1px solid rgba(52, 211, 153, 0.18);
-  padding: 16px 22px;
-}
-
-/* Sci-Fi HUD Corner Brackets */
-.hud-bracket {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  pointer-events: none;
-  opacity: 0.85;
-}
-
-.hud-bracket-tl { top: 6px; left: 8px; border-top: 2px solid #10b981; border-left: 2px solid #10b981; }
-.hud-bracket-tr { top: 6px; right: 8px; border-top: 2px solid #10b981; border-right: 2px solid #10b981; }
-.hud-bracket-bl { bottom: 6px; left: 8px; border-bottom: 2px solid #10b981; border-left: 2px solid #10b981; }
-.hud-bracket-br { bottom: 6px; right: 8px; border-bottom: 2px solid #10b981; border-right: 2px solid #10b981; }
-
-/* HUD Status Strip */
-.hud-telemetry-strip {
+.code-lab-controls-strip {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -9096,53 +9053,59 @@ body.modal-open {
   gap: 12px;
   padding-bottom: 12px;
   margin-bottom: 14px;
-  border-bottom: 1px dashed rgba(52, 211, 153, 0.2);
+  border-bottom: 1px solid rgba(51, 65, 85, 0.7);
   font-family: 'JetBrains Mono', 'Fira Code', monospace;
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   color: #94a3b8;
 }
 
-.hud-telemetry-readouts {
+.code-lab-spec-readouts {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 10px;
 }
 
-.hud-metric {
+.control-metric {
   display: inline-flex;
   align-items: center;
   gap: 6px;
 }
 
-.hud-sep {
-  color: rgba(52, 211, 153, 0.35);
+.control-sep {
+  color: #475569;
 }
 
-.hud-accent-emerald { color: #34d399; font-weight: 700; text-shadow: 0 0 10px rgba(52, 211, 153, 0.45); }
-.hud-accent-amber { color: #f59e0b; font-weight: 700; text-shadow: 0 0 10px rgba(245, 158, 11, 0.45); }
-.hud-accent-violet { color: #a78bfa; font-weight: 700; text-shadow: 0 0 10px rgba(167, 139, 250, 0.45); }
+.code-accent-blue {
+  color: #60a5fa !important;
+  font-weight: 700;
+}
 
-/* Quick Presets Buttons */
-.hud-telemetry-presets {
+.code-accent-emerald {
+  color: #10b981 !important;
+  font-weight: 700;
+}
+
+/* Style Presets */
+.code-lab-presets {
   display: flex;
   align-items: center;
   gap: 8px;
   flex-wrap: wrap;
 }
 
-.hud-preset-lbl {
+.code-lab-preset-lbl {
   font-size: 0.72rem;
   color: #64748b;
   letter-spacing: 0.5px;
 }
 
-.btn-hud-preset {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+.btn-component-preset {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid #334155;
   color: #cbd5e1;
   padding: 5px 12px;
-  border-radius: 8px;
+  border-radius: 6px;
   font-family: 'JetBrains Mono', 'Fira Code', monospace;
   font-size: 0.74rem;
   font-weight: 600;
@@ -9150,95 +9113,50 @@ body.modal-open {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.2s ease;
 }
 
-.btn-hud-preset.preset-emerald:hover,
-.btn-hud-preset.preset-emerald.active {
-  background: rgba(16, 185, 129, 0.18) !important;
-  border-color: #10b981 !important;
-  color: #34d399 !important;
-  box-shadow: 0 0 16px rgba(16, 185, 129, 0.4) !important;
-  transform: translateY(-1px);
+.btn-component-preset:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #475569;
+  color: #ffffff;
 }
 
-.btn-hud-preset.preset-amber:hover,
-.btn-hud-preset.preset-amber.active {
-  background: rgba(245, 158, 11, 0.18) !important;
-  border-color: #f59e0b !important;
-  color: #fbbf24 !important;
-  box-shadow: 0 0 16px rgba(245, 158, 11, 0.4) !important;
-  transform: translateY(-1px);
+.btn-component-preset.active {
+  background: #0b57d0 !important;
+  border-color: #2563eb !important;
+  color: #ffffff !important;
+  box-shadow: 0 2px 8px rgba(11, 87, 208, 0.35) !important;
 }
 
-.btn-hud-preset.preset-violet:hover,
-.btn-hud-preset.preset-violet.active {
-  background: rgba(139, 92, 246, 0.18) !important;
-  border-color: #8b5cf6 !important;
-  color: #c4b5fd !important;
-  box-shadow: 0 0 16px rgba(139, 92, 246, 0.4) !important;
-  transform: translateY(-1px);
-}
-
-/* Hardware Physics Sliders Matrix */
-.hud-sliders-matrix {
+/* Sliders Matrix */
+.code-lab-sliders-matrix {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 12px;
   margin-bottom: 14px;
 }
 
-.hud-slider-tile {
-  background: rgba(11, 17, 27, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 10px;
+.code-slider-tile {
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 8px;
   padding: 10px 14px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  transition: all 0.2s ease;
+  gap: 6px;
 }
 
-.hud-slider-tile.tile-emerald {
-  border-top: 2px solid #10b981;
-}
-
-.hud-slider-tile.tile-emerald:hover,
-.hud-slider-tile.tile-emerald:focus-within {
-  border-color: rgba(52, 211, 153, 0.45);
-  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.15);
-}
-
-.hud-slider-tile.tile-amber {
-  border-top: 2px solid #f59e0b;
-}
-
-.hud-slider-tile.tile-amber:hover,
-.hud-slider-tile.tile-amber:focus-within {
-  border-color: rgba(245, 158, 11, 0.45);
-  box-shadow: 0 4px 16px rgba(245, 158, 11, 0.15);
-}
-
-.hud-slider-tile.tile-violet {
-  border-top: 2px solid #8b5cf6;
-}
-
-.hud-slider-tile.tile-violet:hover,
-.hud-slider-tile.tile-violet:focus-within {
-  border-color: rgba(139, 92, 246, 0.45);
-  box-shadow: 0 4px 16px rgba(139, 92, 246, 0.15);
-}
-
-.hud-slider-header {
+.code-slider-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-family: 'JetBrains Mono', 'Fira Code', monospace;
   font-size: 0.72rem;
-  letter-spacing: 0.6px;
+  letter-spacing: 0.5px;
 }
 
-.hud-slider-name {
+.code-slider-name {
   color: #94a3b8;
   display: inline-flex;
   align-items: center;
@@ -9246,151 +9164,112 @@ body.modal-open {
   font-weight: 600;
 }
 
-.hud-slider-val {
-  font-weight: 800;
+.code-slider-val {
+  font-weight: 700;
   font-size: 0.78rem;
 }
 
-/* Range Slider Styling across Webkit / Moz */
-.hud-slider-input {
+/* Range Sliders */
+.code-slider-input {
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
   height: 6px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  background: #334155;
   outline: none;
   margin: 4px 0;
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: background 0.15s ease;
 }
 
-.hud-slider-input:hover {
-  background: rgba(255, 255, 255, 0.16);
+.code-slider-input:hover {
+  background: #475569;
 }
 
-.hud-slider-input::-webkit-slider-thumb {
+.code-slider-input::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   width: 16px;
   height: 16px;
   border-radius: 50%;
+  background: #0b57d0;
+  border: 2px solid #60a5fa;
   cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition: transform 0.15s ease;
 }
 
-.hud-slider-input::-moz-range-thumb {
+.code-slider-input::-moz-range-thumb {
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  border: none;
+  background: #0b57d0;
+  border: 2px solid #60a5fa;
   cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-.hud-slider-input:active::-webkit-slider-thumb,
-.hud-slider-input:active::-moz-range-thumb {
-  transform: scale(1.25);
+.code-slider-input.slider-emerald::-webkit-slider-thumb {
+  background: #059669;
+  border-color: #10b981;
+}
+.code-slider-input.slider-emerald::-moz-range-thumb {
+  background: #059669;
+  border-color: #10b981;
 }
 
-/* Emerald Slider Accent */
-.hud-slider-input.slider-emerald::-webkit-slider-thumb {
-  background: #10b981;
-  border: 2px solid #34d399;
-  box-shadow: 0 0 10px #10b981;
-}
-.hud-slider-input.slider-emerald::-moz-range-thumb {
-  background: #10b981;
-  border: 2px solid #34d399;
-  box-shadow: 0 0 10px #10b981;
-}
-
-/* Amber Slider Accent */
-.hud-slider-input.slider-amber::-webkit-slider-thumb {
-  background: #f59e0b;
-  border: 2px solid #fbbf24;
-  box-shadow: 0 0 10px #f59e0b;
-}
-.hud-slider-input.slider-amber::-moz-range-thumb {
-  background: #f59e0b;
-  border: 2px solid #fbbf24;
-  box-shadow: 0 0 10px #f59e0b;
-}
-
-/* Violet Slider Accent */
-.hud-slider-input.slider-violet::-webkit-slider-thumb {
-  background: #8b5cf6;
-  border: 2px solid #a78bfa;
-  box-shadow: 0 0 10px #8b5cf6;
-}
-.hud-slider-input.slider-violet::-moz-range-thumb {
-  background: #8b5cf6;
-  border: 2px solid #a78bfa;
-  box-shadow: 0 0 10px #8b5cf6;
-}
-
-/* Mission Directive Row */
-.hud-mission-row {
+/* Mission Row */
+.code-lab-mission-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 14px;
+  gap: 12px;
+  padding: 10px 14px;
+  background: rgba(11, 87, 208, 0.08);
+  border: 1px solid rgba(11, 87, 208, 0.22);
+  border-radius: 8px;
 }
 
-.hud-mission-content {
+.code-lab-mission-content {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   flex: 1;
   min-width: 280px;
 }
 
-.hud-mission-badge {
-  background: rgba(16, 185, 129, 0.12);
-  border: 1px solid rgba(52, 211, 153, 0.35);
-  color: #34d399;
+.code-lab-mission-badge {
+  background: #0b57d0;
+  color: #ffffff;
   font-family: 'JetBrains Mono', 'Fira Code', monospace;
-  font-size: 0.74rem;
-  font-weight: 800;
-  padding: 5px 10px;
-  border-radius: 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 4px;
   white-space: nowrap;
-  letter-spacing: 0.6px;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
 }
 
-.hud-mission-instructions {
+.code-lab-mission-instructions {
   color: #cbd5e1;
-  font-size: 0.88rem;
-  line-height: 1.5;
+  font-size: 0.86rem;
+  line-height: 1.45;
 }
 
-.hud-mission-instructions strong {
+.code-lab-mission-instructions strong {
   color: #ffffff;
-  font-weight: 700;
 }
 
-.hud-mission-instructions code {
-  background: rgba(16, 185, 129, 0.12);
-  color: #34d399;
-  padding: 2px 7px;
-  border-radius: 5px;
-  font-family: 'JetBrains Mono', 'Fira Code', monospace;
-  font-size: 0.82rem;
-  border: 1px solid rgba(52, 211, 153, 0.25);
-}
-
-.btn-hud-hint-toggle {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+.btn-code-lab-hint-toggle {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid #334155;
   color: #cbd5e1;
-  padding: 7px 14px;
-  border-radius: 8px;
+  padding: 6px 12px;
+  border-radius: 6px;
   font-family: 'JetBrains Mono', 'Fira Code', monospace;
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 600;
   cursor: pointer;
   display: inline-flex;
@@ -9400,74 +9279,52 @@ body.modal-open {
   white-space: nowrap;
 }
 
-.btn-hud-hint-toggle:hover {
-  background: rgba(16, 185, 129, 0.15);
-  border-color: #10b981;
-  color: #34d399;
-  box-shadow: 0 0 12px rgba(16, 185, 129, 0.25);
+.btn-code-lab-hint-toggle:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  border-color: #475569;
 }
 
-/* Telemetry Intel Drawer */
-.hud-intel-drawer {
+/* Tips Drawer */
+.code-lab-intel-drawer {
   margin-top: 14px;
-  padding: 16px !important;
-  background: rgba(5, 7, 12, 0.94) !important;
-  border: 1px solid rgba(52, 211, 153, 0.25) !important;
-  border-radius: 12px !important;
-  animation: intelSlideDown 0.25s ease-out;
+  padding: 14px !important;
+  background: #1e293b !important;
+  border: 1px solid #334155 !important;
+  border-radius: 8px !important;
 }
 
-@keyframes intelSlideDown {
-  from { opacity: 0; transform: translateY(-8px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.hud-intel-grid {
+.code-lab-intel-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 12px;
 }
 
-.hud-intel-card {
-  background: rgba(11, 17, 27, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 8px;
+.code-intel-card {
+  background: #0f172a;
+  border: 1px solid #334155;
+  border-top: 2px solid #0b57d0;
+  border-radius: 6px;
   padding: 12px;
 }
 
-.hud-intel-card.card-emerald {
-  border-top: 2px solid #10b981;
-}
-
-.hud-intel-card.card-amber {
-  border-top: 2px solid #f59e0b;
-}
-
-.hud-intel-card.card-violet {
-  border-top: 2px solid #8b5cf6;
-}
-
-.intel-step-num {
+.code-intel-card .intel-step-num {
   font-family: 'JetBrains Mono', 'Fira Code', monospace;
   font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.8px;
+  font-weight: 700;
+  color: #60a5fa;
   margin-bottom: 6px;
 }
 
-.card-emerald .intel-step-num { color: #34d399; }
-.card-amber .intel-step-num { color: #f59e0b; }
-.card-violet .intel-step-num { color: #a78bfa; }
-
-.hud-intel-card p {
+.code-intel-card p {
   color: #cbd5e1;
   font-size: 0.82rem;
   line-height: 1.45;
   margin: 0;
 }
 
-.hud-intel-card code {
-  color: #e2e8f0;
+.code-intel-card code {
+  color: #93c5fd;
   background: rgba(0, 0, 0, 0.4);
   padding: 1px 4px;
   border-radius: 4px;
@@ -9475,34 +9332,34 @@ body.modal-open {
 }
 
 /* Workspace Grid (Split View) */
-.antigravity-workspace-grid {
+.code-lab-workspace-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   min-height: 290px;
-  background: #06080d !important;
+  background: #0f172a !important;
 }
 
-.antigravity-editor-panel {
-  border-right: 1px solid rgba(52, 211, 153, 0.16) !important;
+.code-lab-editor-panel {
+  border-right: 1px solid #334155 !important;
   display: flex;
   flex-direction: column;
-  background: #070a10;
+  background: #0f172a;
 }
 
-.antigravity-preview-panel {
+.code-lab-preview-panel {
   display: flex;
   flex-direction: column;
-  background: #05070b;
+  background: #090d16;
 }
 
 /* Panel Tabs */
-.antigravity-panel-tab {
+.code-lab-panel-tab {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 10px 18px;
-  background: rgba(4, 6, 9, 0.96) !important;
-  border-bottom: 1px solid rgba(52, 211, 153, 0.16) !important;
+  background: #162032 !important;
+  border-bottom: 1px solid #334155 !important;
   font-size: 0.78rem;
   font-family: 'JetBrains Mono', 'Fira Code', monospace;
 }
@@ -9519,8 +9376,8 @@ body.modal-open {
 }
 
 .tab-tag-active {
-  background: rgba(16, 185, 129, 0.14);
-  color: #34d399;
+  background: rgba(11, 87, 208, 0.18);
+  color: #60a5fa;
   padding: 1px 6px;
   border-radius: 4px;
   font-size: 0.68rem;
@@ -9538,13 +9395,6 @@ body.modal-open {
   height: 7px;
   border-radius: 50%;
   background: #10b981;
-  box-shadow: 0 0 8px #10b981;
-  animation: editorDotPulse 2s infinite;
-}
-
-@keyframes editorDotPulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(0.85); }
 }
 
 .editor-live-text {
@@ -9560,19 +9410,19 @@ body.modal-open {
 }
 
 .preview-chip {
-  background: rgba(139, 92, 246, 0.14);
-  color: #c4b5fd;
-  border: 1px solid rgba(139, 92, 246, 0.3);
+  background: rgba(255, 255, 255, 0.08);
+  color: #94a3b8;
+  border: 1px solid #334155;
   font-size: 0.68rem;
   padding: 2px 7px;
-  border-radius: 5px;
+  border-radius: 4px;
   font-weight: 700;
 }
 
 .preview-badge-live {
-  background: rgba(16, 185, 129, 0.16) !important;
-  color: #34d399 !important;
-  border: 1px solid rgba(16, 185, 129, 0.35) !important;
+  background: rgba(5, 150, 105, 0.16) !important;
+  color: #10b981 !important;
+  border: 1px solid rgba(5, 150, 105, 0.35) !important;
   font-size: 0.68rem !important;
   padding: 2px 8px !important;
   border-radius: 12px !important;
@@ -9581,11 +9431,11 @@ body.modal-open {
 }
 
 /* Editor Wrapper & Line Numbers Gutter */
-.antigravity-editor-wrapper {
+.code-lab-editor-wrapper {
   flex: 1;
   position: relative;
   display: flex;
-  background: #070a10 !important;
+  background: #0f172a !important;
   min-height: 250px;
 }
 
@@ -9596,8 +9446,8 @@ body.modal-open {
   flex-direction: column;
   user-select: none;
   text-align: right;
-  border-right: 1px solid rgba(255, 255, 255, 0.06);
-  background: rgba(4, 6, 9, 0.7);
+  border-right: 1px solid #1e293b;
+  background: #0b1120;
   color: #475569;
   font-family: 'JetBrains Mono', 'Fira Code', monospace;
   font-size: 0.82rem;
@@ -9609,13 +9459,13 @@ body.modal-open {
   display: block;
 }
 
-.antigravity-code-textarea {
+.code-lab-code-textarea {
   flex: 1;
   width: calc(100% - 38px);
   min-height: 250px;
   padding: 16px 18px;
   background: transparent !important;
-  color: #f1f5f9 !important;
+  color: #f8fafc !important;
   font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace !important;
   font-size: 0.88rem !important;
   line-height: 1.6 !important;
@@ -9626,429 +9476,289 @@ body.modal-open {
   tab-size: 2;
   overflow-x: auto;
   scrollbar-width: thin;
-  scrollbar-color: rgba(52, 211, 153, 0.3) transparent;
+  scrollbar-color: #334155 transparent;
 }
 
-.antigravity-code-textarea:focus {
-  background: rgba(16, 185, 129, 0.02) !important;
+.code-lab-code-textarea:focus {
+  background: rgba(255, 255, 255, 0.01) !important;
 }
 
 /* Live Preview Stage & Canvas */
-.antigravity-preview-stage {
+.code-lab-preview-stage {
   flex: 1;
   min-height: 250px;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 40px 24px;
-  background: #05070b !important;
+  background-color: #090d16 !important;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 20px 20px;
   position: relative;
   overflow: hidden;
-  perspective: 1000px;
 }
 
-/* Floating Cosmic Particle Canvas Background */
-.antigravity-particles-canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* Reticle Crosshairs & Axis Grid */
-.chamber-crosshair {
-  position: absolute;
-  pointer-events: none;
-  opacity: 0.15;
-  z-index: 1;
-}
-
-.chamber-crosshair-h {
-  left: 0;
-  right: 0;
-  top: 50%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, #10b981, transparent);
-}
-
-.chamber-crosshair-v {
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  width: 1px;
-  background: linear-gradient(180deg, transparent, #10b981, transparent);
-}
-
-.chamber-axis-info {
-  position: absolute;
-  top: 10px;
-  left: 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  font-family: 'JetBrains Mono', 'Fira Code', monospace;
-  font-size: 0.65rem;
-  color: #475569;
-  letter-spacing: 0.5px;
-  pointer-events: none;
+.interactive-preview-canvas {
+  position: relative;
   z-index: 2;
-}
-
-/* 3D Perspective Parallax Chamber Wrapper */
-.antigravity-parallax-chamber {
-  position: relative;
-  z-index: 3;
   display: flex;
   align-items: center;
   justify-content: center;
-  transform-style: preserve-3d;
-  will-change: transform;
-  transition: transform 0.15s ease-out;
-}
-
-/* Weightless Levitation Wrapper with Hardware-Accelerated Transforms */
-.antigravity-levitation-wrap {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  will-change: transform;
-  transform: translate3d(0, var(--grav-y, -16px), 0) rotate(var(--grav-rot, -1.5deg));
-  transform-origin: center center;
-  transition: transform 0.08s linear;
-}
-
-/* 3 Quick Preset Animations (GPU offloaded with will-change) */
-
-/* 1. Zero-G Drift: Slow orbital float with emerald pulse */
-.antigravity-levitation-wrap.anim-drift,
-.antigravity-levitation-wrap.anim-orbit {
-  animation: zeroGDriftFloat 4.6s ease-in-out infinite;
-}
-
-@keyframes zeroGDriftFloat {
-  0%, 100% {
-    transform: translate3d(0, var(--grav-y, -16px), 0) rotate(var(--grav-rot, -1.5deg));
-    filter: drop-shadow(0 0 14px rgba(16, 185, 129, 0.4));
-  }
-  50% {
-    transform: translate3d(0, calc(var(--grav-y, -16px) - 10px), 0) rotate(calc(var(--grav-rot, -1.5deg) + 2deg));
-    filter: drop-shadow(0 0 28px rgba(52, 211, 153, 0.65)) drop-shadow(0 0 45px rgba(16, 185, 129, 0.3));
-  }
-}
-
-/* 2. Thruster Overdrive: High-frequency vibration with amber flame glow */
-.antigravity-levitation-wrap.anim-thruster,
-.antigravity-levitation-wrap.anim-hyper {
-  animation: thrusterOverdriveVibe 0.12s linear infinite alternate, thrusterFloatBob 2.4s ease-in-out infinite;
-}
-
-@keyframes thrusterOverdriveVibe {
-  0% {
-    transform: translate3d(-1px, var(--grav-y, -26px), 0) rotate(calc(var(--grav-rot, 1deg) - 0.5deg));
-    filter: drop-shadow(0 0 24px rgba(245, 158, 11, 0.8)) drop-shadow(0 0 40px rgba(239, 68, 68, 0.5));
-  }
-  100% {
-    transform: translate3d(1px, calc(var(--grav-y, -26px) + 1px), 0) rotate(calc(var(--grav-rot, 1deg) + 0.5deg));
-    filter: drop-shadow(0 0 34px rgba(245, 158, 11, 0.95)) drop-shadow(0 0 55px rgba(245, 158, 11, 0.6));
-  }
-}
-
-@keyframes thrusterFloatBob {
-  0%, 100% {
-    margin-top: 0px;
-  }
-  50% {
-    margin-top: -8px;
-  }
-}
-
-/* 3. Quantum Warp: 3D perspective spin with violet refraction */
-.antigravity-levitation-wrap.anim-warp {
-  animation: quantumWarpSpin 3.2s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
-}
-
-@keyframes quantumWarpSpin {
-  0%, 100% {
-    transform: translate3d(0, var(--grav-y, -32px), 0) rotate(var(--grav-rot, -5deg)) rotateY(0deg) scale(1);
-    filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.6)) drop-shadow(0 0 35px rgba(168, 85, 247, 0.4));
-  }
-  50% {
-    transform: translate3d(0, calc(var(--grav-y, -32px) - 12px), 0) rotate(calc(var(--grav-rot, -5deg) + 6deg)) rotateY(25deg) scale(1.06);
-    filter: drop-shadow(0 0 35px #a78bfa) drop-shadow(0 0 60px #8b5cf6);
-  }
+  width: 100%;
 }
 
 #sandboxLiveOutput {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: transform 0.2s ease;
 }
 
-/* Thruster Surge Impulse when Launch Simulation is clicked */
-.antigravity-pulse-active {
-  animation: thrusterSurge 0.9s ease-out !important;
+.btn-production-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+  outline: none;
 }
 
-@keyframes thrusterSurge {
-  0% { transform: scale(1) translateY(0); filter: drop-shadow(0 0 0 transparent); }
-  25% { transform: scale(1.12) translateY(-22px); filter: drop-shadow(0 0 30px #10b981) drop-shadow(0 0 50px #8b5cf6); }
-  60% { transform: scale(1.05) translateY(-12px); filter: drop-shadow(0 0 20px #34d399); }
-  100% { transform: scale(1) translateY(0); filter: drop-shadow(0 0 0 transparent); }
-}
-
-/* Live Dynamic Chamber Telemetry Badge */
-.chamber-telemetry-badge {
+/* Component Status Badge */
+.component-status-badge {
   position: absolute;
   bottom: 12px;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(6, 8, 13, 0.9);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(52, 211, 153, 0.3);
+  background: #1e293b;
+  border: 1px solid #334155;
   border-radius: 999px;
   padding: 5px 16px;
-  color: #34d399;
+  color: #10b981;
   font-family: 'JetBrains Mono', 'Fira Code', monospace;
   font-size: 0.68rem;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.4px;
   display: inline-flex;
   align-items: center;
   gap: 8px;
   z-index: 4;
   white-space: nowrap;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
 }
 
-.chamber-telemetry-badge i {
+.component-status-badge i {
   color: #10b981;
 }
 
 /* Action Bar */
-.antigravity-action-bar {
+.code-lab-action-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 16px;
-  padding: 18px 24px;
-  background: rgba(5, 7, 11, 0.98) !important;
-  border-top: 1px solid rgba(52, 211, 153, 0.16) !important;
+  padding: 16px 20px;
+  background: #1e293b !important;
+  border-top: 1px solid #334155 !important;
 }
 
-.antigravity-buttons-group {
+.code-lab-buttons-group {
   display: flex;
   align-items: center;
   gap: 12px;
   flex-wrap: wrap;
 }
 
-/* Cyber Gold/Amber Primary Launch Simulation Button */
-.btn-antigravity-launch {
+/* Enterprise Blue Run Button */
+.btn-code-lab-run {
   position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 9px;
-  padding: 13px 26px;
-  background: linear-gradient(135deg, #d97706 0%, #b45309 50%, #92400e 100%) !important;
-  border: 1px solid rgba(251, 191, 36, 0.6) !important;
-  border-radius: 12px !important;
-  color: #ffffff !important;
-  font-family: 'JetBrains Mono', 'Fira Code', 'Outfit', sans-serif !important;
-  font-size: 0.92rem !important;
-  font-weight: 800 !important;
-  letter-spacing: 0.6px !important;
-  cursor: pointer;
-  overflow: hidden;
-  box-shadow: 
-    0 10px 25px -5px rgba(217, 119, 6, 0.5),
-    0 0 20px rgba(245, 158, 11, 0.35),
-    inset 0 1px 1px rgba(255, 255, 255, 0.35) !important;
-  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.btn-launch-glow {
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
-  transition: 0.5s;
-}
-
-.btn-antigravity-launch:hover .btn-launch-glow {
-  left: 100%;
-}
-
-.btn-antigravity-launch:hover {
-  transform: translateY(-2px) scale(1.02);
-  background: linear-gradient(135deg, #f59e0b 0%, #d97706 50%, #b45309 100%) !important;
-  border-color: #fbbf24 !important;
-  box-shadow: 
-    0 15px 30px -5px rgba(245, 158, 11, 0.65),
-    0 0 30px rgba(245, 158, 11, 0.55),
-    inset 0 1px 1px rgba(255, 255, 255, 0.45) !important;
-}
-
-.btn-antigravity-launch:active {
-  transform: translateY(0) scale(0.98);
-}
-
-/* Glossy Secondary Reset Coordinates Button */
-.btn-antigravity-reset {
-  display: inline-flex;
-  align-items: center;
   gap: 8px;
-  padding: 13px 20px;
-  background: rgba(255, 255, 255, 0.05) !important;
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
-  border-radius: 12px !important;
-  color: #cbd5e1 !important;
+  padding: 11px 22px;
+  background: #0b57d0 !important;
+  border: 1px solid #2563eb !important;
+  border-radius: 8px !important;
+  color: #ffffff !important;
   font-family: 'JetBrains Mono', 'Fira Code', 'Outfit', sans-serif !important;
   font-size: 0.88rem !important;
   font-weight: 700 !important;
-  letter-spacing: 0.5px !important;
+  letter-spacing: 0.4px !important;
   cursor: pointer;
+  box-shadow: 0 2px 8px rgba(11, 87, 208, 0.3) !important;
   transition: all 0.2s ease;
-  backdrop-filter: blur(8px);
 }
 
-.btn-antigravity-reset:hover {
-  background: rgba(255, 255, 255, 0.12) !important;
-  border-color: #10b981 !important;
-  color: #34d399 !important;
+.btn-code-lab-run:hover {
+  background: #0947a8 !important;
   transform: translateY(-1px);
-  box-shadow: 0 0 16px rgba(16, 185, 129, 0.25) !important;
+  box-shadow: 0 4px 14px rgba(11, 87, 208, 0.4) !important;
 }
 
-.btn-antigravity-reset:active {
+.btn-code-lab-run:active {
   transform: translateY(0);
 }
 
-.antigravity-status-feedback {
-  font-family: 'JetBrains Mono', 'Fira Code', monospace !important;
+/* Secondary Reset Button */
+.btn-code-lab-reset {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 11px 18px;
+  background: transparent !important;
+  border: 1px solid #475569 !important;
+  border-radius: 8px !important;
+  color: #cbd5e1 !important;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Outfit', sans-serif !important;
   font-size: 0.84rem !important;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-code-lab-reset:hover {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border-color: #64748b !important;
+  color: #ffffff !important;
+}
+
+.btn-code-lab-reset:active {
+  transform: translateY(0);
+}
+
+.code-lab-status-feedback {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace !important;
+  font-size: 0.82rem !important;
   color: #94a3b8 !important;
 }
 
-.antigravity-status-feedback strong {
-  color: #34d399;
+.code-lab-status-feedback strong {
+  color: #60a5fa;
 }
 
-/* Success Achievement Banner */
-.antigravity-success-banner {
+/* Clean Success Achievement Banner */
+.code-lab-success-banner {
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 20px;
-  padding: 24px 28px !important;
-  background: linear-gradient(135deg, rgba(6, 78, 59, 0.95) 0%, rgba(6, 8, 13, 0.98) 100%) !important;
-  border-top: 2px solid #10b981 !important;
-  box-shadow: 0 -10px 40px rgba(16, 185, 129, 0.25) !important;
+  gap: 18px;
+  padding: 20px 24px !important;
+  background: #064e3b !important;
+  border-top: 2px solid #059669 !important;
+  box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.2) !important;
   color: #ffffff !important;
-  animation: bannerSlideUp 0.35s ease;
+  animation: bannerSlideUp 0.3s ease;
 }
 
-@keyframes bannerSlideUp {
-  from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
+.code-lab-success-content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+  min-width: 280px;
 }
 
-.antigravity-success-badge {
-  width: 52px !important;
-  height: 52px !important;
-  border-radius: 14px !important;
-  background: rgba(16, 185, 129, 0.25) !important;
-  border: 1px solid rgba(16, 185, 129, 0.5) !important;
-  color: #34d399 !important;
+.code-lab-success-badge {
+  width: 46px !important;
+  height: 46px !important;
+  border-radius: 10px !important;
+  background: rgba(5, 150, 105, 0.25) !important;
+  border: 1px solid rgba(5, 150, 105, 0.5) !important;
+  color: #10b981 !important;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.6rem !important;
+  font-size: 1.4rem !important;
   flex-shrink: 0;
-  box-shadow: 0 0 20px rgba(16, 185, 129, 0.4) !important;
+}
+
+.sandbox-success-title {
+  font-size: 1.05rem !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  margin: 0 0 4px 0 !important;
+}
+
+.sandbox-success-desc {
+  font-size: 0.88rem !important;
+  color: #d1fae5 !important;
+  margin: 0 !important;
+  line-height: 1.45 !important;
 }
 
 /* Responsive Media Queries */
 @media (max-width: 900px) {
-  .hud-sliders-matrix {
+  .code-lab-sliders-matrix {
     grid-template-columns: 1fr;
   }
 
-  .hud-intel-grid {
+  .code-lab-intel-grid {
     grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 768px) {
-  .antigravity-code-lab-section {
-    padding-top: 60px;
-    padding-bottom: 70px;
+  .code-lab-section {
+    padding-top: 50px;
+    padding-bottom: 60px;
   }
 
-  .antigravity-workspace-grid {
+  .code-lab-workspace-grid {
     grid-template-columns: 1fr !important;
   }
 
-  .antigravity-editor-panel {
+  .code-lab-editor-panel {
     border-right: none !important;
-    border-bottom: 1px solid rgba(52, 211, 153, 0.16) !important;
+    border-bottom: 1px solid #334155 !important;
   }
 
-  .antigravity-code-textarea {
-    min-height: 180px !important;
+  .code-lab-code-textarea {
+    min-height: 170px !important;
   }
 
-  .antigravity-preview-stage {
-    min-height: 200px !important;
-    padding: 30px 16px !important;
+  .code-lab-preview-stage {
+    min-height: 190px !important;
+    padding: 24px 14px !important;
   }
 
-  .antigravity-action-bar {
+  .code-lab-action-bar {
     flex-direction: column !important;
     align-items: stretch !important;
   }
 
-  .antigravity-buttons-group {
+  .code-lab-buttons-group {
     width: 100% !important;
   }
 
-  .antigravity-buttons-group button {
+  .code-lab-buttons-group button {
     flex: 1 !important;
     justify-content: center !important;
   }
 
-  .hud-telemetry-strip {
+  .code-lab-controls-strip {
     flex-direction: column;
     align-items: flex-start;
   }
 
-  .hud-telemetry-presets {
+  .code-lab-presets {
     width: 100%;
   }
 
-  .btn-hud-preset {
+  .btn-component-preset {
     flex: 1;
     justify-content: center;
   }
 
-  .hud-mission-row {
+  .code-lab-mission-row {
     flex-direction: column;
     align-items: flex-start;
   }
 
-  .btn-hud-hint-toggle {
+  .btn-code-lab-hint-toggle {
     width: 100%;
     justify-content: center;
   }
 
-  .antigravity-success-banner {
+  .code-lab-success-banner {
     flex-direction: column !important;
     align-items: stretch !important;
   }

@@ -437,7 +437,7 @@
                 <i class="fa-solid fa-keyboard"></i>
                 <div>
                   <strong>Hands-On</strong>
-                  <span>Antigravity Physics Code Lab &amp; live check</span>
+                  <span>Interactive Code Sandbox &amp; Instant Logic Feedback</span>
                 </div>
               </div>
               <div class="spike-feature-box">
@@ -476,265 +476,235 @@
 
         </div>
 
-      </div>
-    </section>
-
-    <!-- 4B. ANTIGRAVITY PHYSICS CODE LAB (#tryCoding) -->
-    <section class="section-padding interactive-sandbox-section antigravity-code-lab-section" id="tryCoding">
+    <!-- 4B. INTERACTIVE CODE LAB (#tryCoding) -->
+    <section class="section-padding interactive-sandbox-section code-lab-section" id="tryCoding">
       <div class="container">
         <!-- Section Header & Tagline -->
-        <div class="section-head-centered antigravity-section-head">
-          <div class="section-eyebrow antigravity-badge">
-            <span class="antigravity-pulse-dot"></span>
-            <span>🛸 ANTIGRAVITY ENGINE &amp; CODE LAB</span>
+        <div class="section-head-centered code-lab-section-head">
+          <div class="section-eyebrow code-lab-badge">
+            <span class="code-lab-pulse-dot"></span>
+            <span>💻 INTERACTIVE CODE LAB // Experience Hands-On Engineering</span>
           </div>
-          <h2 class="section-heading-corporate antigravity-heading">Defy Limits. Code Beyond Gravity.</h2>
-          <p class="section-subtext-corporate antigravity-subheading">
-            Experience a physics-driven, zero-gravity UI component sandbox. Tweak code and watch elements float and
-            react in real-time.
+          <h2 class="section-heading-corporate code-lab-heading">Experience Hands-On Engineering</h2>
+          <p class="section-subtext-corporate code-lab-subheading">
+            Test live code components right in your browser. Real-world skills, zero setup.
           </p>
         </div>
 
-        <!-- Glassmorphism Sandbox IDE Container -->
-        <div class="sandbox-ide-card antigravity-ide-card">
-          <!-- IDE Header with macOS dots & Telemetry Status -->
-          <div class="sandbox-ide-header antigravity-ide-header">
+        <!-- Professional Code Lab IDE Container -->
+        <div class="sandbox-ide-card code-lab-ide-card">
+          <!-- IDE Header with macOS dots & Live Status -->
+          <div class="sandbox-ide-header code-lab-ide-header">
             <div class="sandbox-mac-dots">
-              <span class="mac-dot mac-dot-red" title="Orbital Lock"></span>
-              <span class="mac-dot mac-dot-yellow" title="Telemetry Sync"></span>
-              <span class="mac-dot mac-dot-green" title="Antigravity Thrusters On"></span>
+              <span class="mac-dot mac-dot-red" title="Close"></span>
+              <span class="mac-dot mac-dot-yellow" title="Minimize"></span>
+              <span class="mac-dot mac-dot-green" title="Expand"></span>
             </div>
-            <div class="sandbox-ide-title antigravity-ide-title">
-              <i class="fa-solid fa-satellite-dish antigravity-radar-icon"></i>
-              <span>ANTIGRAVITY OS // PHYSICS LAB v2.4</span>
+            <div class="sandbox-ide-title code-lab-ide-title">
+              <i class="fa-solid fa-code code-lab-header-icon"></i>
+              <span>CODE LAB // LIVE COMPONENT PLAYGROUND</span>
             </div>
-            <div class="antigravity-status-pill">
-              <span class="antigravity-live-beacon"></span>
-              <span>ZERO-G SIMULATOR</span>
+            <div class="code-lab-status-pill">
+              <span class="code-lab-live-beacon"></span>
+              <span>LIVE ENVIRONMENT</span>
             </div>
           </div>
 
-          <!-- Futuristic Telemetry HUD (Heads-Up Display) -->
-          <div class="antigravity-telemetry-hud">
-            <!-- HUD Sci-Fi Corner Brackets -->
-            <div class="hud-bracket hud-bracket-tl"></div>
-            <div class="hud-bracket hud-bracket-tr"></div>
-            <div class="hud-bracket hud-bracket-bl"></div>
-            <div class="hud-bracket hud-bracket-br"></div>
-
-            <!-- Telemetry Status Bar -->
-            <div class="hud-telemetry-strip">
-              <div class="hud-telemetry-readouts">
-                <span class="hud-metric">
-                  <i class="fa-solid fa-gauge-high hud-accent-emerald"></i> SYS.STATUS: <strong class="hud-accent-emerald">ZERO-G ACTIVE</strong>
+          <!-- Component Controls & Styles Strip -->
+          <div class="code-lab-controls-panel">
+            <!-- Telemetry & Preset Status Bar -->
+            <div class="code-lab-controls-strip">
+              <div class="code-lab-spec-readouts">
+                <span class="control-metric">
+                  <i class="fa-solid fa-layer-group code-accent-blue"></i> SPEC: <strong class="code-accent-blue">CSS3 COMPONENT</strong>
                 </span>
-                <span class="hud-sep">//</span>
-                <span class="hud-metric">
-                  <i class="fa-solid fa-compass hud-accent-amber"></i> COORDS: <strong id="hudCoordsVal" class="hud-accent-amber">X:00 | Y:-16px | ROT:-1.5°</strong>
+                <span class="control-sep">//</span>
+                <span class="control-metric">
+                  <i class="fa-solid fa-sliders code-accent-emerald"></i> CONFIG: <strong id="hudCoordsVal" class="code-accent-emerald">RADIUS: 10px | PADDING: 14px | SHADOW: 12px</strong>
                 </span>
-                <span class="hud-sep">//</span>
-                <span class="hud-metric">
-                  <i class="fa-solid fa-weight-scale hud-accent-violet"></i> FIELD: <strong id="hudGravityVal" class="hud-accent-violet">0.08G (MICROGRAVITY)</strong>
+                <span class="control-sep">//</span>
+                <span class="control-metric">
+                  <i class="fa-solid fa-shield-halved code-accent-blue"></i> STATE: <strong id="hudGravityVal" class="code-accent-blue">PRODUCTION-READY</strong>
                 </span>
               </div>
-              <div class="hud-telemetry-presets">
-                <span class="hud-preset-lbl">QUICK PRESETS:</span>
-                <button type="button" class="btn-hud-preset preset-emerald active" onclick="applyGravityPreset('drift')"
-                  title="Zero-G Drift: Slow orbital float with emerald pulse">
-                  <i class="fa-solid fa-bolt"></i> ⚡ Zero-G Drift
+              <div class="code-lab-presets">
+                <span class="code-lab-preset-lbl">STYLE PRESETS:</span>
+                <button type="button" class="btn-component-preset preset-blue active" onclick="applyComponentPreset('enterprise')"
+                  title="Enterprise Blue: Clean solid deep-blue production CTA">
+                  <i class="fa-solid fa-briefcase"></i> 💼 Enterprise Blue
                 </button>
-                <button type="button" class="btn-hud-preset preset-amber" onclick="applyGravityPreset('thruster')"
-                  title="Thruster Overdrive: High-frequency vibration with amber flame glow">
-                  <i class="fa-solid fa-fire-flame-curved"></i> 🔥 Thruster Overdrive
+                <button type="button" class="btn-component-preset preset-gradient" onclick="applyComponentPreset('gradient')"
+                  title="Modern Gradient: Vibrant two-tone gradient CTA">
+                  <i class="fa-solid fa-wand-magic-sparkles"></i> 🚀 Modern Gradient
                 </button>
-                <button type="button" class="btn-hud-preset preset-violet" onclick="applyGravityPreset('warp')"
-                  title="Quantum Warp: 3D perspective spin with violet refraction">
-                  <i class="fa-solid fa-tornado"></i> 🌀 Quantum Warp
+                <button type="button" class="btn-component-preset preset-emerald" onclick="applyComponentPreset('emerald')"
+                  title="Emerald Success: High-conversion verified green CTA">
+                  <i class="fa-solid fa-circle-check"></i> 🌿 Emerald Success
                 </button>
               </div>
             </div>
 
-            <!-- Hardware Physics Sliders Matrix -->
-            <div class="hud-sliders-matrix">
-              <div class="hud-slider-tile tile-emerald">
-                <div class="hud-slider-header">
-                  <span class="hud-slider-name"><i class="fa-solid fa-weight-scale"></i> GRAVITY FIELD (G)</span>
-                  <span class="hud-slider-val hud-accent-emerald" id="sliderValGravity">0.08G</span>
+            <!-- Real CSS Component Sliders Matrix -->
+            <div class="code-lab-sliders-matrix">
+              <div class="code-slider-tile">
+                <div class="code-slider-header">
+                  <span class="code-slider-name"><i class="fa-solid fa-vector-square"></i> BORDER RADIUS</span>
+                  <span class="code-slider-val code-accent-blue" id="sliderValGravity">10px</span>
                 </div>
-                <input type="range" class="hud-slider-input slider-emerald" id="sliderGravity" min="0" max="1" step="0.01" value="0.08" aria-label="Gravity Field">
+                <input type="range" class="code-slider-input slider-blue" id="sliderGravity" min="0" max="32" step="1" value="10" aria-label="Border Radius">
               </div>
 
-              <div class="hud-slider-tile tile-amber">
-                <div class="hud-slider-header">
-                  <span class="hud-slider-name"><i class="fa-solid fa-arrows-up-down"></i> VERTICAL DRIFT (Y)</span>
-                  <span class="hud-slider-val hud-accent-amber" id="sliderValY">-16px</span>
+              <div class="code-slider-tile">
+                <div class="code-slider-header">
+                  <span class="code-slider-name"><i class="fa-solid fa-arrows-up-down"></i> VERTICAL PADDING</span>
+                  <span class="code-slider-val code-accent-blue" id="sliderValY">14px</span>
                 </div>
-                <input type="range" class="hud-slider-input slider-amber" id="sliderY" min="-40" max="10" step="1" value="-16" aria-label="Vertical Drift">
+                <input type="range" class="code-slider-input slider-blue" id="sliderY" min="8" max="24" step="1" value="14" aria-label="Vertical Padding">
               </div>
 
-              <div class="hud-slider-tile tile-violet">
-                <div class="hud-slider-header">
-                  <span class="hud-slider-name"><i class="fa-solid fa-rotate"></i> ROTATIONAL TILT (DEG)</span>
-                  <span class="hud-slider-val hud-accent-violet" id="sliderValRot">-1.5°</span>
+              <div class="code-slider-tile">
+                <div class="code-slider-header">
+                  <span class="code-slider-name"><i class="fa-solid fa-cloud-arrow-up"></i> ELEVATION SHADOW</span>
+                  <span class="code-slider-val code-accent-emerald" id="sliderValRot">12px</span>
                 </div>
-                <input type="range" class="hud-slider-input slider-violet" id="sliderRot" min="-15" max="15" step="0.5" value="-1.5" aria-label="Rotational Tilt">
+                <input type="range" class="code-slider-input slider-emerald" id="sliderRot" min="0" max="30" step="1" value="12" aria-label="Elevation Shadow">
               </div>
             </div>
 
             <!-- Mission Directive Prompt -->
-            <div class="hud-mission-row">
-              <div class="hud-mission-content">
-                <div class="hud-mission-badge">
-                  <i class="fa-solid fa-crosshairs"></i> MISSION DIRECTIVE
+            <div class="code-lab-mission-row">
+              <div class="code-lab-mission-content">
+                <div class="code-lab-mission-badge">
+                  <i class="fa-solid fa-bullseye"></i> PRACTICAL CHALLENGE
                 </div>
-                <div class="hud-mission-instructions">
-                  <strong>Mission: Calibrate zero-g quantum thrusters</strong>
-                  <span>&mdash; Move sliders or edit code! Real-time transforms (<code>--grav-y</code>, <code>--grav-rot</code>) stream directly to GPU at 60fps.</span>
+                <div class="code-lab-mission-instructions">
+                  <strong>Mission: Style a Production Call-To-Action Component</strong>
+                  <span>&mdash; Adjust sliders or edit CSS properties directly in the editor to customize button radius, padding, and elevation.</span>
                 </div>
               </div>
-              <button type="button" class="btn-hud-hint-toggle" id="sandboxHintBtn" onclick="toggleSandboxHint()">
-                <i class="fa-solid fa-terminal"></i>
-                <span>Telemetry Intel</span>
+              <button type="button" class="btn-code-lab-hint-toggle" id="sandboxHintBtn" onclick="toggleSandboxHint()">
+                <i class="fa-solid fa-lightbulb"></i>
+                <span>Component Tips</span>
               </button>
             </div>
 
-            <!-- Telemetry Diagnostic Intel Drawer -->
-            <div class="sandbox-hint-bubble hud-intel-drawer" id="sandboxHintBubble" style="display: none;">
-              <div class="hud-intel-grid">
-                <div class="hud-intel-card card-emerald">
-                  <div class="intel-step-num">ACTION 01 &bull; ELEVATION</div>
-                  <p>Fine-tune vertical drift using slider or <code>transform: translateY(-24px) rotate(-3deg);</code> for higher orbital float.</p>
+            <!-- Component Tips Drawer -->
+            <div class="sandbox-hint-bubble code-lab-intel-drawer" id="sandboxHintBubble" style="display: none;">
+              <div class="code-lab-intel-grid">
+                <div class="code-intel-card">
+                  <div class="intel-step-num">TIP 01 &bull; ERGONOMIC CORNERS</div>
+                  <p>Production buttons often use <code>border-radius: 8px to 12px</code> for a balanced, modern feel that guides user focus.</p>
                 </div>
-                <div class="hud-intel-card card-amber">
-                  <div class="intel-step-num">ACTION 02 &bull; PLASMA GLOW</div>
-                  <p>Ignite thrusters with cyber amber or emerald glow:
-                    <code>box-shadow: 0 20px 40px rgba(16, 185, 129, 0.5), 0 0 25px rgba(245, 158, 11, 0.4);</code>
-                  </p>
+                <div class="code-intel-card">
+                  <div class="intel-step-num">TIP 02 &bull; HIT TARGET PADDING</div>
+                  <p>Touch standards recommend at least <code>44px</code> height. Setting <code>padding: 14px 28px</code> ensures comfortable tap targets across mobile and desktop.</p>
                 </div>
-                <div class="hud-intel-card card-violet">
-                  <div class="intel-step-num">ACTION 03 &bull; HULL SHIELD</div>
-                  <p>Stabilize magnetic hull: <code>border: 1px solid #34d399; border-radius: 14px;</code></p>
+                <div class="code-intel-card">
+                  <div class="intel-step-num">TIP 03 &bull; DEPTH &amp; CONTRAST</div>
+                  <p>Subtle color-tinted shadows like <code>0 12px 24px rgba(11, 87, 208, 0.25)</code> establish visual hierarchy without clutter.</p>
                 </div>
               </div>
             </div>
           </div>
 
           <!-- Split View Layout: Code Editor (Left) & Live Preview Canvas (Right) -->
-          <div class="sandbox-workspace-grid antigravity-workspace-grid">
+          <div class="sandbox-workspace-grid code-lab-workspace-grid">
             <!-- Left / Top: Interactive Code Editor Panel -->
-            <div class="sandbox-editor-panel antigravity-editor-panel">
-              <div class="sandbox-panel-tab antigravity-panel-tab">
+            <div class="sandbox-editor-panel code-lab-editor-panel">
+              <div class="sandbox-panel-tab code-lab-panel-tab">
                 <div class="tab-label-group">
-                  <i class="fa-brands fa-css3-alt hud-accent-emerald"></i>
-                  <span class="tab-title-text">antigravity-thruster.css</span>
-                  <span class="tab-tag-active">MUTABLE</span>
+                  <i class="fa-brands fa-css3-alt code-accent-blue"></i>
+                  <span class="tab-title-text">call-to-action.css</span>
+                  <span class="tab-tag-active">EDITABLE</span>
                 </div>
                 <div class="tab-telemetry-indicator">
                   <span class="editor-active-dot" title="Editor Active"></span>
-                  <span class="editor-live-text">LIVE KERNEL</span>
+                  <span class="editor-live-text">READY</span>
                 </div>
               </div>
-              <div class="sandbox-editor-wrapper antigravity-editor-wrapper">
+              <div class="sandbox-editor-wrapper code-lab-editor-wrapper">
                 <div class="code-editor-gutter" id="codeEditorGutter" aria-hidden="true"></div>
-                <textarea id="sandboxCodeInput" class="sandbox-code-textarea antigravity-code-textarea"
-                  spellcheck="false" autocomplete="off" autocapitalize="off" aria-label="Antigravity Code Editor">&lt;button class="antigravity-thruster-btn" style="
-  background: linear-gradient(135deg, #064e3b 0%, #065f46 50%, #022c22 100%);
-  color: #34d399;
-  border: 1px solid rgba(52, 211, 153, 0.5);
-  box-shadow: 0 16px 36px rgba(16, 185, 129, 0.45), 0 0 24px rgba(52, 211, 153, 0.35);
-  transform: translateY(-16px) rotate(-1.5deg);
-  border-radius: 12px;
+                <textarea id="sandboxCodeInput" class="sandbox-code-textarea code-lab-code-textarea"
+                  spellcheck="false" autocomplete="off" autocapitalize="off" aria-label="Component Code Editor">&lt;button class="btn-production-cta" style="
+  background: #0b57d0;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
   padding: 14px 28px;
+  font-size: 16px;
   font-weight: 700;
-  letter-spacing: 0.5px;
+  box-shadow: 0 12px 24px rgba(11, 87, 208, 0.25);
+  cursor: pointer;
+  transition: all 0.2s ease;
 "&gt;
-  🛸 Defy Gravity
+  Get Started Free &rarr;
 &lt;/button&gt;</textarea>
               </div>
             </div>
 
             <!-- Right / Bottom: Interactive Live Preview Canvas -->
-            <div class="sandbox-preview-panel antigravity-preview-panel">
-              <div class="sandbox-panel-tab antigravity-panel-tab">
+            <div class="sandbox-preview-panel code-lab-preview-panel">
+              <div class="sandbox-panel-tab code-lab-panel-tab">
                 <div class="tab-label-group">
-                  <i class="fa-solid fa-atom fa-spin hud-accent-emerald" style="--fa-animation-duration: 8s;"></i>
-                  <span class="tab-title-text">Zero-Gravity Preview Chamber</span>
+                  <i class="fa-solid fa-laptop-code code-accent-blue"></i>
+                  <span class="tab-title-text">Live Component Preview</span>
                 </div>
                 <div class="preview-stage-chips">
-                  <span class="preview-chip" id="previewTiltChip">TILT: -1.5°</span>
-                  <span class="preview-badge-live">WEIGHTLESS</span>
+                  <span class="preview-chip" id="previewTiltChip">RADIUS: 10px</span>
+                  <span class="preview-badge-live">LIVE RENDER</span>
                 </div>
               </div>
-              <div class="sandbox-preview-stage antigravity-preview-stage" id="sandboxPreviewStage">
-                <!-- Floating Cosmic Particle Canvas Background -->
-                <canvas id="sandboxParticleCanvas" class="antigravity-particles-canvas"></canvas>
-
-                <!-- Chamber Reticle Crosshairs & Orbital Grid Lines -->
-                <div class="chamber-crosshair chamber-crosshair-h"></div>
-                <div class="chamber-crosshair chamber-crosshair-v"></div>
-                <div class="chamber-axis-info">
-                  <span class="axis-mark-y">-Y [ANTIGRAVITY DRIFT]</span>
-                  <span class="axis-mark-x">+X [THRUSTER VECTOR]</span>
-                </div>
-
-                <!-- 3D Perspective Parallax Chamber Wrapper -->
-                <div class="antigravity-parallax-chamber" id="antigravityParallaxChamber">
-                  <!-- Weightless Levitation Wrapper with smooth floating animation -->
-                  <div class="antigravity-levitation-wrap" id="antigravityLevitationWrap"
-                    style="--grav-y: -16px; --grav-rot: -1.5deg; --grav-field: 0.08;">
-                    <div id="sandboxLiveOutput">
-                      <button class="antigravity-thruster-btn"
-                        style="background: linear-gradient(135deg, #064e3b 0%, #065f46 50%, #022c22 100%); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.5); box-shadow: 0 16px 36px rgba(16, 185, 129, 0.45), 0 0 24px rgba(52, 211, 153, 0.35); transform: translateY(-16px) rotate(-1.5deg); border-radius: 12px; padding: 14px 28px; font-weight: 700; letter-spacing: 0.5px;">
-                        🛸 Defy Gravity
-                      </button>
-                    </div>
+              <div class="sandbox-preview-stage code-lab-preview-stage" id="sandboxPreviewStage">
+                <!-- Preview Canvas Stage -->
+                <div class="interactive-preview-canvas" id="interactivePreviewContainer">
+                  <div id="sandboxLiveOutput">
+                    <button class="btn-production-cta" style="background: #0b57d0; color: #ffffff; border: none; border-radius: 10px; padding: 14px 28px; font-size: 16px; font-weight: 700; box-shadow: 0 12px 24px rgba(11, 87, 208, 0.25); cursor: pointer; transition: all 0.2s ease;">
+                      Get Started Free &rarr;
+                    </button>
                   </div>
                 </div>
 
                 <!-- Live Dynamic Telemetry Chamber Readout -->
-                <div class="chamber-telemetry-badge" id="chamberTelemetryBadge">
-                  <i class="fa-solid fa-circle-nodes"></i>
-                  <span id="chamberTelemetryText">PHYSICS: LEVITATING // ELEVATION: -16px // MICROGRAVITY: 0.08G</span>
+                <div class="chamber-telemetry-badge component-status-badge" id="chamberTelemetryBadge">
+                  <i class="fa-solid fa-circle-check"></i>
+                  <span id="chamberTelemetryText">STATUS: PRODUCTION-READY // PADDING: 14px 28px // RADIUS: 10px</span>
                 </div>
               </div>
             </div>
           </div>
 
           <!-- Action Buttons & High-Tech Feedback Bar -->
-          <div class="sandbox-action-bar antigravity-action-bar">
-            <div class="sandbox-buttons-group antigravity-buttons-group">
-              <button type="button" class="btn-antigravity-launch" id="sandboxRunBtn" onclick="runSandboxVerify()">
-                <span class="btn-launch-glow"></span>
-                <i class="fa-solid fa-rocket"></i>
-                <span>[ 🚀 Launch Simulation ]</span>
+          <div class="sandbox-action-bar code-lab-action-bar">
+            <div class="sandbox-buttons-group code-lab-buttons-group">
+              <button type="button" class="btn-code-lab-run" id="sandboxRunBtn" onclick="runSandboxVerify()">
+                <i class="fa-solid fa-bolt"></i>
+                <span>[ ⚡ Run &amp; Preview Component ]</span>
               </button>
-              <button type="button" class="btn-antigravity-reset" id="sandboxResetBtn"
+              <button type="button" class="btn-code-lab-reset" id="sandboxResetBtn"
                 onclick="resetSandboxChallenge()">
                 <i class="fa-solid fa-rotate-left"></i>
-                <span>[ 🔄 Reset Coordinates ]</span>
+                <span>[ 🔄 Reset Code ]</span>
               </button>
             </div>
-            <div class="sandbox-status-feedback antigravity-status-feedback" id="sandboxStatusFeedback">
+            <div class="sandbox-status-feedback code-lab-status-feedback" id="sandboxStatusFeedback">
               <span class="sandbox-feedback-prompt">
-                <i class="fa-solid fa-satellite"></i> Tweak CSS coordinates above &amp; click <strong>"[ 🚀 Launch
-                  Simulation ]"</strong> to ignite thrusters.
+                <i class="fa-solid fa-circle-info"></i> Tweak CSS properties above &amp; click <strong>"[ ⚡ Run &amp;
+                  Preview Component ]"</strong> to verify.
               </span>
             </div>
           </div>
 
-          <!-- Success Achievement Banner (Revealed on Launch Simulation) -->
-          <div class="sandbox-success-banner antigravity-success-banner" id="sandboxSuccessBanner"
+          <!-- Success Achievement Banner (Revealed on Run & Preview) -->
+          <div class="sandbox-success-banner code-lab-success-banner" id="sandboxSuccessBanner"
             style="display: none;">
-            <div class="sandbox-success-content antigravity-success-content">
-              <div class="sandbox-success-badge antigravity-success-badge">
-                <i class="fa-solid fa-user-astronaut"></i>
+            <div class="sandbox-success-content code-lab-success-content">
+              <div class="sandbox-success-badge code-lab-success-badge">
+                <i class="fa-solid fa-circle-check"></i>
               </div>
               <div>
-                <h4 class="sandbox-success-title">🛸 ZERO-G ORBIT ATTAINED! Flight Telemetry Stabilized.</h4>
+                <h4 class="sandbox-success-title">🎉 Component Rendered! You're writing production-ready frontend code.</h4>
                 <p class="sandbox-success-desc">
-                  You successfully engineered and calibrated a physics-driven UI component. You have the exact builder
-                  mindset required for next-gen software engineering. Launch your journey with Karka's Pay After
-                  Placement model.
+                  You styled and validated an interactive UI component just like professional software engineers do every day. Take the next step toward a high-growth tech career with Karka's Pay After Placement program.
                 </p>
               </div>
             </div>
