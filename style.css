@@ -3015,7 +3015,7 @@ h6 {
 .reviews-carousel-track {
   display: flex;
   gap: 1.5rem;
-  transition: transform 0.35s ease;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
   cursor: grab;
 }
 
@@ -3030,6 +3030,7 @@ h6 {
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
+  transition: opacity 0.35s ease, transform 0.35s ease;
 }
 
 .review-stars {
@@ -3434,12 +3435,15 @@ button.faq-question,
 
 .faq-answer {
   display: none;
-  padding: 0 1.6rem 1.4rem;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, padding 0.3s ease;
+  opacity: 0;
+  padding: 0 1.6rem 0;
   font-size: 0.95rem;
   color: var(--text-secondary);
   line-height: 1.65;
   border-top: 1px solid var(--border-hairline);
-  padding-top: 1rem;
 }
 
 .faq-answer p {
@@ -3450,19 +3454,8 @@ button.faq-question,
 
 .faq-item.active .faq-answer {
   display: block;
-  animation: faqFadeIn 0.25s ease-in-out;
-}
-
-@keyframes faqFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-4px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  opacity: 1;
+  padding: 1rem 1.6rem 1.4rem;
 }
 
 /* Bottom FAQ Support Card */
@@ -8343,6 +8336,21 @@ input[type=range], .infosys-range-slider {
 /* ==========================================================================
    GLOBAL BADGE, CARD, & OVERFLOW PROTECTION
    ========================================================================== */
+.card-header,
+.track-card-header,
+.bootcamp-card-header,
+.pro-card-header,
+.platform-head,
+.pap-badge,
+.track-badge,
+.badge-pill {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 6px !important;
+  white-space: normal !important;
+  word-break: break-word !important;
+}
+
 .badge, .track-badge, .pap-badge, .card-badge, .badge-pill, [class*="badge"], [class*="tag"] {
   max-width: 100% !important;
   white-space: normal !important;
@@ -8352,12 +8360,25 @@ input[type=range], .infosys-range-slider {
 
 /* Card header row containing title and badges */
 .card-header, .track-card-header, .bootcamp-card-header, .pro-card-header, .platform-head {
-  display: flex !important;
-  flex-wrap: wrap !important;
   justify-content: space-between !important;
   align-items: flex-start !important;
-  gap: 8px !important;
   width: 100% !important;
+}
+
+/* Viewport 320px - 768px Badge Bleed Prevention */
+@media (min-width: 320px) and (max-width: 768px) {
+  .badge, .track-badge, .pap-badge, .card-badge, .badge-pill, [class*="badge"], [class*="tag"] {
+    max-width: 100% !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+    box-sizing: border-box !important;
+  }
+  .card-header, .track-card-header, .bootcamp-card-header, .pro-card-header, .platform-head {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+  }
 }
 
 /* 3. PREVENT ANY CARD OVERFLOW GLOBALLY: */
@@ -9116,6 +9137,14 @@ body.modal-open {
   box-shadow: 0 0 12px rgba(56, 189, 248, 0.35);
 }
 
+.btn-hud-preset.active {
+  background: rgba(56, 189, 248, 0.28) !important;
+  border-color: #38bdf8 !important;
+  color: #38bdf8 !important;
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.45) !important;
+  transform: translateY(-1px) !important;
+}
+
 /* Mission Prompt Row */
 .hud-mission-row {
   display: flex;
@@ -9493,6 +9522,40 @@ body.modal-open {
   }
   75% {
     transform: translateY(-6px) rotate(0.8deg);
+  }
+}
+
+.antigravity-levitation-wrap.anim-orbit {
+  animation: zeroGravityFloat 3.6s ease-in-out infinite !important;
+}
+
+.antigravity-levitation-wrap.anim-hyper {
+  animation: hyperGlowFloat 2.4s ease-in-out infinite !important;
+}
+
+.antigravity-levitation-wrap.anim-warp {
+  animation: warpVortexFloat 2.8s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite !important;
+}
+
+@keyframes hyperGlowFloat {
+  0%, 100% {
+    transform: translateY(-16px) rotate(0deg) scale(1);
+    filter: drop-shadow(0 0 12px rgba(6, 182, 212, 0.45));
+  }
+  50% {
+    transform: translateY(-26px) rotate(2deg) scale(1.05);
+    filter: drop-shadow(0 0 32px #06b6d4) drop-shadow(0 0 45px #6366f1);
+  }
+}
+
+@keyframes warpVortexFloat {
+  0%, 100% {
+    transform: translateY(-20px) rotate(4deg) skewX(-3deg) scale(1);
+    filter: drop-shadow(0 0 15px rgba(168, 85, 247, 0.5));
+  }
+  50% {
+    transform: translateY(-28px) rotate(-3deg) skewX(2deg) scale(1.04);
+    filter: drop-shadow(0 0 30px #a855f7) drop-shadow(0 0 45px #38bdf8);
   }
 }
 

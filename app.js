@@ -560,31 +560,67 @@ function initReviewsCarousel() {
   if (!track || !prevBtn || !nextBtn) return;
 
   let currentOffset = 0;
-  const cardWidth = 355; // card width + gap
+
+  function getStep() {
+    const firstCard = track.querySelector('.review-card:not(.hidden)');
+    if (!firstCard) return 360;
+    const gap = parseFloat(window.getComputedStyle(track).gap) || 24;
+    return firstCard.offsetWidth + gap;
+  }
+
+  function getMaxScroll() {
+    const visibleCards = track.querySelectorAll('.review-card:not(.hidden)');
+    if (!visibleCards.length) return 0;
+    const wrapper = track.parentElement;
+    const wrapperWidth = wrapper ? wrapper.clientWidth : 1100;
+    const step = getStep();
+    const totalWidth = visibleCards.length * step - 24;
+    return Math.max(0, totalWidth - wrapperWidth);
+  }
+
+  function updateTransform() {
+    track.style.transition = 'transform 0.4s cubic-bezier(0.25, 1, 0.5, 1)';
+    track.style.transform = `translateX(${currentOffset}px)`;
+  }
 
   window._reviewsCarouselReset = function() {
     currentOffset = 0;
-    track.style.transform = 'translateX(0px)';
+    updateTransform();
   };
 
-  nextBtn.addEventListener('click', () => {
-    const visibleCards = track.querySelectorAll('.review-card:not(.hidden)');
-    const visibleCount = visibleCards.length;
-    const maxScroll = Math.max(0, (visibleCount - 1) * cardWidth);
+  nextBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    const maxScroll = getMaxScroll();
+    if (maxScroll <= 0) return;
+    const step = getStep();
 
-    if (Math.abs(currentOffset) + cardWidth <= maxScroll) {
-      currentOffset -= cardWidth;
-      track.style.transform = `translateX(${currentOffset}px)`;
+    if (Math.abs(currentOffset) + 10 < maxScroll) {
+      currentOffset = Math.max(-maxScroll, currentOffset - step);
     } else {
-      currentOffset = 0;
-      track.style.transform = `translateX(0px)`;
+      currentOffset = 0; // loop back to first
     }
+    updateTransform();
   });
 
-  prevBtn.addEventListener('click', () => {
-    if (currentOffset < 0) {
-      currentOffset += cardWidth;
-      track.style.transform = `translateX(${currentOffset}px)`;
+  prevBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    const maxScroll = getMaxScroll();
+    if (maxScroll <= 0) return;
+    const step = getStep();
+
+    if (currentOffset < -10) {
+      currentOffset = Math.min(0, currentOffset + step);
+    } else {
+      currentOffset = -maxScroll; // loop to last
+    }
+    updateTransform();
+  });
+
+  window.addEventListener('resize', () => {
+    const maxScroll = getMaxScroll();
+    if (Math.abs(currentOffset) > maxScroll) {
+      currentOffset = -maxScroll;
+      updateTransform();
     }
   });
 }
@@ -596,6 +632,11 @@ function initFaqAccordion() {
   const faqQuestions = document.querySelectorAll('.faq-question');
 
   faqQuestions.forEach(btn => {
+    btn.onclick = (e) => {
+      e.preventDefault();
+      window.toggleFaq(btn);
+    };
+
     btn.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
@@ -611,17 +652,48 @@ window.toggleFaq = function(buttonEl) {
   if (!item) return;
   const answer = item.querySelector('.faq-answer');
   const isOpen = item.classList.contains('active');
+
+  // Single open accordion pattern: close all other open FAQs smoothly
   document.querySelectorAll('.faq-item').forEach(el => {
-    el.classList.remove('active');
-    const ans = el.querySelector('.faq-answer');
-    if (ans) ans.style.display = 'none';
-    const btn = el.querySelector('.faq-question');
-    if (btn) btn.setAttribute('aria-expanded', 'false');
+    if (el !== item) {
+      el.classList.remove('active');
+      const ans = el.querySelector('.faq-answer');
+      if (ans) {
+        ans.style.maxHeight = null;
+        ans.style.display = 'none';
+      }
+      const btn = el.querySelector('.faq-question');
+      if (btn) btn.setAttribute('aria-expanded', 'false');
+    }
   });
-  if (!isOpen) {
+
+  if (isOpen) {
+    item.classList.remove('active');
+    buttonEl.setAttribute('aria-expanded', 'false');
+    if (answer) {
+      answer.style.maxHeight = answer.scrollHeight + 'px';
+      void answer.offsetHeight; // force reflow
+      answer.style.maxHeight = '0px';
+      setTimeout(() => {
+        if (!item.classList.contains('active')) {
+          answer.style.display = 'none';
+        }
+      }, 350);
+    }
+  } else {
     item.classList.add('active');
-    if (answer) answer.style.display = 'block';
     buttonEl.setAttribute('aria-expanded', 'true');
+    if (answer) {
+      answer.style.display = 'block';
+      answer.style.maxHeight = '0px';
+      void answer.offsetHeight; // force reflow
+      answer.style.maxHeight = (answer.scrollHeight + 40) + 'px';
+      setTimeout(() => {
+        if (item.classList.contains('active')) {
+          answer.style.maxHeight = 'none';
+        }
+      }, 350);
+    }
   }
 };
 
@@ -1434,12 +1506,19 @@ function initReviewFilters() {
         btn.setAttribute('aria-selected', isCurrent ? 'true' : 'false');
       });
 
-      // 2. Filter review cards dynamically without reload
+      // 2. Filter review cards smoothly without reload
       cards.forEach(card => {
         const category = card.getAttribute('data-category');
-        if (filterVal === 'all' || category === filterVal) {
+        const matches = (filterVal === 'all' || category === filterVal);
+        if (matches) {
           card.classList.remove('hidden');
           card.style.display = 'flex';
+          card.style.opacity = '0';
+          card.style.transform = 'scale(0.96)';
+          requestAnimationFrame(() => {
+            card.style.opacity = '1';
+            card.style.transform = 'scale(1)';
+          });
         } else {
           card.classList.add('hidden');
           card.style.display = 'none';
@@ -1447,11 +1526,10 @@ function initReviewFilters() {
       });
 
       // 3. Reset carousel offset to start position
-      if (track) {
+      if (window._reviewsCarouselReset) {
+        window._reviewsCarouselReset();
+      } else if (track) {
         track.style.transform = 'translateX(0px)';
-        if (window._reviewsCarouselReset) {
-          window._reviewsCarouselReset();
-        }
       }
     });
   });
@@ -1980,10 +2058,23 @@ function applyGravityPreset(presetKey) {
   const codeInput = document.getElementById('sandboxCodeInput');
   if (!codeInput || !GRAVITY_PRESETS[presetKey]) return;
 
+  // Toggle active class on preset buttons
+  document.querySelectorAll('.btn-hud-preset').forEach(btn => {
+    const isMatch = btn.getAttribute('onclick')?.includes(`'${presetKey}'`);
+    btn.classList.toggle('active', !!isMatch);
+  });
+
   codeInput.value = GRAVITY_PRESETS[presetKey];
   updateSandboxPreview(codeInput.value);
   updateGutterLineNumbers();
   updateTelemetryHud(codeInput.value);
+
+  // Apply active animation class to the levitation wrap
+  const wrap = document.getElementById('antigravityLevitationWrap');
+  if (wrap) {
+    wrap.classList.remove('anim-orbit', 'anim-hyper', 'anim-warp');
+    wrap.classList.add(`anim-${presetKey}`);
+  }
 
   // Trigger interactive particle surge
   if (antigravityParticleSystem && typeof antigravityParticleSystem.pulse === 'function') {
@@ -2021,6 +2112,11 @@ function updateSandboxPreview(code) {
     .replace(/on\w+='[^']*'/gi, '');
 
   liveOutput.innerHTML = safeCode;
+
+  const btn = liveOutput.querySelector('button');
+  if (btn) {
+    btn.style.transition = 'transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease';
+  }
 }
 
 function runSandboxVerify() {
@@ -2035,25 +2131,24 @@ function runSandboxVerify() {
   updateSandboxPreview(rawCode);
   updateTelemetryHud(rawCode);
 
-  // Trigger cosmic particle acceleration & shockwave pulse
-  if (antigravityParticleSystem && typeof antigravityParticleSystem.pulse === 'function') {
-    antigravityParticleSystem.pulse();
+  // Trigger cosmic particle acceleration & shockwave pulse safely
+  try {
+    if (antigravityParticleSystem && typeof antigravityParticleSystem.pulse === 'function') {
+      antigravityParticleSystem.pulse();
+    }
+  } catch (err) {
+    console.warn('Particle pulse error suppressed:', err);
   }
 
-  // Check physics properties presence
-  const hasTransform = /transform/i.test(rawCode);
-  const hasTranslate = /translate/i.test(rawCode);
-  const hasShadow = /box-shadow/i.test(rawCode);
-  const hasButton = /<button[\s\S]*?>[\s\S]*?<\/button>/i.test(rawCode);
-
-  // Trigger celebratory confetti burst with space/neon colors
-  if (typeof confetti === 'function') {
-    confetti({
-      particleCount: 85,
-      spread: 90,
-      origin: { y: 0.65 },
-      colors: ['#06b6d4', '#38bdf8', '#6366f1', '#a855f7', '#ffffff']
-    });
+  // Dynamic transform updates to the floating button preview without console errors
+  const thrusterBtn = liveOutput ? liveOutput.querySelector('button') : null;
+  if (thrusterBtn) {
+    const origTransform = thrusterBtn.style.transform || 'translateY(-16px) rotate(-1.5deg)';
+    thrusterBtn.style.transition = 'transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease';
+    thrusterBtn.style.transform = `${origTransform} scale(1.1) translateY(-8px)`;
+    setTimeout(() => {
+      if (thrusterBtn) thrusterBtn.style.transform = origTransform;
+    }, 450);
   }
 
   // Pulse animation on the preview container
@@ -2063,10 +2158,26 @@ function runSandboxVerify() {
     liveOutput.classList.add('antigravity-pulse-active');
   }
 
-  // Show Success Achievement Banner
+  // Trigger celebratory confetti burst with space/neon colors safely
+  if (typeof confetti === 'function') {
+    try {
+      confetti({
+        particleCount: 85,
+        spread: 90,
+        origin: { y: 0.65 },
+        colors: ['#06b6d4', '#38bdf8', '#6366f1', '#a855f7', '#ffffff']
+      });
+    } catch (e) {
+      console.warn('Confetti burst skipped:', e);
+    }
+  }
+
+  // Show Success Achievement Banner safely
   if (successBanner) {
     successBanner.style.display = 'flex';
-    successBanner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    if (typeof successBanner.scrollIntoView === 'function') {
+      successBanner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
   }
 
   // Positive Telemetry Feedback Message
@@ -2084,6 +2195,12 @@ function resetSandboxChallenge() {
   const feedbackEl = document.getElementById('sandboxStatusFeedback');
   const successBanner = document.getElementById('sandboxSuccessBanner');
   const hintBubble = document.getElementById('sandboxHintBubble');
+
+  const wrap = document.getElementById('antigravityLevitationWrap');
+  if (wrap) {
+    wrap.classList.remove('anim-orbit', 'anim-hyper', 'anim-warp');
+  }
+  document.querySelectorAll('.btn-hud-preset').forEach(btn => btn.classList.remove('active'));
 
   if (codeInput) {
     codeInput.value = INITIAL_SANDBOX_CODE;
