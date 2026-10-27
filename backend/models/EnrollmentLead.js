@@ -9,6 +9,9 @@ const EnrollmentLeadSchema = new mongoose.Schema({
   course: { type: String },
   degree: { type: String, default: '' },
   gradYear: { type: String, default: '' },
+  visitDate: { type: String, default: '' },
+  fitScore: { type: String, default: '' },
+  quizAnswers: { type: mongoose.Schema.Types.Mixed },
   source: { type: String, default: 'website' },
   status: { type: String, default: 'New' }
 }, { timestamps: true });

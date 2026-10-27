@@ -1231,7 +1231,26 @@
 
     <!-- 9. PAY AFTER YOU GET HIRED (#pap) -->
     <section class="section-padding" id="pap">
-      <div class="container pap-section-grid">
+      <div class="container">
+        <!-- Floating or Banner CTA for 60s PAP Eligibility Quiz -->
+        <div class="pap-banner-cta-card">
+          <div class="pap-banner-badge-row">
+            <span class="pap-banner-badge"><i class="fa-solid fa-bolt"></i> 60-Second Instant Assessment</span>
+            <span class="pap-banner-tag">Guaranteed ₹4.5+ LPA Minimum Placement Floor</span>
+          </div>
+          <div class="pap-banner-main">
+            <div class="pap-banner-text-col">
+              <h3 class="pap-banner-title">Check ₹0 Upfront PAP Eligibility in 60s</h3>
+              <p class="pap-banner-desc">Find out if your education background and career goals qualify for our guaranteed Pay-After-Placement batch at SRV Towers, Nagercoil. Zero upfront tuition deposit.</p>
+            </div>
+            <button type="button" class="btn-pap-banner-cta" onclick="openPapQuizModal()">
+              <span>Check ₹0 Upfront PAP Eligibility in 60s</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="pap-section-grid" style="margin-top: 2rem;">
 
         <!-- Left Steps & Checklist -->
         <div>
@@ -1360,11 +1379,13 @@
         </div>
 
       </div>
+      </div>
     </section>
 
     <!-- 10. INTERNSHIP (#internship) -->
     <section class="section-padding bg-subtle-section" id="internship">
-      <div class="container internship-banner-grid">
+      <div class="container">
+        <div class="internship-banner-grid">
 
         <div>
           <div class="section-eyebrow">AgileTribers Living Lab</div>
@@ -1466,6 +1487,35 @@
               <strong>100%</strong>
               <span>Live Deployment</span>
             </div>
+          </div>
+        </div>
+
+      </div>
+
+        <!-- 1-Day Free Campus Visit & Lab Pass Card -->
+        <div class="campus-visit-pass-card">
+          <div class="campus-pass-icon-badge">
+            <i class="fa-solid fa-id-card-clip"></i>
+            <span>VIP LAB PASS</span>
+          </div>
+          <div class="campus-pass-info">
+            <span class="campus-pass-venue"><i class="fa-solid fa-location-dot"></i> SRV Towers, Nagercoil &bull; In-Person Access</span>
+            <h3 class="campus-pass-title">Experience Karka Before You Enroll — Free 1-Day Physical Lab Pass</h3>
+            <p class="campus-pass-desc">
+              Sit with our working architects at SRV Towers, Nagercoil, attend a live sprint standup, and experience our coding lab firsthand with zero commitment.
+            </p>
+            <div class="campus-pass-bullets">
+              <span><i class="fa-solid fa-circle-check"></i> Live Agile Sprint Standup</span>
+              <span><i class="fa-solid fa-circle-check"></i> Codebase Architecture Tour</span>
+              <span><i class="fa-solid fa-circle-check"></i> 1:1 Senior Architect Consultation</span>
+            </div>
+          </div>
+          <div class="campus-pass-cta-wrap">
+            <button type="button" class="btn-claim-campus-pass" onclick="openCampusPassModal()">
+              <span>Claim Free 1-Day Lab Pass</span>
+              <i class="fa-solid fa-ticket"></i>
+            </button>
+            <span class="campus-pass-urgency">⚡ Only 5 guest passes issued daily</span>
           </div>
         </div>
 
@@ -2104,6 +2154,82 @@
 
         </div>
 
+      </div>
+    </section>
+
+    <!-- 12B. SPIKE LITE: INTERACTIVE 60-SECOND CODING PLAYGROUND -->
+    <section class="section-padding spike-lite-section" id="spike-lite-playground">
+      <div class="container">
+        <div class="spike-lite-card">
+          <div class="spike-lite-header">
+            <div class="spike-lite-header-left">
+              <span class="badge-pill badge-green"><i class="fa-solid fa-bolt"></i> Spike AI Interactive Sandbox</span>
+              <h2 class="spike-lite-heading">Think You Can't Code? Try It in 60 Seconds!</h2>
+              <p class="spike-lite-subheading">
+                Experience Spike AI's live feedback. Edit the mini-code snippet below to pass the challenge and prove your software engineering aptitude.
+              </p>
+            </div>
+            <div class="spike-lite-timer-badge">
+              <i class="fa-solid fa-stopwatch"></i>
+              <span>60s Challenge</span>
+            </div>
+          </div>
+
+          <!-- Mission Directive Prompt -->
+          <div class="spike-mission-box">
+            <div class="spike-mission-label"><i class="fa-solid fa-bullseye"></i> YOUR MISSION:</div>
+            <div class="spike-mission-text">
+              <span>1. Change the button text from <code>"Click Me"</code> to <code>"Start My Tech Career"</code></span>
+              <span>2. Change the button background from <code>#e2e8f0</code> to <code>#0b57d0</code></span>
+            </div>
+          </div>
+
+          <!-- Playground Grid: Editor on Left, Live Preview on Right -->
+          <div class="spike-playground-grid">
+            <!-- Left: Mini Code Editor -->
+            <div class="spike-editor-pane">
+              <div class="spike-pane-title">
+                <span><i class="fa-solid fa-code"></i> HTML / Inline CSS Editor</span>
+                <button type="button" class="btn-spike-reset" onclick="resetSpikeLiteChallenge()" title="Reset snippet">
+                  <i class="fa-solid fa-rotate-left"></i> Reset
+                </button>
+              </div>
+              <textarea id="spikeLiteCodeEditor" class="spike-code-textarea" spellcheck="false" oninput="renderSpikeLiteLive()">&lt;button style="background: #e2e8f0; color: #0f172a; padding: 12px 24px; border-radius: 8px;"&gt;
+  Click Me
+&lt;/button&gt;</textarea>
+              <div class="spike-editor-actions">
+                <button type="button" id="btnSpikeVerify" class="btn-enterprise-primary" onclick="runSpikeLiteVerify()">
+                  <i class="fa-solid fa-play"></i>
+                  <span>Run Code &amp; Verify</span>
+                </button>
+                <span id="spikeLiteFeedback" class="spike-feedback-hint">Tweak the code above and click Run Code &amp; Verify</span>
+              </div>
+            </div>
+
+            <!-- Right: Live Preview Box -->
+            <div class="spike-preview-pane">
+              <div class="spike-pane-title">
+                <span><i class="fa-solid fa-eye"></i> Live Sandbox Preview</span>
+                <span class="spike-live-tag"><span class="pulse-dot"></span> LIVE RENDER</span>
+              </div>
+              <div class="spike-preview-stage" id="spikeLitePreviewStage">
+                <!-- Live rendered button will be injected here -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Celebratory Unlocked Reward Banner -->
+          <div id="spikeUnlockedReward" class="spike-unlocked-reward" style="display: none;">
+            <div class="spike-reward-icon"><i class="fa-solid fa-award"></i></div>
+            <div class="spike-reward-content">
+              <h4>Aptitude Confirmed! Challenge Solved 🎉</h4>
+              <p>You wrote real web code and updated a live interactive UI component in under 60 seconds. You have the engineering aptitude for our outcome-based bootcamp!</p>
+            </div>
+            <button type="button" class="btn-enterprise-primary btn-claim-unlocked-seat" onclick="openModal('applyModal')">
+              <span>Aptitude Confirmed! Claim Your ₹0 Upfront Seat &rarr;</span>
+            </button>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -2876,240 +3002,198 @@
 
       <div class="modal-header">
         <div class="quiz-step-indicator">
-          <span id="quizStepNum">Question 1 of 6</span>
+          <span id="quizStepNum">Step 1 of 5</span>
           <span style="color: var(--accent-green);"><i class="fa-solid fa-bolt"></i> 60s Instant Assessment</span>
         </div>
         <div class="quiz-progress-bar-wrap">
-          <div class="quiz-progress-bar-fill" id="quizProgressFill" style="width: 16%;"></div>
+          <div class="quiz-progress-bar-fill" id="quizProgressFill" style="width: 20%;"></div>
         </div>
         <h3 style="font-size: 1.4rem; font-weight: 800;">Check ₹0 Upfront PAP Eligibility</h3>
-        <p style="color: var(--text-secondary); font-size: 0.85rem;">Find out in under 1 minute if you qualify for our
-          guaranteed Pay After Placement batch.</p>
+        <p style="color: var(--text-secondary); font-size: 0.85rem;">Find out in under 60 seconds if you qualify for our guaranteed Pay After Placement batch.</p>
       </div>
 
       <div class="modal-body">
-        <!-- Question 1: Background -->
+        <!-- Step 1: Education Background -->
         <div class="quiz-step active" data-step="1">
-          <div class="quiz-question-title">1. What is your academic or professional background?</div>
-          <div class="quiz-question-sub">Select the option that best describes you:</div>
+          <div class="quiz-question-title">1. What is your education background?</div>
+          <div class="quiz-question-sub">Select the option that best describes your degree or status:</div>
           <div class="quiz-options-list">
-            <button type="button" class="quiz-opt-btn" data-val="cs-it"
-              onclick="selectQuizOption('degree', 'B.E / B.Tech (CS/IT/AI)', 2)">
-              <span>B.E / B.Tech (CS, IT, AI, DS)</span>
+            <button type="button" class="quiz-opt-btn" data-val="Engineering CS" onclick="selectQuizOption('degree', 'Engineering CS', 2)">
+              <span>Engineering CS (CSE / IT / AI / DS)</span>
               <i class="fa-solid fa-chevron-right"></i>
             </button>
-            <button type="button" class="quiz-opt-btn" data-val="non-cs"
-              onclick="selectQuizOption('degree', 'Non-CS Engineering', 2)">
-              <span>Non-CS Engineering (Mech, Civil, EEE, ECE)</span>
+            <button type="button" class="quiz-opt-btn" data-val="Engineering Non-CS" onclick="selectQuizOption('degree', 'Engineering Non-CS', 2)">
+              <span>Engineering Non-CS (Mech / Civil / EEE / ECE)</span>
               <i class="fa-solid fa-chevron-right"></i>
             </button>
-            <button type="button" class="quiz-opt-btn" data-val="arts-science"
-              onclick="selectQuizOption('degree', 'Arts & Science / BCA / MCA', 2)">
-              <span>BCA / MCA / B.Sc / B.Com / Arts &amp; Science</span>
+            <button type="button" class="quiz-opt-btn" data-val="Arts & Science" onclick="selectQuizOption('degree', 'Arts & Science', 2)">
+              <span>Arts &amp; Science (BCA / MCA / B.Sc / B.Com)</span>
               <i class="fa-solid fa-chevron-right"></i>
             </button>
-            <button type="button" class="quiz-opt-btn" data-val="working-pro"
-              onclick="selectQuizOption('degree', 'Working Professional', 2)">
-              <span>Working Professional (Career Switch to Tech)</span>
+            <button type="button" class="quiz-opt-btn" data-val="Diploma" onclick="selectQuizOption('degree', 'Diploma', 2)">
+              <span>Diploma (Polytechnic / Technical)</span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+            <button type="button" class="quiz-opt-btn" data-val="Working Professional" onclick="selectQuizOption('degree', 'Working Professional', 2)">
+              <span>Working Professional (Switching to Tech)</span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+            <button type="button" class="quiz-opt-btn" data-val="Career Gap" onclick="selectQuizOption('degree', 'Career Gap', 2)">
+              <span>Career Gap (Restarting Tech Career)</span>
               <i class="fa-solid fa-chevron-right"></i>
             </button>
           </div>
         </div>
 
-        <!-- Question 2: Year -->
+        <!-- Step 2: Graduation Year -->
         <div class="quiz-step" data-step="2">
-          <div class="quiz-question-title">2. What is your graduation / passing year?</div>
-          <div class="quiz-question-sub">We accept current students and career rebooters:</div>
+          <div class="quiz-question-title">2. What is your graduation year?</div>
+          <div class="quiz-question-sub">We welcome recent batches, upcoming grads, and rebooters:</div>
           <div class="quiz-options-list">
-            <button type="button" class="quiz-opt-btn" data-val="2026" onclick="selectQuizOption('year', '2026', 3)">
-              <span>2026 (Upcoming Final Year Graduate)</span>
+            <button type="button" class="quiz-opt-btn" data-val="2020-2023" onclick="selectQuizOption('year', '2020-2023', 3)">
+              <span>2020 - 2023 (Experienced / Career Rebooter)</span>
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+            <button type="button" class="quiz-opt-btn" data-val="2024" onclick="selectQuizOption('year', '2024', 3)">
+              <span>2024 (Recent Graduate)</span>
               <i class="fa-solid fa-chevron-right"></i>
             </button>
             <button type="button" class="quiz-opt-btn" data-val="2025" onclick="selectQuizOption('year', '2025', 3)">
-              <span>2025 (Fresh Graduate / Immediate)</span>
+              <span>2025 (Immediate Final Year / Fresh)</span>
               <i class="fa-solid fa-chevron-right"></i>
             </button>
-            <button type="button" class="quiz-opt-btn" data-val="2024-prior"
-              onclick="selectQuizOption('year', '2024 or Earlier', 3)">
-              <span>2024 or Earlier (Career Reboot / Gap)</span>
+            <button type="button" class="quiz-opt-btn" data-val="2026+" onclick="selectQuizOption('year', '2026+', 3)">
+              <span>2026+ (Pre-Final Year College Student)</span>
               <i class="fa-solid fa-chevron-right"></i>
             </button>
-            <button type="button" class="quiz-opt-btn" data-val="2027+" onclick="selectQuizOption('year', '2027+', 3)">
-              <span>2027 or Later (Pre-Final Year)</span>
+            <button type="button" class="quiz-opt-btn" data-val="School" onclick="selectQuizOption('year', 'School', 3)">
+              <span>School / Early Learner (Foundation Track)</span>
               <i class="fa-solid fa-chevron-right"></i>
             </button>
           </div>
         </div>
 
-        <!-- Question 3: Career Goal -->
+        <!-- Step 3: Career Goal -->
         <div class="quiz-step" data-step="3">
           <div class="quiz-question-title">3. What is your primary career goal?</div>
-          <div class="quiz-question-sub">Which engineering domain excites you most?</div>
+          <div class="quiz-question-sub">Which specialized engineering domain excites you most?</div>
           <div class="quiz-options-list">
-            <button type="button" class="quiz-opt-btn" data-val="mern"
-              onclick="selectQuizOption('careerGoal', 'mern', 4)">
-              <span>Fullstack Web &amp; AI Engineering (React, Node, LLMs)</span>
+            <button type="button" class="quiz-opt-btn" data-val="Fullstack Developer" onclick="selectQuizOption('careerGoal', 'Fullstack Developer', 4)">
+              <span>Fullstack Developer (React, Node, Express, MongoDB, Cloud)</span>
               <i class="fa-solid fa-chevron-right"></i>
             </button>
-            <button type="button" class="quiz-opt-btn" data-val="ai-ml"
-              onclick="selectQuizOption('careerGoal', 'ai-ml', 4)">
-              <span>AI &amp; Data Science (Python, ML, Scikit-Learn)</span>
+            <button type="button" class="quiz-opt-btn" data-val="AI & Data Scientist" onclick="selectQuizOption('careerGoal', 'AI & Data Scientist', 4)">
+              <span>AI &amp; Data Scientist (Python, ML, Scikit-Learn, Deep Learning)</span>
               <i class="fa-solid fa-chevron-right"></i>
             </button>
-            <button type="button" class="quiz-opt-btn" data-val="uiux"
-              onclick="selectQuizOption('careerGoal', 'uiux', 4)">
-              <span>UI/UX &amp; Digital Product Design (Figma, Prototyping)</span>
+            <button type="button" class="quiz-opt-btn" data-val="UI-UX Designer" onclick="selectQuizOption('careerGoal', 'UI-UX Designer', 4)">
+              <span>UI-UX Designer (Figma, Design Systems, UX Research)</span>
               <i class="fa-solid fa-chevron-right"></i>
             </button>
-            <button type="button" class="quiz-opt-btn" data-val="fast-track"
-              onclick="selectQuizOption('careerGoal', 'mern', 4)">
-              <span>Fast-Track High Paying Tech Job (Any High-Demand Field)</span>
+            <button type="button" class="quiz-opt-btn" data-val="Python Specialist" onclick="selectQuizOption('careerGoal', 'Python Specialist', 4)">
+              <span>Python Specialist (Backend APIs, Automation &amp; Data Analytics)</span>
               <i class="fa-solid fa-chevron-right"></i>
             </button>
           </div>
         </div>
 
-        <!-- Question 4: Commitment -->
+        <!-- Step 4: Daily Learning Commitment -->
         <div class="quiz-step" data-step="4">
           <div class="quiz-question-title">4. What is your daily learning commitment?</div>
-          <div class="quiz-question-sub">PAP requires focused dedication:</div>
+          <div class="quiz-question-sub">PAP requires steady dedication to hit the ₹4.5+ LPA job guarantee:</div>
           <div class="quiz-options-list">
-            <button type="button" class="quiz-opt-btn" data-val="fulltime"
-              onclick="selectQuizOption('commitment', 'Full-time (8+ hrs on-site)', 5)">
-              <span>Full-Time (8+ Hours Daily at Nagercoil On-Site Lab)</span>
+            <button type="button" class="quiz-opt-btn" data-val="Full-time On-site in Nagercoil" onclick="selectQuizOption('commitment', 'Full-time On-site in Nagercoil', 5)">
+              <span>Full-time On-site in Nagercoil (SRV Towers Lab, 8+ hrs/day)</span>
               <i class="fa-solid fa-chevron-right"></i>
             </button>
-            <button type="button" class="quiz-opt-btn" data-val="intensive-hybrid"
-              onclick="selectQuizOption('commitment', 'Intensive Hybrid (4-6 hrs)', 5)">
-              <span>Intensive Hybrid (4 to 6 Hours Daily)</span>
+            <button type="button" class="quiz-opt-btn" data-val="Hybrid" onclick="selectQuizOption('commitment', 'Hybrid', 5)">
+              <span>Hybrid (4 - 6 hrs/day flexible with sprint check-ins)</span>
               <i class="fa-solid fa-chevron-right"></i>
             </button>
-            <button type="button" class="quiz-opt-btn" data-val="weekend"
-              onclick="selectQuizOption('commitment', 'Weekend Working Pro', 5)">
-              <span>Weekend Immersion (Working Professionals)</span>
+            <button type="button" class="quiz-opt-btn" data-val="Weekend" onclick="selectQuizOption('commitment', 'Weekend', 5)">
+              <span>Weekend (Working professional immersion track)</span>
               <i class="fa-solid fa-chevron-right"></i>
             </button>
           </div>
         </div>
 
-        <!-- Question 5: English Comfort -->
+        <!-- Step 5: Capture Name & Phone Number -->
         <div class="quiz-step" data-step="5">
-          <div class="quiz-question-title">5. How comfortable are you with English communication?</div>
-          <div class="quiz-question-sub">We provide specialized Business English training:</div>
-          <div class="quiz-options-list">
-            <button type="button" class="quiz-opt-btn" data-val="fluent"
-              onclick="selectQuizOption('english', 'Fluent', 6)">
-              <span>Fluent &amp; Confident in Conversational English</span>
-              <i class="fa-solid fa-chevron-right"></i>
-            </button>
-            <button type="button" class="quiz-opt-btn" data-val="intermediate"
-              onclick="selectQuizOption('english', 'Intermediate', 6)">
-              <span>Intermediate (Can understand, need interview confidence)</span>
-              <i class="fa-solid fa-chevron-right"></i>
-            </button>
-            <button type="button" class="quiz-opt-btn" data-val="tamil-english"
-              onclick="selectQuizOption('english', 'Tamil + English Bilingual', 6)">
-              <span>Prefer Tamil + English Bilingual Mentorship</span>
-              <i class="fa-solid fa-chevron-right"></i>
-            </button>
-          </div>
-        </div>
-
-        <!-- Question 6: Target CTC -->
-        <div class="quiz-step" data-step="6">
-          <div class="quiz-question-title">6. What is your target placement package (CTC)?</div>
-          <div class="quiz-question-sub">Choose your target starting salary:</div>
-          <div class="quiz-options-list">
-            <button type="button" class="quiz-opt-btn" data-val="4.5-6"
-              onclick="selectQuizOption('ctc', '₹4.5 - ₹6.0 LPA', 7)">
-              <span>₹4.5 LPA – ₹6.0 LPA (Standard High-Growth Track)</span>
-              <i class="fa-solid fa-chevron-right"></i>
-            </button>
-            <button type="button" class="quiz-opt-btn" data-val="6-8.5"
-              onclick="selectQuizOption('ctc', '₹6.0 - ₹8.5 LPA', 7)">
-              <span>₹6.0 LPA – ₹8.5 LPA (Senior Architect Guided Track)</span>
-              <i class="fa-solid fa-chevron-right"></i>
-            </button>
-            <button type="button" class="quiz-opt-btn" data-val="9+" onclick="selectQuizOption('ctc', '₹9.0+ LPA', 7)">
-              <span>₹9.0+ LPA (Tier-1 Product Company Track)</span>
-              <i class="fa-solid fa-chevron-right"></i>
-            </button>
-          </div>
-        </div>
-
-        <!-- Step 7: Score & Contact Capture -->
-        <div class="quiz-step" data-step="7">
           <div style="text-align: center; margin-bottom: 1.25rem;">
-            <div class="quiz-score-badge">
-              <i class="fa-solid fa-circle-check"></i>
-              <span id="quizMatchPercent">96% Match</span>
-            </div>
+            <span class="badge-pill badge-green" style="margin-bottom: 0.5rem;"><i class="fa-solid fa-lock"></i> Final Step &bull; Instant Results</span>
             <h4 style="font-size: 1.35rem; font-weight: 800; color: var(--text-primary); margin-bottom: 0.35rem;">
-              You Qualify for ₹0 Upfront PAP! 🎉
+              Where should we send your eligibility results?
             </h4>
             <p style="font-size: 0.88rem; color: var(--text-secondary);">
-              Recommended Track: <strong id="quizMatchTrackTitle" style="color: var(--infosys-electric-blue);">MERN
-                Fullstack &amp; AI Engineering</strong>
+              Enter your name and WhatsApp number to calculate your compatibility score and reserve a provisional seat.
             </p>
           </div>
 
           <form onsubmit="handleQuizLeadSubmit(event)">
-            <div class="form-group">
-              <label class="form-label" for="quizLeadName">Your Full Name *</label>
-              <input type="text" id="quizLeadName" class="form-input" placeholder="e.g. Anandha Krishnan" required>
+            <div class="form-group" style="margin-bottom: 1rem;">
+              <label class="form-label" for="quizLeadName" style="font-size: 0.86rem; font-weight: 700; display: block; margin-bottom: 6px;">Your Full Name *</label>
+              <input type="text" id="quizLeadName" class="form-input" placeholder="e.g. Anandha Krishnan" required style="width: 100%;">
             </div>
-            <div class="form-group">
-              <label class="form-label" for="quizLeadPhone">WhatsApp Mobile Number *</label>
-              <input type="tel" id="quizLeadPhone" class="form-input" placeholder="+91 94875 30243" required>
+            <div class="form-group" style="margin-bottom: 1rem;">
+              <label class="form-label" for="quizLeadPhone" style="font-size: 0.86rem; font-weight: 700; display: block; margin-bottom: 6px;">WhatsApp Mobile Number *</label>
+              <div style="display: flex; gap: 8px;">
+                <span style="background: var(--bg-subtle, #f1f5f9); border: 1px solid var(--border-hairline, #cbd5e1); border-radius: 8px; padding: 10px 12px; font-weight: 700; font-size: 0.9rem; color: var(--text-secondary, #475569); display: flex; align-items: center; gap: 4px;">
+                  <img src="https://flagcdn.com/w20/in.png" width="18" alt="India flag" style="border-radius: 2px;"> +91
+                </span>
+                <input type="tel" id="quizLeadPhone" class="form-input" placeholder="9487530243" maxlength="10" pattern="[0-9]{10}" required style="flex: 1;" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+              </div>
+              <span id="quizLeadPhoneError" style="font-size: 0.78rem; color: #ef4444; display: none; margin-top: 4px;">Please enter a valid 10-digit WhatsApp number</span>
             </div>
             <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 1rem;">
-              Enter your WhatsApp number to lock in your provisional ₹0 upfront admission seat and schedule your 1:1
-              counselor roadmap call.
+              🔒 100% spam-free. Your compatibility score and PAP agreement breakdown are displayed immediately.
             </p>
-            <button type="submit" id="quizSubmitBtn" class="btn-enterprise-primary"
-              style="width: 100%; justify-content: center; padding: 12px;">
-              <span>Unlock My Custom Roadmap &amp; PAP Approval</span>
-              <i class="fa-solid fa-arrow-right"></i>
+            <button type="submit" id="quizSubmitBtn" class="btn-enterprise-primary" style="width: 100%; justify-content: center; padding: 13px !important; font-size: 0.95rem !important; border-radius: 10px !important;">
+              <span>Calculate My PAP Fit Score &amp; Roadmap &rarr;</span>
             </button>
           </form>
         </div>
 
-        <!-- Step 8: Final Success Screen -->
-        <div class="quiz-step" data-step="8">
-          <div style="text-align: center; padding: 1rem 0;">
-            <div
-              style="width: 64px; height: 64px; border-radius: 50%; background: #ecfdf5; color: #10b981; display: inline-flex; align-items: center; justify-content: center; font-size: 1.8rem; margin-bottom: 1rem; border: 2px solid #10b981;">
-              <i class="fa-solid fa-check"></i>
+        <!-- Step 6: Result Screen (Match Score, Badge & Counselor Callback) -->
+        <div class="quiz-step" data-step="6">
+          <div style="text-align: center; padding: 0.5rem 0 1rem;">
+            <div class="quiz-score-badge" style="margin-bottom: 0.75rem;">
+              <i class="fa-solid fa-circle-check"></i>
+              <span id="quizFitScoreDisplay">96% Fit</span>
             </div>
-            <h4 style="font-size: 1.45rem; font-weight: 800; margin-bottom: 0.5rem;">Provisional PAP Seat Reserved! 🚀
+            <h4 id="quizFitHeadline" style="font-size: 1.35rem; font-weight: 800; color: var(--text-primary); margin-bottom: 0.5rem; line-height: 1.3;">
+              96% Fit for MERN Fullstack Track under ₹0 Upfront PAP
             </h4>
-            <p style="color: var(--text-secondary); font-size: 0.88rem; margin-bottom: 1.25rem;">
-              Congratulations <strong id="quizResultUserName"
-                style="color: var(--infosys-electric-blue);">Learner</strong>! Your provisional admission for <strong
-                id="quizResultTrack">MERN Fullstack</strong> under ₹0 Upfront Tuition is approved.
-            </p>
+            <div style="margin-bottom: 1.25rem;">
+              <span class="badge-pill badge-green" style="font-size: 0.84rem; padding: 6px 14px;">
+                <i class="fa-solid fa-shield-check"></i> Eligible for ₹0 Upfront Guaranteed Batch
+              </span>
+            </div>
 
-            <div
-              style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 14px; text-align: left; margin-bottom: 1.25rem;">
-              <div style="font-size: 0.82rem; font-weight: 700; color: var(--text-primary); margin-bottom: 6px;">Next
-                Steps for On-Site Orientation:</div>
-              <ul
-                style="font-size: 0.8rem; color: var(--text-secondary); padding-left: 18px; margin: 0; line-height: 1.5;">
-                <li>Verify your Aadhaar &amp; graduation marks sheet.</li>
-                <li>Visit SRV Towers Nagercoil for mentor lab walkthrough.</li>
-                <li>Receive your personalized 6-month placement roadmap.</li>
+            <!-- Personalized Roadmap Card -->
+            <div style="background: var(--bg-subtle, #f8fafc); border: 1px solid var(--border-hairline, #e2e8f0); border-radius: 12px; padding: 14px; text-align: left; margin-bottom: 1.25rem;">
+              <div style="font-size: 0.84rem; font-weight: 800; color: var(--text-primary); margin-bottom: 8px;">
+                <i class="fa-solid fa-route" style="color: var(--infosys-electric-blue);"></i> Your Personalized Roadmap Summary:
+              </div>
+              <ul style="font-size: 0.82rem; color: var(--text-secondary); padding-left: 18px; margin: 0; line-height: 1.6;">
+                <li>Recommended Track: <strong id="quizRecTrack" style="color: var(--infosys-electric-blue);">MERN Fullstack Track</strong></li>
+                <li>Tuition Floor: <strong>₹0 upfront fee</strong> &bull; Zero loan agreements</li>
+                <li>Placement Floor: <strong>₹4.5+ LPA Minimum Guaranteed Package</strong></li>
+                <li>Campus Access: <strong>AgileTribers Lab at SRV Towers, Nagercoil</strong></li>
               </ul>
             </div>
 
+            <!-- Direct 1:1 Counselor Callback CTAs -->
             <div style="display: flex; flex-direction: column; gap: 10px;">
-              <a href="#" id="quizWhatsAppConfirmBtn" target="_blank" rel="noopener noreferrer"
-                class="btn-enterprise-primary" style="justify-content: center; background: #25d366;">
-                <i class="fa-brands fa-whatsapp"></i>
-                <span>Confirm Seat with Counselor on WhatsApp</span>
+              <a href="#" id="quizWhatsAppConfirmBtn" target="_blank" rel="noopener noreferrer" class="btn-whatsapp-syllabus" style="text-decoration: none; justify-content: center; padding: 12px 16px !important; font-size: 0.92rem !important; border-radius: 10px !important;">
+                <i class="fa-brands fa-whatsapp" style="font-size: 1.15rem;"></i>
+                <span>💬 Book 1:1 Counselor Callback on WhatsApp</span>
               </a>
-              <button type="button" class="btn-secondary" onclick="closePapQuizModal()"
-                style="justify-content: center;">
-                Back to Website
+              <a href="tel:+919487530243" class="btn-secondary" style="text-decoration: none; justify-content: center; padding: 10px 16px; font-size: 0.88rem; border-radius: 10px;">
+                <i class="fa-solid fa-phone" style="color: var(--accent-blue);"></i>
+                <span>Call Admissions Directly (+91 94875 30243)</span>
+              </a>
+              <button type="button" class="btn-outline" onclick="closePapQuizModal()" style="justify-content: center; margin-top: 4px; font-size: 0.82rem; color: var(--text-muted); border: none; background: transparent; cursor: pointer;">
+                Close &amp; Return to Website
               </button>
             </div>
           </div>
@@ -3119,16 +3203,79 @@
     </div>
   </div>
 
-  <!-- 4. STICKY MOBILE CONVERSION BAR (@media max-width: 768px) -->
+  <!-- 4. 1-DAY FREE CAMPUS VISIT & LAB PASS MODAL -->
+  <div class="modal-backdrop" id="campusPassModal">
+    <div class="modal-dialog" style="max-width: 520px;">
+      <button class="modal-close-btn" onclick="closeCampusPassModal()">&times;</button>
+      <div class="modal-header">
+        <span class="badge-pill badge-green" style="margin-bottom: 0.5rem;"><i class="fa-solid fa-ticket"></i> Free Physical Lab Pass</span>
+        <h3 style="font-size: 1.35rem; font-weight: 800;">Book 1-Day Physical Lab Pass at SRV Towers</h3>
+        <p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 4px;">
+          Nagercoil Campus &bull; Zero Cost &bull; Attend Live Sprint Standups
+        </p>
+      </div>
+      <div class="modal-body">
+        <form id="campusPassForm" onsubmit="handleCampusPassSubmit(event)">
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label class="form-label" for="campusPassName" style="font-size: 0.86rem; font-weight: 700; display: block; margin-bottom: 6px;">Full Name *</label>
+            <input type="text" id="campusPassName" class="form-input" placeholder="e.g. Anandha Krishnan" required style="width: 100%;">
+          </div>
+
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label class="form-label" for="campusPassPhone" style="font-size: 0.86rem; font-weight: 700; display: block; margin-bottom: 6px;">WhatsApp Number *</label>
+            <div style="display: flex; gap: 8px;">
+              <span style="background: var(--bg-subtle, #f1f5f9); border: 1px solid var(--border-hairline, #cbd5e1); border-radius: 8px; padding: 10px 12px; font-weight: 700; font-size: 0.9rem; color: var(--text-secondary, #475569); display: flex; align-items: center; gap: 4px;">
+                <img src="https://flagcdn.com/w20/in.png" width="18" alt="India flag" style="border-radius: 2px;"> +91
+              </span>
+              <input type="tel" id="campusPassPhone" class="form-input" placeholder="9487530243" maxlength="10" pattern="[0-9]{10}" required style="flex: 1;" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+            </div>
+            <span id="campusPassPhoneError" style="font-size: 0.78rem; color: #ef4444; display: none; margin-top: 4px;">Please enter a valid 10-digit WhatsApp number</span>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label class="form-label" for="campusPassDate" style="font-size: 0.86rem; font-weight: 700; display: block; margin-bottom: 6px;">Preferred Visit Date (Mon - Sat) *</label>
+            <input type="date" id="campusPassDate" class="form-input" required style="width: 100%;">
+          </div>
+
+          <div class="form-group" style="margin-bottom: 1.25rem;">
+            <label class="form-label" for="campusPassDegree" style="font-size: 0.86rem; font-weight: 700; display: block; margin-bottom: 6px;">Degree / Current Status *</label>
+            <select id="campusPassDegree" class="form-select" required style="width: 100%;">
+              <option value="Final Year Engineering (CS/IT)">Final Year Engineering (CS/IT)</option>
+              <option value="Non-CS Engineering (Mech/Civil/EEE/ECE)">Non-CS Engineering (Mech/Civil/EEE/ECE)</option>
+              <option value="BCA / MCA / B.Sc / B.Com / Arts & Science">BCA / MCA / B.Sc / B.Com / Arts &amp; Science</option>
+              <option value="Diploma Student / Graduate">Diploma Student / Graduate</option>
+              <option value="Working Professional (Career Switch)">Working Professional (Career Switch)</option>
+              <option value="Career Gap / Rebooter">Career Gap / Rebooter</option>
+            </select>
+          </div>
+
+          <button type="submit" id="campusPassSubmitBtn" class="btn-enterprise-primary" style="width: 100%; justify-content: center; padding: 13px !important; font-size: 0.95rem !important; border-radius: 10px !important;">
+            <span>Confirm My Free 1-Day Pass &rarr;</span>
+            <i class="fa-solid fa-ticket"></i>
+          </button>
+
+          <div style="font-size: 0.78rem; color: var(--text-muted, #64748b); text-align: center; margin-top: 0.85rem;">
+            📍 SRV Towers, Opp. Scott Christian College, Nagercoil. Instant entry pass via WhatsApp.
+          </div>
+        </form>
+
+        <div id="campusPassSuccessToast" style="display: none; background: #ecfdf5; border: 1.5px solid #10b981; border-radius: 10px; padding: 12px 16px; margin-top: 1rem; text-align: center; color: #047857; font-size: 0.9rem; font-weight: 700;">
+          <i class="fa-solid fa-circle-check" style="margin-right: 6px;"></i> Pass Confirmed! Opening WhatsApp confirmation...
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. STICKY MOBILE CONVERSION BAR (@media max-width: 768px) -->
   <div class="sticky-mobile-conversion-bar" id="stickyMobileBar">
     <a href="https://wa.me/919487530243?text=Hi%20Karka%20Academy,%20I'd%20like%20to%20learn%20more%20about%20your%20courses%20and%20PAP%20program."
       target="_blank" rel="noopener noreferrer" class="sticky-btn-wa">
       <i class="fa-brands fa-whatsapp"></i>
-      <span>Chat on WhatsApp</span>
+      <span>💬 Chat on WhatsApp</span>
     </a>
     <button type="button" class="sticky-btn-quiz" onclick="openPapQuizModal()">
-      <i class="fa-solid fa-wand-magic-sparkles"></i>
-      <span>Check Eligibility</span>
+      <i class="fa-solid fa-graduation-cap"></i>
+      <span>🎓 Check Eligibility</span>
     </button>
   </div>
 

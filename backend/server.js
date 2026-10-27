@@ -73,7 +73,7 @@ app.post('/api/enroll', async (req, res) => {
 // POST /api/leads/syllabus-download - Syllabus download WhatsApp trigger
 app.post('/api/leads/syllabus-download', async (req, res) => {
   try {
-    const { name, phone, course, optInUpdates } = req.body;
+    const { name, phone, course, optInUpdates, source } = req.body;
     if (!name || !phone) {
       return res.status(400).json({ success: false, message: 'Name and Phone are required' });
     }
@@ -88,7 +88,7 @@ app.post('/api/leads/syllabus-download', async (req, res) => {
       phone: cleanPhone,
       course: selectedCourse,
       track: selectedCourse,
-      source: 'whatsapp_syllabus_download',
+      source: source || 'whatsapp_syllabus',
       status: 'New',
       createdAt: new Date()
     });
@@ -104,6 +104,72 @@ app.post('/api/leads/syllabus-download', async (req, res) => {
   } catch (error) {
     console.error('Error saving syllabus download lead:', error);
     return res.status(500).json({ success: false, message: 'Server error saving syllabus lead' });
+  }
+});
+
+// POST /api/leads/quiz - 60-Second PAP Eligibility Quiz lead capture
+app.post('/api/leads/quiz', async (req, res) => {
+  try {
+    const { name, phone, course, fitScore, quizAnswers, source } = req.body;
+    if (!name || !phone) {
+      return res.status(400).json({ success: false, message: 'Name and Phone are required' });
+    }
+
+    const newQuizLead = new EnrollmentLead({
+      name: String(name).trim(),
+      phone: String(phone).trim(),
+      course: course ? String(course).trim() : 'MERN Fullstack & AI Engineering',
+      track: course ? String(course).trim() : 'MERN Fullstack & AI Engineering',
+      fitScore: fitScore ? String(fitScore).trim() : '96% Fit',
+      quizAnswers: quizAnswers || {},
+      source: source || 'pap_eligibility_quiz',
+      status: 'New'
+    });
+
+    await newQuizLead.save();
+    console.log('Saved PAP Eligibility Quiz Lead:', newQuizLead);
+
+    return res.status(200).json({
+      success: true,
+      message: 'PAP Quiz lead saved successfully',
+      data: newQuizLead
+    });
+  } catch (error) {
+    console.error('Error saving quiz lead:', error);
+    return res.status(500).json({ success: false, message: 'Server error saving quiz lead' });
+  }
+});
+
+// POST /api/leads/campus-pass - 1-Day Free Campus Visit & Lab Pass lead capture
+app.post('/api/leads/campus-pass', async (req, res) => {
+  try {
+    const { name, phone, visitDate, degree, source } = req.body;
+    if (!name || !phone) {
+      return res.status(400).json({ success: false, message: 'Name and Phone are required' });
+    }
+
+    const newPassLead = new EnrollmentLead({
+      name: String(name).trim(),
+      phone: String(phone).trim(),
+      visitDate: visitDate ? String(visitDate).trim() : '',
+      degree: degree ? String(degree).trim() : '',
+      course: '1-Day Free Physical Lab Pass',
+      track: 'AgileTribers Living Lab Visit',
+      source: source || 'campus_visit_pass',
+      status: 'New'
+    });
+
+    await newPassLead.save();
+    console.log('Saved Campus Visit Pass Lead:', newPassLead);
+
+    return res.status(200).json({
+      success: true,
+      message: 'Campus visit pass booked successfully',
+      data: newPassLead
+    });
+  } catch (error) {
+    console.error('Error saving campus visit lead:', error);
+    return res.status(500).json({ success: false, message: 'Server error saving campus visit lead' });
   }
 });
 

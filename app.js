@@ -1729,7 +1729,7 @@ async function handleSyllabusWhatsAppSubmit(e) {
         name: name,
         phone: '+91' + rawPhone,
         course: track,
-        source: 'whatsapp_syllabus_download',
+        source: 'whatsapp_syllabus',
         optInUpdates: optIn,
         status: 'New'
       })
@@ -1773,14 +1773,12 @@ function closePapTermsModal() {
   if (modal) modal.classList.remove('active');
 }
 
-// 3. 60-SECOND PAP ELIGIBILITY QUIZ
+// 3. 60-SECOND PAP ELIGIBILITY QUIZ & PERSONALIZED ROADMAP
 let quizAnswers = {
   degree: '',
   year: '',
   careerGoal: '',
   commitment: '',
-  english: '',
-  ctc: '',
   name: '',
   phone: ''
 };
@@ -1788,12 +1786,14 @@ let quizAnswers = {
 function openPapQuizModal() {
   const modal = document.getElementById('papQuizModal');
   if (modal) modal.classList.add('active');
+  document.body.classList.add('modal-open');
   goToQuizStep(1);
 }
 
 function closePapQuizModal() {
   const modal = document.getElementById('papQuizModal');
   if (modal) modal.classList.remove('active');
+  document.body.classList.remove('modal-open');
 }
 
 function selectQuizOption(field, value, nextStep) {
@@ -1809,100 +1809,113 @@ function selectQuizOption(field, value, nextStep) {
 
   setTimeout(() => {
     goToQuizStep(nextStep);
-  }, 220);
+  }, 200);
 }
 
 function goToQuizStep(stepNum) {
-  const allSteps = document.querySelectorAll('.quiz-step');
+  const allSteps = document.querySelectorAll('#papQuizModal .quiz-step');
   allSteps.forEach(s => s.classList.remove('active'));
 
-  const targetStep = document.querySelector(`.quiz-step[data-step="${stepNum}"]`);
+  const targetStep = document.querySelector(`#papQuizModal .quiz-step[data-step="${stepNum}"]`);
   if (targetStep) targetStep.classList.add('active');
 
   const fillEl = document.getElementById('quizProgressFill');
   const indEl = document.getElementById('quizStepNum');
   if (fillEl) {
-    const pct = Math.min(100, Math.round(((stepNum - 1) / 6) * 100));
+    const pct = Math.min(100, Math.round((stepNum / 5) * 100));
     fillEl.style.width = `${pct}%`;
   }
-  if (indEl && stepNum <= 6) {
-    indEl.textContent = `Question ${stepNum} of 6`;
+  if (indEl && stepNum <= 5) {
+    indEl.textContent = `Step ${stepNum} of 5`;
   } else if (indEl) {
-    indEl.textContent = 'Personalized Result';
+    indEl.textContent = 'Eligible Match Result';
   }
-
-  // Pre-fill result match when entering Step 7 (Lead Capture)
-  if (stepNum === 7) {
-    renderQuizMatchSummary();
-  }
-}
-
-function renderQuizMatchSummary() {
-  const matchTitle = document.getElementById('quizMatchTrackTitle');
-  const matchPercent = document.getElementById('quizMatchPercent');
-  
-  let recTrack = 'MERN Fullstack & AI Engineering';
-  if (quizAnswers.careerGoal === 'ai-ml') recTrack = 'AI & Data Science Professional';
-  if (quizAnswers.careerGoal === 'uiux') recTrack = 'UI/UX & Digital Product Design';
-
-  if (matchTitle) matchTitle.textContent = recTrack;
-  if (matchPercent) matchPercent.textContent = '96% Match';
 }
 
 async function handleQuizLeadSubmit(e) {
   e.preventDefault();
-  const name = document.getElementById('quizLeadName')?.value || 'Student';
-  const phone = document.getElementById('quizLeadPhone')?.value || '';
+  const nameInput = document.getElementById('quizLeadName');
+  const phoneInput = document.getElementById('quizLeadPhone');
+  const errorMsg = document.getElementById('quizLeadPhoneError');
   const submitBtn = document.getElementById('quizSubmitBtn');
 
+  const name = nameInput ? nameInput.value.trim() : 'Student';
+  const rawPhone = phoneInput ? phoneInput.value.trim().replace(/\D/g, '') : '';
+
+  if (rawPhone.length !== 10) {
+    if (errorMsg) {
+      errorMsg.style.display = 'block';
+      errorMsg.textContent = 'Please enter a valid 10-digit WhatsApp number (without +91)';
+    }
+    phoneInput?.focus();
+    return;
+  }
+  if (errorMsg) errorMsg.style.display = 'none';
+
   quizAnswers.name = name;
-  quizAnswers.phone = phone;
+  quizAnswers.phone = '+91' + rawPhone;
 
   if (submitBtn) {
     submitBtn.disabled = true;
-    submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Calculating Approval...';
+    submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Calculating Fit Score &amp; Approval...';
   }
 
-  let recTrack = 'MERN Fullstack & AI Engineering';
-  if (quizAnswers.careerGoal === 'ai-ml') recTrack = 'AI & Data Science Professional';
-  if (quizAnswers.careerGoal === 'uiux') recTrack = 'UI/UX & Digital Product Design';
+  // Calculate Compatibility Fit Score
+  let fitScore = 95;
+  if (quizAnswers.commitment === 'Full-time On-site in Nagercoil') fitScore += 3;
+  else if (quizAnswers.commitment === 'Hybrid') fitScore += 1;
 
-  // Save candidate into MongoDB backend
+  if (quizAnswers.degree === 'Engineering CS' || quizAnswers.degree === 'Working Professional') fitScore += 1;
+  if (quizAnswers.year === '2024' || quizAnswers.year === '2025') fitScore += 1;
+  fitScore = Math.min(98, Math.max(94, fitScore));
+
+  // Determine Personalized Track Recommendation
+  let recTrack = 'MERN Fullstack Track';
+  if (quizAnswers.careerGoal === 'AI & Data Scientist') recTrack = 'AI & Data Science Track';
+  else if (quizAnswers.careerGoal === 'UI-UX Designer') recTrack = 'UI/UX Product Design Track';
+  else if (quizAnswers.careerGoal === 'Python Specialist') recTrack = 'Python & AI Engineering Track';
+
+  // Save lead & fit score to backend MongoDB: POST /api/leads/quiz
   try {
     const apiBase = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
       ? (window.location.port === '5000' ? '' : 'http://localhost:5000')
       : '';
-    await fetch(`${apiBase}/api/contact`, {
+    await fetch(`${apiBase}/api/leads/quiz`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         name: name,
-        phone: phone,
-        program: `PAP Quiz Qualified - ${recTrack}`,
-        message: `PAP Quiz 60s Result: Background: ${quizAnswers.degree}, Year: ${quizAnswers.year}, Goal: ${quizAnswers.careerGoal}, Commitment: ${quizAnswers.commitment}, English: ${quizAnswers.english}, Target CTC: ${quizAnswers.ctc}`
+        phone: '+91' + rawPhone,
+        course: recTrack,
+        fitScore: `${fitScore}% Fit`,
+        quizAnswers: quizAnswers,
+        source: 'pap_eligibility_quiz'
       })
     });
   } catch (err) {
     console.warn('Backend quiz lead logging offline:', err);
   }
 
-  // Setup Step 8 (Success Screen)
-  const successName = document.getElementById('quizResultUserName');
-  const successTrack = document.getElementById('quizResultTrack');
-  const waBtn = document.getElementById('quizWhatsAppConfirmBtn');
+  // Setup Step 6 Result Screen
+  const scoreDisplay = document.getElementById('quizFitScoreDisplay');
+  const headlineDisplay = document.getElementById('quizFitHeadline');
+  const trackDisplay = document.getElementById('quizRecTrack');
+  const waConfirmBtn = document.getElementById('quizWhatsAppConfirmBtn');
 
-  if (successName) successName.textContent = name;
-  if (successTrack) successTrack.textContent = recTrack;
+  if (scoreDisplay) scoreDisplay.textContent = `${fitScore}% Fit`;
+  if (headlineDisplay) headlineDisplay.textContent = `${fitScore}% Fit for ${recTrack} under ₹0 Upfront PAP`;
+  if (trackDisplay) trackDisplay.textContent = recTrack;
 
-  const waMsg = `Hi Karka Academy, I just completed the ₹0 PAP Eligibility Quiz with a 96% Match for ${recTrack}! My name is ${name} (${phone}). Please schedule my 1:1 counselor roadmap call.`;
-  if (waBtn) {
-    waBtn.href = `https://wa.me/919487530243?text=${encodeURIComponent(waMsg)}`;
+  const waPrompt = `Hi Karka Academy, I completed the PAP Eligibility Quiz with a ${fitScore}% fit for ${recTrack}! My name is ${name} (+91${rawPhone}). Please schedule my 1:1 counselor roadmap call and reserve my provisional seat.`;
+  if (waConfirmBtn) {
+    waConfirmBtn.href = `https://wa.me/919487530243?text=${encodeURIComponent(waPrompt)}`;
   }
 
-  goToQuizStep(8);
+  goToQuizStep(6);
+
   if (submitBtn) {
     submitBtn.disabled = false;
-    submitBtn.innerHTML = '<span>Unlock My Custom Roadmap & PAP Approval</span> <i class="fa-solid fa-arrow-right"></i>';
+    submitBtn.innerHTML = '<span>Calculate My PAP Fit Score &amp; Roadmap &rarr;</span>';
   }
 }
 
@@ -2380,6 +2393,275 @@ function initAntigravityParticles() {
   };
 }
 
+/* ==========================================================================
+   18. FEATURE #4: 1-DAY FREE CAMPUS VISIT & LAB PASS BOOKING
+   ========================================================================== */
+function openCampusPassModal() {
+  const modal = document.getElementById('campusPassModal');
+  const dateInput = document.getElementById('campusPassDate');
+  const errorMsg = document.getElementById('campusPassPhoneError');
+  const toast = document.getElementById('campusPassSuccessToast');
+  const form = document.getElementById('campusPassForm');
+
+  if (errorMsg) errorMsg.style.display = 'none';
+  if (toast) toast.style.display = 'none';
+  if (form) form.style.display = 'block';
+
+  // Ensure minimum date is today
+  if (dateInput) {
+    const todayStr = new Date().toISOString().split('T')[0];
+    dateInput.min = todayStr;
+    if (!dateInput.value) {
+      const d = new Date();
+      d.setDate(d.getDate() + 1);
+      dateInput.value = d.toISOString().split('T')[0];
+    }
+  }
+
+  if (modal) modal.classList.add('active');
+  document.body.classList.add('modal-open');
+}
+
+function closeCampusPassModal() {
+  const modal = document.getElementById('campusPassModal');
+  if (modal) modal.classList.remove('active');
+  document.body.classList.remove('modal-open');
+}
+
+function initCampusPassDatePicker() {
+  const dateInput = document.getElementById('campusPassDate');
+  if (dateInput) {
+    const todayStr = new Date().toISOString().split('T')[0];
+    dateInput.min = todayStr;
+  }
+}
+
+async function handleCampusPassSubmit(e) {
+  e.preventDefault();
+  const nameInput = document.getElementById('campusPassName');
+  const phoneInput = document.getElementById('campusPassPhone');
+  const dateInput = document.getElementById('campusPassDate');
+  const degreeSelect = document.getElementById('campusPassDegree');
+  const submitBtn = document.getElementById('campusPassSubmitBtn');
+  const errorMsg = document.getElementById('campusPassPhoneError');
+  const toast = document.getElementById('campusPassSuccessToast');
+  const form = document.getElementById('campusPassForm');
+
+  const name = nameInput ? nameInput.value.trim() : '';
+  const rawPhone = phoneInput ? phoneInput.value.trim().replace(/\D/g, '') : '';
+  const visitDate = dateInput ? dateInput.value : '';
+  const degree = degreeSelect ? degreeSelect.value : 'Student';
+
+  if (rawPhone.length !== 10) {
+    if (errorMsg) {
+      errorMsg.style.display = 'block';
+      errorMsg.textContent = 'Please enter a valid 10-digit WhatsApp number (without +91)';
+    }
+    phoneInput?.focus();
+    return;
+  }
+  if (errorMsg) errorMsg.style.display = 'none';
+
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Reserving Lab Pass...';
+  }
+
+  // Save lead to backend MongoDB: POST /api/leads/campus-pass
+  try {
+    const apiBase = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+      ? (window.location.port === '5000' ? '' : 'http://localhost:5000')
+      : '';
+    await fetch(`${apiBase}/api/leads/campus-pass`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: name,
+        phone: '+91' + rawPhone,
+        visitDate: visitDate,
+        degree: degree,
+        course: '1-Day Free Physical Lab Pass',
+        source: 'campus_visit_pass'
+      })
+    });
+  } catch (err) {
+    console.warn('Backend campus pass logging offline:', err);
+  }
+
+  // Construct WhatsApp confirmation prompt link:
+  // https://wa.me/919487530243?text=Hi%20Karka%20Academy,%20I%20have%20booked%20my%20Free%201-Day%20Physical%20Lab%20Pass%20for%20[DATE].%20My%20name%20is%20[NAME]%20([DEGREE]).%20Please%20confirm%20my%20entry%20slot%20at%20SRV%20Towers.
+  const waMsg = `Hi Karka Academy, I have booked my Free 1-Day Physical Lab Pass for ${visitDate}. My name is ${name} (${degree}). Please confirm my entry slot at SRV Towers.`;
+  const waUrl = `https://wa.me/919487530243?text=${encodeURIComponent(waMsg)}`;
+  window.open(waUrl, '_blank');
+
+  if (toast) toast.style.display = 'block';
+
+  if (submitBtn) {
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = '<span>Confirm My Free 1-Day Pass &rarr;</span> <i class="fa-solid fa-ticket"></i>';
+  }
+
+  setTimeout(() => {
+    closeCampusPassModal();
+    if (form) form.reset();
+    if (toast) toast.style.display = 'none';
+  }, 2000);
+}
+
+/* ==========================================================================
+   19. FEATURE #5: SPIKE LITE INTERACTIVE 60-SECOND CODING PLAYGROUND
+   ========================================================================== */
+const SPIKE_LITE_DEFAULT_CODE = `<button style="background: #e2e8f0; color: #0f172a; padding: 12px 24px; border-radius: 8px;">
+  Click Me
+</button>`;
+
+function initSpikeLitePlayground() {
+  const editor = document.getElementById('spikeLiteCodeEditor');
+  if (editor && !editor.value.trim()) {
+    editor.value = SPIKE_LITE_DEFAULT_CODE;
+  }
+  renderSpikeLiteLive();
+}
+
+function renderSpikeLiteLive() {
+  const editor = document.getElementById('spikeLiteCodeEditor');
+  const stage = document.getElementById('spikeLitePreviewStage');
+  if (!editor || !stage) return;
+
+  const rawCode = editor.value;
+  stage.innerHTML = rawCode;
+}
+
+function runSpikeLiteVerify() {
+  const editor = document.getElementById('spikeLiteCodeEditor');
+  const stage = document.getElementById('spikeLitePreviewStage');
+  const feedback = document.getElementById('spikeLiteFeedback');
+  const reward = document.getElementById('spikeUnlockedReward');
+  const verifyBtn = document.getElementById('btnSpikeVerify');
+
+  if (!editor) return;
+  const code = editor.value.trim();
+
+  // Live render
+  renderSpikeLiteLive();
+
+  const renderedBtn = stage ? stage.querySelector('button') : null;
+  const btnText = renderedBtn ? renderedBtn.textContent.trim().toLowerCase() : '';
+  const btnStyle = renderedBtn ? window.getComputedStyle(renderedBtn) : null;
+  const bgComputed = btnStyle ? btnStyle.backgroundColor : '';
+
+  const codeNormalized = code.toLowerCase().replace(/\s+/g, ' ');
+  const hasTargetText = btnText.includes('start my tech career') || codeNormalized.includes('start my tech career');
+  const hasTargetColor = codeNormalized.includes('#0b57d0') || 
+                          bgComputed.includes('11, 87, 208') || 
+                          codeNormalized.includes('rgb(11, 87, 208)') ||
+                          codeNormalized.includes('rgb(11,87,208)');
+
+  if (hasTargetText && hasTargetColor) {
+    // Challenge solved!
+    if (typeof confetti === 'function') {
+      confetti({
+        particleCount: 90,
+        spread: 65,
+        origin: { y: 0.6 }
+      });
+    }
+
+    if (feedback) {
+      feedback.style.color = '#059669';
+      feedback.innerHTML = '<i class="fa-solid fa-circle-check"></i> <strong>Mission Accomplished!</strong> Button styled &amp; text updated!';
+    }
+
+    if (reward) {
+      reward.style.display = 'flex';
+      reward.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    if (verifyBtn) {
+      verifyBtn.classList.remove('btn-enterprise-primary');
+      verifyBtn.classList.add('btn-whatsapp-syllabus');
+      verifyBtn.innerHTML = '<i class="fa-solid fa-check"></i> <span>Aptitude Verified!</span>';
+    }
+  } else if (!hasTargetText && !hasTargetColor) {
+    if (feedback) {
+      feedback.style.color = '#dc2626';
+      feedback.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i> Change text to <code>"Start My Tech Career"</code> and background to <code>"#0b57d0"</code>.';
+    }
+  } else if (!hasTargetText) {
+    if (feedback) {
+      feedback.style.color = '#d97706';
+      feedback.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Background color looks great! Now change the button text to <code>"Start My Tech Career"</code>.';
+    }
+  } else {
+    if (feedback) {
+      feedback.style.color = '#d97706';
+      feedback.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Button text is correct! Now change the background to <code>"#0b57d0"</code>.';
+    }
+  }
+}
+
+function resetSpikeLiteChallenge() {
+  const editor = document.getElementById('spikeLiteCodeEditor');
+  const feedback = document.getElementById('spikeLiteFeedback');
+  const reward = document.getElementById('spikeUnlockedReward');
+  const verifyBtn = document.getElementById('btnSpikeVerify');
+
+  if (editor) {
+    editor.value = SPIKE_LITE_DEFAULT_CODE;
+  }
+  renderSpikeLiteLive();
+
+  if (feedback) {
+    feedback.style.color = '';
+    feedback.textContent = 'Tweak the code above and click Run Code & Verify';
+  }
+  if (reward) {
+    reward.style.display = 'none';
+  }
+  if (verifyBtn) {
+    verifyBtn.className = 'btn-enterprise-primary';
+    verifyBtn.innerHTML = '<i class="fa-solid fa-play"></i> <span>Run Code &amp; Verify</span>';
+  }
+}
+
+/* ==========================================================================
+   20. FEATURE #3: STICKY MOBILE CONVERSION BAR OBSERVER
+   ========================================================================== */
+function initStickyMobileBarObserver() {
+  const bar = document.getElementById('stickyMobileBar');
+  if (!bar) return;
+
+  const leadCaptureElements = [
+    document.getElementById('leadForm'),
+    document.getElementById('contact'),
+    document.querySelector('.apply-modal-wrapper'),
+    document.getElementById('applyModal')
+  ].filter(Boolean);
+
+  if (!leadCaptureElements.length || typeof IntersectionObserver === 'undefined') {
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    let shouldHide = false;
+    entries.forEach(entry => {
+      if (entry.isIntersecting && entry.intersectionRatio > 0.1) {
+        shouldHide = true;
+      }
+    });
+
+    if (shouldHide) {
+      bar.classList.add('sticky-bar-hidden');
+    } else {
+      bar.classList.remove('sticky-bar-hidden');
+    }
+  }, {
+    threshold: [0, 0.1, 0.5]
+  });
+
+  leadCaptureElements.forEach(el => observer.observe(el));
+}
+
 // Global Window Exports
 window.openSyllabusWhatsAppModal = openSyllabusWhatsAppModal;
 window.closeSyllabusWhatsAppModal = closeSyllabusWhatsAppModal;
@@ -2391,16 +2673,25 @@ window.closePapQuizModal = closePapQuizModal;
 window.selectQuizOption = selectQuizOption;
 window.goToQuizStep = goToQuizStep;
 window.handleQuizLeadSubmit = handleQuizLeadSubmit;
+window.openCampusPassModal = openCampusPassModal;
+window.closeCampusPassModal = closeCampusPassModal;
+window.handleCampusPassSubmit = handleCampusPassSubmit;
+window.renderSpikeLiteLive = renderSpikeLiteLive;
+window.runSpikeLiteVerify = runSpikeLiteVerify;
+window.resetSpikeLiteChallenge = resetSpikeLiteChallenge;
 window.runSandboxVerify = runSandboxVerify;
 window.resetSandboxChallenge = resetSandboxChallenge;
 window.toggleSandboxHint = toggleSandboxHint;
 window.applyGravityPreset = applyGravityPreset;
 
-// Auto-run grad calculator, pro drawer, & interactive sandbox
+// Auto-run features on DOMContentLoaded
 document.addEventListener('DOMContentLoaded', () => {
   initGradCalculator();
   initProDrawer();
   initSandboxChallenge();
+  initCampusPassDatePicker();
+  initSpikeLitePlayground();
+  initStickyMobileBarObserver();
 });
 
 
