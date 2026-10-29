@@ -320,45 +320,151 @@ function closeAiResponse() {
 const storiesData = {
   gabriel: {
     name: 'Gabriel Samraj',
-    role: 'Frontend Developer @ Zoho Corp (₹8.5 LPA)',
-    quote: '"Karka\'s UI/UX and frontend engineering track was a complete game-changer. Coming from Mechanical Engineering, the instructors guided me through real component architectures. I cracked Zoho\'s technical rounds with full confidence."',
-    image: 'assets/images/karka-hero.jpg',
-    companyLinkedin: 'https://www.linkedin.com/company/zoho/',
-    companyName: 'Zoho Corp'
-  },
-  prabin: {
-    name: 'Prabin Kumar',
-    role: 'Fullstack Engineer @ Capecom (₹6.8 LPA)',
-    quote: '"I studied B.Sc Physics with zero tech placement support from college. At Karka, building 10+ real projects in React and Node and writing production PRs at AgileTribers made me confident enough to build scalable SaaS apps."',
-    image: 'assets/images/karka-studio.jpg',
-    companyLinkedin: 'https://www.linkedin.com/company/capecom-solutions/',
-    companyName: 'Capecom'
-  },
-  shiju: {
-    name: 'Shiju Nair',
-    role: 'AI & Data Engineer @ Matrimony.com (₹7.2 LPA)',
-    quote: '"Civil Engineering to AI seemed impossible until I joined Karka. The 4-Pillar system, statistical modeling, and prompt engineering drills gave me an unfair advantage over other candidates during placement rounds."',
-    image: 'assets/images/karka-hero.jpg',
-    companyLinkedin: 'https://www.linkedin.com/company/matrimony.com-limited/',
-    companyName: 'Matrimony.com'
+    degreeTransition: 'BE Mechanical Engg (DMI College near Anjugramam)',
+    course: 'Frontend Development (Main Project Complete)',
+    highlightText: 'Friday Placement Training Attending',
+    topBadge: 'DMI College &bull; Frontend Placement Track',
+    company: 'DMI College near Anjugramam',
+    companyName: 'DMI College (Anjugramam)',
+    package: 'Placement Training',
+    designation: 'Frontend Developer Trainee',
+    statusDetail: 'Friday Placement Training',
+    role: 'Frontend Developer Trainee • DMI College (Anjugramam) • Friday Placement Training',
+    quote: '"I completed my BE in Mechanical Engineering from DMI College near Anjugramam. I came across Karka on Instagram and joined the Frontend Development program. I have now completed my main project and am actively attending the dedicated Friday placement training sessions, which have given me real interview confidence and technical problem-solving clarity."',
+    image: 'assets/images/thumb-testimonial-gabriel.jpg',
+    video: 'video/Video testimonial by Gabriel Samraj.mp4',
+    proofLink: 'https://www.instagram.com/karka.ai',
+    proofIcon: 'fa-brands fa-instagram',
+    proofText: 'Discovered via Instagram (@karka.ai)'
   },
   kishore: {
-    name: 'Kishore Kannan',
-    role: 'UI/UX Product Designer @ Freshworks (₹9.0 LPA)',
-    quote: '"I came from B.Com and loved visual aesthetics. Karka\'s product design mentors taught me how to talk to users, build design systems in Figma, and build portfolios that hiring managers crave."',
-    image: 'assets/images/karka-studio.jpg',
-    companyLinkedin: 'https://www.linkedin.com/company/freshworks-inc/',
-    companyName: 'Freshworks'
+    name: 'Kishore',
+    degreeTransition: 'BSc Computer Science (Sivanthi Adinar College, Nagercoil)',
+    course: 'Practical UI/UX Design & Figma Track',
+    highlightText: 'Friend Referral &bull; Strong Career Scope',
+    topBadge: 'Sivanthi Adinar College &bull; UI/UX Practical Track',
+    company: 'Sivanthi Adinar College, Nagercoil',
+    companyName: 'Sivanthi Adinar College',
+    package: 'Friend Referral',
+    designation: 'UI/UX Design Trainee',
+    statusDetail: 'Friend Referral • Practical UI/UX',
+    role: 'UI/UX Design Trainee • Sivanthi Adinar College, Nagercoil • Friend Referral',
+    quote: '"I studied BSc Computer Science at Sivanthi Adinar College in Nagercoil and joined Karka through a friend\'s referral. The UI/UX training here is hands-on, practical, and directly aligned with what modern software companies look for, creating immense career scope."',
+    image: 'assets/images/thumb-testimonial-kishore.jpg',
+    video: 'video/Video testimonial by Kishore.mp4',
+    proofLink: 'https://www.youtube.com/@karka_academy',
+    proofIcon: 'fa-brands fa-youtube',
+    proofText: 'Watch Kishore on YouTube (@karka_academy)'
+  },
+  prabin: {
+    name: 'Prabin Raj',
+    degreeTransition: 'Mathematics Background (from Kollancode)',
+    course: 'Pay After Placement (PAP) Software Track',
+    highlightText: 'Zero Laptop Start ➔ Successfully Placed',
+    topBadge: 'Kollancode &bull; Placed via PAP Model',
+    company: 'From Kollancode',
+    companyName: 'Kollancode',
+    package: 'Successfully Placed',
+    designation: 'Placed Software Developer',
+    statusDetail: 'Successfully Placed via PAP',
+    role: 'Placed Software Developer • From Kollancode • Successfully Placed via PAP',
+    quote: '"Coming from a Mathematics background in Kollancode, I had no coding experience and did not even own a laptop initially. Karka\'s Pay After Placement (PAP) model made it completely accessible for me to learn web technologies and get successfully placed into software engineering."',
+    image: 'assets/images/thumb-testimonial-prabin.jpg',
+    video: 'video/Video testimonial by Prabin Raj.mp4',
+    proofLink: 'https://www.youtube.com/@karka_academy',
+    proofIcon: 'fa-brands fa-youtube',
+    proofText: 'Watch Prabin Raj on YouTube (@karka_academy)'
   },
   sridevi: {
-    name: 'Sridevi Ananth',
-    role: 'MERN Stack Developer @ HCL Tech (₹7.5 LPA)',
-    quote: '"After a 3-year career break following motherhood, re-entering tech was daunting. Karka\'s supportive on-site mentors and outcome-aligned PAP model gave me my life and career back."',
-    image: 'assets/images/karka-hero.jpg',
-    companyLinkedin: 'https://www.linkedin.com/company/hcltech/',
-    companyName: 'HCLTech'
+    name: 'Bala Sridevi',
+    degreeTransition: 'B.Com (Sriappa College for Women, Nagercoil)',
+    course: 'UI/UX Design (Recommended by Hema Mam)',
+    highlightText: 'IT Professional Mentoring &bull; Placement Support',
+    topBadge: 'Sriappa College &bull; Non-Coding to Tech',
+    company: 'Sriappa College for Women',
+    companyName: 'Sriappa College for Women',
+    package: 'IT Mentored',
+    designation: 'UI/UX Designer',
+    statusDetail: 'Hema Mam Guidance • Placement Support',
+    role: 'UI/UX Designer • Sriappa College for Women, Nagercoil • Non-Coding to Tech',
+    quote: '"I graduated in B.Com from Sriappa College for Women in Nagercoil with a non-coding background. I found Karka through Google, and during admission counseling, Hema Mam recommended the UI/UX design track for my strengths. The mentorship from active IT professionals and continuous placement support made my transition into tech smooth and confident."',
+    image: 'assets/images/thumb-testimonial-sridevi.jpg',
+    video: 'video/Video testimonial by Sridevi.mp4',
+    proofLink: 'https://www.youtube.com/@karka_academy',
+    proofIcon: 'fa-brands fa-youtube',
+    proofText: 'Watch Bala Sridevi on YouTube (@karka_academy)'
+  },
+  shiju: {
+    name: 'Shijumon',
+    degreeTransition: 'MBA Student (from Mandaithivu)',
+    course: 'Digital Marketing & Graphic Design',
+    highlightText: 'Well-Organized Placement &bull; Affordable',
+    topBadge: 'Mandaithivu &bull; Marketing &amp; Graphic Design',
+    company: 'From Mandaithivu',
+    companyName: 'Mandaithivu',
+    package: 'MBA Graduate',
+    designation: 'Digital Marketing & Graphic Specialist',
+    statusDetail: 'Affordable &bull; Well-Organized Placement',
+    role: 'Digital Marketer & Graphic Specialist • From Mandaithivu • MBA Graduate',
+    quote: '"As an MBA student from Mandaithivu, I chose Karka for Digital Marketing and Graphic Design. The course pricing is very affordable, the practical skill development is exceptional, and the placement process is handled in a well-organized, structured manner. It gave me high-demand creative skills with verified placement assistance."',
+    image: 'assets/images/thumb-testimonial-shiju.jpg',
+    video: 'video/Video testimonial by Shiju Mon.mp4',
+    proofLink: 'https://www.youtube.com/@karka_academy',
+    proofIcon: 'fa-brands fa-youtube',
+    proofText: 'Watch Shijumon on YouTube (@karka_academy)'
   }
 };
+
+let isReelPlaying = false;
+
+function formatStoryVideoTime(seconds) {
+  if (isNaN(seconds) || seconds < 0) return '00:00';
+  const mins = Math.floor(seconds / 60);
+  const secs = Math.floor(seconds % 60);
+  return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+}
+
+function updateVideoControlsUI(playingState) {
+  isReelPlaying = playingState;
+  const playBtnIcon = document.querySelector('#playBtnIcon i');
+  const ctrlPauseBtn = document.getElementById('ctrlPauseBtn');
+  const overlay = document.getElementById('videoPlayOverlay');
+
+  if (playingState) {
+    if (playBtnIcon) playBtnIcon.className = 'fa-solid fa-pause';
+    if (ctrlPauseBtn) {
+      ctrlPauseBtn.className = 'fa-solid fa-pause';
+      ctrlPauseBtn.setAttribute('title', 'Pause video');
+    }
+    if (overlay) overlay.classList.add('playing');
+  } else {
+    if (playBtnIcon) playBtnIcon.className = 'fa-solid fa-play';
+    if (ctrlPauseBtn) {
+      ctrlPauseBtn.className = 'fa-solid fa-play';
+      ctrlPauseBtn.setAttribute('title', 'Play video');
+    }
+    if (overlay) overlay.classList.remove('playing');
+  }
+}
+
+function toggleReelPlayback() {
+  const video = document.getElementById('featStoryVideo');
+  if (!video) return;
+
+  if (video.paused || video.ended) {
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.then(() => {
+        updateVideoControlsUI(true);
+      }).catch(err => {
+        console.warn('Playback prevented or aborted:', err);
+      });
+    }
+  } else {
+    video.pause();
+    updateVideoControlsUI(false);
+  }
+}
 
 function initVideoStories() {
   const tabs = document.querySelectorAll('.story-tab-btn');
@@ -367,7 +473,81 @@ function initVideoStories() {
   const quoteEl = document.getElementById('featStoryQuote');
   const imgEl = document.getElementById('featStoryImg');
   const linkedinEl = document.getElementById('featCompanyLinkedin');
+  const videoEl = document.getElementById('featStoryVideo');
+  const videoSrcEl = document.getElementById('featStoryVideoSrc');
+  const fill = document.getElementById('videoProgressFill');
+  const timeDisplay = document.getElementById('videoTimeDisplay');
+  const progressBar = document.getElementById('videoProgressBar');
+  const volBtn = document.getElementById('ctrlVolumeBtn');
 
+  // Dynamic badge and credential elements
+  const topSpeakerEl = document.getElementById('featStoryTopSpeaker');
+  const packageBadgeEl = document.getElementById('featStoryPackageBadge');
+  const transitionEl = document.getElementById('featStoryTransition');
+  const courseEl = document.getElementById('featStoryCourse');
+  const packageTextEl = document.getElementById('featStoryPackageText');
+  const designationEl = document.getElementById('featStoryDesignation');
+  const companyEl = document.getElementById('featStoryCompany');
+  const salaryEl = document.getElementById('featStorySalary');
+
+  // Video event handlers
+  if (videoEl) {
+    videoEl.addEventListener('play', () => updateVideoControlsUI(true));
+    videoEl.addEventListener('pause', () => updateVideoControlsUI(false));
+    videoEl.addEventListener('ended', () => {
+      updateVideoControlsUI(false);
+      if (fill) fill.style.width = '100%';
+    });
+
+    videoEl.addEventListener('timeupdate', () => {
+      if (videoEl.duration && !isNaN(videoEl.duration) && videoEl.duration > 0) {
+        const percent = (videoEl.currentTime / videoEl.duration) * 100;
+        if (fill) fill.style.width = `${percent}%`;
+        if (timeDisplay) {
+          timeDisplay.textContent = `${formatStoryVideoTime(videoEl.currentTime)} / ${formatStoryVideoTime(videoEl.duration)}`;
+        }
+      }
+    });
+
+    videoEl.addEventListener('loadedmetadata', () => {
+      if (videoEl.duration && !isNaN(videoEl.duration) && videoEl.duration > 0) {
+        if (timeDisplay && videoEl.currentTime > 0) {
+          timeDisplay.textContent = `${formatStoryVideoTime(videoEl.currentTime)} / ${formatStoryVideoTime(videoEl.duration)}`;
+        }
+      }
+    });
+  }
+
+  // Interactive seek on progress bar click
+  if (progressBar && videoEl) {
+    progressBar.addEventListener('click', (e) => {
+      if (!videoEl.duration || isNaN(videoEl.duration)) return;
+      const rect = progressBar.getBoundingClientRect();
+      const clickRatio = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+      videoEl.currentTime = clickRatio * videoEl.duration;
+      if (fill) fill.style.width = `${clickRatio * 100}%`;
+      if (timeDisplay) {
+        timeDisplay.textContent = `${formatStoryVideoTime(videoEl.currentTime)} / ${formatStoryVideoTime(videoEl.duration)}`;
+      }
+    });
+  }
+
+  // Volume toggle
+  if (volBtn && videoEl) {
+    volBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      videoEl.muted = !videoEl.muted;
+      if (videoEl.muted) {
+        volBtn.className = 'fa-solid fa-volume-xmark';
+        volBtn.setAttribute('title', 'Unmute audio');
+      } else {
+        volBtn.className = 'fa-solid fa-volume-high';
+        volBtn.setAttribute('title', 'Mute audio');
+      }
+    });
+  }
+
+  // Story tab switching
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {
       tabs.forEach(t => t.classList.remove('active'));
@@ -375,35 +555,51 @@ function initVideoStories() {
 
       const storyKey = tab.getAttribute('data-story');
       const data = storiesData[storyKey];
-      if (data && nameEl && roleEl && quoteEl && imgEl) {
-        nameEl.textContent = data.name;
-        roleEl.textContent = data.role;
-        quoteEl.textContent = data.quote;
-        imgEl.src = data.image;
-        if (linkedinEl && data.companyLinkedin) {
-          linkedinEl.href = data.companyLinkedin;
-          linkedinEl.innerHTML = `<i class="fa-brands fa-linkedin"></i> <span>${data.companyName} Verified Profile</span>`;
+      if (data) {
+        // Update main text details
+        if (nameEl) nameEl.textContent = data.name;
+        if (quoteEl) quoteEl.textContent = data.quote;
+        if (imgEl) imgEl.src = data.image;
+
+        // Dynamically sync badges, degree transition, course, company & package
+        if (topSpeakerEl) topSpeakerEl.textContent = data.name;
+        if (packageBadgeEl) packageBadgeEl.innerHTML = data.topBadge || `${data.companyName || data.company} &bull; ${data.package}`;
+        if (transitionEl) transitionEl.textContent = data.degreeTransition;
+        if (courseEl) courseEl.textContent = data.course;
+        if (packageTextEl) packageTextEl.innerHTML = data.highlightText || `${data.package} Package`;
+
+        // Update author row details cleanly
+        if (designationEl && companyEl && salaryEl) {
+          designationEl.textContent = data.designation;
+          companyEl.textContent = data.companyName || data.company;
+          salaryEl.textContent = data.statusDetail || data.package;
+        } else if (roleEl) {
+          roleEl.textContent = data.role;
+        }
+
+        if (linkedinEl && data.proofLink) {
+          linkedinEl.href = data.proofLink;
+          linkedinEl.innerHTML = `<i class="${data.proofIcon || 'fa-brands fa-youtube'}"></i> <span>${data.proofText}</span>`;
+        }
+
+        // Seamless video update
+        if (videoEl && data.video) {
+          videoEl.pause();
+          updateVideoControlsUI(false);
+          videoEl.poster = data.image;
+          if (videoSrcEl) {
+            videoSrcEl.src = data.video;
+          }
+          videoEl.src = data.video;
+          videoEl.load();
+          if (fill) fill.style.width = '0%';
+          if (timeDisplay) {
+            timeDisplay.textContent = '00:00 / 00:00';
+          }
         }
       }
     });
   });
-}
-
-let isPlaying = false;
-function toggleReelPlayback() {
-  const icon = document.querySelector('#playBtnIcon i');
-  const ctrlIcon = document.getElementById('ctrlPauseBtn');
-  const fill = document.getElementById('videoProgressFill');
-
-  isPlaying = !isPlaying;
-  if (isPlaying) {
-    if (icon) icon.className = 'fa-solid fa-pause';
-    if (ctrlIcon) ctrlIcon.className = 'fa-solid fa-play';
-    if (fill) fill.style.width = '85%';
-  } else {
-    if (icon) icon.className = 'fa-solid fa-play';
-    if (ctrlIcon) ctrlIcon.className = 'fa-solid fa-pause';
-  }
 }
 
 /* ==========================================================================
@@ -556,9 +752,11 @@ function initReviewsCarousel() {
   const track = document.getElementById('reviewsTrack');
   const prevBtn = document.getElementById('carouselPrevBtn');
   const nextBtn = document.getElementById('carouselNextBtn');
+  const pageNumbersContainer = document.getElementById('reviewsPageNumbers');
 
   if (!track || !prevBtn || !nextBtn) return;
 
+  let currentPage = 1;
   let currentOffset = 0;
 
   function getStep() {
@@ -566,6 +764,13 @@ function initReviewsCarousel() {
     if (!firstCard) return 360;
     const gap = parseFloat(window.getComputedStyle(track).gap) || 24;
     return firstCard.offsetWidth + gap;
+  }
+
+  function getCardsPerPage() {
+    const wrapper = track.parentElement;
+    const wrapperWidth = wrapper ? wrapper.clientWidth : 1100;
+    const step = getStep();
+    return Math.max(1, Math.floor((wrapperWidth + 24) / step));
   }
 
   function getMaxScroll() {
@@ -578,51 +783,128 @@ function initReviewsCarousel() {
     return Math.max(0, totalWidth - wrapperWidth);
   }
 
+  function getTotalPages() {
+    const visibleCards = track.querySelectorAll('.review-card:not(.hidden)');
+    if (!visibleCards.length) return 1;
+    const cardsPerPage = getCardsPerPage();
+    return Math.max(1, Math.ceil(visibleCards.length / cardsPerPage));
+  }
+
   function updateTransform() {
-    track.style.transition = 'transform 0.4s cubic-bezier(0.25, 1, 0.5, 1)';
+    track.style.transition = 'transform 0.45s cubic-bezier(0.25, 1, 0.5, 1)';
     track.style.transform = `translateX(${currentOffset}px)`;
   }
 
+  function updateActivePageBtn() {
+    if (!pageNumbersContainer) return;
+    const btns = pageNumbersContainer.querySelectorAll('.reviews-page-btn');
+    btns.forEach(btn => {
+      const p = parseInt(btn.getAttribute('data-page'), 10);
+      const isActive = p === currentPage;
+      btn.classList.toggle('active', isActive);
+      btn.setAttribute('aria-current', isActive ? 'true' : 'false');
+    });
+  }
+
+  function goToPage(pageNum) {
+    const totalPages = getTotalPages();
+    currentPage = Math.max(1, Math.min(pageNum, totalPages));
+    const maxScroll = getMaxScroll();
+    const cardsPerPage = getCardsPerPage();
+    const step = getStep();
+
+    if (currentPage === 1) {
+      currentOffset = 0;
+    } else if (currentPage === totalPages) {
+      currentOffset = -maxScroll;
+    } else {
+      currentOffset = -Math.min(maxScroll, (currentPage - 1) * cardsPerPage * step);
+    }
+
+    updateTransform();
+    updateActivePageBtn();
+  }
+
+  function renderPageNumbers() {
+    if (!pageNumbersContainer) return;
+    const totalPages = getTotalPages();
+    pageNumbersContainer.innerHTML = '';
+
+    for (let p = 1; p <= totalPages; p++) {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = `reviews-page-btn ${p === currentPage ? 'active' : ''}`;
+      btn.setAttribute('data-page', p);
+      btn.setAttribute('aria-label', `Go to testimonial page ${p}`);
+      btn.setAttribute('aria-current', p === currentPage ? 'true' : 'false');
+      btn.innerHTML = `<span class="page-dot"></span><span class="page-num">${p}</span>`;
+
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        goToPage(p);
+      });
+
+      pageNumbersContainer.appendChild(btn);
+    }
+  }
+
   window._reviewsCarouselReset = function() {
+    currentPage = 1;
     currentOffset = 0;
     updateTransform();
+    renderPageNumbers();
   };
 
   nextBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    const maxScroll = getMaxScroll();
-    if (maxScroll <= 0) return;
-    const step = getStep();
-
-    if (Math.abs(currentOffset) + 10 < maxScroll) {
-      currentOffset = Math.max(-maxScroll, currentOffset - step);
+    const totalPages = getTotalPages();
+    if (totalPages <= 1) return;
+    if (currentPage < totalPages) {
+      goToPage(currentPage + 1);
     } else {
-      currentOffset = 0; // loop back to first
+      goToPage(1); // loop back to first
     }
-    updateTransform();
   });
 
   prevBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    const maxScroll = getMaxScroll();
-    if (maxScroll <= 0) return;
-    const step = getStep();
-
-    if (currentOffset < -10) {
-      currentOffset = Math.min(0, currentOffset + step);
+    const totalPages = getTotalPages();
+    if (totalPages <= 1) return;
+    if (currentPage > 1) {
+      goToPage(currentPage - 1);
     } else {
-      currentOffset = -maxScroll; // loop to last
+      goToPage(totalPages); // loop to last
     }
-    updateTransform();
   });
+
+  // Touch swipe support for smooth mobile interaction
+  let touchStartX = 0;
+  let touchEndX = 0;
+  track.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+
+  track.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    const swipeDiff = touchStartX - touchEndX;
+    if (Math.abs(swipeDiff) > 50) {
+      if (swipeDiff > 0) {
+        // Swiped left -> next
+        nextBtn.click();
+      } else {
+        // Swiped right -> prev
+        prevBtn.click();
+      }
+    }
+  }, { passive: true });
 
   window.addEventListener('resize', () => {
-    const maxScroll = getMaxScroll();
-    if (Math.abs(currentOffset) > maxScroll) {
-      currentOffset = -maxScroll;
-      updateTransform();
-    }
+    renderPageNumbers();
+    goToPage(currentPage);
   });
+
+  // Initial render of page numbers
+  renderPageNumbers();
 }
 
 /* ==========================================================================
@@ -1923,14 +2205,14 @@ async function handleQuizLeadSubmit(e) {
    17. FEATURE #3: INTERACTIVE CODE LAB (PROFESSIONAL COMPONENT PLAYGROUND)
    ========================================================================== */
 const INITIAL_SANDBOX_CODE = `<button class="btn-production-cta" style="
-  background: #0b57d0;
+  background: #7c3aed;
   color: #ffffff;
   border: none;
   border-radius: 10px;
   padding: 14px 28px;
   font-size: 16px;
   font-weight: 700;
-  box-shadow: 0 12px 24px rgba(11, 87, 208, 0.25);
+  box-shadow: 0 12px 24px rgba(124, 58, 237, 0.28);
   cursor: pointer;
   transition: all 0.2s ease;
 ">
@@ -1939,42 +2221,42 @@ const INITIAL_SANDBOX_CODE = `<button class="btn-production-cta" style="
 
 const COMPONENT_PRESETS = {
   enterprise: `<button class="btn-production-cta" style="
-  background: #0b57d0;
+  background: #7c3aed;
   color: #ffffff;
   border: none;
   border-radius: 10px;
   padding: 14px 28px;
   font-size: 16px;
   font-weight: 700;
-  box-shadow: 0 12px 24px rgba(11, 87, 208, 0.25);
+  box-shadow: 0 12px 24px rgba(124, 58, 237, 0.28);
   cursor: pointer;
   transition: all 0.2s ease;
 ">
   Get Started Free &rarr;
 </button>`,
   gradient: `<button class="btn-production-cta" style="
-  background: linear-gradient(135deg, #0b57d0 0%, #2563eb 50%, #4f46e5 100%);
+  background: linear-gradient(135deg, #7c3aed 0%, #a855f7 50%, #c084fc 100%);
   color: #ffffff;
   border: none;
   border-radius: 12px;
   padding: 15px 30px;
   font-size: 16px;
   font-weight: 800;
-  box-shadow: 0 14px 28px rgba(37, 99, 235, 0.3);
+  box-shadow: 0 14px 28px rgba(124, 58, 237, 0.35);
   cursor: pointer;
   transition: all 0.2s ease;
 ">
   Explore Programs &rarr;
 </button>`,
   emerald: `<button class="btn-production-cta" style="
-  background: #059669;
+  background: #4c1d95;
   color: #ffffff;
   border: none;
   border-radius: 8px;
   padding: 13px 26px;
   font-size: 16px;
   font-weight: 700;
-  box-shadow: 0 10px 20px rgba(5, 150, 105, 0.25);
+  box-shadow: 0 10px 20px rgba(76, 29, 149, 0.3);
   cursor: pointer;
   transition: all 0.2s ease;
 ">
@@ -2103,7 +2385,7 @@ function applyComponentState(radiusVal, paddingVal, shadowVal, updateCodeInput =
   if (btn) {
     btn.style.borderRadius = `${radiusVal}px`;
     btn.style.padding = `${paddingVal}px 28px`;
-    btn.style.boxShadow = `0 ${shadowVal}px ${parseInt(shadowVal, 10) * 2}px rgba(11, 87, 208, 0.25)`;
+    btn.style.boxShadow = `0 ${shadowVal}px ${parseInt(shadowVal, 10) * 2}px rgba(124, 58, 237, 0.28)`;
   }
 
   // Optionally sync updated property text into the editable code editor
@@ -2118,7 +2400,7 @@ function applyComponentState(radiusVal, paddingVal, shadowVal, updateCodeInput =
         code = code.replace(/padding:\s*[^;]+;/i, `padding: ${paddingVal}px 28px;`);
       }
       if (/box-shadow:\s*[^;]+;/i.test(code)) {
-        code = code.replace(/box-shadow:\s*[^;]+;/i, `box-shadow: 0 ${shadowVal}px ${parseInt(shadowVal, 10) * 2}px rgba(11, 87, 208, 0.25);`);
+        code = code.replace(/box-shadow:\s*[^;]+;/i, `box-shadow: 0 ${shadowVal}px ${parseInt(shadowVal, 10) * 2}px rgba(124, 58, 237, 0.28);`);
       }
       codeInput.value = code;
       updateGutterLineNumbers();
@@ -2181,21 +2463,211 @@ function applyComponentPreset(presetKey) {
   const feedbackEl = document.getElementById('sandboxStatusFeedback');
   if (feedbackEl) {
     const presetNames = {
-      enterprise: '💼 Enterprise Blue',
-      gradient: '🚀 Modern Gradient',
-      emerald: '🌿 Emerald Success'
+      enterprise: '💼 Royal Purple',
+      gradient: '🚀 Violet Gradient',
+      emerald: '👑 Deep Orchid'
     };
     feedbackEl.innerHTML = `
-      <span class="status-badge-guidance" style="color: #60a5fa; font-weight: 700; display: inline-flex; align-items: center; gap: 6px;">
+      <span class="status-badge-guidance" style="color: #c084fc; font-weight: 700; display: inline-flex; align-items: center; gap: 6px;">
         <i class="fa-solid fa-circle-check"></i> Component Preset Loaded: [${presetNames[resolvedKey] || 'Custom'}]. Ready to Preview.
       </span>
     `;
   }
 }
 
+// Common typos mapped to valid CSS properties
+const CSS_PROPERTY_SUGGESTIONS = {
+  'bous': 'border-radius',
+  'radius': 'border-radius',
+  'boder-radius': 'border-radius',
+  'border-rad': 'border-radius',
+  'bradius': 'border-radius',
+  'backgroud': 'background',
+  'backround': 'background',
+  'bg': 'background',
+  'bground': 'background',
+  'colr': 'color',
+  'colour': 'color',
+  'clor': 'color',
+  'pading': 'padding',
+  'pad': 'padding',
+  'paddng': 'padding',
+  'font-siz': 'font-size',
+  'fontsize': 'font-size',
+  'size': 'font-size',
+  'fsize': 'font-size',
+  'font-wight': 'font-weight',
+  'fontweight': 'font-weight',
+  'weight': 'font-weight',
+  'fweight': 'font-weight',
+  'shadow': 'box-shadow',
+  'boxshadow': 'box-shadow',
+  'bshadow': 'box-shadow',
+  'curser': 'cursor',
+  'point': 'cursor',
+  'pointer': 'cursor',
+  'transiton': 'transition',
+  'trans': 'transition',
+  'bordr': 'border',
+  'boder': 'border',
+  'bord': 'border',
+  'magin': 'margin',
+  'mrg': 'margin',
+  'opcty': 'opacity',
+  'opac': 'opacity',
+  'zindex': 'z-index',
+  'disply': 'display',
+  'widt': 'width',
+  'heigt': 'height'
+};
+
+function getCssSuggestion(prop) {
+  return CSS_PROPERTY_SUGGESTIONS[prop] || null;
+}
+
+function checkValidCssProperty(prop, val) {
+  if (typeof CSS !== 'undefined' && typeof CSS.supports === 'function') {
+    const isPropKnown = CSS.supports(prop, 'inherit') || CSS.supports(prop, 'initial');
+    if (!isPropKnown) {
+      if (typeof document !== 'undefined') {
+        const dummy = document.createElement('div');
+        const camel = prop.replace(/-([a-z])/g, (_, c) => c.toUpperCase());
+        if (!(camel in dummy.style) && !(prop in dummy.style)) {
+          return false;
+        }
+      } else {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  if (typeof document !== 'undefined') {
+    const dummy = document.createElement('div');
+    const camel = prop.replace(/-([a-z])/g, (_, c) => c.toUpperCase());
+    return camel in dummy.style || prop in dummy.style;
+  }
+  return true;
+}
+
+function validateComponentCss(code) {
+  if (!code || !code.trim()) {
+    return { valid: false, error: 'ERROR IN CODE: Code editor is empty. Enter valid button HTML/CSS.' };
+  }
+
+  // 1. Check basic button tag presence
+  if (!/<button\b/i.test(code)) {
+    return { valid: false, error: 'ERROR IN CODE: Missing <button> element in component code.' };
+  }
+
+  // 2. Extract style text
+  let cssText = '';
+  const styleMatch = code.match(/style\s*=\s*["']([^"']*)["']/i);
+  if (styleMatch) {
+    cssText = styleMatch[1];
+  } else {
+    if (/style\s*=\s*["'][^"']*$/i.test(code)) {
+      return { valid: false, error: 'ERROR IN CODE: Syntax Error - Unclosed quotes in style attribute.' };
+    }
+    const blockMatch = code.match(/\{([^}]+)\}/);
+    cssText = blockMatch ? blockMatch[1] : code;
+  }
+
+  // 3. Clean and parse declarations
+  const cleanCss = cssText.replace(/\/\*[\s\S]*?\*\//g, '');
+  const rawDeclarations = cleanCss.split(';');
+
+  for (let decl of rawDeclarations) {
+    decl = decl.trim();
+    if (!decl) continue;
+
+    // Skip markup fragments
+    if (decl.startsWith('<') || decl.includes('</button>') || decl.includes('&rarr;')) continue;
+
+    if (!decl.includes(':')) {
+      return {
+        valid: false,
+        error: `ERROR IN CODE: Syntax Error in "${decl}". Expected format "property: value;"`,
+        prop: decl
+      };
+    }
+
+    const colonIndex = decl.indexOf(':');
+    const prop = decl.substring(0, colonIndex).trim().toLowerCase();
+    const val = decl.substring(colonIndex + 1).trim();
+
+    if (!prop) {
+      return { valid: false, error: 'ERROR IN CODE: Empty CSS property name before colon.' };
+    }
+    if (!val) {
+      return { valid: false, error: `ERROR IN CODE: Missing value for CSS property "${prop}:".` };
+    }
+
+    // Skip custom properties (variables)
+    if (prop.startsWith('--')) continue;
+
+    const isValidProp = checkValidCssProperty(prop, val);
+    if (!isValidProp) {
+      const suggestion = getCssSuggestion(prop);
+      const hint = suggestion ? ` Did you mean "${suggestion}:"?` : ' Please check spelling.';
+      return {
+        valid: false,
+        error: `ERROR IN CODE: Invalid CSS property detected: "${prop}:".${hint}`,
+        prop: prop
+      };
+    }
+  }
+
+  return { valid: true };
+}
+
 function updateSandboxPreview(code) {
   const liveOutput = document.getElementById('sandboxLiveOutput');
-  if (!liveOutput) return;
+  const feedbackEl = document.getElementById('sandboxStatusFeedback');
+  const chamberBadge = document.getElementById('chamberTelemetryBadge');
+  const chamberText = document.getElementById('chamberTelemetryText');
+  const errorBanner = document.getElementById('sandboxErrorBanner');
+  const successBanner = document.getElementById('sandboxSuccessBanner');
+
+  if (!liveOutput) return true;
+
+  const validation = validateComponentCss(code);
+
+  if (!validation.valid) {
+    // Hide success banner
+    if (successBanner) successBanner.style.display = 'none';
+
+    // Show distinct red error status badge in feedback bar
+    if (feedbackEl) {
+      feedbackEl.innerHTML = `
+        <span class="status-badge-error">
+          <i class="fa-solid fa-triangle-exclamation"></i> <strong>ERROR IN CODE:</strong> ${validation.error.replace(/^ERROR IN CODE:\s*/i, '')}
+        </span>
+      `;
+    }
+
+    // Update chamber telemetry to red error state
+    if (chamberBadge) chamberBadge.classList.add('telemetry-error');
+    if (chamberText) {
+      chamberText.textContent = `ERROR IN CODE // INVALID PROPERTY: "${validation.prop || 'SYNTAX'}"`;
+    }
+
+    // Display distinct compiler error card in preview output
+    liveOutput.innerHTML = `
+      <div class="sandbox-compiler-error-card">
+        <div class="compiler-error-icon"><i class="fa-solid fa-circle-exclamation"></i></div>
+        <div class="compiler-error-details">
+          <h5>ERROR IN CODE</h5>
+          <p>${validation.error}</p>
+        </div>
+      </div>
+    `;
+    return false;
+  }
+
+  // Clear error states if previously active
+  if (chamberBadge) chamberBadge.classList.remove('telemetry-error');
+  if (errorBanner) errorBanner.style.display = 'none';
 
   // Basic sanitization: strip executable scripts
   const safeCode = code
@@ -2204,6 +2676,7 @@ function updateSandboxPreview(code) {
     .replace(/on\w+='[^']*'/gi, '');
 
   liveOutput.innerHTML = safeCode;
+  return true;
 }
 
 function runSandboxVerify() {
@@ -2211,11 +2684,32 @@ function runSandboxVerify() {
   const liveOutput = document.getElementById('sandboxLiveOutput');
   const feedbackEl = document.getElementById('sandboxStatusFeedback');
   const successBanner = document.getElementById('sandboxSuccessBanner');
+  const errorBanner = document.getElementById('sandboxErrorBanner');
+  const errorTitle = document.getElementById('sandboxErrorTitle');
+  const errorDesc = document.getElementById('sandboxErrorDesc');
 
   if (!codeInput) return;
 
   const rawCode = codeInput.value;
-  updateSandboxPreview(rawCode);
+  const isValid = updateSandboxPreview(rawCode);
+
+  if (!isValid) {
+    const validation = validateComponentCss(rawCode);
+    if (errorBanner) {
+      if (errorTitle) errorTitle.textContent = validation.error;
+      if (errorDesc) errorDesc.textContent = `Check your CSS property name or declaration syntax in the editor above.`;
+      errorBanner.style.display = 'flex';
+      if (typeof errorBanner.scrollIntoView === 'function') {
+        errorBanner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }
+    if (successBanner) successBanner.style.display = 'none';
+    return;
+  }
+
+  // Hide error banner when code is valid
+  if (errorBanner) errorBanner.style.display = 'none';
+
   syncCodeToSlidersAndHud(rawCode);
 
   // Subtle button pulse
@@ -2238,7 +2732,7 @@ function runSandboxVerify() {
   // Telemetry Feedback Message
   if (feedbackEl) {
     feedbackEl.innerHTML = `
-      <span class="status-badge-success" style="color: #34d399; font-weight: 700; display: inline-flex; align-items: center; gap: 8px;">
+      <span class="status-badge-success" style="color: #0d9488; font-weight: 700; display: inline-flex; align-items: center; gap: 8px;">
         <i class="fa-solid fa-circle-check"></i> <strong>COMPONENT COMPILED:</strong> Production-ready styling verified!
       </span>
     `;
@@ -2249,7 +2743,12 @@ function resetSandboxChallenge() {
   const codeInput = document.getElementById('sandboxCodeInput');
   const feedbackEl = document.getElementById('sandboxStatusFeedback');
   const successBanner = document.getElementById('sandboxSuccessBanner');
+  const errorBanner = document.getElementById('sandboxErrorBanner');
   const hintBubble = document.getElementById('sandboxHintBubble');
+  const chamberBadge = document.getElementById('chamberTelemetryBadge');
+
+  if (chamberBadge) chamberBadge.classList.remove('telemetry-error');
+  if (errorBanner) errorBanner.style.display = 'none';
 
   document.querySelectorAll('.btn-component-preset').forEach(btn => {
     btn.classList.toggle('active', btn.classList.contains('preset-blue'));
@@ -2453,6 +2952,8 @@ window.resetSandboxChallenge = resetSandboxChallenge;
 window.toggleSandboxHint = toggleSandboxHint;
 window.applyComponentPreset = applyComponentPreset;
 window.applyComponentState = applyComponentState;
+window.toggleReelPlayback = toggleReelPlayback;
+window.initVideoStories = initVideoStories;
 
 // Auto-run features on DOMContentLoaded
 document.addEventListener('DOMContentLoaded', () => {
