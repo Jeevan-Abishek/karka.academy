@@ -11449,3 +11449,446 @@ body {
   padding: 0 !important;
   position: relative !important;
 }
+
+/* ==========================================================================
+   COMPREHENSIVE RESPONSIVE MOBILE SUITE (ALL SECTIONS, CARDS & GRIDS)
+   ========================================================================== */
+
+/* 1. TABLET & MOBILE BREAKPOINT (<= 768px) */
+@media (max-width: 768px) {
+  /* Global Container & Section Spacing */
+  .container,
+  .pro-container,
+  .hero-container,
+  .main-container,
+  .section-container,
+  .pro-main-sections-wrap,
+  section {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+  }
+
+  /* Universal Multi-Column Grid Collapse to Clean 1-Column Stacks */
+  .grid-2,
+  .grid-3,
+  .grid-4,
+  .hero-grid,
+  .why-us-grid,
+  .bootcamps-grid,
+  .courses-grid,
+  .pillars-timeline-grid,
+  .pap-section-grid,
+  .pap-calc-grid,
+  .pap-results-grid,
+  .career-directory-grid,
+  .career-directory-accordion-grid,
+  .footer-top-grid,
+  .pro-footer-grid,
+  .pro-cards-grid-2col,
+  .pro-cards-grid-3col,
+  .pro-cards-grid-4col,
+  .why-early-grid,
+  .living-lab-grid,
+  .lab-features-grid,
+  .spike-features-grid,
+  .infini-events-grid,
+  .infini-categories-grid,
+  .form-row-2col,
+  .audience-highlights-grid,
+  .reviews-grid,
+  [class*="cards-grid"],
+  [class*="features-grid"],
+  [class*="categories-grid"],
+  [class*="events-grid"],
+  [class*="-2col"],
+  [class*="-3col"],
+  [class*="-4col"] {
+    grid-template-columns: 1fr !important;
+    display: grid !important;
+    width: 100% !important;
+    gap: 16px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Video Stories & Reel Showcase Stacking */
+  .video-stories-layout {
+    grid-template-columns: 1fr !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+    width: 100% !important;
+  }
+
+  .reel-stage-card {
+    width: 100% !important;
+    max-width: 320px !important;
+    margin: 0 auto !important;
+    height: auto !important;
+    min-height: 480px !important;
+  }
+
+  .story-tabs-list {
+    display: flex !important;
+    flex-direction: row !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    gap: 10px !important;
+    padding: 6px 4px 10px !important;
+    width: 100% !important;
+    scrollbar-width: none !important;
+  }
+
+  .story-tabs-list::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .story-tab-btn {
+    flex: 0 0 auto !important;
+    min-width: 200px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Pillar Stepper Navigation */
+  .pillar-stepper-nav {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+
+  .pillar-step-btn {
+    padding: 10px 12px !important;
+    font-size: 0.82rem !important;
+    text-align: center !important;
+    justify-content: center !important;
+  }
+
+  .pillar-grid-deliverables {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  /* PAP Section & Calculator Card */
+  .pap-calc-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 18px !important;
+    width: 100% !important;
+  }
+
+  .pap-results-grid {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  .pap-metric-tile {
+    width: 100% !important;
+    padding: 14px 16px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Horizontal Filter Bars (Touch-Scrollable Pill Strips) */
+  .segmented-audience-bar,
+  .tracks-filter-bar,
+  .bootcamps-filter-bar,
+  .review-filters,
+  .code-lab-presets {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    gap: 8px !important;
+    padding: 6px 4px 10px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    justify-content: flex-start !important;
+    scrollbar-width: none !important;
+    border-radius: 12px !important;
+  }
+
+  .segmented-audience-bar::-webkit-scrollbar,
+  .tracks-filter-bar::-webkit-scrollbar,
+  .bootcamps-filter-bar::-webkit-scrollbar,
+  .review-filters::-webkit-scrollbar,
+  .code-lab-presets::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .audience-tab-btn,
+  .track-filter-btn,
+  .bootcamp-tab-btn,
+  .review-filter-btn,
+  .btn-component-preset {
+    flex: 0 0 auto !important;
+    white-space: nowrap !important;
+    padding: 8px 14px !important;
+    font-size: 0.84rem !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Card Structures & Fluid Text Wrap */
+  .card,
+  .course-card,
+  .bootcamp-card,
+  .track-card,
+  .pro-card,
+  .pro-clean-card,
+  .career-directory-card,
+  .platform-card,
+  .salary-card,
+  .review-card,
+  .mini-feature-card,
+  .event-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+
+  /* Card Headers & Badges Wrapping */
+  .card-header,
+  .track-card-header,
+  .bootcamp-card-header,
+  .pro-card-header,
+  .platform-head,
+  .pro-cat-header-row {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+  }
+
+  .badge,
+  .track-badge,
+  .pap-badge,
+  .card-badge,
+  .badge-pill,
+  .verified-offer-badge,
+  [class*="badge"],
+  [class*="pill"],
+  [class*="tag"] {
+    max-width: 100% !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+    box-sizing: border-box !important;
+    line-height: 1.35 !important;
+  }
+
+  /* Action Buttons & Button Groups on Mobile */
+  .hero-cta-group,
+  .hero-btn-group,
+  .pro-hero-cta-wrap,
+  .form-btn-row,
+  .bootcamp-footer-actions,
+  .card-footer,
+  .modal-footer {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    width: 100% !important;
+    gap: 10px !important;
+  }
+
+  .btn,
+  .btn-primary,
+  .btn-secondary,
+  .btn-outline,
+  .btn-enterprise-primary,
+  .btn-hero-primary,
+  .btn-claim-campus-pass,
+  .btn-pap-banner-cta,
+  .card-footer button,
+  .card-footer a,
+  .bootcamp-footer-actions button,
+  .bootcamp-footer-actions a,
+  .pro-clean-card button,
+  .pro-clean-card a.btn {
+    width: 100% !important;
+    min-height: 48px !important;
+    justify-content: center !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+    padding: 12px 18px !important;
+    font-size: 0.95rem !important;
+    white-space: normal !important;
+  }
+
+  /* Tables & Comparison Matrices */
+  table,
+  .comparison-table,
+  .curriculum-table,
+  .table-responsive {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    border-collapse: collapse !important;
+  }
+
+  /* Modals on Mobile Viewports */
+  .modal-dialog {
+    width: calc(100% - 20px) !important;
+    max-width: 520px !important;
+    margin: 12px auto !important;
+    padding: 1.25rem 1rem !important;
+    border-radius: 16px !important;
+    max-height: 90vh !important;
+    overflow-y: auto !important;
+    box-sizing: border-box !important;
+  }
+
+  .modal-header h3 {
+    font-size: 1.25rem !important;
+    line-height: 1.35 !important;
+    word-break: break-word !important;
+  }
+
+  .form-input,
+  .form-select,
+  textarea.form-input {
+    width: 100% !important;
+    font-size: 16px !important; /* Prevents auto-zoom on iOS */
+    min-height: 46px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Testimonials Carousel & Cards */
+  .review-card {
+    padding: 18px 16px !important;
+  }
+
+  .review-student-header {
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+  }
+
+  .carousel-nav-btn {
+    width: 40px !important;
+    height: 40px !important;
+    font-size: 1rem !important;
+  }
+
+  /* Typography Fluid Scaling */
+  h1,
+  .hero-title,
+  .pro-hero-h1-clean {
+    font-size: clamp(1.5rem, 6vw, 2.1rem) !important;
+    line-height: 1.25 !important;
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+
+  h2,
+  .section-title {
+    font-size: clamp(1.3rem, 5vw, 1.75rem) !important;
+    line-height: 1.3 !important;
+    word-break: break-word !important;
+  }
+
+  h3,
+  .card-title,
+  .pro-card-title-text {
+    font-size: clamp(1.1rem, 4.5vw, 1.35rem) !important;
+    line-height: 1.35 !important;
+    word-break: break-word !important;
+  }
+
+  p,
+  .hero-subtitle,
+  .section-subtitle {
+    font-size: 0.92rem !important;
+    line-height: 1.55 !important;
+    word-break: break-word !important;
+  }
+}
+
+/* 2. COMPACT SMARTPHONES (<= 480px) */
+@media (max-width: 480px) {
+  .container,
+  .pro-container,
+  .hero-container,
+  section {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+
+  /* Header Branding */
+  .navbar-brand-logo,
+  .pro-logo-group img {
+    height: 60px !important;
+    max-height: 60px !important;
+    max-width: 210px !important;
+  }
+
+  /* Pillar Stepper 1-Column on small phones */
+  .pillar-stepper-nav {
+    grid-template-columns: 1fr !important;
+    gap: 6px !important;
+  }
+
+  /* Sticky Conversion Bar on small mobile */
+  .sticky-mobile-conversion-bar {
+    padding: 8px 10px !important;
+    gap: 6px !important;
+  }
+
+  .sticky-btn-wa,
+  .sticky-btn-quiz {
+    padding: 10px 8px !important;
+    font-size: 0.8rem !important;
+  }
+
+  /* Modal Padding */
+  .modal-dialog {
+    width: calc(100% - 12px) !important;
+    padding: 1rem 0.85rem !important;
+    margin: 8px auto !important;
+  }
+
+  .code-lab-wrapper-card {
+    padding: 6px !important;
+  }
+
+  .code-lab-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 6px !important;
+  }
+
+  .campus-pass-icon-badge {
+    width: 100% !important;
+  }
+}
+
+/* 3. ULTRA COMPACT DEVICES (<= 360px - e.g. Galaxy Fold, iPhone SE 1st Gen) */
+@media (max-width: 360px) {
+  .navbar-brand-logo,
+  .pro-logo-group img {
+    height: 52px !important;
+    max-height: 52px !important;
+    max-width: 180px !important;
+  }
+
+  h1,
+  .hero-title,
+  .pro-hero-h1-clean {
+    font-size: 1.4rem !important;
+  }
+
+  .btn,
+  .btn-primary,
+  .btn-secondary {
+    padding: 10px 14px !important;
+    font-size: 0.88rem !important;
+  }
+}
