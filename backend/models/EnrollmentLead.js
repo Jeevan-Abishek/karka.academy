@@ -9,11 +9,14 @@ const EnrollmentLeadSchema = new mongoose.Schema({
   course: { type: String },
   degree: { type: String, default: '' },
   gradYear: { type: String, default: '' },
+  campus: { type: String, default: '' },
+  format: { type: String, default: '' },
+  commitment: { type: String, default: '' },
   visitDate: { type: String, default: '' },
   fitScore: { type: String, default: '' },
   quizAnswers: { type: mongoose.Schema.Types.Mixed },
   source: { type: String, default: 'website' },
-  status: { type: String, default: 'New' }
+  status: { type: String, default: 'Pending Review' }
 }, { timestamps: true });
 
 module.exports = mongoose.model('EnrollmentLead', EnrollmentLeadSchema);

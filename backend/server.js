@@ -23,10 +23,50 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '..')));
 
-// Connect to MongoDB
-mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log('✅ Connected to MongoDB successfully'))
-  .catch((err) => console.error('❌ MongoDB connection error:', err));
+// Connect to MongoDB (External Atlas or Embedded Persistent Engine)
+let mongodInstance = null;
+
+async function initDatabase() {
+  const customUri = process.env.MONGO_URI;
+  if (customUri && !customUri.includes('<username>') && !customUri.includes('<password>')) {
+    try {
+      console.log('Connecting to configured MongoDB URI...');
+      await mongoose.connect(customUri, { serverSelectionTimeoutMS: 5000 });
+      console.log('✅ Connected to configured MongoDB successfully');
+      return;
+    } catch (err) {
+      console.warn('⚠️ Configured MongoDB connection failed, falling back to embedded local MongoDB:', err.message);
+    }
+  }
+
+  try {
+    const { MongoMemoryServer } = require('mongodb-memory-server');
+    const dbPath = path.join(__dirname, 'data', 'db');
+    mongodInstance = await MongoMemoryServer.create({
+      instance: {
+        dbPath,
+        storageEngine: 'wiredTiger'
+      }
+    });
+    const localUri = mongodInstance.getUri() + 'karka_academy';
+    console.log(`Starting embedded persistent MongoDB at ${localUri} (persisting in ${dbPath})...`);
+    await mongoose.connect(localUri);
+    console.log('✅ Connected to embedded persistent MongoDB successfully');
+  } catch (embeddedErr) {
+    console.error('❌ Failed to connect to embedded MongoDB:', embeddedErr);
+  }
+}
+
+initDatabase();
+
+// Graceful shutdown
+process.on('SIGINT', async () => {
+  try {
+    await mongoose.disconnect();
+    if (mongodInstance) await mongodInstance.stop();
+  } catch (e) {}
+  process.exit(0);
+});
 
 // Routes
 // GET /
@@ -37,10 +77,21 @@ app.get('/', (req, res) => {
 // POST /api/contact - Career counseling / contact form submissions
 app.post('/api/contact', async (req, res) => {
   try {
-    const { name, email, phone, program, message } = req.body;
-    const newLead = new ContactLead({ name, email, phone, program, message });
+    const { name, email, phone, program, message, source, status } = req.body;
+    if (!name || !phone) {
+      return res.status(400).json({ success: false, message: 'Name and Phone are required' });
+    }
+    const newLead = new ContactLead({
+      name: String(name).trim(),
+      email: email ? String(email).trim() : '',
+      phone: String(phone).trim(),
+      program: program ? String(program).trim() : 'Career Counseling',
+      message: message ? String(message).trim() : '',
+      source: source || 'Website Contact Form',
+      status: status || 'New'
+    });
     await newLead.save();
-    console.log('Saved Contact Lead:', newLead);
+    console.log('✅ Saved Contact Lead to MongoDB:', newLead);
     return res.status(200).json({
       success: true,
       message: 'Message received and saved successfully!',
@@ -55,10 +106,50 @@ app.post('/api/contact', async (req, res) => {
 // POST /api/enroll - Course enrollment leads
 app.post('/api/enroll', async (req, res) => {
   try {
-    const { token, name, email, phone, track, degree, gradYear } = req.body;
-    const newEnrollment = new EnrollmentLead({ token, name, email, phone, track, degree, gradYear });
+    const {
+      token,
+      name,
+      email,
+      phone,
+      track,
+      course,
+      degree,
+      gradYear,
+      campus,
+      format,
+      commitment,
+      source,
+      status
+    } = req.body;
+
+    if (!name || !phone) {
+      return res.status(400).json({ success: false, message: 'Name and Phone are required' });
+    }
+
+    const cleanName = String(name).trim();
+    const cleanPhone = String(phone).trim();
+    const selectedTrack = (track || course || 'Fullstack Web & AI Engineering').trim();
+    const generatedToken = token || ('KARKA-NAG-' + Math.floor(1000 + Math.random() * 9000));
+
+    const newEnrollment = new EnrollmentLead({
+      token: generatedToken,
+      name: cleanName,
+      email: email ? String(email).trim() : '',
+      phone: cleanPhone,
+      track: selectedTrack,
+      course: course || selectedTrack,
+      degree: degree ? String(degree).trim() : '',
+      gradYear: gradYear ? String(gradYear).trim() : '',
+      campus: campus ? String(campus).trim() : '',
+      format: format ? String(format).trim() : '',
+      commitment: commitment ? String(commitment).trim() : '',
+      source: source || 'pap_registration_form',
+      status: status || 'Pending Review'
+    });
+
     await newEnrollment.save();
-    console.log('Saved Enrollment Lead:', newEnrollment);
+    console.log('✅ Saved Enrollment Lead to MongoDB:', newEnrollment);
+
     return res.status(200).json({
       success: true,
       message: 'Enrollment application saved successfully!',

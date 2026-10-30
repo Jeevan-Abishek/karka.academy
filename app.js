@@ -1218,6 +1218,29 @@ const syllabusData = {
    MODAL DIALOG ENGINE (PAP, Practice Curriculum / Syllabus, Infini AI)
    ========================================================================== */
 
+function getApiBase() {
+  if (window.location.protocol === 'file:') return 'http://localhost:5000';
+  const hostname = window.location.hostname || 'localhost';
+  if (hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '0.0.0.0') {
+    return window.location.port === '5000' ? '' : `http://${hostname}:5000`;
+  }
+  return '';
+}
+
+function notifyAdminSync(type, data) {
+  try {
+    if (typeof BroadcastChannel !== 'undefined') {
+      const channel = new BroadcastChannel('karka_admin_sync');
+      channel.postMessage({ type, data, timestamp: Date.now() });
+      setTimeout(() => channel.close(), 100);
+    }
+  } catch (e) {}
+
+  try {
+    localStorage.setItem('karka_lead_update', JSON.stringify({ type, data, timestamp: Date.now() }));
+  } catch (e) {}
+}
+
 function initModals() {
   const appForm = document.getElementById('papApplicationForm');
 
@@ -1416,9 +1439,9 @@ function closeModal(modalIdOrElem) {
 
 function goToStep(stepNum) {
   if (stepNum === 2) {
-    const name = document.getElementById('appName').value.trim();
-    const email = document.getElementById('appEmail').value.trim();
-    const phone = document.getElementById('appPhone').value.trim();
+    const name = document.getElementById('appName')?.value?.trim();
+    const email = document.getElementById('appEmail')?.value?.trim();
+    const phone = document.getElementById('appPhone')?.value?.trim();
     if (!name || !email || !phone) {
       alert('Please fill in your name, email, and phone number to proceed.');
       return;
@@ -1439,14 +1462,34 @@ function goToStep(stepNum) {
   if (targetStep) targetStep.classList.add('active');
 }
 
-function submitPapApplication() {
-  const name = document.getElementById('appName')?.value.trim() || 'Learner';
+async function submitPapApplication() {
+  const name = document.getElementById('appName')?.value?.trim() || 'Learner';
+  const email = document.getElementById('appEmail')?.value?.trim() || '';
+  const phone = document.getElementById('appPhone')?.value?.trim() || '';
+
   const trackElem = document.getElementById('appTrack');
-  const trackName = trackElem ? trackElem.options[trackElem.selectedIndex]?.text : 'Full Stack Development';
-  const email = document.getElementById('appEmail')?.value || '';
-  const phone = document.getElementById('appPhone')?.value || '';
-  const degree = document.getElementById('appDegree')?.value || '';
-  const gradYear = document.getElementById('appGradYear')?.value || '';
+  const trackName = trackElem ? (trackElem.options ? trackElem.options[trackElem.selectedIndex]?.text : trackElem.value) : 'Fullstack Web & AI Engineering';
+
+  // Degree / Background element (appDegree or appEdu)
+  const eduElem = document.getElementById('appDegree') || document.getElementById('appEdu');
+  const degree = eduElem ? (eduElem.options ? eduElem.options[eduElem.selectedIndex]?.text : eduElem.value) : '';
+
+  // Graduation year or extracted year
+  const gradYearElem = document.getElementById('appGradYear');
+  let gradYear = gradYearElem ? gradYearElem.value : '';
+  if (!gradYear && degree) {
+    const matchYear = degree.match(/\b(202[0-9])\b/);
+    if (matchYear) gradYear = matchYear[1];
+  }
+
+  // Preferred campus / format
+  const campusElem = document.getElementById('appCampus');
+  const campus = campusElem ? (campusElem.options ? campusElem.options[campusElem.selectedIndex]?.text : campusElem.value) : '';
+
+  // Commitment
+  const batchElem = document.getElementById('appBatch');
+  const commitment = batchElem ? (batchElem.options ? batchElem.options[batchElem.selectedIndex]?.text : batchElem.value) : '';
+
   const token = 'KARKA-NAG-' + Math.floor(1000 + Math.random() * 9000);
   
   const resName = document.getElementById('resUserName');
@@ -1456,23 +1499,40 @@ function submitPapApplication() {
   const resToken = document.getElementById('resUserToken');
   if (resToken) resToken.textContent = token;
 
-  // Post lead to backend
-  fetch('http://localhost:5000/api/enroll', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      token,
-      name,
-      email,
-      phone,
-      track: trackName,
-      degree,
-      gradYear,
-      submittedAt: new Date().toISOString()
-    })
-  }).catch(err => {
+  const apiBase = getApiBase();
+
+  // Post lead to backend MongoDB
+  try {
+    const res = await fetch(`${apiBase}/api/enroll`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        token,
+        name,
+        email,
+        phone,
+        track: trackName,
+        course: trackName,
+        degree,
+        gradYear,
+        campus,
+        commitment,
+        source: 'pap_registration_form',
+        status: 'Pending Review',
+        submittedAt: new Date().toISOString()
+      })
+    });
+
+    if (res.ok) {
+      const data = await res.json();
+      console.log('✅ Enrollment lead successfully submitted & saved:', data);
+      notifyAdminSync('new_enrollment', data.data || { token, name, phone, track: trackName });
+    } else {
+      console.warn('Backend responded with status:', res.status);
+    }
+  } catch (err) {
     console.warn('Enrollment API error (offline fallback active):', err);
-  });
+  }
 
   goToStep(4);
 
@@ -1568,17 +1628,23 @@ function initLeadForm() {
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
+      const progElem = document.getElementById('leadProgram');
+      const programText = progElem ? (progElem.options ? progElem.options[progElem.selectedIndex]?.text : progElem.value) : 'Career Counseling';
+
       const payload = {
-        name: document.getElementById('leadName')?.value || '',
-        email: document.getElementById('leadEmail')?.value || '',
-        phone: document.getElementById('leadPhone')?.value || '',
-        program: document.getElementById('leadProgram')?.value || '',
-        message: document.getElementById('leadMessage')?.value || '',
+        name: document.getElementById('leadName')?.value?.trim() || '',
+        email: document.getElementById('leadEmail')?.value?.trim() || '',
+        phone: document.getElementById('leadPhone')?.value?.trim() || '',
+        program: programText,
+        message: document.getElementById('leadMessage')?.value?.trim() || '',
+        source: 'Website Contact Form',
+        status: 'New',
         submittedAt: new Date().toISOString()
       };
 
+      const apiBase = getApiBase();
       try {
-        const response = await fetch('http://localhost:5000/api/contact', {
+        const response = await fetch(`${apiBase}/api/contact`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -1587,7 +1653,8 @@ function initLeadForm() {
         });
 
         const data = await response.json();
-        console.log('Contact form submission response:', data);
+        console.log('✅ Contact form submission response:', data);
+        notifyAdminSync('new_contact', data.data || payload);
       } catch (err) {
         console.warn('Backend server contact submission error (fallback active):', err);
       }
@@ -2001,10 +2068,8 @@ async function handleSyllabusWhatsAppSubmit(e) {
 
   // Asynchronously send lead data to POST /api/leads/syllabus-download
   try {
-    const apiBase = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
-      ? (window.location.port === '5000' ? '' : 'http://localhost:5000')
-      : '';
-    await fetch(`${apiBase}/api/leads/syllabus-download`, {
+    const apiBase = getApiBase();
+    const res = await fetch(`${apiBase}/api/leads/syllabus-download`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -2016,6 +2081,10 @@ async function handleSyllabusWhatsAppSubmit(e) {
         status: 'New'
       })
     });
+    if (res.ok) {
+      const data = await res.json();
+      notifyAdminSync('new_syllabus_lead', data.data || { name, phone: '+91' + rawPhone, track });
+    }
   } catch (err) {
     console.warn('Backend logging error or offline:', err);
   }
@@ -2159,10 +2228,8 @@ async function handleQuizLeadSubmit(e) {
 
   // Save lead & fit score to backend MongoDB: POST /api/leads/quiz
   try {
-    const apiBase = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
-      ? (window.location.port === '5000' ? '' : 'http://localhost:5000')
-      : '';
-    await fetch(`${apiBase}/api/leads/quiz`, {
+    const apiBase = getApiBase();
+    const res = await fetch(`${apiBase}/api/leads/quiz`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -2174,6 +2241,10 @@ async function handleQuizLeadSubmit(e) {
         source: 'pap_eligibility_quiz'
       })
     });
+    if (res.ok) {
+      const data = await res.json();
+      notifyAdminSync('new_quiz_lead', data.data || { name, phone: '+91' + rawPhone, track: recTrack });
+    }
   } catch (err) {
     console.warn('Backend quiz lead logging offline:', err);
   }
@@ -2856,10 +2927,8 @@ async function handleCampusPassSubmit(e) {
 
   // Save lead to backend MongoDB: POST /api/leads/campus-pass
   try {
-    const apiBase = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
-      ? (window.location.port === '5000' ? '' : 'http://localhost:5000')
-      : '';
-    await fetch(`${apiBase}/api/leads/campus-pass`, {
+    const apiBase = getApiBase();
+    const res = await fetch(`${apiBase}/api/leads/campus-pass`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -2871,6 +2940,10 @@ async function handleCampusPassSubmit(e) {
         source: 'campus_visit_pass'
       })
     });
+    if (res.ok) {
+      const data = await res.json();
+      notifyAdminSync('new_campus_pass', data.data || { name, phone: '+91' + rawPhone, degree });
+    }
   } catch (err) {
     console.warn('Backend campus pass logging offline:', err);
   }

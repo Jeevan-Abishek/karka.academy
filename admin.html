@@ -1254,9 +1254,15 @@
   <!-- SCRIPT -->
   <script>
     // Configuration
-    const API_BASE = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
-      ? (window.location.port === '5000' ? '' : 'http://localhost:5000')
-      : '';
+    function getApiBase() {
+      if (window.location.protocol === 'file:') return 'http://localhost:5000';
+      const hostname = window.location.hostname || 'localhost';
+      if (hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '0.0.0.0') {
+        return window.location.port === '5000' ? '' : `http://${hostname}:5000`;
+      }
+      return '';
+    }
+    const API_BASE = getApiBase();
     const PASSCODE_STORAGE_KEY = 'karka_admin_key';
 
     // State
@@ -1264,6 +1270,49 @@
     let allEnrollments = [];
     let allContacts = [];
     let itemToDelete = null;
+
+    // Real-time synchronization across browser tabs
+    try {
+      if (typeof BroadcastChannel !== 'undefined') {
+        const adminSyncChannel = new BroadcastChannel('karka_admin_sync');
+        adminSyncChannel.onmessage = (event) => {
+          console.log('⚡ Real-time lead sync received via BroadcastChannel:', event.data);
+          const savedKey = sessionStorage.getItem(PASSCODE_STORAGE_KEY);
+          if (savedKey) {
+            showToast('New lead registered! Dashboard updated.', 'success');
+            fetchLeadsData(true);
+          }
+        };
+      }
+    } catch (e) {}
+
+    window.addEventListener('storage', (e) => {
+      if (e.key === 'karka_lead_update') {
+        const savedKey = sessionStorage.getItem(PASSCODE_STORAGE_KEY);
+        if (savedKey) {
+          console.log('⚡ Real-time lead sync received via localStorage');
+          showToast('New lead registered! Dashboard updated.', 'success');
+          fetchLeadsData(true);
+        }
+      }
+    });
+
+    // Auto-refresh when tab gains focus
+    window.addEventListener('focus', () => {
+      const savedKey = sessionStorage.getItem(PASSCODE_STORAGE_KEY);
+      if (savedKey) {
+        fetchLeadsData(true);
+      }
+    });
+
+    // Periodic background auto-poll every 8 seconds
+    setInterval(() => {
+      const savedKey = sessionStorage.getItem(PASSCODE_STORAGE_KEY);
+      const dashboard = document.getElementById('dashboardContent');
+      if (savedKey && dashboard && dashboard.style.display !== 'none') {
+        fetchLeadsData(true);
+      }
+    }, 8000);
 
     // Initialize
     document.addEventListener('DOMContentLoaded', () => {
@@ -1398,10 +1447,10 @@
     }
 
     // Fetch leads data from backend
-    async function fetchLeadsData() {
+    async function fetchLeadsData(silent = false) {
       const key = sessionStorage.getItem(PASSCODE_STORAGE_KEY) || 'karka@admin2026';
       const refreshBtn = document.getElementById('refreshBtn');
-      if (refreshBtn) refreshBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Refreshing...';
+      if (refreshBtn && !silent) refreshBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Refreshing...';
 
       try {
         const res = await fetch(`${API_BASE}/api/admin/leads`, {
@@ -1420,7 +1469,7 @@
 
         document.getElementById('liveStatusPill').style.background = 'var(--green-light)';
         document.getElementById('liveStatusPill').style.color = 'var(--green)';
-        document.getElementById('liveStatusText').textContent = 'MongoDB Atlas Live';
+        document.getElementById('liveStatusText').textContent = 'MongoDB Database Live';
 
         updateMetrics();
         filterTableData();
@@ -1430,40 +1479,10 @@
         document.getElementById('liveStatusPill').style.color = '#b45309';
         document.getElementById('liveStatusText').textContent = 'Backend Standby';
 
-        // Sample placeholder if database is empty or offline
-        if (allEnrollments.length === 0 && allContacts.length === 0) {
-          allEnrollments = [
-            {
-              _id: 'sample-1',
-              token: 'KARKA-PAP-2026-892',
-              name: 'Jeevan Abishek',
-              email: 'abishekjeevan65@gmail.com',
-              phone: '+91 94875 30243',
-              track: 'Fullstack Web & AI Engineering',
-              degree: 'B.E CSE',
-              gradYear: '2026',
-              status: 'Pending Review',
-              createdAt: new Date().toISOString()
-            }
-          ];
-          allContacts = [
-            {
-              _id: 'sample-2',
-              name: 'Anandha Krishnan',
-              email: 'anand@gmail.com',
-              phone: '+91 98401 23456',
-              program: 'AI & Machine Learning Bootcamp',
-              message: 'Interested in the upcoming weekend batch for working professionals in Nagercoil.',
-              status: 'New',
-              createdAt: new Date(Date.now() - 3600000).toISOString()
-            }
-          ];
-        }
-
         updateMetrics();
         filterTableData();
       } finally {
-        if (refreshBtn) refreshBtn.innerHTML = '<i class="fa-solid fa-arrows-rotate"></i> Refresh Data';
+        if (refreshBtn && !silent) refreshBtn.innerHTML = '<i class="fa-solid fa-arrows-rotate"></i> Refresh Data';
       }
     }
 
@@ -1531,6 +1550,7 @@
             (item.email && item.email.toLowerCase().includes(query)) ||
             (item.phone && item.phone.toLowerCase().includes(query)) ||
             (item.track && item.track.toLowerCase().includes(query)) ||
+            (item.course && item.course.toLowerCase().includes(query)) ||
             (item.token && item.token.toLowerCase().includes(query));
 
           const matchStatus = statusFilter === 'ALL' || item.status === statusFilter;
@@ -1604,7 +1624,7 @@
       list.forEach(item => {
         const tr = document.createElement('tr');
         const initials = (item.name || 'S').split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
-        const waUrl = getCleanWhatsAppUrl(item.phone, item.name, item.track);
+        const waUrl = getCleanWhatsAppUrl(item.phone, item.name, item.track || item.course);
         const statusClass = getStatusClass(item.status);
 
         tr.innerHTML = `
@@ -1629,16 +1649,17 @@
           <td>
             <span class="track-pill">
               <i class="fa-solid fa-code"></i>
-              <span>${escapeHtml(item.track || 'General Tech')}</span>
+              <span>${escapeHtml(item.track || item.course || 'General Tech')}</span>
             </span>
           </td>
           <td>
             <div style="font-weight: 600; font-size: 0.85rem;">${escapeHtml(item.degree || 'Degree unspecified')}</div>
-            <div style="font-size: 0.75rem; color: var(--text-muted);">${escapeHtml(item.gradYear ? 'Class of ' + item.gradYear : '')}</div>
+            <div style="font-size: 0.75rem; color: var(--text-muted);">${escapeHtml(item.gradYear ? 'Class of ' + item.gradYear : (item.campus || ''))}</div>
           </td>
           <td>
             <select class="status-badge-select ${statusClass}" onchange="updateLeadStatus('enrollment', '${item._id}', this.value, this)">
-              <option value="Pending Review" ${item.status === 'Pending Review' ? 'selected' : ''}>Pending Review</option>
+              <option value="New" ${item.status === 'New' ? 'selected' : ''}>New</option>
+              <option value="Pending Review" ${item.status === 'Pending Review' || !item.status ? 'selected' : ''}>Pending Review</option>
               <option value="Contacted" ${item.status === 'Contacted' ? 'selected' : ''}>Contacted</option>
               <option value="Enrolled" ${item.status === 'Enrolled' ? 'selected' : ''}>Enrolled</option>
               <option value="Closed" ${item.status === 'Closed' ? 'selected' : ''}>Closed</option>
@@ -1707,7 +1728,8 @@
           </td>
           <td>
             <select class="status-badge-select ${statusClass}" onchange="updateLeadStatus('contact', '${item._id}', this.value, this)">
-              <option value="New" ${item.status === 'New' ? 'selected' : ''}>New</option>
+              <option value="New" ${item.status === 'New' || !item.status ? 'selected' : ''}>New</option>
+              <option value="Pending Review" ${item.status === 'Pending Review' ? 'selected' : ''}>Pending Review</option>
               <option value="Contacted" ${item.status === 'Contacted' ? 'selected' : ''}>Contacted</option>
               <option value="Enrolled" ${item.status === 'Enrolled' ? 'selected' : ''}>Enrolled</option>
               <option value="Closed" ${item.status === 'Closed' ? 'selected' : ''}>Closed</option>
