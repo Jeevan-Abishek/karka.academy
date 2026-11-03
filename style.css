@@ -8406,9 +8406,9 @@ form#contact-form,
 }
 
 /* ==========================================================================
-   2. DESKTOP SYSTEM VIEW (min-width: 769px)
+   2. DESKTOP SYSTEM VIEW (min-width: 1024px)
    ========================================================================== */
-@media (min-width: 769px) {
+@media (min-width: 1024px) {
 
   /* Header & Navbar: Keep clean horizontal row layout */
   header,
@@ -8804,25 +8804,56 @@ form#contact-form,
     font-weight: 900 !important;
   }
 
-  /* Hide desktop nav links, separate courses pill, and header enroll button */
+  /* Hide desktop nav links on mobile */
   .nav-links,
   .pro-nav-links,
   .nav-menu-links,
   .desktop-nav,
   .dropdown,
-  .courses-dropdown,
-  .mobile-courses-btn,
-  header .btn-enroll,
-  .header .btn-enroll,
-  .header .btn-pro-enroll-solid,
-  .pro-header-clean .btn-pro-enroll-solid,
-  .navbar-infosys .btn-pro-enroll-solid,
-  .nav-actions .btn-pro-enroll-solid,
-  .pro-header-inner .btn-pro-enroll-solid,
-  .nav-main-layout .btn-pro-enroll-solid,
-  header .btn-nav-enroll,
-  .navbar .btn-nav-enroll {
+  .courses-dropdown {
     display: none !important;
+  }
+
+  /* Navigation Action Buttons on Mobile: Clean Pill Spacing & Alignment */
+  .nav-actions {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    flex-shrink: 0 !important;
+    margin-left: auto !important;
+  }
+
+  .mobile-courses-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 4px !important;
+    padding: 6px 12px !important;
+    font-size: 0.8rem !important;
+    font-weight: 700 !important;
+    border-radius: var(--radius-pill) !important;
+    white-space: nowrap !important;
+    background: var(--bg-surface) !important;
+    border: 1px solid var(--border-hairline) !important;
+    color: var(--text-primary) !important;
+    cursor: pointer !important;
+    line-height: 1.2 !important;
+  }
+
+  .btn-pro-enroll-solid,
+  .btn-nav-enroll {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 7px 14px !important;
+    font-size: 0.8rem !important;
+    font-weight: 800 !important;
+    border-radius: var(--radius-pill) !important;
+    white-space: nowrap !important;
+    text-decoration: none !important;
+    background: #0070f3 !important;
+    color: #ffffff !important;
+    border: none !important;
+    line-height: 1.2 !important;
   }
 
   /* Hamburger icon (☰) on the right */
@@ -12709,12 +12740,51 @@ svg {
     padding-right: 12px !important;
   }
 
-  /* Header Branding */
+  /* Header Branding on Compact Mobile */
+  .navbar,
+  .pro-header-clean,
+  .navbar-infosys {
+    padding: 6px 10px !important;
+    min-height: 60px !important;
+  }
+
   .navbar-brand-logo,
   .pro-logo-group img {
-    height: 60px !important;
-    max-height: 60px !important;
-    max-width: 210px !important;
+    height: 44px !important;
+    max-height: 44px !important;
+    max-width: 135px !important;
+  }
+
+  .nav-actions {
+    gap: 6px !important;
+  }
+
+  .mobile-courses-btn {
+    padding: 5px 9px !important;
+  }
+
+  .btn-pro-enroll-solid,
+  .btn-nav-enroll {
+    padding: 6px 10px !important;
+  }
+
+  .mobile-menu-btn,
+  .mobile-toggle,
+  .hamburger-btn,
+  .pro-mobile-toggle {
+    padding: 4px !important;
+  }
+
+  .code-lab-badge {
+    padding: 5px 10px !important;
+  }
+
+  .reviews-track .review-card {
+    min-width: 0 !important;
+    width: calc(100vw - 44px) !important;
+    max-width: 340px !important;
+    flex: 0 0 calc(100vw - 44px) !important;
+    box-sizing: border-box !important;
   }
 
   /* Financial Calculator on compact mobile */
@@ -12833,11 +12903,47 @@ svg {
     padding-right: 10px !important;
   }
 
+  /* Header on Ultra-Compact Devices */
+  .navbar,
+  .pro-header-clean,
+  .navbar-infosys {
+    padding: 5px 8px !important;
+    min-height: 54px !important;
+  }
+
   .navbar-brand-logo,
   .pro-logo-group img {
-    height: 52px !important;
-    max-height: 52px !important;
-    max-width: 180px !important;
+    height: 38px !important;
+    max-height: 38px !important;
+    max-width: 105px !important;
+  }
+
+  .nav-actions {
+    gap: 4px !important;
+  }
+
+  .mobile-courses-btn {
+    padding: 4px 6px !important;
+  }
+
+  .btn-pro-enroll-solid,
+  .btn-nav-enroll {
+    padding: 5px 7px !important;
+    letter-spacing: -0.2px !important;
+  }
+
+  .mobile-menu-btn,
+  .mobile-toggle,
+  .hamburger-btn,
+  .pro-mobile-toggle {
+    padding: 3px !important;
+  }
+
+  .reviews-track .review-card {
+    min-width: 0 !important;
+    width: calc(100vw - 32px) !important;
+    flex: 0 0 calc(100vw - 32px) !important;
+    box-sizing: border-box !important;
   }
 
   .enterprise-calc-card,
