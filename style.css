@@ -5,14 +5,27 @@
   box-sizing: border-box !important;
 }
 
-html,
-body {
+html {
+  overflow-x: clip !important;
   overflow-x: hidden !important;
   width: 100% !important;
-  max-width: 100vw !important;
+  max-width: 100% !important;
   margin: 0 !important;
   padding: 0 !important;
   position: relative !important;
+  box-sizing: border-box !important;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  overflow-x: clip !important;
+  overflow-x: hidden !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: relative !important;
+  box-sizing: border-box !important;
 }
 
 html {
@@ -131,11 +144,13 @@ section[id] {
 
 html,
 body {
+  overflow-x: clip !important;
   overflow-x: hidden !important;
   width: 100% !important;
-  max-width: 100vw !important;
-  margin: 0;
-  padding: 0;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
 }
 
 img {
@@ -178,8 +193,9 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
   pointer-events: none;
   z-index: 0;
   opacity: 0.12;
@@ -191,13 +207,13 @@ body {
 
 .ambient-glow-mesh {
   position: absolute;
-  top: 0;
+  top: 100px;
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
   max-width: 1200px;
-  height: 600px;
-  background: radial-gradient(ellipse at 50% 15%, rgba(0, 112, 243, 0.08) 0%, rgba(248, 250, 252, 0) 70%);
+  height: 520px;
+  background: radial-gradient(ellipse at 50% 25%, rgba(0, 112, 243, 0.05) 0%, rgba(252, 251, 249, 0) 70%);
   pointer-events: none;
   z-index: 0;
 }
@@ -455,8 +471,8 @@ h6 {
    1. NAVIGATION & HEADER
    ========================================================================== */
 .infosys-top-strip {
-  background: var(--bg-surface);
-  border-bottom: 1px solid var(--border-hairline);
+  background: #fcfbf9;
+  border-bottom: 1px solid rgba(226, 220, 212, 0.75);
   height: 40px;
   min-height: 40px;
   display: flex;
@@ -470,7 +486,7 @@ h6 {
 }
 
 [data-theme="dark"] .infosys-top-strip {
-  background: rgba(2, 6, 23, 0.96);
+  background: rgba(18, 18, 20, 0.96);
   border-bottom-color: rgba(255, 255, 255, 0.08);
 }
 
@@ -588,17 +604,17 @@ h6 {
   background: var(--bg-surface);
 }
 
-/* Navbar */
+/* Navbar - Warm Neutral Pastel with Glassmorphism (#fcfbf9) */
 .navbar-infosys {
   position: sticky;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 100;
-  background: rgba(255, 255, 255, 0.94);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border-hairline);
+  background: rgba(252, 251, 249, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(226, 220, 212, 0.75);
   padding: 0.35rem 0;
   min-height: 108px;
   display: flex;
@@ -607,19 +623,20 @@ h6 {
 }
 
 [data-theme="dark"] .navbar-infosys {
-  background: rgba(2, 6, 23, 0.94);
+  background: rgba(18, 18, 20, 0.94);
   border-bottom-color: rgba(255, 255, 255, 0.08);
 }
 
 .navbar-infosys.scrolled {
-  background: rgba(255, 255, 255, 0.98);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  background: rgba(252, 251, 249, 0.97);
+  box-shadow: 0 4px 20px rgba(45, 35, 20, 0.04);
+  border-bottom-color: rgba(220, 214, 204, 0.85);
   padding: 0.25rem 0;
   min-height: 94px;
 }
 
 [data-theme="dark"] .navbar-infosys.scrolled {
-  background: rgba(2, 6, 23, 0.98);
+  background: rgba(18, 18, 20, 0.98);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
 }
 
@@ -897,7 +914,9 @@ h6 {
   position: absolute;
   top: 0;
   right: 0;
-  width: min(340px, 86vw);
+  width: min(340px, 85vw);
+  max-width: 85vw;
+  box-sizing: border-box;
   height: 100%;
   background: var(--bg-surface);
   box-shadow: -10px 0 35px rgba(0, 0, 0, 0.35);
@@ -1153,7 +1172,9 @@ h6 {
 
 /* Categorized Courses Drawer Styling */
 .courses-drawer .drawer-content-pane {
-  width: min(380px, 92vw);
+  width: min(340px, 85vw);
+  max-width: 85vw;
+  box-sizing: border-box;
 }
 
 .courses-drawer-scrollable {
@@ -1704,21 +1725,32 @@ h6 {
 }
 
 .partner-logo-pill {
-  display: flex;
+  display: inline-flex;
+  flex-direction: row;
   align-items: center;
-  gap: 0.65rem;
+  justify-content: center;
+  flex-wrap: nowrap;
+  flex-shrink: 0;
+  gap: 0.75rem;
   background: var(--bg-subtle);
   border: 1px solid var(--border-hairline);
-  padding: 0.6rem 1.4rem;
+  padding: 0.65rem 1.4rem;
   border-radius: var(--radius-pill);
   font-weight: 700;
   font-size: 0.95rem;
   color: var(--text-primary);
-  white-space: nowrap;
+  white-space: nowrap !important;
+  word-break: keep-all !important;
+  overflow-wrap: normal !important;
+  min-width: max-content;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
 }
 
 .partner-logo-pill i {
   color: var(--infosys-electric-blue);
+  flex-shrink: 0;
+  font-size: 1rem;
 }
 
 /* ==========================================================================
@@ -2720,12 +2752,11 @@ h6 {
 
   .story-tabs-list {
     display: flex;
-    flex-direction: row;
-    overflow-x: auto;
+    flex-direction: column;
+    overflow-x: visible;
     gap: 0.75rem;
-    padding: 0.25rem 0.25rem 0.5rem;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
+    padding: 0;
+    width: 100%;
   }
 
   .story-tabs-list::-webkit-scrollbar {
@@ -2733,9 +2764,11 @@ h6 {
   }
 
   .story-tab-btn {
-    min-width: 250px;
-    max-width: 280px;
-    flex: 0 0 auto;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    flex: 1 1 auto;
+    box-sizing: border-box;
   }
 
   .story-video-col.video-feature-card,
@@ -5570,14 +5603,10 @@ button.faq-question,
   }
 
   .reviews-filter-bar {
-    justify-content: flex-start;
-    overflow-x: auto;
+    justify-content: center;
+    flex-wrap: wrap;
+    overflow-x: visible;
     padding-bottom: 0.5rem;
-    scrollbar-width: none;
-  }
-
-  .reviews-filter-bar::-webkit-scrollbar {
-    display: none;
   }
 }
 
@@ -5595,19 +5624,27 @@ button.faq-question,
   flex-direction: column;
 }
 
-/* 1. TOP NAVBAR (Clean Minimal Surface Header) */
+/* 1. TOP NAVBAR (Clean Minimal Surface Header - Warm Neutral #fcfbf9) */
 .pro-header-clean {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: var(--bg-surface);
-  border-bottom: 1px solid var(--border-hairline);
+  background: rgba(252, 251, 249, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(226, 220, 212, 0.75);
+  box-shadow: 0 2px 12px rgba(45, 35, 20, 0.03);
   min-height: 108px;
   height: auto;
   padding: 0.25rem 0;
   display: flex;
   align-items: center;
-  box-shadow: var(--shadow-subtle);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-theme="dark"] .pro-header-clean {
+  background: rgba(18, 18, 20, 0.94);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
 }
 
 .pro-header-inner {
@@ -8665,12 +8702,14 @@ form#contact-form,
   /* Global Zero Overflow Protection on Mobile */
   html,
   body {
+    overflow-x: clip !important;
     overflow-x: hidden !important;
     width: 100% !important;
-    max-width: 100vw !important;
+    max-width: 100% !important;
     position: relative !important;
     margin: 0 !important;
     padding: 0 !important;
+    box-sizing: border-box !important;
   }
 
   * {
@@ -8697,6 +8736,16 @@ form#contact-form,
     height: auto !important;
     min-height: 36px !important;
     box-sizing: border-box !important;
+    background: #fcfbf9 !important;
+    border-bottom: 1px solid rgba(226, 220, 212, 0.65) !important;
+  }
+
+  [data-theme="dark"] .top-bar,
+  [data-theme="dark"] .announcement-bar,
+  [data-theme="dark"] .top-ticker-banner,
+  [data-theme="dark"] .infosys-top-strip {
+    background: rgba(18, 18, 20, 0.96) !important;
+    border-bottom-color: rgba(255, 255, 255, 0.08) !important;
   }
 
   .top-bar .chip-upcoming,
@@ -8748,7 +8797,20 @@ form#contact-form,
     height: auto !important;
     min-height: 84px !important;
     box-sizing: border-box !important;
-    background: var(--bg-surface) !important;
+    background: rgba(252, 251, 249, 0.95) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border-bottom: 1px solid rgba(226, 220, 212, 0.75) !important;
+  }
+
+  [data-theme="dark"] header,
+  [data-theme="dark"] .header,
+  [data-theme="dark"] .main-header,
+  [data-theme="dark"] .navbar,
+  [data-theme="dark"] .pro-header-clean,
+  [data-theme="dark"] .navbar-infosys {
+    background: rgba(18, 18, 20, 0.95) !important;
+    border-bottom-color: rgba(255, 255, 255, 0.08) !important;
   }
 
   .pro-header-inner,
@@ -8873,11 +8935,152 @@ form#contact-form,
     margin-left: auto !important;
   }
 
-  /* Mobile Slide Drawers */
-  .pro-mobile-drawer,
+  /* Mobile Slide Drawers & Fullscreen Overlay */
   .enterprise-drawer {
-    width: 82% !important;
-    max-width: 320px !important;
+    position: fixed !important;
+    inset: 0 !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 100% !important;
+    height: 100dvh !important;
+    z-index: 99999 !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+  }
+
+  .enterprise-drawer .drawer-backdrop,
+  .courses-drawer .drawer-backdrop {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: rgba(2, 6, 23, 0.65) !important;
+    backdrop-filter: blur(6px) !important;
+    -webkit-backdrop-filter: blur(6px) !important;
+  }
+
+  .pro-mobile-drawer,
+  .enterprise-drawer .drawer-content-pane,
+  .courses-drawer .drawer-content-pane {
+    position: absolute !important;
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: min(340px, 85vw) !important;
+    max-width: 85vw !important;
+    height: 100% !important;
+    height: 100dvh !important;
+    max-height: 100% !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+    z-index: 2 !important;
+    background: var(--bg-surface) !important;
+    box-shadow: -10px 0 35px rgba(0, 0, 0, 0.35) !important;
+    border-left: 1px solid var(--border-hairline) !important;
+  }
+
+  .courses-drawer .drawer-header,
+  .enterprise-drawer .drawer-header {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 1rem 1.15rem !important;
+    border-bottom: 1px solid var(--border-hairline) !important;
+    flex-shrink: 0 !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+  }
+
+  .courses-drawer .drawer-brand,
+  .enterprise-drawer .drawer-brand {
+    font-size: clamp(1.1rem, 3.8vw, 1.3rem) !important;
+    font-weight: 800 !important;
+    white-space: nowrap !important;
+  }
+
+  .courses-drawer .drawer-close-btn,
+  .enterprise-drawer .drawer-close-btn {
+    width: 36px !important;
+    height: 36px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .courses-drawer-scrollable {
+    flex: 1 1 auto !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding: 1rem 1rem !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+  }
+
+  .courses-drawer-category-heading {
+    margin-bottom: 0.85rem !important;
+    font-size: 0.78rem !important;
+    font-weight: 800 !important;
+  }
+
+  .courses-drawer-tracks-list {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.6rem !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    list-style: none !important;
+  }
+
+  .courses-drawer-card {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 0.65rem !important;
+    padding: 0.75rem 0.95rem !important;
+    font-size: 0.9rem !important;
+    font-weight: 700 !important;
+    border-radius: 10px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .courses-drawer-card span {
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+    min-width: 0 !important;
+  }
+
+  .courses-drawer-card i {
+    flex-shrink: 0 !important;
+    font-size: 0.75rem !important;
+  }
+
+  .courses-drawer-footer {
+    padding: 1rem !important;
+    border-top: 1px solid var(--border-hairline) !important;
+    background: var(--bg-surface) !important;
+    flex-shrink: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .btn-view-all-programs {
+    width: 100% !important;
+    min-height: 44px !important;
+    padding: 0.75rem 1rem !important;
+    font-size: 0.86rem !important;
+    font-weight: 800 !important;
+    justify-content: center !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+    border-radius: 10px !important;
   }
 
   .pro-mobile-drawer .btn-pro-enroll-solid,
@@ -9008,10 +9211,11 @@ form#contact-form,
     flex-direction: column !important;
     align-items: center !important;
     width: 100% !important;
-    max-width: 320px !important;
+    max-width: 100% !important;
     margin: 0.5rem auto !important;
     padding: 0 !important;
     gap: 0.75rem !important;
+    box-sizing: border-box !important;
   }
 
   .btn-hero-primary,
@@ -9133,16 +9337,32 @@ form#contact-form,
 
   .ai-search-card {
     width: 100% !important;
+    max-width: 100% !important;
     padding: 4px 8px !important;
     border-radius: 9999px !important;
+    box-sizing: border-box !important;
   }
 
-  .hero-ai-chips {
+  .ai-input-field {
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+  }
+
+  .hero-ai-chips,
+  .ai-prompt-suggestions {
     display: flex !important;
     flex-wrap: wrap !important;
     justify-content: center !important;
     gap: 6px !important;
     margin-top: 0.75rem !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .prompt-pill {
+    max-width: 100% !important;
+    white-space: normal !important;
+    text-align: center !important;
   }
 
   .hero-chip-btn {
@@ -11512,12 +11732,14 @@ button.btn-whatsapp-syllabus:active {
 
 html,
 body {
+  overflow-x: clip !important;
   overflow-x: hidden !important;
   width: 100% !important;
-  max-width: 100vw !important;
+  max-width: 100% !important;
   margin: 0 !important;
   padding: 0 !important;
   position: relative !important;
+  box-sizing: border-box !important;
 }
 
 img,
@@ -11675,19 +11897,58 @@ svg {
    2. MOBILE & TABLET BREAKPOINT (<= 768px)
    ========================================================================== */
 @media (max-width: 768px) {
-  /* Fluid Container & Section Spacing with proper centered gutters */
+  /* Global Zero-Side-Overflow & Fluid Layout Architecture */
+  html,
+  body {
+    overflow-x: clip !important;
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    position: relative !important;
+    box-sizing: border-box !important;
+  }
+
+  main,
+  header,
+  footer,
+  section,
+  article,
+  aside,
+  nav,
+  .page-wrapper,
+  .main-wrapper,
+  .hero-exclusive-section,
+  .hero,
+  .section-padding,
+  .top-strip,
+  .infosys-top-strip,
+  .navbar,
+  .navbar-infosys,
+  .pro-header-clean,
+  .footer-section,
+  .pro-footer-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow-x: clip !important;
+    overflow-x: hidden !important;
+  }
+
+  /* Fluid Centered Containers with consistent responsive gutters */
   .container,
   .pro-container,
   .hero-container,
   .main-container,
   .section-container,
   .pro-main-sections-wrap,
-  section {
+  .pro-header-inner,
+  .nav-main-layout {
     width: 100% !important;
     max-width: 100% !important;
     padding-left: 16px !important;
     padding-right: 16px !important;
     box-sizing: border-box !important;
+    overflow-x: clip !important;
     overflow-x: hidden !important;
   }
 
@@ -11696,6 +11957,7 @@ svg {
   .grid-3,
   .grid-4,
   .hero-grid,
+  .platforms-grid,
   .why-us-grid,
   .bootcamps-grid,
   .courses-grid,
@@ -12257,27 +12519,282 @@ svg {
 
   .code-lab-buttons-group {
     display: flex !important;
+    flex-direction: row !important;
     flex-wrap: wrap !important;
-    gap: 8px !important;
+    gap: 10px !important;
     width: 100% !important;
+    box-sizing: border-box !important;
   }
 
   .btn-code-lab-run,
   .btn-code-lab-reset {
-    flex: 1 1 calc(50% - 6px) !important;
+    display: inline-flex !important;
+    align-items: center !important;
     justify-content: center !important;
     text-align: center !important;
-    white-space: nowrap !important;
-    padding: 10px 12px !important;
     box-sizing: border-box !important;
+    max-width: 100% !important;
     min-width: 0 !important;
+    border-radius: 8px !important;
+    transition: all 0.2s ease !important;
+  }
+
+  .btn-code-lab-run {
+    flex: 1 1 240px !important;
+    font-size: clamp(0.82rem, 2.5vw, 0.88rem) !important;
+    padding: 10px 16px !important;
+    gap: 8px !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+  }
+
+  .btn-code-lab-reset {
+    flex: 1 1 140px !important;
+    font-size: clamp(0.78rem, 2.3vw, 0.84rem) !important;
+    padding: 10px 14px !important;
+    gap: 7px !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+  }
+
+  .btn-code-lab-run span,
+  .btn-code-lab-reset span {
+    white-space: normal !important;
+    text-align: center !important;
+    word-break: break-word !important;
   }
 
   .code-lab-status-feedback {
     width: 100% !important;
+    max-width: 100% !important;
     text-align: center !important;
     min-width: 0 !important;
     word-break: break-word !important;
+    overflow-wrap: break-word !important;
+    font-size: 0.82rem !important;
+    line-height: 1.45 !important;
+    padding: 8px 12px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* ========================================================================
+     COMPANY PARTNER / IMPACT PILLS SECTION MOBILE OVERHAUL
+     ======================================================================== */
+  .hiring-partners-strip {
+    padding: 1.25rem 0 !important;
+    width: 100% !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+  }
+
+  .hiring-strip-label {
+    font-size: 0.76rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.1em !important;
+    color: var(--text-muted) !important;
+    margin-bottom: 0.85rem !important;
+    padding: 0 16px !important;
+    text-align: center !important;
+    white-space: normal !important;
+    word-break: normal !important;
+    line-height: 1.4 !important;
+  }
+
+  .ticker-scroller {
+    display: flex !important;
+    width: max-content !important;
+    animation: scrollPartners 22s linear infinite !important;
+  }
+
+  .ticker-track {
+    display: flex !important;
+    align-items: center !important;
+    flex-wrap: nowrap !important;
+    gap: 1.25rem !important;
+    padding-right: 1.25rem !important;
+    flex-shrink: 0 !important;
+    width: max-content !important;
+  }
+
+  .partner-logo-pill,
+  .hiring-partners-strip .partner-logo-pill {
+    display: inline-flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-wrap: nowrap !important;
+    flex-shrink: 0 !important;
+    white-space: nowrap !important;
+    word-break: keep-all !important;
+    overflow-wrap: normal !important;
+    min-width: max-content !important;
+    min-width: 130px !important;
+    padding: 0.6rem 1.35rem !important;
+    gap: 0.65rem !important;
+    font-size: 0.88rem !important;
+    font-weight: 700 !important;
+    border-radius: 9999px !important;
+    box-sizing: border-box !important;
+    background: var(--bg-subtle) !important;
+    border: 1px solid var(--border-hairline) !important;
+    color: var(--text-primary) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+  }
+
+  .partner-logo-pill i,
+  .hiring-partners-strip .partner-logo-pill i {
+    color: var(--infosys-electric-blue) !important;
+    flex-shrink: 0 !important;
+    font-size: 0.95rem !important;
+  }
+
+  /* Choose Your Career Track: Mobile Layout & Typography Overhaul */
+  .career-directory-accordion-grid {
+    grid-template-columns: 1fr !important;
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    gap: 14px !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .directory-accordion-item {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    border-radius: 16px !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+
+  .directory-accordion-header {
+    width: 100% !important;
+    max-width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    padding: 1.1rem 1.25rem !important;
+    gap: 10px !important;
+    box-sizing: border-box !important;
+    text-align: left !important;
+  }
+
+  .dir-header-title-box {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .dir-icon-badge {
+    width: 44px !important;
+    height: 44px !important;
+    flex-shrink: 0 !important;
+    border-radius: 12px !important;
+    font-size: 1.1rem !important;
+  }
+
+  .dir-header-title-box > div {
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+  }
+
+  .dir-title {
+    font-size: 1.12rem !important;
+    font-weight: 800 !important;
+    line-height: 1.3 !important;
+    margin: 0 !important;
+    color: var(--text-primary) !important;
+    white-space: normal !important;
+    word-break: normal !important;
+    overflow-wrap: normal !important;
+    letter-spacing: -0.2px !important;
+  }
+
+  .dir-subtitle {
+    font-size: 0.78rem !important;
+    color: var(--text-muted) !important;
+    font-weight: 600 !important;
+    margin-top: 3px !important;
+    line-height: 1.35 !important;
+    white-space: normal !important;
+    word-break: normal !important;
+  }
+
+  .dir-header-meta {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    padding-top: 8px !important;
+    border-top: 1px dashed rgba(0, 112, 243, 0.15) !important;
+    margin-top: 2px !important;
+    box-sizing: border-box !important;
+  }
+
+  .dir-header-meta .badge-pill {
+    white-space: nowrap !important;
+    font-size: 0.74rem !important;
+    padding: 3px 8px !important;
+  }
+
+  .dir-chevron {
+    font-size: 0.9rem !important;
+    margin-left: auto !important;
+  }
+
+  .directory-accordion-body {
+    padding: 0 1.25rem 1.25rem !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .directory-course-list {
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .directory-course-item {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    padding: 10px 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .directory-course-item > span:first-child {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    font-size: 0.88rem !important;
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+    word-break: break-word !important;
+  }
+
+  .directory-actions-row {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 8px !important;
+    margin-top: 1rem !important;
+  }
+
+  .directory-actions-row button,
+  .directory-actions-row a.btn {
+    width: 100% !important;
+    justify-content: center !important;
+    text-align: center !important;
+    min-height: 42px !important;
   }
 
   /* Why Us Cards */
@@ -12496,13 +13013,11 @@ svg {
 
   .story-tabs-list {
     display: flex !important;
-    flex-direction: row !important;
-    overflow-x: auto !important;
-    -webkit-overflow-scrolling: touch !important;
-    gap: 10px !important;
-    padding: 6px 4px 10px !important;
+    flex-direction: column !important;
+    overflow-x: visible !important;
+    gap: 12px !important;
+    padding: 0 !important;
     width: 100% !important;
-    scrollbar-width: none !important;
   }
 
   .story-tabs-list::-webkit-scrollbar {
@@ -12510,10 +13025,12 @@ svg {
   }
 
   .story-tab-btn {
-    flex: 0 0 auto !important;
-    min-width: 200px !important;
-    max-width: 260px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
     box-sizing: border-box !important;
+    padding: 1rem 1.15rem !important;
   }
 
   /* Pillar Stepper Navigation */
@@ -12536,10 +13053,8 @@ svg {
 
   /* Horizontal Filter Bars (Touch-Scrollable Pill Strips) */
   .segmented-audience-bar,
-  .tracks-filter-bar,
   .bootcamps-filter-bar,
-  .review-filters,
-  .reviews-filter-bar {
+  .review-filters {
     display: flex !important;
     flex-wrap: nowrap !important;
     overflow-x: auto !important;
@@ -12554,21 +13069,83 @@ svg {
   }
 
   .segmented-audience-bar::-webkit-scrollbar,
-  .tracks-filter-bar::-webkit-scrollbar,
   .bootcamps-filter-bar::-webkit-scrollbar,
-  .review-filters::-webkit-scrollbar,
-  .reviews-filter-bar::-webkit-scrollbar {
+  .review-filters::-webkit-scrollbar {
     display: none !important;
   }
 
   .audience-tab-btn,
-  .track-filter-btn,
   .bootcamp-tab-btn,
-  .review-filter-btn,
-  .review-filter-pill {
+  .review-filter-btn {
     flex: 0 0 auto !important;
     white-space: nowrap !important;
     padding: 8px 14px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Student Feedback Category Filter Buttons: Natural Flex Wrap */
+  .reviews-filter-bar {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 8px 10px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 4px 1.25rem !important;
+    margin: 0 auto 1.25rem !important;
+    overflow-x: visible !important;
+    box-sizing: border-box !important;
+  }
+
+  .review-filter-pill {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 7px !important;
+    padding: 9px 18px !important;
+    font-size: 0.86rem !important;
+    font-weight: 700 !important;
+    border-radius: 9999px !important;
+    white-space: nowrap !important;
+    flex: 0 1 auto !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+  }
+
+  .review-filter-pill i {
+    font-size: 0.85rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* Career Tracks Filter Buttons: Natural Flex Wrap */
+  .tracks-filter-bar {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 8px 10px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 4px 1.25rem !important;
+    margin: 0 auto 1.25rem !important;
+    overflow-x: visible !important;
+    box-sizing: border-box !important;
+  }
+
+  .track-filter-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    padding: 9px 16px !important;
+    font-size: 0.86rem !important;
+    font-weight: 700 !important;
+    border-radius: 9999px !important;
+    white-space: nowrap !important;
+    flex: 0 1 auto !important;
     box-sizing: border-box !important;
   }
 
@@ -12616,8 +13193,8 @@ svg {
   .card-badge,
   .badge-pill,
   .verified-offer-badge,
-  [class*="badge"],
-  [class*="pill"],
+  [class*="badge"]:not(.tab-company-badge),
+  [class*="pill"]:not(.partner-logo-pill),
   [class*="tag"] {
     max-width: 100% !important;
     white-space: normal !important;
@@ -12696,8 +13273,11 @@ svg {
 
   .form-input,
   .form-select,
-  textarea.form-input {
+  .form-textarea,
+  textarea.form-input,
+  textarea {
     width: 100% !important;
+    max-width: 100% !important;
     min-height: 46px !important;
     box-sizing: border-box !important;
   }
@@ -12717,6 +13297,72 @@ svg {
     height: 40px !important;
   }
 
+  /* Testimonial Pagination Bar & Page Numbers (1 through 9) */
+  #reviews .reviews-pagination-bar {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 12px 14px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-top: 1.5rem !important;
+    padding: 0.5rem 4px !important;
+    box-sizing: border-box !important;
+  }
+
+  #reviews .reviews-page-numbers {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 6px 8px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    order: 1 !important;
+    margin: 0 !important;
+    padding: 4px 0 !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    box-sizing: border-box !important;
+  }
+
+  #reviews .reviews-page-numbers::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  #reviews #carouselPrevBtn {
+    order: 2 !important;
+  }
+
+  #reviews #carouselNextBtn {
+    order: 3 !important;
+  }
+
+  #reviews .reviews-nav-btn,
+  #reviews .carousel-btn {
+    width: 42px !important;
+    height: 42px !important;
+    flex-shrink: 0 !important;
+  }
+
+  #reviews .reviews-page-btn {
+    min-width: 38px !important;
+    height: 38px !important;
+    padding: 0 10px !important;
+    font-size: 0.88rem !important;
+    border-radius: 10px !important;
+    gap: 5px !important;
+    flex-shrink: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  #reviews .reviews-page-btn .page-dot {
+    width: 5px !important;
+    height: 5px !important;
+  }
+
   /* Text Wrapping without altering font sizes */
   h1, h2, h3, h4, h5, h6,
   p, span, a, strong,
@@ -12732,12 +13378,34 @@ svg {
    3. COMPACT SMARTPHONES (<= 480px)
    ========================================================================== */
 @media (max-width: 480px) {
+  html,
+  body {
+    overflow-x: clip !important;
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
   .container,
   .pro-container,
   .hero-container,
-  section {
+  .main-container,
+  .section-container,
+  .pro-main-sections-wrap,
+  .pro-header-inner,
+  .nav-main-layout,
+  section,
+  main,
+  header,
+  footer {
+    width: 100% !important;
+    max-width: 100% !important;
     padding-left: 12px !important;
     padding-right: 12px !important;
+    box-sizing: border-box !important;
+    overflow-x: clip !important;
+    overflow-x: hidden !important;
   }
 
   /* Header Branding on Compact Mobile */
@@ -12763,6 +13431,43 @@ svg {
     padding: 5px 9px !important;
   }
 
+  /* KARKA COURSES Drawer on Compact Mobile */
+  .pro-mobile-drawer,
+  .enterprise-drawer .drawer-content-pane,
+  .courses-drawer .drawer-content-pane {
+    width: 85vw !important;
+    max-width: 85vw !important;
+  }
+
+  .courses-drawer .drawer-header,
+  .enterprise-drawer .drawer-header {
+    padding: 0.85rem 1rem !important;
+  }
+
+  .courses-drawer .drawer-brand,
+  .enterprise-drawer .drawer-brand {
+    font-size: 1.15rem !important;
+  }
+
+  .courses-drawer-scrollable {
+    padding: 0.85rem 0.85rem !important;
+  }
+
+  .courses-drawer-card {
+    padding: 0.7rem 0.85rem !important;
+    font-size: 0.86rem !important;
+  }
+
+  .courses-drawer-footer {
+    padding: 0.85rem !important;
+  }
+
+  .btn-view-all-programs {
+    font-size: 0.82rem !important;
+    padding: 0.7rem 0.85rem !important;
+    min-height: 42px !important;
+  }
+
   .btn-pro-enroll-solid,
   .btn-nav-enroll {
     padding: 6px 10px !important;
@@ -12781,9 +13486,9 @@ svg {
 
   .reviews-track .review-card {
     min-width: 0 !important;
-    width: calc(100vw - 44px) !important;
-    max-width: 340px !important;
-    flex: 0 0 calc(100vw - 44px) !important;
+    width: min(340px, calc(100% - 16px)) !important;
+    max-width: 100% !important;
+    flex: 0 0 min(340px, calc(100% - 16px)) !important;
     box-sizing: border-box !important;
   }
 
@@ -12880,10 +13585,124 @@ svg {
     justify-content: center !important;
   }
 
-  .btn-code-lab-run,
+  .code-lab-action-bar {
+    padding: 10px 10px !important;
+    gap: 10px !important;
+  }
+
+  .code-lab-buttons-group {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 8px !important;
+  }
+
+  .btn-code-lab-run {
+    flex: 1 1 100% !important;
+    width: 100% !important;
+    font-size: 0.8rem !important;
+    padding: 10px 12px !important;
+    gap: 6px !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
   .btn-code-lab-reset {
     flex: 1 1 100% !important;
     width: 100% !important;
+    font-size: 0.78rem !important;
+    padding: 9px 12px !important;
+    gap: 6px !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  .code-lab-status-feedback {
+    font-size: 0.78rem !important;
+    padding: 6px 8px !important;
+  }
+
+  /* Reviews & Tracks Filters on Compact Mobile */
+  .reviews-filter-bar,
+  .tracks-filter-bar {
+    gap: 6px 8px !important;
+  }
+
+  .review-filter-pill {
+    padding: 7px 14px !important;
+    font-size: 0.82rem !important;
+  }
+
+  .track-filter-btn {
+    padding: 7px 12px !important;
+    font-size: 0.82rem !important;
+  }
+
+  /* Testimonial Pagination Bar on Compact Mobile */
+  #reviews .reviews-pagination-bar {
+    gap: 10px 12px !important;
+    padding: 0.4rem 0 !important;
+  }
+
+  #reviews .reviews-page-numbers {
+    gap: 5px 6px !important;
+    padding: 2px 0 !important;
+  }
+
+  #reviews .reviews-page-btn {
+    min-width: 34px !important;
+    height: 36px !important;
+    padding: 0 7px !important;
+    font-size: 0.82rem !important;
+    border-radius: 9px !important;
+    gap: 4px !important;
+  }
+
+  #reviews .reviews-page-btn .page-dot {
+    width: 4px !important;
+    height: 4px !important;
+  }
+
+  #reviews .reviews-nav-btn,
+  #reviews .carousel-btn {
+    width: 38px !important;
+    height: 38px !important;
+  }
+
+  .directory-accordion-header {
+    padding: 0.95rem 1rem !important;
+    gap: 8px !important;
+  }
+
+  .dir-title {
+    font-size: 1.05rem !important;
+  }
+
+  .dir-subtitle {
+    font-size: 0.75rem !important;
+  }
+
+  .directory-accordion-body {
+    padding: 0 1rem 1rem !important;
+  }
+
+  /* Company Partner / Impact Pills on Compact Mobile */
+  .ticker-track {
+    gap: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  .partner-logo-pill,
+  .hiring-partners-strip .partner-logo-pill {
+    padding: 0.55rem 1.2rem !important;
+    gap: 0.55rem !important;
+    font-size: 0.84rem !important;
+    min-width: max-content !important;
+    min-width: 120px !important;
+    flex-shrink: 0 !important;
+    flex-wrap: nowrap !important;
+    white-space: nowrap !important;
+    word-break: keep-all !important;
+    overflow-wrap: normal !important;
   }
 
   .campus-pass-icon-badge {
@@ -12895,12 +13714,34 @@ svg {
    4. ULTRA COMPACT DEVICES (<= 360px - e.g. Galaxy Fold, iPhone SE 1st Gen)
    ========================================================================== */
 @media (max-width: 360px) {
+  html,
+  body {
+    overflow-x: clip !important;
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
   .container,
   .pro-container,
   .hero-container,
-  section {
+  .main-container,
+  .section-container,
+  .pro-main-sections-wrap,
+  .pro-header-inner,
+  .nav-main-layout,
+  section,
+  main,
+  header,
+  footer {
+    width: 100% !important;
+    max-width: 100% !important;
     padding-left: 10px !important;
     padding-right: 10px !important;
+    box-sizing: border-box !important;
+    overflow-x: clip !important;
+    overflow-x: hidden !important;
   }
 
   /* Header on Ultra-Compact Devices */
@@ -12926,6 +13767,58 @@ svg {
     padding: 4px 6px !important;
   }
 
+  /* KARKA COURSES Drawer on Ultra-Compact Mobile */
+  .pro-mobile-drawer,
+  .enterprise-drawer .drawer-content-pane,
+  .courses-drawer .drawer-content-pane {
+    width: 85vw !important;
+    max-width: 85vw !important;
+  }
+
+  .courses-drawer .drawer-header,
+  .enterprise-drawer .drawer-header {
+    padding: 0.75rem 0.8rem !important;
+  }
+
+  .courses-drawer .drawer-brand,
+  .enterprise-drawer .drawer-brand {
+    font-size: 1.05rem !important;
+  }
+
+  .courses-drawer .drawer-close-btn,
+  .enterprise-drawer .drawer-close-btn {
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+  .courses-drawer-scrollable {
+    padding: 0.75rem 0.65rem !important;
+  }
+
+  .courses-drawer-card {
+    padding: 0.6rem 0.75rem !important;
+    font-size: 0.8rem !important;
+    gap: 0.4rem !important;
+  }
+
+  .courses-drawer-card span {
+    font-size: 0.8rem !important;
+  }
+
+  .courses-drawer-card i {
+    font-size: 0.7rem !important;
+  }
+
+  .courses-drawer-footer {
+    padding: 0.75rem !important;
+  }
+
+  .btn-view-all-programs {
+    font-size: 0.78rem !important;
+    padding: 0.65rem 0.75rem !important;
+    min-height: 40px !important;
+  }
+
   .btn-pro-enroll-solid,
   .btn-nav-enroll {
     padding: 5px 7px !important;
@@ -12941,8 +13834,9 @@ svg {
 
   .reviews-track .review-card {
     min-width: 0 !important;
-    width: calc(100vw - 32px) !important;
-    flex: 0 0 calc(100vw - 32px) !important;
+    width: calc(100% - 12px) !important;
+    max-width: 100% !important;
+    flex: 0 0 calc(100% - 12px) !important;
     box-sizing: border-box !important;
   }
 
@@ -12990,5 +13884,139 @@ svg {
     min-width: 0 !important;
     padding: 5px 8px !important;
     gap: 4px !important;
+  }
+
+  .code-lab-action-bar {
+    padding: 8px 6px !important;
+    gap: 6px !important;
+  }
+
+  .code-lab-buttons-group {
+    gap: 6px !important;
+  }
+
+  .btn-code-lab-run {
+    font-size: 0.72rem !important;
+    padding: 8px 8px !important;
+    letter-spacing: -0.2px !important;
+    gap: 5px !important;
+    width: 100% !important;
+  }
+
+  .btn-code-lab-reset {
+    font-size: 0.72rem !important;
+    padding: 7px 8px !important;
+    letter-spacing: -0.2px !important;
+    gap: 5px !important;
+    width: 100% !important;
+  }
+
+  .btn-code-lab-run span,
+  .btn-code-lab-reset span {
+    font-size: 0.72rem !important;
+    white-space: normal !important;
+    text-align: center !important;
+  }
+
+  .code-lab-status-feedback {
+    font-size: 0.72rem !important;
+    padding: 6px 4px !important;
+  }
+
+  /* Reviews & Tracks Filters on Ultra-Compact Mobile */
+  .reviews-filter-bar,
+  .tracks-filter-bar {
+    gap: 6px !important;
+  }
+
+  .review-filter-pill {
+    padding: 6px 10px !important;
+    font-size: 0.76rem !important;
+    letter-spacing: -0.2px !important;
+  }
+
+  .track-filter-btn {
+    padding: 6px 10px !important;
+    font-size: 0.76rem !important;
+  }
+
+  /* Testimonial Pagination Bar on Ultra-Compact Mobile */
+  #reviews .reviews-pagination-bar {
+    gap: 8px 10px !important;
+  }
+
+  #reviews .reviews-page-numbers {
+    gap: 4px 5px !important;
+  }
+
+  #reviews .reviews-page-btn {
+    min-width: 30px !important;
+    height: 32px !important;
+    padding: 0 4px !important;
+    font-size: 0.78rem !important;
+    border-radius: 8px !important;
+    gap: 0 !important;
+  }
+
+  #reviews .reviews-page-btn .page-dot {
+    display: none !important;
+  }
+
+  #reviews .reviews-nav-btn,
+  #reviews .carousel-btn {
+    width: 36px !important;
+    height: 36px !important;
+  }
+
+  .directory-accordion-header {
+    padding: 0.85rem 0.85rem !important;
+    gap: 7px !important;
+  }
+
+  .dir-icon-badge {
+    width: 38px !important;
+    height: 38px !important;
+    font-size: 1rem !important;
+  }
+
+  .dir-title {
+    font-size: 0.98rem !important;
+  }
+
+  .dir-subtitle {
+    font-size: 0.72rem !important;
+  }
+
+  .directory-accordion-body {
+    padding: 0 0.85rem 0.85rem !important;
+  }
+
+  /* Company Partner / Impact Pills on Ultra-Compact Devices */
+  .hiring-partners-strip {
+    padding: 1rem 0 !important;
+  }
+
+  .hiring-strip-label {
+    font-size: 0.72rem !important;
+    margin-bottom: 0.7rem !important;
+  }
+
+  .ticker-track {
+    gap: 0.85rem !important;
+    padding-right: 0.85rem !important;
+  }
+
+  .partner-logo-pill,
+  .hiring-partners-strip .partner-logo-pill {
+    padding: 0.5rem 1rem !important;
+    gap: 0.5rem !important;
+    font-size: 0.8rem !important;
+    min-width: max-content !important;
+    min-width: 110px !important;
+    flex-shrink: 0 !important;
+    flex-wrap: nowrap !important;
+    white-space: nowrap !important;
+    word-break: keep-all !important;
+    overflow-wrap: normal !important;
   }
 }

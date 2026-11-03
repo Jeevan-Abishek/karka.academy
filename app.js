@@ -803,6 +803,9 @@ function initReviewsCarousel() {
       const isActive = p === currentPage;
       btn.classList.toggle('active', isActive);
       btn.setAttribute('aria-current', isActive ? 'true' : 'false');
+      if (isActive && pageNumbersContainer.scrollWidth > pageNumbersContainer.clientWidth) {
+        btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      }
     });
   }
 
