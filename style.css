@@ -10298,25 +10298,42 @@ button.btn-whatsapp-syllabus:active {
   font-weight: 700;
 }
 
-/* Style Presets */
+/* Style Presets & Button Group */
 .code-lab-presets {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.code-lab-preset-lbl {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.72rem;
+  color: #8c7aa8;
+  letter-spacing: 0.6px;
+  font-weight: 700;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+  line-height: 1.2;
+}
+
+.code-lab-presets-group {
   display: flex;
   align-items: center;
   gap: 8px;
   flex-wrap: wrap;
-}
-
-.code-lab-preset-lbl {
-  font-size: 0.72rem;
-  color: #8c7aa8;
-  letter-spacing: 0.5px;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .btn-component-preset {
   background: rgba(124, 58, 237, 0.1);
   border: 1px solid #3b2a64;
   color: #e9d5ff;
-  padding: 5px 12px;
+  padding: 6px 12px;
   border-radius: 6px;
   font-family: 'JetBrains Mono', 'Fira Code', monospace;
   font-size: 0.74rem;
@@ -10324,7 +10341,12 @@ button.btn-whatsapp-syllabus:active {
   cursor: pointer;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
+  white-space: nowrap !important;
+  box-sizing: border-box;
+  flex: 0 1 auto;
+  max-width: 100%;
   transition: all 0.2s ease;
 }
 
@@ -11158,15 +11180,37 @@ button.btn-whatsapp-syllabus:active {
   .code-lab-controls-strip {
     flex-direction: column;
     align-items: flex-start;
+    gap: 12px;
   }
 
   .code-lab-presets {
     width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    box-sizing: border-box;
+  }
+
+  .code-lab-preset-lbl {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .code-lab-presets-group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    flex: 1 1 auto;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   .btn-component-preset {
-    flex: 1;
+    flex: 1 1 auto;
     justify-content: center;
+    white-space: nowrap;
   }
 
   .code-lab-mission-row {
@@ -11528,9 +11572,71 @@ svg {
     gap: 2rem !important;
   }
 
+  .contact-section-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+
   .why-interactive-panel-layout {
     grid-template-columns: 1fr !important;
     gap: 1.5rem !important;
+  }
+
+  /* Interactive Code Lab Controls on Tablet & Laptop */
+  .code-lab-controls-strip {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 12px !important;
+    width: 100% !important;
+  }
+
+  .code-lab-spec-readouts {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    gap: 8px !important;
+    flex: 1 1 480px !important;
+    max-width: 100% !important;
+  }
+
+  .code-lab-presets {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    gap: 10px !important;
+    flex: 1 1 auto !important;
+    max-width: 100% !important;
+    justify-content: flex-start !important;
+  }
+
+  .code-lab-preset-lbl {
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+  }
+
+  .code-lab-presets-group {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
+
+  .btn-component-preset {
+    white-space: nowrap !important;
+    flex: 0 1 auto !important;
+    padding: 6px 12px !important;
+  }
+
+  .code-lab-sliders-matrix {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
+    gap: 12px !important;
+  }
+
+  .code-lab-intel-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
+    gap: 12px !important;
   }
 }
 
@@ -11582,6 +11688,8 @@ svg {
   .form-row-2col,
   .audience-highlights-grid,
   .reviews-grid,
+  .contact-section-grid,
+  .why-interactive-panel-layout,
   [class*="cards-grid"],
   [class*="features-grid"],
   [class*="categories-grid"],
@@ -11601,7 +11709,9 @@ svg {
      ======================================================================== */
   .enterprise-calc-card,
   .pap-calc-container,
-  .calculator-box {
+  .calculator-box,
+  .pap-calculator-card,
+  .pap-calc-container-box {
     width: 100% !important;
     max-width: 100% !important;
     box-sizing: border-box !important;
@@ -11863,31 +11973,140 @@ svg {
     overflow-wrap: break-word !important;
   }
 
-  .code-lab-workspace-grid {
-    grid-template-columns: 1fr !important;
-    width: 100% !important;
-  }
-
-  .code-lab-editor-wrapper {
+  /* Interactive Code Lab Overhaul */
+  .code-lab-wrapper-card {
     width: 100% !important;
     max-width: 100% !important;
     box-sizing: border-box !important;
+    padding: 8px !important;
+    border-radius: 16px !important;
+  }
+
+  .code-lab-ide-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    border-radius: 12px !important;
+  }
+
+  .code-lab-ide-header {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 8px 12px !important;
+    padding: 10px 14px !important;
+  }
+
+  .code-lab-ide-title {
+    min-width: 0 !important;
+    word-break: break-word !important;
+  }
+
+  .code-lab-controls-panel {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 12px 14px !important;
   }
 
   .code-lab-controls-strip {
     display: flex !important;
     flex-direction: column !important;
     align-items: stretch !important;
-    gap: 10px !important;
+    gap: 12px !important;
+    padding-bottom: 12px !important;
+    margin-bottom: 14px !important;
     width: 100% !important;
+    box-sizing: border-box !important;
   }
 
   .code-lab-spec-readouts {
     display: flex !important;
     flex-wrap: wrap !important;
     align-items: center !important;
-    gap: 6px !important;
+    gap: 6px 8px !important;
     width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .code-lab-spec-readouts .control-sep {
+    display: none !important;
+  }
+
+  .code-lab-spec-readouts .control-metric {
+    display: inline-flex !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    gap: 4px !important;
+    min-width: 0 !important;
+    line-height: 1.35 !important;
+  }
+
+  /* Dedicated Style Presets Fluid Wrapping */
+  .code-lab-presets {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    gap: 8px 10px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow: visible !important;
+    justify-content: flex-start !important;
+  }
+
+  .code-lab-preset-lbl {
+    display: inline-flex !important;
+    align-items: center !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+    letter-spacing: 0.5px !important;
+    font-weight: 700 !important;
+    margin-right: 2px !important;
+    line-height: 1.2 !important;
+  }
+
+  .code-lab-presets-group {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    gap: 8px !important;
+    flex: 1 1 auto !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .btn-component-preset {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    flex: 1 1 auto !important;
+    white-space: nowrap !important;
+    padding: 6px 12px !important;
+    border-radius: 6px !important;
+    box-sizing: border-box !important;
+    max-width: 100% !important;
+    text-align: center !important;
+  }
+
+  .code-lab-sliders-matrix {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+    width: 100% !important;
+  }
+
+  .code-slider-tile {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 10px 14px !important;
+  }
+
+  .code-slider-input {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
   }
 
   .code-lab-mission-row {
@@ -11895,7 +12114,139 @@ svg {
     flex-direction: column !important;
     align-items: stretch !important;
     gap: 10px !important;
+    padding: 10px 12px !important;
     width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .code-lab-mission-content {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 6px !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .btn-code-lab-hint-toggle {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  .code-lab-intel-grid {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  .code-intel-card {
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .code-lab-workspace-grid {
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
+  }
+
+  .code-lab-editor-panel {
+    border-right: none !important;
+    border-bottom: 1px solid #2d1f4e !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .code-lab-editor-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+
+  .code-lab-code-textarea {
+    min-height: 170px !important;
+    width: calc(100% - 38px) !important;
+    box-sizing: border-box !important;
+  }
+
+  .code-lab-preview-panel {
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .code-lab-preview-stage {
+    min-height: 190px !important;
+    padding: 24px 14px !important;
+    overflow: hidden !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .interactive-preview-canvas {
+    width: 100% !important;
+    max-width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    overflow: visible !important;
+  }
+
+  .btn-production-cta {
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    word-break: break-word !important;
+  }
+
+  .component-status-badge {
+    position: relative !important;
+    bottom: auto !important;
+    left: auto !important;
+    transform: none !important;
+    margin-top: 14px !important;
+    max-width: 100% !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+    text-align: center !important;
+    border-radius: 12px !important;
+    padding: 6px 12px !important;
+  }
+
+  .code-lab-action-bar {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+    padding: 12px 14px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .code-lab-buttons-group {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+
+  .btn-code-lab-run,
+  .btn-code-lab-reset {
+    flex: 1 1 calc(50% - 6px) !important;
+    justify-content: center !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    padding: 10px 12px !important;
+    box-sizing: border-box !important;
+    min-width: 0 !important;
+  }
+
+  .code-lab-status-feedback {
+    width: 100% !important;
+    text-align: center !important;
+    min-width: 0 !important;
+    word-break: break-word !important;
   }
 
   /* Why Us Cards */
@@ -11998,6 +12349,13 @@ svg {
     box-sizing: border-box !important;
   }
 
+  .campus-pass-bullets {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+
   .campus-pass-cta-wrap {
     width: 100% !important;
     display: flex !important;
@@ -12036,6 +12394,56 @@ svg {
     justify-content: center !important;
     text-align: center !important;
     box-sizing: border-box !important;
+  }
+
+  /* Contact Form & Pane */
+  .contact-card-pane,
+  .contact-card,
+  form#contact-form {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 1.5rem 1.25rem !important;
+    border-radius: 18px !important;
+  }
+
+  .quote-motivation-box {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 1.25rem 1rem !important;
+    margin-top: 1.25rem !important;
+  }
+
+  /* Audience Foundation Cards & Boxes */
+  .why-early-card,
+  .early-foundation-card,
+  .feature-pillar-card,
+  .why-early-box {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 1.35rem 1.15rem !important;
+    border-radius: 16px !important;
+  }
+
+  .pro-prefooter-banner-box {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 1.75rem 1.25rem !important;
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 1.25rem !important;
+  }
+
+  .audience-panel-card,
+  .why-preview-card,
+  .pillar-panel-view {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 1.5rem 1.2rem !important;
   }
 
   /* Video Stories & Reel Showcase Stacking */
@@ -12100,8 +12508,7 @@ svg {
   .tracks-filter-bar,
   .bootcamps-filter-bar,
   .review-filters,
-  .reviews-filter-bar,
-  .code-lab-presets {
+  .reviews-filter-bar {
     display: flex !important;
     flex-wrap: nowrap !important;
     overflow-x: auto !important;
@@ -12119,8 +12526,7 @@ svg {
   .tracks-filter-bar::-webkit-scrollbar,
   .bootcamps-filter-bar::-webkit-scrollbar,
   .review-filters::-webkit-scrollbar,
-  .reviews-filter-bar::-webkit-scrollbar,
-  .code-lab-presets::-webkit-scrollbar {
+  .reviews-filter-bar::-webkit-scrollbar {
     display: none !important;
   }
 
@@ -12128,8 +12534,7 @@ svg {
   .track-filter-btn,
   .bootcamp-tab-btn,
   .review-filter-btn,
-  .review-filter-pill,
-  .btn-component-preset {
+  .review-filter-pill {
     flex: 0 0 auto !important;
     white-space: nowrap !important;
     padding: 8px 14px !important;
@@ -12315,7 +12720,9 @@ svg {
   /* Financial Calculator on compact mobile */
   .enterprise-calc-card,
   .pap-calc-container,
-  .calculator-box {
+  .calculator-box,
+  .pap-calculator-card,
+  .pap-calc-container-box {
     padding: 1.25rem 0.85rem !important;
   }
 
@@ -12333,6 +12740,13 @@ svg {
 
   .infini-categories-grid {
     grid-template-columns: 1fr !important;
+  }
+
+  /* Contact pane on compact mobile */
+  .contact-card-pane,
+  .contact-card,
+  form#contact-form {
+    padding: 1.25rem 0.85rem !important;
   }
 
   /* Pillar Stepper 1-Column on small phones */
@@ -12359,6 +12773,7 @@ svg {
     margin: 8px auto !important;
   }
 
+  /* Code Lab on Compact Mobile */
   .code-lab-wrapper-card {
     padding: 6px !important;
   }
@@ -12367,6 +12782,38 @@ svg {
     flex-direction: column !important;
     align-items: flex-start !important;
     gap: 6px !important;
+    padding: 8px 10px !important;
+  }
+
+  .code-lab-controls-panel {
+    padding: 10px 10px !important;
+  }
+
+  .code-lab-preset-lbl {
+    display: block !important;
+    width: 100% !important;
+    flex: 0 0 100% !important;
+    margin-bottom: 2px !important;
+    white-space: nowrap !important;
+  }
+
+  .code-lab-presets-group {
+    width: 100% !important;
+    flex: 0 0 100% !important;
+    gap: 6px !important;
+  }
+
+  .btn-component-preset {
+    flex: 1 1 calc(50% - 6px) !important;
+    min-width: 100px !important;
+    padding: 6px 8px !important;
+    justify-content: center !important;
+  }
+
+  .btn-code-lab-run,
+  .btn-code-lab-reset {
+    flex: 1 1 100% !important;
+    width: 100% !important;
   }
 
   .campus-pass-icon-badge {
@@ -12395,7 +12842,9 @@ svg {
 
   .enterprise-calc-card,
   .pap-calc-container,
-  .calculator-box {
+  .calculator-box,
+  .pap-calculator-card,
+  .pap-calc-container-box {
     padding: 1rem 0.65rem !important;
   }
 
@@ -12403,6 +12852,12 @@ svg {
   .calculator-results,
   .calc-numbers-grid {
     padding: 0.75rem 0.6rem !important;
+  }
+
+  .contact-card-pane,
+  .contact-card,
+  form#contact-form {
+    padding: 1rem 0.65rem !important;
   }
 
   .modal-dialog {
@@ -12414,5 +12869,20 @@ svg {
   .btn-primary,
   .btn-secondary {
     padding: 10px 14px !important;
+  }
+
+  .code-lab-wrapper-card {
+    padding: 4px !important;
+  }
+
+  .code-lab-controls-panel {
+    padding: 8px 8px !important;
+  }
+
+  .btn-component-preset {
+    flex: 1 1 100% !important;
+    min-width: 0 !important;
+    padding: 5px 8px !important;
+    gap: 4px !important;
   }
 }
