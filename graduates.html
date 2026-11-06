@@ -57,11 +57,11 @@
   </header>
 
   <!-- 2. HERO SECTION (For Graduates) -->
-  <section class="pro-hero-container hero hero-section hero-container professionals-hero">
+  <section class="pro-hero-container">
     <div class="pro-hero-card-clean">
 
       <!-- Left Content -->
-      <div class="pro-hero-left-content hero-content hero-text">
+      <div class="pro-hero-left-content">
         <!-- Top Badge -->
         <span class="pro-pill-badge">
           <i class="fa-solid fa-graduation-cap"></i>
@@ -69,17 +69,17 @@
         </span>
 
         <!-- Main Headline -->
-        <h1 class="pro-hero-h1-clean hero-title">
+        <h1 class="pro-hero-h1-clean">
           Kickstart your career with <span class="accent-blue">job-ready skills</span>
         </h1>
 
         <!-- Subtitle -->
-        <p class="hero-subtitle pro-hero-subtitle">
+        <p class="pro-hero-subtitle">
           Launch your tech career with intensive full-stack development, modern AI workflows, and dedicated placement assistance until you get hired.
         </p>
 
         <!-- CTA Action Buttons -->
-        <div class="pro-hero-cta-wrap hero-btn-group">
+        <div class="pro-hero-cta-wrap">
           <button type="button" class="btn-primary open-apply-modal" onclick="openModal('applyModal')">
             <span>Enroll Now</span>
             <i class="fa-solid fa-arrow-right"></i>
@@ -108,7 +108,7 @@
       </div>
 
       <!-- Right Visual: Graduate in Tech Graphic -->
-      <div class="pro-hero-img-wrap hero-image hero-img-wrapper">
+      <div class="pro-hero-img-wrap">
         <img src="assets/images/graduate-hero.jpg" alt="Successful Tech Graduate" loading="eager" width="460" height="520">
       </div>
 
@@ -1070,23 +1070,30 @@
   </div>
 
   <!-- UNIVERSAL MOBILE DRAWER -->
-  <div class="pro-drawer-overlay" id="proDrawerOverlay" onclick="closeProDrawer()"></div>
-  <aside class="pro-mobile-drawer" id="proDrawer" aria-label="Mobile Navigation">
-    <button class="pro-drawer-close-btn" onclick="closeProDrawer()" aria-label="Close Menu">&times;</button>
-    <a href="index.html" class="pro-logo-group" style="margin-bottom: 1rem;">
-      <img src="assets/images/karka-logo.png" alt="கற்க AI & TECH Academy" class="navbar-brand-logo" width="168" height="55">
-    </a>
-    <ul class="pro-drawer-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="school-students.html">School Students</a></li>
-      <li><a href="college-students.html">College Students</a></li>
-      <li><a href="graduates.html" class="active-link">Graduates</a></li>
-      <li><a href="professionals.html">Professionals</a></li>
-    </ul>
-    <div style="margin-top: auto; padding-top: 1.5rem;">
-      <button type="button" class="btn-pro-enroll-solid open-apply-modal" onclick="closeProDrawer(); openModal('applyModal');" style="width: 100%;">
-        ENROLL NOW
+  <div class="pro-drawer-overlay" id="proDrawerOverlay" onclick="closeProDrawer()" aria-hidden="true"></div>
+  <aside class="pro-mobile-drawer" id="proDrawer" aria-label="Mobile Navigation" role="dialog" aria-modal="true">
+    <div class="pro-drawer-header">
+      <a href="index.html" class="pro-logo-group" onclick="closeProDrawer()" aria-label="Karka AI & Tech Academy Home">
+        <img src="assets/images/karka-logo.png" alt="கற்க AI & TECH Academy" class="navbar-brand-logo" width="130" height="42">
+      </a>
+      <button type="button" class="pro-drawer-close-btn" id="proDrawerCloseBtn" onclick="closeProDrawer()" aria-label="Close navigation">
+        <i class="fa-solid fa-xmark"></i>
       </button>
+    </div>
+    <div class="pro-drawer-body">
+      <ul class="pro-drawer-links">
+        <li><a href="index.html" onclick="closeProDrawer()"><span>Home</span> <i class="fa-solid fa-chevron-right"></i></a></li>
+        <li><a href="school-students.html" onclick="closeProDrawer()"><span>School Students</span> <i class="fa-solid fa-chevron-right"></i></a></li>
+        <li><a href="college-students.html" onclick="closeProDrawer()"><span>College Students</span> <i class="fa-solid fa-chevron-right"></i></a></li>
+        <li><a href="graduates.html" class="active-link" onclick="closeProDrawer()"><span>Graduates</span> <i class="fa-solid fa-chevron-right"></i></a></li>
+        <li><a href="professionals.html" onclick="closeProDrawer()"><span>Professionals</span> <i class="fa-solid fa-chevron-right"></i></a></li>
+      </ul>
+      <div class="pro-drawer-footer">
+        <button type="button" class="btn-pro-enroll-solid open-apply-modal"
+          onclick="closeProDrawer(); openModal('applyModal');" style="width: 100%; justify-content: center;">
+          ENROLL NOW
+        </button>
+      </div>
     </div>
   </aside>
 

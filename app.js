@@ -87,6 +87,7 @@ function initMobileDrawer() {
       megaDrawer.setAttribute('aria-hidden', 'false');
       if (hamburgerBtn) hamburgerBtn.setAttribute('aria-expanded', 'true');
       document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
     }
   }
 
@@ -94,10 +95,12 @@ function initMobileDrawer() {
     if (megaDrawer) {
       megaDrawer.classList.remove('active');
       megaDrawer.setAttribute('aria-hidden', 'true');
-      if (hamburgerBtn) hamburgerBtn.setAttribute('aria-expanded', 'false');
-      if (!coursesDrawer || !coursesDrawer.classList.contains('active')) {
-        document.body.style.overflow = '';
-      }
+    }
+    if (hamburgerBtn) hamburgerBtn.setAttribute('aria-expanded', 'false');
+    if (!coursesDrawer || !coursesDrawer.classList.contains('active')) {
+      document.body.style.overflow = 'auto';
+      document.documentElement.style.overflow = 'auto';
+      document.body.style.position = '';
     }
   }
 
@@ -111,6 +114,7 @@ function initMobileDrawer() {
         coursesBtn.classList.add('active');
       }
       document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
     }
   }
 
@@ -118,15 +122,23 @@ function initMobileDrawer() {
     if (coursesDrawer) {
       coursesDrawer.classList.remove('active');
       coursesDrawer.setAttribute('aria-hidden', 'true');
-      if (coursesBtn) {
-        coursesBtn.setAttribute('aria-expanded', 'false');
-        coursesBtn.classList.remove('active');
-      }
-      if (!megaDrawer || !megaDrawer.classList.contains('active')) {
-        document.body.style.overflow = '';
-      }
+    }
+    if (coursesBtn) {
+      coursesBtn.setAttribute('aria-expanded', 'false');
+      coursesBtn.classList.remove('active');
+    }
+    if (!megaDrawer || !megaDrawer.classList.contains('active')) {
+      document.body.style.overflow = 'auto';
+      document.documentElement.style.overflow = 'auto';
+      document.body.style.position = '';
     }
   }
+
+  // Expose drawer controls globally
+  window.openMegaDrawer = openMegaDrawer;
+  window.closeMegaDrawer = closeMegaDrawer;
+  window.openCoursesDrawer = openCoursesDrawer;
+  window.closeCoursesDrawer = closeCoursesDrawer;
 
   // Hamburger Toggle
   if (hamburgerBtn) {
@@ -157,6 +169,9 @@ function initMobileDrawer() {
   megaLinks.forEach(link => {
     link.addEventListener('click', () => {
       closeMegaDrawer();
+      document.body.style.overflow = 'auto';
+      document.documentElement.style.overflow = 'auto';
+      document.body.style.position = '';
     });
   });
 
@@ -189,12 +204,18 @@ function initMobileDrawer() {
   if (viewAllBtn) {
     viewAllBtn.addEventListener('click', () => {
       closeCoursesDrawer();
+      document.body.style.overflow = 'auto';
+      document.documentElement.style.overflow = 'auto';
+      document.body.style.position = '';
     });
   }
 
   coursesLinks.forEach(link => {
     link.addEventListener('click', () => {
       closeCoursesDrawer();
+      document.body.style.overflow = 'auto';
+      document.documentElement.style.overflow = 'auto';
+      document.body.style.position = '';
     });
   });
 
@@ -208,7 +229,7 @@ function initMobileDrawer() {
 
   // Automatically close drawers and restore scroll if viewport resized to desktop width
   window.addEventListener('resize', () => {
-    if (window.innerWidth >= 769) {
+    if (window.innerWidth >= 1024) {
       closeMegaDrawer();
       closeCoursesDrawer();
     }
@@ -1264,15 +1285,27 @@ function initModals() {
           e.preventDefault();
         }
 
-        // Close mobile drawer if open
+        // Close mobile drawer if open and restore body scrolling
         const drawer = document.getElementById('megaDrawer');
         if (drawer && drawer.classList.contains('active')) {
-          drawer.classList.remove('active');
-          drawer.setAttribute('aria-hidden', 'true');
+          if (typeof closeMegaDrawer === 'function') {
+            closeMegaDrawer();
+          } else {
+            drawer.classList.remove('active');
+            drawer.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = 'auto';
+            document.documentElement.style.overflow = 'auto';
+          }
         }
-        const proDrawer = document.getElementById('proDrawerMenu');
+        const proDrawer = document.getElementById('proDrawer') || document.getElementById('proDrawerMenu');
         if (proDrawer && proDrawer.classList.contains('active')) {
-          if (typeof closeProDrawer === 'function') closeProDrawer();
+          if (typeof closeProDrawer === 'function') {
+            closeProDrawer();
+          } else {
+            proDrawer.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            document.documentElement.style.overflow = 'auto';
+          }
         }
 
         // Match optional track from data attribute
@@ -1923,20 +1956,34 @@ function toggleProDrawer() {
   const drawer = document.getElementById('proDrawer');
   const overlay = document.getElementById('proDrawerOverlay');
   if (drawer && overlay) {
-    const isActive = drawer.classList.toggle('active');
-    overlay.classList.toggle('active', isActive);
-    document.body.style.overflow = isActive ? 'hidden' : '';
+    const willBeActive = !drawer.classList.contains('active');
+    if (willBeActive) {
+      drawer.classList.add('active');
+      overlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
+    } else {
+      drawer.classList.remove('active');
+      overlay.classList.remove('active');
+      document.body.style.overflow = 'auto';
+      document.documentElement.style.overflow = 'auto';
+      document.body.style.position = '';
+    }
   }
 }
 
 function closeProDrawer() {
   const drawer = document.getElementById('proDrawer');
   const overlay = document.getElementById('proDrawerOverlay');
-  if (drawer && overlay) {
+  if (drawer) {
     drawer.classList.remove('active');
-    overlay.classList.remove('active');
-    document.body.style.overflow = '';
   }
+  if (overlay) {
+    overlay.classList.remove('active');
+  }
+  document.body.style.overflow = 'auto';
+  document.documentElement.style.overflow = 'auto';
+  document.body.style.position = '';
 }
 
 function initProDrawer() {
@@ -1944,34 +1991,52 @@ function initProDrawer() {
   const overlay = document.getElementById('proDrawerOverlay');
   if (!drawer) return;
 
-  const links = drawer.querySelectorAll('a, button');
-  links.forEach(el => {
-    el.addEventListener('click', () => {
+  // Intercept all drawer links: immediately close drawer, restore normal scrolling, and allow instant navigation to respective URLs
+  const navLinks = drawer.querySelectorAll('.pro-drawer-links a, .pro-logo-group');
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      closeProDrawer();
+      document.body.style.overflow = 'auto';
+      document.documentElement.style.overflow = 'auto';
+      document.body.style.position = '';
+    });
+  });
+
+  // Buttons inside drawer (close button, enrollment buttons)
+  const buttons = drawer.querySelectorAll('button');
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
       closeProDrawer();
     });
   });
 
+  // Clicking outside the menu on the dark backdrop overlay closes the drawer
   if (overlay) {
-    overlay.addEventListener('click', () => {
+    overlay.addEventListener('click', (e) => {
+      e.preventDefault();
       closeProDrawer();
     });
   }
 
+  // Clear prominent close button click closes the drawer
   const closeBtn = drawer.querySelector('.pro-drawer-close-btn');
   if (closeBtn) {
-    closeBtn.addEventListener('click', () => {
+    closeBtn.addEventListener('click', (e) => {
+      e.preventDefault();
       closeProDrawer();
     });
   }
 
+  // Escape key closes the drawer
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       closeProDrawer();
     }
   });
 
+  // Automatically close drawer if viewport resized to desktop width
   window.addEventListener('resize', () => {
-    if (window.innerWidth >= 769) {
+    if (window.innerWidth >= 1024) {
       closeProDrawer();
     }
   });

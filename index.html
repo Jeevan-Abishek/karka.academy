@@ -107,13 +107,13 @@
     <!-- MOBILE COURSES DRAWER (Categorized Program List) -->
     <div class="enterprise-drawer courses-drawer" id="coursesDrawer" aria-hidden="true" role="dialog" aria-modal="true"
       aria-label="Categorized Courses">
-      <div class="drawer-backdrop" id="coursesDrawerBackdrop"></div>
+      <div class="drawer-backdrop" id="coursesDrawerBackdrop" onclick="closeCoursesDrawer()"></div>
       <div class="drawer-content-pane">
         <div class="drawer-header">
           <span class="drawer-brand">
             KARKA <span class="accent-ai">COURSES</span>
           </span>
-          <button class="drawer-close-btn" id="coursesDrawerCloseBtn" aria-label="Close courses menu">
+          <button class="drawer-close-btn" id="coursesDrawerCloseBtn" onclick="closeCoursesDrawer()" aria-label="Close courses menu">
             <i class="fa-solid fa-xmark"></i>
           </button>
         </div>
@@ -125,27 +125,27 @@
           </div>
 
           <ul class="courses-drawer-tracks-list">
-            <li><a href="#bootcamps" class="courses-drawer-card"><span>Fullstack Courses</span><i
+            <li><a href="#bootcamps" class="courses-drawer-card" onclick="closeCoursesDrawer()"><span>Fullstack Courses</span><i
                   class="fa-solid fa-chevron-right"></i></a></li>
-            <li><a href="#bootcamps" class="courses-drawer-card"><span>Gen AI Courses</span><i
+            <li><a href="#bootcamps" class="courses-drawer-card" onclick="closeCoursesDrawer()"><span>Gen AI Courses</span><i
                   class="fa-solid fa-chevron-right"></i></a></li>
-            <li><a href="#bootcamps" class="courses-drawer-card"><span>Data & ML Courses</span><i
+            <li><a href="#bootcamps" class="courses-drawer-card" onclick="closeCoursesDrawer()"><span>Data & ML Courses</span><i
                   class="fa-solid fa-chevron-right"></i></a></li>
-            <li><a href="#bootcamps" class="courses-drawer-card"><span>Design Courses</span><i
+            <li><a href="#bootcamps" class="courses-drawer-card" onclick="closeCoursesDrawer()"><span>Design Courses</span><i
                   class="fa-solid fa-chevron-right"></i></a></li>
-            <li><a href="#bootcamps" class="courses-drawer-card"><span>Digital Media Courses</span><i
+            <li><a href="#bootcamps" class="courses-drawer-card" onclick="closeCoursesDrawer()"><span>Digital Media Courses</span><i
                   class="fa-solid fa-chevron-right"></i></a></li>
-            <li><a href="#bootcamps" class="courses-drawer-card"><span>Content & Marketing</span><i
+            <li><a href="#bootcamps" class="courses-drawer-card" onclick="closeCoursesDrawer()"><span>Content & Marketing</span><i
                   class="fa-solid fa-chevron-right"></i></a></li>
-            <li><a href="#bootcamps" class="courses-drawer-card"><span>Other Tech Courses</span><i
+            <li><a href="#bootcamps" class="courses-drawer-card" onclick="closeCoursesDrawer()"><span>Other Tech Courses</span><i
                   class="fa-solid fa-chevron-right"></i></a></li>
-            <li><a href="#bootcamps" class="courses-drawer-card"><span>Non Tech Courses</span><i
+            <li><a href="#bootcamps" class="courses-drawer-card" onclick="closeCoursesDrawer()"><span>Non Tech Courses</span><i
                   class="fa-solid fa-chevron-right"></i></a></li>
           </ul>
         </div>
 
         <div class="courses-drawer-footer">
-          <a href="#bootcamps" class="btn-view-all-programs" id="btnViewAllPrograms">VIEW ALL PROGRAMS &gt;</a>
+          <a href="#bootcamps" class="btn-view-all-programs" id="btnViewAllPrograms" onclick="closeCoursesDrawer()">VIEW ALL PROGRAMS &gt;</a>
         </div>
       </div>
     </div>
@@ -153,28 +153,29 @@
     <!-- MOBILE MENU DRAWER (Hamburger exclusively) -->
     <div class="enterprise-drawer" id="megaDrawer" aria-hidden="true" role="dialog" aria-modal="true"
       aria-label="Mobile Navigation">
-      <div class="drawer-backdrop" id="drawerBackdrop"></div>
+      <div class="drawer-backdrop" id="drawerBackdrop" onclick="closeMegaDrawer()"></div>
       <div class="drawer-content-pane">
         <div class="drawer-header">
           <span class="drawer-brand">
             KARKA <span class="accent-ai">AI</span>
           </span>
-          <button class="drawer-close-btn" id="drawerCloseBtn" aria-label="Close navigation">
+          <button class="drawer-close-btn" id="drawerCloseBtn" onclick="closeMegaDrawer()" aria-label="Close navigation">
             <i class="fa-solid fa-xmark"></i>
           </button>
         </div>
         <ul class="drawer-nav-list">
-          <li><a href="index.html" class="drawer-link active">Home <i class="fa-solid fa-chevron-right"></i></a></li>
-          <li><a href="school-students.html" class="drawer-link">School Students <i
+          <li><a href="index.html" class="drawer-link active" onclick="closeMegaDrawer()"><span>Home</span> <i class="fa-solid fa-chevron-right"></i></a></li>
+          <li><a href="school-students.html" class="drawer-link" onclick="closeMegaDrawer()"><span>School Students</span> <i
                 class="fa-solid fa-chevron-right"></i></a></li>
-          <li><a href="college-students.html" class="drawer-link">College Students <i
+          <li><a href="college-students.html" class="drawer-link" onclick="closeMegaDrawer()"><span>College Students</span> <i
                 class="fa-solid fa-chevron-right"></i></a></li>
-          <li><a href="graduates.html" class="drawer-link">Graduates <i class="fa-solid fa-chevron-right"></i></a></li>
-          <li><a href="professionals.html" class="drawer-link">Professionals <i
+          <li><a href="graduates.html" class="drawer-link" onclick="closeMegaDrawer()"><span>Graduates</span> <i class="fa-solid fa-chevron-right"></i></a></li>
+          <li><a href="professionals.html" class="drawer-link" onclick="closeMegaDrawer()"><span>Professionals</span> <i
                 class="fa-solid fa-chevron-right"></i></a></li>
         </ul>
         <div class="drawer-footer">
           <button class="btn-enterprise-primary open-apply-modal"
+            onclick="closeMegaDrawer(); openModal('applyModal');"
             style="width: 100%; justify-content: center; padding: 0.85rem; font-size: 0.95rem;">
             ENROLL NOW
           </button>

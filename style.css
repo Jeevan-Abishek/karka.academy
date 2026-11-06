@@ -364,16 +364,6 @@ h6 {
   }
 
   /* Subpage Viewport Constraints */
-  .pro-hero-container {
-    min-height: calc(100vh - 120px);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    overflow: visible !important;
-    box-sizing: border-box;
-    margin: 1rem auto 1.5rem;
-  }
-
   .why-early-container,
   .pap-calculator-section,
   .pro-prefooter-wrapper {
@@ -5887,22 +5877,26 @@ button.faq-question,
 /* 2. HERO SECTION */
 .pro-hero-container {
   max-width: 1240px;
-  margin: 1.5rem auto 2.25rem;
+  width: 100%;
+  margin: 2rem auto 2.5rem;
   padding: 0 1.5rem;
+  box-sizing: border-box;
 }
 
 .pro-hero-card-clean {
   background: var(--bg-surface);
   border: 1px solid var(--border-hairline);
   border-radius: 28px;
-  padding: 2.25rem 2.5rem 0;
+  padding: 2.5rem 3rem 0;
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
   align-items: flex-end;
-  gap: 1.75rem;
+  gap: 2rem;
   position: relative;
   overflow: hidden;
   box-shadow: var(--shadow-card);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* Subtle tech dot accent pattern behind right visual */
@@ -5921,11 +5915,13 @@ button.faq-question,
 }
 
 .pro-hero-left-content {
-  padding-bottom: 2.25rem;
+  padding-bottom: 2.5rem;
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
   z-index: 2;
+  text-align: left;
+  align-items: flex-start;
 }
 
 /* Hero Badge Pill */
@@ -5946,12 +5942,13 @@ button.faq-question,
 
 /* Headline */
 .pro-hero-h1-clean {
-  font-size: clamp(2.3rem, 4vw, 3.3rem);
+  font-size: clamp(2.2rem, 3.8vw, 3.2rem);
   font-weight: 900;
   color: var(--text-primary);
-  line-height: 1.15;
+  line-height: 1.18;
   letter-spacing: -0.02em;
   margin: 0;
+  text-align: left;
 }
 
 .pro-hero-h1-clean .accent-purple,
@@ -5961,6 +5958,72 @@ button.faq-question,
   color: var(--infosys-electric-blue) !important;
 }
 
+/* Subtitle */
+.pro-hero-subtitle {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
+  max-width: 580px;
+  text-align: left;
+}
+
+/* CTA Action Buttons */
+.pro-hero-cta-wrap {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin: 0.25rem 0 0.5rem;
+  justify-content: flex-start;
+}
+
+.pro-hero-cta-wrap .btn-primary {
+  background: var(--infosys-electric-blue);
+  color: #fff;
+  border: 1px solid transparent;
+  padding: 0.75rem 1.75rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.95rem;
+  font-weight: 800;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  box-shadow: 0 4px 14px rgba(0, 112, 243, 0.3);
+  transition: all 0.25s ease;
+  text-decoration: none;
+}
+
+.pro-hero-cta-wrap .btn-primary:hover {
+  background: #005bb5;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 112, 243, 0.4);
+}
+
+.pro-hero-cta-wrap .btn-secondary {
+  background: var(--bg-subtle);
+  color: var(--text-primary);
+  border: 1px solid var(--border-hairline);
+  padding: 0.75rem 1.65rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.25s ease;
+  text-decoration: none;
+}
+
+.pro-hero-cta-wrap .btn-secondary:hover {
+  background: var(--bg-surface);
+  border-color: var(--infosys-electric-blue);
+  color: var(--infosys-electric-blue);
+  transform: translateY(-2px);
+}
+
 /* Feature Badges in a single horizontal row */
 .pro-feature-pills-row {
   display: flex;
@@ -5968,6 +6031,7 @@ button.faq-question,
   gap: 0.85rem;
   align-items: center;
   margin-top: 0.5rem;
+  justify-content: flex-start;
 }
 
 .pro-badge-pill-item {
@@ -6005,11 +6069,13 @@ button.faq-question,
   align-items: flex-end;
   position: relative;
   z-index: 2;
+  height: 100%;
 }
 
 .pro-hero-img-wrap img {
   max-height: 500px;
   width: auto;
+  max-width: 100%;
   display: block;
   object-fit: contain;
   filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.12));
@@ -7137,69 +7203,173 @@ button.faq-question,
 
 /* Clean Universal Mobile Drawer for multi-page header */
 .pro-mobile-drawer {
-  position: fixed;
-  top: 0;
-  right: -320px;
-  width: 300px;
-  height: 100%;
-  background: var(--bg-surface);
-  z-index: 2000;
-  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.15);
-  transition: right 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  display: flex;
-  flex-direction: column;
-  padding: 1.8rem;
-  border-left: 1px solid var(--border-hairline);
+  position: fixed !important;
+  top: 0 !important;
+  right: -360px !important;
+  bottom: 0 !important;
+  width: min(340px, 85vw) !important;
+  max-width: 85vw !important;
+  height: 100% !important;
+  height: 100dvh !important;
+  background: var(--bg-surface) !important;
+  z-index: 99999 !important;
+  box-shadow: -10px 0 35px rgba(0, 0, 0, 0.35) !important;
+  border-left: 1px solid var(--border-hairline) !important;
+  transition: right 0.32s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  box-sizing: border-box !important;
+  padding: 0 !important;
+  overflow: hidden !important;
 }
 
 .pro-mobile-drawer.active {
-  right: 0;
+  right: 0 !important;
 }
 
 .pro-drawer-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(15, 23, 42, 0.5);
-  backdrop-filter: blur(4px);
-  z-index: 1999;
-  display: none;
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: rgba(2, 6, 23, 0.65) !important;
+  backdrop-filter: blur(6px) !important;
+  -webkit-backdrop-filter: blur(6px) !important;
+  z-index: 99998 !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  cursor: pointer !important;
+  transition: opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.28s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
 .pro-drawer-overlay.active {
-  display: block;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  display: block !important;
+}
+
+.pro-drawer-header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 1.15rem 1.35rem !important;
+  border-bottom: 1px solid var(--border-hairline) !important;
+  flex-shrink: 0 !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  background: var(--bg-surface) !important;
 }
 
 .pro-drawer-close-btn {
-  align-self: flex-end;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  color: var(--text-secondary);
-  cursor: pointer;
-  padding: 0.4rem;
+  background: var(--bg-subtle) !important;
+  border: 1px solid var(--border-hairline) !important;
+  color: var(--text-primary) !important;
+  font-size: 1.25rem !important;
+  line-height: 1 !important;
+  width: 42px !important;
+  height: 42px !important;
+  min-width: 42px !important;
+  min-height: 42px !important;
+  border-radius: 50% !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  flex-shrink: 0 !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08) !important;
+  padding: 0 !important;
+}
+
+.pro-drawer-close-btn:hover {
+  color: var(--infosys-electric-blue) !important;
+  border-color: var(--infosys-electric-blue) !important;
+  background: var(--bg-tint-blue) !important;
+  transform: rotate(90deg) scale(1.05) !important;
+}
+
+.pro-drawer-body {
+  flex: 1 1 auto !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  padding: 1.15rem 1.25rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
 }
 
 .pro-drawer-links {
-  list-style: none;
-  padding: 0;
-  margin: 1.5rem 0 0;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.5rem !important;
+  width: 100% !important;
+}
+
+.pro-drawer-links li {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
 }
 
 .pro-drawer-links a {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  text-decoration: none;
-  padding: 0.5rem 0;
-  display: block;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 0.85rem 1rem !important;
+  border-radius: 10px !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  color: var(--text-primary) !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease !important;
+  border: 1px solid transparent !important;
+  background: transparent !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.pro-drawer-links a i {
+  font-size: 0.75rem !important;
+  color: var(--text-muted) !important;
+  transition: transform 0.2s ease, color 0.2s ease !important;
+}
+
+.pro-drawer-links a:hover,
+.pro-drawer-links a:focus-visible {
+  background: var(--bg-tint-blue) !important;
+  color: var(--infosys-electric-blue) !important;
+  border-color: rgba(0, 112, 243, 0.2) !important;
+  transform: translateX(4px) !important;
+}
+
+.pro-drawer-links a:hover i {
+  color: var(--infosys-electric-blue) !important;
+  transform: translateX(3px) !important;
 }
 
 .pro-drawer-links a.active-link {
-  color: var(--infosys-electric-blue);
-  font-weight: 900;
+  background: var(--bg-tint-blue) !important;
+  color: var(--infosys-electric-blue) !important;
+  font-weight: 800 !important;
+  border-color: rgba(0, 112, 243, 0.3) !important;
+}
+
+.pro-drawer-links a.active-link i {
+  color: var(--infosys-electric-blue) !important;
+}
+
+.pro-drawer-footer {
+  margin-top: auto !important;
+  padding-top: 1.25rem !important;
+  flex-shrink: 0 !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
 }
 
 /* Responsive Rules for Multi-Page Headers & Grids */
@@ -7213,16 +7383,18 @@ button.faq-question,
   }
 
   .pro-hero-card-clean {
-    grid-template-columns: 1fr;
-    padding-bottom: 0;
+    grid-template-columns: 1.15fr 0.85fr;
+    align-items: flex-end;
+    gap: 1.5rem;
+    padding: 2.25rem 2rem 0;
   }
 
   .pro-hero-left-content {
-    padding-bottom: 1.5rem;
+    padding-bottom: 2rem;
   }
 
   .pro-hero-img-wrap img {
-    max-height: 380px;
+    max-height: 420px;
   }
 
   .pro-cards-grid-3col {
@@ -8546,9 +8718,7 @@ form#contact-form,
   }
 
   /* Hero Section: Display text on the left and hero illustration/image on the right (2-column, align-items: center) */
-  .hero-exclusive-section,
-  .professionals-hero,
-  .pro-hero-container {
+  .hero-exclusive-section {
     display: block !important;
     padding: 2.5rem 0 !important;
   }
@@ -8561,13 +8731,22 @@ form#contact-form,
     text-align: left !important;
   }
 
+  .pro-hero-container {
+    max-width: 1240px !important;
+    width: 100% !important;
+    margin: 2rem auto 2.5rem !important;
+    padding: 0 1.5rem !important;
+    display: block !important;
+  }
+
   .pro-hero-card-clean {
     display: grid !important;
-    grid-template-columns: 1.1fr 0.9fr !important;
-    align-items: center !important;
+    grid-template-columns: 1.15fr 0.85fr !important;
+    align-items: flex-end !important;
     gap: 2rem !important;
     text-align: left !important;
-    padding: 2.25rem 2.5rem 0 !important;
+    padding: 2.5rem 3rem 0 !important;
+    width: 100% !important;
   }
 
   .hero-content,
@@ -8591,13 +8770,27 @@ form#contact-form,
 
   .hero-image,
   .hero-img-wrapper,
-  .pro-hero-image-wrap,
-  .pro-hero-img-wrap,
   .hero-visual-wrapper,
   .mascot-image-card {
     max-width: 100% !important;
     margin: 0 !important;
     display: block !important;
+  }
+
+  .pro-hero-img-wrap {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: flex-end !important;
+    height: 100% !important;
+  }
+
+  .pro-hero-img-wrap img {
+    max-height: 500px !important;
+    width: auto !important;
+    max-width: 100% !important;
+    display: block !important;
+    object-fit: contain !important;
+    filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.12)) !important;
   }
 
   /* Course Grids: Render neatly in 3 columns with consistent gap (24px) */
@@ -8961,9 +9154,36 @@ form#contact-form,
     background: rgba(2, 6, 23, 0.65) !important;
     backdrop-filter: blur(6px) !important;
     -webkit-backdrop-filter: blur(6px) !important;
+    cursor: pointer !important;
   }
 
-  .pro-mobile-drawer,
+  .pro-mobile-drawer {
+    position: fixed !important;
+    top: 0 !important;
+    right: -360px !important;
+    bottom: 0 !important;
+    width: min(340px, 85vw) !important;
+    max-width: 85vw !important;
+    height: 100% !important;
+    height: 100dvh !important;
+    z-index: 99999 !important;
+    background: var(--bg-surface) !important;
+    box-shadow: -10px 0 35px rgba(0, 0, 0, 0.35) !important;
+    border-left: 1px solid var(--border-hairline) !important;
+    transition: right 0.32s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  }
+
+  .pro-mobile-drawer.active {
+    right: 0 !important;
+  }
+
+  .pro-drawer-overlay {
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 99998 !important;
+    cursor: pointer !important;
+  }
+
   .enterprise-drawer .drawer-content-pane,
   .courses-drawer .drawer-content-pane {
     position: absolute !important;
@@ -9004,10 +9224,18 @@ form#contact-form,
     white-space: nowrap !important;
   }
 
+  .pro-drawer-close-btn,
   .courses-drawer .drawer-close-btn,
   .enterprise-drawer .drawer-close-btn {
-    width: 36px !important;
-    height: 36px !important;
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+    min-height: 42px !important;
+    font-size: 1.25rem !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 50% !important;
     flex-shrink: 0 !important;
   }
 
@@ -9099,9 +9327,7 @@ form#contact-form,
 
   /* HERO SECTION: Clean, balanced mobile app layout */
   .hero-exclusive-section,
-  .hero,
-  .professionals-hero,
-  .pro-hero-container {
+  .hero {
     display: flex !important;
     flex-direction: column !important;
     padding: 1rem !important;
@@ -9113,7 +9339,6 @@ form#contact-form,
     box-sizing: border-box !important;
   }
 
-  .pro-hero-card-clean,
   .hero-grid {
     display: flex !important;
     flex-direction: column !important;
@@ -9131,14 +9356,9 @@ form#contact-form,
     overflow: hidden !important;
   }
 
-  .pro-hero-card-clean::before {
-    display: none !important;
-  }
-
   .hero-content,
   .hero-text,
-  .hero-left-content,
-  .pro-hero-left-content {
+  .hero-left-content {
     max-width: 100% !important;
     width: 100% !important;
     padding: 0 !important;
@@ -9154,8 +9374,7 @@ form#contact-form,
   .hero-pill-badge,
   .exclusive-badge,
   .hero-badge,
-  .hero-exclusive-tag,
-  .pro-pill-badge {
+  .hero-exclusive-tag {
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -9177,8 +9396,6 @@ form#contact-form,
   /* Headlines (Fluid wrap without altering font sizes) */
   .hero h1,
   .hero-title,
-  .pro-hero-card-clean h1,
-  .pro-hero-h1-clean,
   .hero-headline {
     line-height: 1.25 !important;
     font-weight: 800 !important;
@@ -9191,9 +9408,7 @@ form#contact-form,
   /* Paragraphs & Subtitles (Natural scaling & wrap) */
   .hero p,
   .hero-subtitle,
-  .pro-hero-card-clean p,
-  .hero-subhead,
-  .pro-hero-subtitle {
+  .hero-subhead {
     line-height: 1.55 !important;
     color: var(--text-secondary) !important;
     max-width: 95% !important;
@@ -9205,8 +9420,7 @@ form#contact-form,
 
   /* Hero CTA Buttons */
   .hero-cta-group,
-  .hero-btn-group,
-  .pro-hero-cta-wrap {
+  .hero-btn-group {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
@@ -9220,11 +9434,8 @@ form#contact-form,
 
   .btn-hero-primary,
   .hero .btn-primary,
-  .professionals-hero .btn-primary,
-  .pro-hero-container .btn-primary,
   .btn-hero-cta,
-  .hero .open-apply-modal,
-  .pro-hero-cta-wrap .btn-primary {
+  .hero .open-apply-modal {
     width: 100% !important;
     min-height: 48px !important;
     font-size: 1rem !important;
@@ -9244,7 +9455,6 @@ form#contact-form,
   }
 
   .btn-secondary,
-  .pro-hero-cta-wrap .btn-secondary,
   .hero-cta-group .btn-secondary {
     width: 100% !important;
     min-height: 44px !important;
@@ -9263,43 +9473,9 @@ form#contact-form,
     text-decoration: none !important;
   }
 
-  /* Compact Feature Badges Row */
-  .pro-feature-pills-row {
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: wrap !important;
-    justify-content: center !important;
-    align-items: center !important;
-    gap: 8px !important;
-    padding: 0 !important;
-    margin: 0.5rem auto 1rem auto !important;
-    width: 100% !important;
-    max-width: 100% !important;
-  }
-
-  .pro-badge-pill-item {
-    display: inline-flex !important;
-    flex: 0 1 auto !important;
-    width: auto !important;
-    max-width: fit-content !important;
-    align-items: center !important;
-    gap: 6px !important;
-    padding: 6px 12px !important;
-    font-size: 0.78rem !important;
-    font-weight: 600 !important;
-    border-radius: 9999px !important;
-    background: var(--bg-surface) !important;
-    border: 1px solid var(--border-hairline) !important;
-    color: var(--text-secondary) !important;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
-    white-space: nowrap !important;
-  }
-
   /* Hero Image/Visual: Neatly framed, rounded, subtle shadow */
   .hero-image,
   .hero-img-wrapper,
-  .pro-hero-image-wrap,
-  .pro-hero-img-wrap,
   .hero-visual-wrapper,
   .mascot-image-card {
     width: 100% !important;
@@ -9313,8 +9489,6 @@ form#contact-form,
 
   .hero-image img,
   .hero-img-wrapper img,
-  .pro-hero-image-wrap img,
-  .pro-hero-img-wrap img,
   .hero-visual-wrapper img,
   .mascot-image-card img {
     width: 100% !important;
@@ -9326,6 +9500,84 @@ form#contact-form,
     box-shadow: 0 8px 24px -4px rgba(0, 112, 243, 0.16) !important;
     display: block !important;
     margin: 0 auto !important;
+  }
+
+  /* Subpages (School, College, Graduates, Professionals) Clean Responsive Hero */
+  .pro-hero-container {
+    padding: 0 1rem !important;
+    margin: 1.25rem auto 1.75rem !important;
+    max-width: 100% !important;
+  }
+
+  .pro-hero-card-clean {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    text-align: left !important;
+    padding: 2rem 1.5rem 0 !important;
+    border-radius: 20px !important;
+    gap: 1.5rem !important;
+  }
+
+  .pro-hero-left-content {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1rem !important;
+    padding-bottom: 0 !important;
+    text-align: left !important;
+    align-items: flex-start !important;
+  }
+
+  .pro-hero-h1-clean {
+    font-size: clamp(1.8rem, 6vw, 2.4rem) !important;
+    line-height: 1.2 !important;
+    text-align: left !important;
+    margin: 0 !important;
+  }
+
+  .pro-hero-subtitle {
+    font-size: 0.95rem !important;
+    line-height: 1.55 !important;
+    text-align: left !important;
+    margin: 0 !important;
+  }
+
+  .pro-hero-cta-wrap {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    gap: 0.75rem !important;
+    width: 100% !important;
+    margin: 0.25rem 0 !important;
+    justify-content: flex-start !important;
+  }
+
+  .pro-feature-pills-row {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 0.6rem !important;
+    justify-content: flex-start !important;
+    margin-top: 0.5rem !important;
+  }
+
+  .pro-hero-img-wrap {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: flex-end !important;
+    width: 100% !important;
+    margin-top: 0.5rem !important;
+    height: auto !important;
+  }
+
+  .pro-hero-img-wrap img {
+    max-height: 380px !important;
+    width: auto !important;
+    max-width: 100% !important;
+    display: block !important;
+    object-fit: contain !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.12)) !important;
   }
 
   /* Ask Karka AI Widget on Mobile */
@@ -13785,10 +14037,18 @@ svg {
     font-size: 1.05rem !important;
   }
 
+  .pro-drawer-close-btn,
   .courses-drawer .drawer-close-btn,
   .enterprise-drawer .drawer-close-btn {
-    width: 32px !important;
-    height: 32px !important;
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    min-height: 38px !important;
+    font-size: 1.15rem !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 50% !important;
   }
 
   .courses-drawer-scrollable {
