@@ -228,28 +228,40 @@ function initMobileDrawer() {
   });
 
   // Automatically close drawers and restore scroll if viewport resized to desktop width
+  let drawerResizeTimer;
   window.addEventListener('resize', () => {
-    if (window.innerWidth >= 1024) {
-      closeMegaDrawer();
-      closeCoursesDrawer();
-    }
-  });
+    if (drawerResizeTimer) cancelAnimationFrame(drawerResizeTimer);
+    drawerResizeTimer = requestAnimationFrame(() => {
+      if (window.innerWidth >= 1024) {
+        closeMegaDrawer();
+        closeCoursesDrawer();
+      }
+    });
+  }, { passive: true });
 }
 
 /* ==========================================================================
    3. NAVBAR SCROLL EFFECT
    ========================================================================== */
 function initNavbarScroll() {
-  const navbar = document.getElementById('navbar');
+  const navbar = document.getElementById('navbar') || document.querySelector('.pro-header-clean') || document.querySelector('.navbar-infosys');
   if (!navbar) return;
 
+  let ticking = false;
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 25) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+        if (scrollY > 20) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+        ticking = false;
+      });
+      ticking = true;
     }
-  });
+  }, { passive: true });
 }
 
 /* ==========================================================================
@@ -922,10 +934,14 @@ function initReviewsCarousel() {
     }
   }, { passive: true });
 
+  let resizeReviewsTimer;
   window.addEventListener('resize', () => {
-    renderPageNumbers();
-    goToPage(currentPage);
-  });
+    if (resizeReviewsTimer) cancelAnimationFrame(resizeReviewsTimer);
+    resizeReviewsTimer = requestAnimationFrame(() => {
+      renderPageNumbers();
+      goToPage(currentPage);
+    });
+  }, { passive: true });
 
   // Initial render of page numbers
   renderPageNumbers();
@@ -2035,11 +2051,15 @@ function initProDrawer() {
   });
 
   // Automatically close drawer if viewport resized to desktop width
+  let proResizeTimer;
   window.addEventListener('resize', () => {
-    if (window.innerWidth >= 1024) {
-      closeProDrawer();
-    }
-  });
+    if (proResizeTimer) cancelAnimationFrame(proResizeTimer);
+    proResizeTimer = requestAnimationFrame(() => {
+      if (window.innerWidth >= 1024) {
+        closeProDrawer();
+      }
+    });
+  }, { passive: true });
 }
 
 window.toggleProDrawer = toggleProDrawer;

@@ -29,11 +29,110 @@ body {
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: smooth !important;
+  scrollbar-gutter: stable;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
-section[id] {
-  scroll-margin-top: 70px;
+body {
+  scroll-behavior: smooth !important;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Fast tap response without mobile tap delay */
+a, button, input, select, textarea, [role="button"] {
+  touch-action: manipulation;
+}
+
+section[id],
+div[id],
+article[id] {
+  scroll-margin-top: 100px;
+}
+
+@media (max-width: 768px) {
+  section[id],
+  div[id],
+  article[id] {
+    scroll-margin-top: 75px;
+  }
+}
+
+/* ==========================================================================
+   BUTTER-SMOOTH PERFORMANCE & 60FPS FLUIDITY ENGINE
+   Eliminates layout jank, optimizes hover states, mobile menus & scroll
+   ========================================================================== */
+
+/* Universal Easing & Smooth Transitions for all interactive components */
+a,
+button,
+input,
+select,
+textarea,
+.btn,
+.nav-link,
+.pro-nav-a,
+.drawer-link,
+.badge,
+.pro-badge-pill-item,
+.card,
+.pro-clean-card,
+.course-card,
+.bootcamp-card,
+.review-card,
+.faq-question,
+.form-input,
+.form-select,
+.tab-btn,
+.pill-badge {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* GPU Compositor Layer Promotion: Prevents repaint and micro-stutter */
+.navbar-infosys,
+.pro-header-clean,
+.enterprise-drawer,
+.enterprise-drawer .drawer-content-pane,
+.courses-drawer .drawer-content-pane,
+.pro-mobile-drawer,
+.pro-drawer-overlay,
+.modal-backdrop,
+.modal-dialog,
+.ticker-scroller,
+.reviews-carousel-track,
+.course-card,
+.pro-clean-card,
+.bootcamp-card,
+.value-card,
+.feature-pillar-card,
+.why-early-card,
+.pap-step-card,
+.platform-card,
+.review-card,
+.sticky-mobile-conversion-bar {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* Butter-Smooth 60fps Hover Lift on Cards & Buttons */
+.course-card:hover,
+.pro-clean-card:hover,
+.bootcamp-card:hover,
+.card:hover,
+.platform-card:hover,
+.value-card:hover,
+.why-early-card:hover {
+  transform: translateY(-4px) translateZ(0) !important;
+}
+
+.btn-primary:hover,
+.btn-secondary:hover,
+.btn-pro-enroll-solid:hover,
+.btn-enterprise-primary:hover {
+  transform: translateY(-2px) translateZ(0) !important;
 }
 
 /* ==========================================================================
@@ -95,9 +194,15 @@ section[id] {
   --shadow-card-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
   --shadow-blue-glow: 0 4px 12px rgba(0, 0, 0, 0.06);
 
-  /* Transitions */
-  --transition-fast: 0.18s cubic-bezier(0.16, 1, 0.3, 1);
-  --transition-normal: 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  /* Butter-Smooth 60fps Transition System */
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out-smooth: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-smooth: cubic-bezier(0.4, 0, 1, 1);
+  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Dark Theme Overrides */
@@ -882,8 +987,9 @@ h6 {
   z-index: 99999;
   visibility: hidden;
   opacity: 0;
-  transition: opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   pointer-events: none;
+  will-change: opacity, visibility;
 }
 
 .enterprise-drawer.active {
@@ -898,6 +1004,8 @@ h6 {
   background: rgba(2, 6, 23, 0.65);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
+  cursor: pointer;
+  will-change: opacity;
 }
 
 .drawer-content-pane {
@@ -908,19 +1016,24 @@ h6 {
   max-width: 85vw;
   box-sizing: border-box;
   height: 100%;
+  height: 100dvh;
   background: var(--bg-surface);
   box-shadow: -10px 0 35px rgba(0, 0, 0, 0.35);
   display: flex;
   flex-direction: column;
-  transform: translateX(100%);
-  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateX(100%) translateZ(0);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   z-index: 2;
   border-left: 1px solid var(--border-hairline);
 }
 
 .enterprise-drawer.active .drawer-content-pane {
-  transform: translateX(0);
+  transform: translateX(0) translateZ(0);
 }
 
 .drawer-header {
@@ -1055,7 +1168,7 @@ h6 {
   margin: 0;
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   background: rgba(0, 112, 243, 0.03);
 }
 
@@ -1829,7 +1942,7 @@ h6 {
   display: block;
   opacity: 1;
   transform: translateY(0);
-  animation: audienceSlideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: audienceSlideUp 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 @keyframes audienceSlideUp {
@@ -2792,7 +2905,7 @@ h6 {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
   position: relative;
   overflow: visible !important;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease !important;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
 /* 3D Float on Hover */
@@ -2981,7 +3094,7 @@ h6 {
 }
 
 .bootcamp-card.filtered-in {
-  animation: cardFadeIn 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: cardFadeIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 @keyframes cardFadeIn {
@@ -3570,7 +3683,7 @@ h6 {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
 }
 
@@ -3580,14 +3693,14 @@ h6 {
   background: var(--infosys-electric-blue);
   color: #ffffff;
   border-color: var(--infosys-electric-blue);
-  transform: translateY(-2px);
+  transform: translateY(-2px) translateZ(0);
   box-shadow: 0 4px 14px rgba(0, 112, 243, 0.35);
 }
 
 #reviews .reviews-nav-btn:active,
 #reviews .carousel-btn:active,
 .carousel-btn:active {
-  transform: translateY(0);
+  transform: translateY(0) translateZ(0);
 }
 
 #reviews .reviews-page-numbers {
@@ -3613,7 +3726,7 @@ h6 {
   justify-content: center;
   gap: 7px;
   cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
 }
 
@@ -3818,7 +3931,7 @@ h6 {
 
 .directory-accordion-item.is-open .directory-accordion-body {
   display: block;
-  animation: accordionOpen 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: accordionOpen 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @keyframes accordionOpen {
@@ -4478,7 +4591,8 @@ button.faq-question,
   justify-content: center;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity;
   padding: 1.25rem;
   box-sizing: border-box;
 }
@@ -4509,21 +4623,25 @@ button.faq-question,
   max-width: 600px;
   max-height: 90vh;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   padding: 2.2rem;
   position: relative;
   box-shadow: 0 25px 60px rgba(15, 23, 42, 0.25);
-  transform: translateY(20px) scale(0.97);
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(20px) scale(0.97) translateZ(0);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   color: var(--text-primary);
   margin: auto;
 }
 
 .modal-backdrop.active .modal-dialog {
-  transform: translateY(0) scale(1);
+  transform: translateY(0) scale(1) translateZ(0);
 }
 
 .modal-backdrop.closing .modal-dialog {
-  transform: translateY(20px) scale(0.97);
+  transform: translateY(20px) scale(0.97) translateZ(0);
 }
 
 .modal-close-btn {
@@ -5629,12 +5747,25 @@ button.faq-question,
   padding: 0.25rem 0;
   display: flex;
   align-items: center;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateZ(0);
+  will-change: transform, background-color;
 }
 
 [data-theme="dark"] .pro-header-clean {
   background: rgba(18, 18, 20, 0.94);
   border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+.pro-header-clean.scrolled {
+  background: rgba(252, 251, 249, 0.98);
+  box-shadow: 0 4px 20px rgba(45, 35, 20, 0.06);
+  border-bottom-color: rgba(220, 214, 204, 0.85);
+}
+
+[data-theme="dark"] .pro-header-clean.scrolled {
+  background: rgba(18, 18, 20, 0.98);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
 }
 
 .pro-header-inner {
@@ -6297,8 +6428,8 @@ button.faq-question,
 .course-card:hover .card-thumbnail i,
 .course-card:hover .card-thumb-icon-box i,
 .card:hover .card-thumbnail i {
-  transform: scale(1.05);
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: scale(1.05) translateZ(0);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   filter: none !important;
 }
 
@@ -6988,12 +7119,14 @@ button.faq-question,
   padding: 1.8rem;
   display: flex;
   flex-direction: column;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, box-shadow;
+  backface-visibility: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
 }
 
 .why-early-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-4px) translateZ(0);
   border-color: #cbd5e1;
   background: var(--bg-surface);
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
@@ -7205,7 +7338,7 @@ button.faq-question,
 .pro-mobile-drawer {
   position: fixed !important;
   top: 0 !important;
-  right: -360px !important;
+  right: 0 !important;
   bottom: 0 !important;
   width: min(340px, 85vw) !important;
   max-width: 85vw !important;
@@ -7215,7 +7348,11 @@ button.faq-question,
   z-index: 99999 !important;
   box-shadow: -10px 0 35px rgba(0, 0, 0, 0.35) !important;
   border-left: 1px solid var(--border-hairline) !important;
-  transition: right 0.32s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  transform: translateX(100%) translateZ(0) !important;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  will-change: transform !important;
+  backface-visibility: hidden !important;
+  -webkit-backface-visibility: hidden !important;
   display: flex !important;
   flex-direction: column !important;
   box-sizing: border-box !important;
@@ -7224,7 +7361,7 @@ button.faq-question,
 }
 
 .pro-mobile-drawer.active {
-  right: 0 !important;
+  transform: translateX(0) translateZ(0) !important;
 }
 
 .pro-drawer-overlay {
@@ -7240,7 +7377,8 @@ button.faq-question,
   visibility: hidden !important;
   pointer-events: none !important;
   cursor: pointer !important;
-  transition: opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.28s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  will-change: opacity, visibility !important;
 }
 
 .pro-drawer-overlay.active {
@@ -7657,7 +7795,9 @@ button.faq-question,
   border-radius: 18px !important;
   padding: 2.2rem 1.6rem !important;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04) !important;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  will-change: transform, box-shadow !important;
+  backface-visibility: hidden !important;
   overflow: hidden !important;
 }
 
@@ -7740,7 +7880,9 @@ button.faq-question,
   border-radius: 20px !important;
   border: 1px solid rgba(0, 112, 243, 0.2) !important;
   box-shadow: 0 8px 30px rgba(0, 112, 243, 0.08), 0 0 15px rgba(0, 112, 243, 0.04) !important;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  will-change: transform, box-shadow !important;
+  backface-visibility: hidden !important;
   position: relative !important;
   overflow: hidden !important;
 }
@@ -7880,11 +8022,11 @@ button.faq-question,
 
 @keyframes beamSlide {
   0% {
-    left: -100%;
+    transform: translateX(-100%) translateZ(0);
   }
 
   100% {
-    left: 100%;
+    transform: translateX(100%) translateZ(0);
   }
 }
 
@@ -7903,7 +8045,9 @@ button.faq-question,
   padding: clamp(1.1rem, 1.8vh, 1.35rem) clamp(1.1rem, 1.4vw, 1.4rem) !important;
   overflow: hidden !important;
   animation: continuousCardFloat 4.5s ease-in-out infinite, continuousNeonPulse 3.5s ease-in-out infinite !important;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  will-change: transform, box-shadow !important;
+  backface-visibility: hidden !important;
 }
 
 /* Stagger animations so all 6 cards do not move like rigid robots */
@@ -7970,11 +8114,13 @@ button.faq-question,
   content: '' !important;
   position: absolute !important;
   top: 0;
-  left: -100%;
+  left: 0;
   width: 100%;
   height: 2px;
   background: linear-gradient(90deg, transparent, #38bdf8, #0070f3, transparent) !important;
+  transform: translateX(-100%) translateZ(0) !important;
   animation: beamSlide 3s linear infinite !important;
+  will-change: transform !important;
 }
 
 /* Enhanced interactive hover */
@@ -8044,7 +8190,9 @@ button.faq-question,
   padding: 1.6rem 1.8rem !important;
   overflow: hidden !important;
   animation: smoothStepFloat 4s ease-in-out infinite, neonBorderPulse 3.5s ease-in-out infinite !important;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  will-change: transform, box-shadow !important;
+  backface-visibility: hidden !important;
 }
 
 /* Stagger floating delay across steps */
@@ -8231,7 +8379,9 @@ input[type=range],
   border: 1px solid rgba(0, 112, 243, 0.2) !important;
   padding: 2rem 1.6rem !important;
   overflow: hidden !important;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  will-change: transform, box-shadow !important;
+  backface-visibility: hidden !important;
 }
 
 /* Stagger odd and even cards so they move opposite to each other in a dynamic wave */
@@ -8357,7 +8507,9 @@ input[type=range],
   border-radius: 18px !important;
   border: 1px solid rgba(0, 112, 243, 0.18) !important;
   overflow: hidden !important;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  will-change: transform, box-shadow !important;
+  backface-visibility: hidden !important;
 }
 
 /* Alternate floating wave motion across odd & even cards */
@@ -8503,7 +8655,9 @@ form#contact-form,
   padding: 2.8rem 2.4rem !important;
   overflow: hidden !important;
   animation: contactCardPulse 4s ease-in-out infinite !important;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  will-change: transform, box-shadow !important;
+  backface-visibility: hidden !important;
 }
 
 /* Continuous Top Running Laser Line */
@@ -8603,7 +8757,7 @@ form#contact-form,
   letter-spacing: 0.02em !important;
   cursor: pointer !important;
   box-shadow: 0 8px 25px rgba(0, 112, 243, 0.4), 0 0 18px rgba(56, 189, 248, 0.35) !important;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
   overflow: hidden !important;
 }
 
@@ -8695,7 +8849,7 @@ form#contact-form,
     font-size: 0.92rem !important;
     font-weight: 800 !important;
     border-radius: var(--radius-pill) !important;
-    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
     text-decoration: none !important;
   }
 
@@ -8826,7 +8980,7 @@ form#contact-form,
   .btn-pro-prefooter-apply,
   .btn-pro-prefooter-explore {
     padding: 12px 24px !important;
-    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
   }
 
   .pro-hero-cta-wrap,
@@ -9160,7 +9314,7 @@ form#contact-form,
   .pro-mobile-drawer {
     position: fixed !important;
     top: 0 !important;
-    right: -360px !important;
+    right: 0 !important;
     bottom: 0 !important;
     width: min(340px, 85vw) !important;
     max-width: 85vw !important;
@@ -9170,11 +9324,15 @@ form#contact-form,
     background: var(--bg-surface) !important;
     box-shadow: -10px 0 35px rgba(0, 0, 0, 0.35) !important;
     border-left: 1px solid var(--border-hairline) !important;
-    transition: right 0.32s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    transform: translateX(100%) translateZ(0) !important;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    will-change: transform !important;
+    backface-visibility: hidden !important;
+    -webkit-backface-visibility: hidden !important;
   }
 
   .pro-mobile-drawer.active {
-    right: 0 !important;
+    transform: translateX(0) translateZ(0) !important;
   }
 
   .pro-drawer-overlay {
@@ -9182,6 +9340,8 @@ form#contact-form,
     inset: 0 !important;
     z-index: 99998 !important;
     cursor: pointer !important;
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    will-change: opacity, visibility !important;
   }
 
   .enterprise-drawer .drawer-content-pane,
@@ -10084,7 +10244,7 @@ button.btn-whatsapp-syllabus {
   gap: 8px !important;
   width: 100% !important;
   margin-top: 8px !important;
-  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
   box-shadow: 0 3px 10px rgba(37, 211, 102, 0.28) !important;
   text-decoration: none !important;
   box-sizing: border-box !important;
@@ -10458,13 +10618,14 @@ button.btn-whatsapp-syllabus:active {
     box-shadow: 0 -6px 22px rgba(0, 0, 0, 0.12) !important;
     box-sizing: border-box !important;
     align-items: center !important;
-    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease !important;
-    transform: translateY(0);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    transform: translateY(0) translateZ(0);
+    will-change: transform, opacity;
     opacity: 1;
   }
 
   .sticky-mobile-conversion-bar.sticky-bar-hidden {
-    transform: translateY(100%) !important;
+    transform: translateY(100%) translateZ(0) !important;
     opacity: 0 !important;
     pointer-events: none !important;
   }
